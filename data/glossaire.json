@@ -1,0 +1,1624 @@
+{
+  "_à_propos": "Généré par scripts/derive-glossaire.mjs à partir des fiches existantes rapprochées du wiki. « lignes » : motifs de ligne EN → FR ({0}, {1}… = nombres, recopiés au format français). « fragments » : équivalents FR de fragments interchangeables et cadres de ligne ; une ligne n'est composée que si tous ses fragments sont connus. Les sections « *_manuel(le)s » ne sont jamais écrasées et priment sur les sections dérivées ; une valeur null y signifie « laisser en anglais ».",
+  "valeurs": {
+    "élément": {
+      "BlueType": "Bleu",
+      "GreenType": "Vert",
+      "RedType": "Rouge",
+      "YellowType": "Jaune"
+    },
+    "rôle": {
+      "Attacker": "Attaquant",
+      "Debuffer": "Affaiblisseur",
+      "Defender": "Défenseur",
+      "Support": "Soutien",
+      "Supporter": "Soutien",
+      "Obstructor": "Entravant",
+      "Healer": "Soigneur",
+      "Enhancer": "Renforceur",
+      "Interferer": "Affaiblisseur"
+    },
+    "spécialité": {
+      "Taijutsu": "Taijutsu",
+      "Jujutsu": "Jujutsu",
+      "Combined": "Hybride",
+      "Mixed": "Hybride",
+      "Balanced": "Hybride"
+    },
+    "affiliation": {
+      "Curse User": "Lycée de jujutsu de Tokyo, 2ᵉ année",
+      "Curse Users": "Utilisateurs de fléaux",
+      "Cursed Spirit": "Fléau",
+      "Fukuoka Jujutsu High Year 1": "Lycée de jujutsu de Fukuoka, 1ʳᵉ année",
+      "Incarnation": "Incarnation",
+      "Incarnation\nCursed Womb: Death Paintings": "Incarnation\nMatrice maudite : Peintures de la mort",
+      "Kyoto Jujutsu High Officials": "Cadres du lycée de jujutsu de Kyoto",
+      "Kyoto Jujutsu High Year 2": "Lycée de jujutsu de Kyoto, 2ᵉ année",
+      "Kyoto Jujutsu High Year 3": "Lycée de jujutsu de Kyoto, 3ᵉ année",
+      "Prison Island Officials": "Cadres de l'île-prison",
+      "Satosakura High School Year 2": "Lycée Satosakura, 2ᵉ année",
+      "Special Grade 1 Sorcerer": "Exorciste de grade spécial 1",
+      "The Sorcerer Killer": "Le tueur d'exorcistes",
+      "Tokyo Jujutsu High Officials": "Cadres du lycée de jujutsu de Tokyo",
+      "Tokyo Jujutsu High Teacher": "Enseignant du lycée de jujutsu de Tokyo",
+      "Tokyo Jujutsu High Year 1": "Lycée de jujutsu de Tokyo, 1ʳᵉ année",
+      "Tokyo Jujutsu High Year 2": "Lycée de jujutsu de Tokyo, 2ᵉ année",
+      "Year 1 Tokyo Jujutsu High": "Lycée de jujutsu de Tokyo, 1ʳᵉ année",
+      "Year 2 Tokyo Jujutsu High": "Lycée de jujutsu de Tokyo, 2ᵉ année",
+      "Year 3 Kyoto Jujutsu High": "Lycée de jujutsu de Kyoto, 3ᵉ année"
+    },
+    "rayon_noir": {
+      "Yes": "Oui",
+      "No": "Non",
+      "N/A": "N/D"
+    },
+    "limité": {
+      "Limited": true,
+      "Movie-Limited": true,
+      "Event-Limited": false,
+      "Standard": false,
+      "Free To Play": false
+    }
+  },
+  "noms": {
+    "Able-Bodied": "Corps vigoureux",
+    "Break Enhancement": "Amélioration de la brisure",
+    "Core Switch": "Changement de noyau",
+    "Counter Upper": "Uppercut en contre-attaque",
+    "Critical Hit Enhancement": "Amélioration des CRIT",
+    "Don't Hold Me Back": "Ne me retiens pas",
+    "Early Bird Gets The Worm": "La fortune sourit aux audacieux",
+    "Evasion Enhancement": "Boost d'esquive",
+    "Heavenly Restriction": "Restriction céleste",
+    "King of Curses": "Le roi des fléaux",
+    "Limitless Technique": "Technique occulte illimitée",
+    "Regeneration": "Régénération",
+    "Reverse Cursed Technique": "Technique occulte inversée",
+    "Simple Domain": "Territoire simple",
+    "Sukuna's Vessel": "Le réceptacle de Sukuna",
+    "Throat Medicine": "Médicament pour la gorge",
+    "Urgent Business": "Affaire urgente",
+    "Zone State": "État de zone",
+    "Zone, Outbrust": "Entrer dans la zone",
+    "Zone, Outburst": "Entrer dans la zone"
+  },
+  "lignes": {
+    "(Cannot die from sacrificing HP)": "(ne peut pas mourir en sacrifiant des PV)",
+    "(Cooldown: {0} Turns)": "(Réutilisable après {0} tours)",
+    "(Depletes own Cursed Energy after Domain deactivates)": "(Épuise sa propre énergie occulte après la désactivation du Territoire)",
+    "(Effective for \"影\" (Blue) Type attacks)": "(Efficace contre les attaques de type « 影 » (Bleu))",
+    "(Excludes self)": "(soi-même exclu)",
+    "(The lower own HP is, the greater the Damage Boost)": "(Plus les PV de soi-même sont bas, plus l'augmentation des dégâts est importante)",
+    "At the start of battle,": "Au début du combat,",
+    "At the start of each turn,": "Au début de chaque tour,",
+    "At the start of each wave,": "▼ Au début d'une vague",
+    "At the start of the battle,": "Au début du combat,",
+    "Attracts all enemies' attacks to self ({0} Turn)": "Attire vers soi les attaques de tous les ennemis ({0} tour)",
+    "Consumes {0} Cursed Energy": "Consomme {0} d'énergie occulte",
+    "Counter Status:": "État de Contre :",
+    "Cursed Energy Cost: {0}": "Coût en énergie occulte : {0}",
+    "Deals {0}% Jujutsu Damage to all enemies": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à {0} % du jujutsu",
+    "Deals {0}% Jujutsu Damage to the selected enemy": "Inflige des dégâts à l'ennemi ou aux ennemis ciblés équivalant à {0} % du jujutsu",
+    "Deals {0}% Melee Jujutsu Damage to the selected enemy": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à {0} % du jujutsu",
+    "Deals {0}% melee Taijutsu Damage to all enemies": "Inflige des dégâts d'attaque au corps à corps à tous les ennemis équivalant à {0} % du taijutsu",
+    "Deals {0}% Melee Taijutsu Damage to the Combo Ally's selected enemy": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé par la compétence du partenaire de l'ultime coopérative (ou à tous les ennemis si le partenaire n'a pas de cible) équivalant à {0} % du taijutsu",
+    "Deals {0}% Melee Taijutsu Damage to the selected enemy": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à {0} % du taijutsu",
+    "Deals {0}% melee Taijutsu Damage to the selected enemy ({1} Hits)": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu ({1} coups au total)",
+    "Deals {0}% ranged Jujutsu Damage to all enemies": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à {0} % du jujutsu",
+    "Deals {0}% ranged Jujutsu Damage to all enemies ({1} Hits)": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à {0} % du jujutsu ({1} coups au total)",
+    "Deals {0}% ranged Jujutsu Damage to the selected enemy": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à {0} % du jujutsu",
+    "Deals {0}% ranged Jujutsu Damage to the selected enemy ({1} Hits)": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du jujutsu ({1} coups au total)",
+    "Deals {0}% Ranged Taijutsu Damage to all enemies": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à {0} % du taijutsu",
+    "Deals {0}% ranged Taijutsu Damage to the selected enemy": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à {0} % du taijutsu",
+    "Deals {0}% Taijutsu Damage to the selected enemy": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu",
+    "Deals Melee Combined Damage equal to {0}% Taijutsu and {1}% Jujutsu to the selected enemy": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu et {1} % du jujutsu",
+    "Deals Melee Combined Damage equal to {0}% Taijutsu and {1}% Jujutsu to the selected enemy ({2} Hits)": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu et {1} % du jujutsu ({2} coups au total)",
+    "Deals Ranged Combined Damage equal to {0}% Taijutsu and {1}% Jujutsu to the selected enemy": "Inflige des dégâts d'attaque hybrides à distance à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu et {1} % du jujutsu",
+    "Deals ranged Mixed Damage equal to {0}% Taijutsu & {1}% Jujutsu to the selected enemy ({2} Hits)": "▼ Sur l'ennemi ciblé\nInflige des dégâts d'attaque hybrides à distance équivalant à {0} % du taijutsu et {1} % du jujutsu ({2} coups au total)",
+    "Decreases own and combo ally's Damage Received by {0}% ({1} Turns)": "Applique une réduction de {0} % des dégâts subis à soi-même et au partenaire de l'ultime coopérative ({1} tours)",
+    "Decreases own Damage Received by {0}% ({1} Turns)": "Applique une réduction de {0} % des dégâts subis à soi-même ({1} tours)",
+    "Decreases the selected enemy's Critical Hit Resistance by {0}% ({1} Turns)": "Applique à ces ennemis une baisse de {0} % de la résistance aux CRIT pendant {1} tours",
+    "Expands the Domain ({0} Turns)": "Déploie le Territoire ({0} tours)",
+    "Fills all allies' Ultimate Skill Gauge by {0}": "Remplit de {0} la jauge de compétence ultime de tous les alliés",
+    "Fills own and Combo Ally's Ultimate Skill Gauge by {0}": "Remplit de {0} la jauge d'ultime de soi-même et du partenaire de l'ultime coopérative",
+    "Fills own Ultimate Skill Gauge by {0}": "Récupère {0} de jauge d'ultime",
+    "Grants Conceal Status to self ({0} Turns)": "Confère l'état Dissimulation à soi-même ({0} tours)",
+    "Grants Poison and Soul Resistance to self": "Confère la résistance au poison et à l'âme à soi-même",
+    "Grants Revival Status to self ({0} Time)": "Confère l'état de Résurrection à soi-même ({0} fois)",
+    "Increases own and Combo Ally's Black Flash Rate by {0}% ({1} Turns)": "Applique une augmentation de {0} % du taux de Rayon Noir à soi-même et au partenaire de l'ultime coopérative ({1} tours)",
+    "Increases own and Combo Ally's Break Damage by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts de BREAK à soi-même et au partenaire de l'ultime coopérative ({1} tours)",
+    "Increases own and Combo Ally's Critical Hit Rate by {0}% ({1} Turns)": "Applique une augmentation de {0} % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative ({1} tours)",
+    "Increases own and Combo Ally's Damage by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative ({1} tours)",
+    "Increases own and Combo ally's Damage Dealt by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative ({1} tours)",
+    "Increases own and Combo Ally's Jujutsu Damage by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative ({1} tours)",
+    "Increases own and Combo Ally's Jujutsu Stat by {0}% ({1} Turns)": "Applique une augmentation de {0} % du jujutsu à soi-même et au partenaire de l'ultime coopérative ({1} tours)",
+    "Increases own and Combo Ally's Taijutsu Stat by {0}% ({1} Turns)": "Applique une augmentation de {0} % du taijutsu à soi-même et au partenaire de l'ultime coopérative ({1} tours)",
+    "Increases own and the combo ally's Critical Hit Damage by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts CRIT à soi-même et au partenaire de l'ultime coopérative ({1} tours)",
+    "Increases own and the combo ally's critical hit rate by {0}% ({1} Turns)": "Applique une augmentation de {0} % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative ({1} tours)",
+    "Increases own and the combo ally's Damage Dealt by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative ({1} tours)",
+    "Increases own and the Combo Ally's Jujutsu Stat by {0}% ({1} Turns)": "Applique une augmentation de {0} % du jujutsu à soi-même et au partenaire de l'ultime coopérative ({1} tours)",
+    "Increases own Critical Hit rate by {0}% ({1} Turns)": "Applique une augmentation de {0} % du taux de CRIT à soi-même ({1} tours)",
+    "Increases own Damage Dealt by {0}%": "Applique une augmentation de {0} % des dégâts infligés à soi-même",
+    "Increases own Damage Dealt by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts infligés à soi-même ({1} tours)",
+    "Increases own Damage Dealt by {0}% ({1} Turns),": "Applique une augmentation de {0} % des dégâts infligés à soi-même ({1} tours)",
+    "Increases own Jujutsu Stat by {0}%": "Applique une augmentation de {0} % du jujutsu à soi-même",
+    "Increases own Taijutsu Stat by {0}% ({1} Turns)": "Applique une augmentation de {0} % du taijutsu à soi-même pendant {1} tours",
+    "Increases the selected enemy's Break Damage Received by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts de BREAK subis ({1} tours)",
+    "Increases the selected enemy's Jujutsu damage received by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts de jujutsu subis à ces ennemis pendant {1} tours",
+    "Increases the selected enemy's Taijutsu Damage Received by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts de taijutsu subis à ces ennemis pendant {1} tours",
+    "Recovers own and Combo Ally's Cursed Energy by {0}": "Récupère {0} d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative",
+    "Recovers own and Combo Ally's HP by {0}%": "Récupère {0} % de PV pour soi-même et le partenaire de l'ultime coopérative",
+    "Recovers own and the Combo Ally's Cursed Energy by {0}": "Récupère {0} d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative",
+    "Recovers own and the combo ally's HP by {0}%": "Récupère {0} % de PV pour soi-même et le partenaire de l'ultime coopérative",
+    "Recovers own Cursed Energy by {0}": "Récupère {0} d'énergie occulte pour soi-même",
+    "Recovers own Cursed Energy by {0} (Bypass Limit)": "Récupère {0} d'énergie occulte pour soi-même (sans limite)",
+    "Recovers own HP by {0}%": "Récupère {0} % de PV pour soi-même",
+    "Sacrifices {0}% HP": "Sacrifie {0} % de ses PV",
+    "Sacrifices {0}% of own HP": "Inflige à soi-même des dégâts équivalant à {0} % de ses PV",
+    "Stuns all enemies ({0} Turn/Chance: {1}%)": "Étourdit tous les ennemis ({0} tour / chance : {1} %)",
+    "Unable to fill own Ultimate Skill Gauge": "Impossible de remplir sa propre jauge d'ultime",
+    "When Black Flash is performed,": "Lorsqu'un Rayon Noir est réalisé,",
+    "When targeted by an enemy's Melee attack ({0} Time per Turn),": "Lorsqu'il est ciblé par une attaque au corps à corps d'un ennemi ({0} fois par tour),"
+  },
+  "fragments": {
+    "vocabulaire": {
+      "STAT": [
+        "Taijutsu",
+        "Jujutsu"
+      ],
+      "PORTÉE": [
+        "Melee",
+        "Ranged"
+      ],
+      "CIBLE": [
+        "the selected enemy",
+        "all enemies",
+        "all allies"
+      ],
+      "POSSESSEUR": [
+        "own",
+        "the selected enemy's",
+        "all enemies'",
+        "all allies'",
+        "own and Combo Ally's",
+        "own and the Combo Ally's"
+      ],
+      "CARAC": [
+        "Taijutsu Stat",
+        "Jujutsu Stat",
+        "Damage Dealt",
+        "Damage Received",
+        "Critical Hit Rate",
+        "Critical Hit Damage",
+        "Critical Hit Resistance",
+        "Break Damage",
+        "Break Damage Received",
+        "Black Flash Rate",
+        "Taijutsu Damage Received",
+        "Jujutsu Damage Received"
+      ],
+      "ÉLÉMENT": [
+        "\"行\" (Yellow)",
+        "\"夜\" (Green)",
+        "\"影\" (Blue)",
+        "\"幻\" (Red)"
+      ],
+      "DURÉE": [
+        "Turn",
+        "Turns"
+      ]
+    },
+    "valeurs": {
+      "CIBLE": {
+        "all enemies": "tous les ennemis"
+      },
+      "PORTÉE": {
+        "ranged": "à distance",
+        "melee": "au corps à corps"
+      },
+      "STAT": {
+        "jujutsu": "jujutsu",
+        "taijutsu": "taijutsu"
+      },
+      "CARAC": {
+        "critical hit rate": "CRIT",
+        "damage dealt": "infligés",
+        "jujutsu stat": "jujutsu",
+        "taijutsu stat": "taijutsu"
+      },
+      "POSSESSEUR": {
+        "own": "soi-même",
+        "all allies'": "tous les alliés"
+      },
+      "ÉLÉMENT": {
+        "\"幻\" (red)": "幻 » (Rouge"
+      },
+      "DURÉE": {
+        "turn": "tour",
+        "turns": "tours"
+      }
+    },
+    "compatibles": {
+      "PORTÉE": {
+        "ranged": [
+          "melee"
+        ],
+        "melee": [
+          "ranged"
+        ]
+      },
+      "STAT": {
+        "jujutsu": [
+          "taijutsu"
+        ],
+        "taijutsu": [
+          "jujutsu"
+        ]
+      },
+      "CARAC": {
+        "jujutsu stat": [
+          "taijutsu stat"
+        ],
+        "taijutsu stat": [
+          "jujutsu stat"
+        ]
+      },
+      "POSSESSEUR": {
+        "own": [
+          "all allies'"
+        ],
+        "all allies'": [
+          "own"
+        ]
+      },
+      "DURÉE": {
+        "turn": [
+          "turns"
+        ],
+        "turns": [
+          "turn"
+        ]
+      }
+    },
+    "cadres": {
+      "(Cooldown: {0} {DURÉE#1})": {
+        "fr": "(Réutilisable après {0} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 2
+      },
+      "(The lower {POSSESSEUR#1} HP is, the greater the Damage Boost)": {
+        "fr": "(Plus les PV de {POSSESSEUR#1} sont bas, plus l'augmentation des dégâts est importante)",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ]
+        },
+        "fiches": 3
+      },
+      "At the start of each {DURÉE#1},": {
+        "fr": "Au début de chaque {DURÉE#1},",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turn"
+          ]
+        },
+        "fiches": 3
+      },
+      "Attracts all enemies' attacks to self ({0} {DURÉE#1})": {
+        "fr": "Attire vers soi les attaques de tous les ennemis ({0} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turn",
+            "turns"
+          ]
+        },
+        "fiches": 3
+      },
+      "Deals {0}% {PORTÉE#1} {STAT#1} Damage to {CIBLE#1}": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à {CIBLE#1} équivalant à {0} % du {STAT#1}",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee",
+            "ranged"
+          ],
+          "STAT#1": [
+            "jujutsu",
+            "taijutsu"
+          ],
+          "CIBLE#1": [
+            "all enemies"
+          ]
+        },
+        "fiches": 26
+      },
+      "Deals {0}% {PORTÉE#1} {STAT#1} Damage to {CIBLE#1} ({1} Hits)": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à {CIBLE#1} équivalant à {0} % du {STAT#1} ({1} coups au total)",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "ranged"
+          ],
+          "STAT#1": [
+            "jujutsu"
+          ],
+          "CIBLE#1": [
+            "all enemies"
+          ]
+        },
+        "fiches": 5
+      },
+      "Deals {0}% {PORTÉE#1} {STAT#1} Damage to all enemies": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à tous les ennemis équivalant à {0} % du {STAT#1}",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee",
+            "ranged"
+          ],
+          "STAT#1": [
+            "jujutsu",
+            "taijutsu"
+          ]
+        },
+        "fiches": 26
+      },
+      "Deals {0}% {PORTÉE#1} {STAT#1} Damage to all enemies ({1} Hits)": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à tous les ennemis équivalant à {0} % du {STAT#1} ({1} coups au total)",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "ranged"
+          ],
+          "STAT#1": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 5
+      },
+      "Deals {0}% {PORTÉE#1} {STAT#1} Damage to the Combo Ally's selected enemy": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à l'ennemi ciblé par la compétence du partenaire de l'ultime coopérative (ou à tous les ennemis si le partenaire n'a pas de cible) équivalant à {0} % du {STAT#1}",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee"
+          ],
+          "STAT#1": [
+            "jujutsu",
+            "taijutsu"
+          ]
+        },
+        "fiches": 3
+      },
+      "Deals {0}% {PORTÉE#1} {STAT#1} Damage to the selected enemy": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à l'ennemi ciblé équivalant à {0} % du {STAT#1}",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee",
+            "ranged"
+          ],
+          "STAT#1": [
+            "jujutsu",
+            "taijutsu"
+          ]
+        },
+        "fiches": 33
+      },
+      "Deals {0}% {PORTÉE#1} {STAT#1} Damage to the selected enemy ({1} Hits)": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du {STAT#1} ({1} coups au total)",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee",
+            "ranged"
+          ],
+          "STAT#1": [
+            "jujutsu",
+            "taijutsu"
+          ]
+        },
+        "fiches": 10
+      },
+      "Deals {0}% {PORTÉE#1} Jujutsu Damage to {CIBLE#1}": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à {CIBLE#1} équivalant à {0} % du jujutsu",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "ranged"
+          ],
+          "CIBLE#1": [
+            "all enemies"
+          ]
+        },
+        "fiches": 20
+      },
+      "Deals {0}% {PORTÉE#1} Jujutsu Damage to {CIBLE#1} ({1} Hits)": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à {CIBLE#1} équivalant à {0} % du jujutsu ({1} coups au total)",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "ranged"
+          ],
+          "CIBLE#1": [
+            "all enemies"
+          ]
+        },
+        "fiches": 5
+      },
+      "Deals {0}% {PORTÉE#1} Jujutsu Damage to all enemies": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à tous les ennemis équivalant à {0} % du jujutsu",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "ranged"
+          ]
+        },
+        "fiches": 20
+      },
+      "Deals {0}% {PORTÉE#1} Jujutsu Damage to all enemies ({1} Hits)": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à tous les ennemis équivalant à {0} % du jujutsu ({1} coups au total)",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "ranged"
+          ]
+        },
+        "fiches": 5
+      },
+      "Deals {0}% {PORTÉE#1} Jujutsu Damage to the selected enemy": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à l'ennemi ciblé équivalant à {0} % du jujutsu",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee",
+            "ranged"
+          ]
+        },
+        "fiches": 11
+      },
+      "Deals {0}% {PORTÉE#1} Jujutsu Damage to the selected enemy ({1} Hits)": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du jujutsu ({1} coups au total)",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "ranged"
+          ]
+        },
+        "fiches": 5
+      },
+      "Deals {0}% {PORTÉE#1} Taijutsu Damage to {CIBLE#1}": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à {CIBLE#1} équivalant à {0} % du taijutsu",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee",
+            "ranged"
+          ],
+          "CIBLE#1": [
+            "all enemies"
+          ]
+        },
+        "fiches": 7
+      },
+      "Deals {0}% {PORTÉE#1} Taijutsu Damage to all enemies": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à tous les ennemis équivalant à {0} % du taijutsu",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee",
+            "ranged"
+          ]
+        },
+        "fiches": 7
+      },
+      "Deals {0}% {PORTÉE#1} Taijutsu Damage to the Combo Ally's selected enemy": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à l'ennemi ciblé par la compétence du partenaire de l'ultime coopérative (ou à tous les ennemis si le partenaire n'a pas de cible) équivalant à {0} % du taijutsu",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals {0}% {PORTÉE#1} Taijutsu Damage to the selected enemy": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à l'ennemi ciblé équivalant à {0} % du taijutsu",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee"
+          ]
+        },
+        "fiches": 22
+      },
+      "Deals {0}% {PORTÉE#1} Taijutsu Damage to the selected enemy ({1} Hits)": {
+        "fr": "Inflige des dégâts d'attaque {PORTÉE#1} à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu ({1} coups au total)",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee"
+          ]
+        },
+        "fiches": 5
+      },
+      "Deals {0}% {STAT#1} Damage to {CIBLE#1}": {
+        "fr": "Inflige des dégâts d'attaque à distance à {CIBLE#1} équivalant à {0} % du {STAT#1}",
+        "valeurs_vues": {
+          "STAT#1": [
+            "jujutsu"
+          ],
+          "CIBLE#1": [
+            "all enemies"
+          ]
+        },
+        "fiches": 4
+      },
+      "Deals {0}% {STAT#1} Damage to all enemies": {
+        "fr": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à {0} % du {STAT#1}",
+        "valeurs_vues": {
+          "STAT#1": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 4
+      },
+      "Deals {0}% {STAT#1} Damage to the selected enemy": {
+        "fr": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du {STAT#1}",
+        "valeurs_vues": {
+          "STAT#1": [
+            "taijutsu"
+          ]
+        },
+        "fiches": 4
+      },
+      "Deals {0}% Jujutsu Damage to {CIBLE#1}": {
+        "fr": "Inflige des dégâts d'attaque à distance à {CIBLE#1} équivalant à {0} % du jujutsu",
+        "valeurs_vues": {
+          "CIBLE#1": [
+            "all enemies"
+          ]
+        },
+        "fiches": 4
+      },
+      "Deals {0}% melee {STAT#1} Damage to {CIBLE#1}": {
+        "fr": "Inflige des dégâts d'attaque au corps à corps à {CIBLE#1} équivalant à {0} % du {STAT#1}",
+        "valeurs_vues": {
+          "STAT#1": [
+            "taijutsu"
+          ],
+          "CIBLE#1": [
+            "all enemies"
+          ]
+        },
+        "fiches": 5
+      },
+      "Deals {0}% melee {STAT#1} Damage to all enemies": {
+        "fr": "Inflige des dégâts d'attaque au corps à corps à tous les ennemis équivalant à {0} % du {STAT#1}",
+        "valeurs_vues": {
+          "STAT#1": [
+            "taijutsu"
+          ]
+        },
+        "fiches": 5
+      },
+      "Deals {0}% Melee {STAT#1} Damage to the Combo Ally's selected enemy": {
+        "fr": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé par la compétence du partenaire de l'ultime coopérative (ou à tous les ennemis si le partenaire n'a pas de cible) équivalant à {0} % du {STAT#1}",
+        "valeurs_vues": {
+          "STAT#1": [
+            "jujutsu",
+            "taijutsu"
+          ]
+        },
+        "fiches": 3
+      },
+      "Deals {0}% Melee {STAT#1} Damage to the selected enemy": {
+        "fr": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à {0} % du {STAT#1}",
+        "valeurs_vues": {
+          "STAT#1": [
+            "jujutsu",
+            "taijutsu"
+          ]
+        },
+        "fiches": 24
+      },
+      "Deals {0}% melee {STAT#1} Damage to the selected enemy ({1} Hits)": {
+        "fr": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du {STAT#1} ({1} coups au total)",
+        "valeurs_vues": {
+          "STAT#1": [
+            "taijutsu"
+          ]
+        },
+        "fiches": 5
+      },
+      "Deals {0}% melee Taijutsu Damage to {CIBLE#1}": {
+        "fr": "Inflige des dégâts d'attaque au corps à corps à {CIBLE#1} équivalant à {0} % du taijutsu",
+        "valeurs_vues": {
+          "CIBLE#1": [
+            "all enemies"
+          ]
+        },
+        "fiches": 5
+      },
+      "Deals {0}% ranged {STAT#1} Damage to {CIBLE#1}": {
+        "fr": "Inflige des dégâts d'attaque à distance à {CIBLE#1} équivalant à {0} % du {STAT#1}",
+        "valeurs_vues": {
+          "STAT#1": [
+            "jujutsu",
+            "taijutsu"
+          ],
+          "CIBLE#1": [
+            "all enemies"
+          ]
+        },
+        "fiches": 22
+      },
+      "Deals {0}% ranged {STAT#1} Damage to {CIBLE#1} ({1} Hits)": {
+        "fr": "Inflige des dégâts d'attaque à distance à {CIBLE#1} équivalant à {0} % du {STAT#1} ({1} coups au total)",
+        "valeurs_vues": {
+          "STAT#1": [
+            "jujutsu"
+          ],
+          "CIBLE#1": [
+            "all enemies"
+          ]
+        },
+        "fiches": 5
+      },
+      "Deals {0}% ranged {STAT#1} Damage to all enemies": {
+        "fr": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à {0} % du {STAT#1}",
+        "valeurs_vues": {
+          "STAT#1": [
+            "jujutsu",
+            "taijutsu"
+          ]
+        },
+        "fiches": 22
+      },
+      "Deals {0}% ranged {STAT#1} Damage to all enemies ({1} Hits)": {
+        "fr": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à {0} % du {STAT#1} ({1} coups au total)",
+        "valeurs_vues": {
+          "STAT#1": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 5
+      },
+      "Deals {0}% ranged {STAT#1} Damage to the selected enemy": {
+        "fr": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à {0} % du {STAT#1}",
+        "valeurs_vues": {
+          "STAT#1": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 9
+      },
+      "Deals {0}% ranged {STAT#1} Damage to the selected enemy ({1} Hits)": {
+        "fr": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du {STAT#1} ({1} coups au total)",
+        "valeurs_vues": {
+          "STAT#1": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 5
+      },
+      "Deals {0}% ranged Jujutsu Damage to {CIBLE#1}": {
+        "fr": "Inflige des dégâts d'attaque à distance à {CIBLE#1} équivalant à {0} % du jujutsu",
+        "valeurs_vues": {
+          "CIBLE#1": [
+            "all enemies"
+          ]
+        },
+        "fiches": 20
+      },
+      "Deals {0}% ranged Jujutsu Damage to {CIBLE#1} ({1} Hits)": {
+        "fr": "Inflige des dégâts d'attaque à distance à {CIBLE#1} équivalant à {0} % du jujutsu ({1} coups au total)",
+        "valeurs_vues": {
+          "CIBLE#1": [
+            "all enemies"
+          ]
+        },
+        "fiches": 5
+      },
+      "Deals {0}% Ranged Taijutsu Damage to {CIBLE#1}": {
+        "fr": "Inflige des dégâts d'attaque à distance à {CIBLE#1} équivalant à {0} % du taijutsu",
+        "valeurs_vues": {
+          "CIBLE#1": [
+            "all enemies"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals {PORTÉE#1} Combined Damage equal to {0}% {STAT#1} and {1}% {STAT#2} to the selected enemy": {
+        "fr": "Inflige des dégâts d'attaque hybrides {PORTÉE#1} à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du {STAT#1} et {1} % du {STAT#2}",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee",
+            "ranged"
+          ],
+          "STAT#1": [
+            "taijutsu"
+          ],
+          "STAT#2": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 7
+      },
+      "Deals {PORTÉE#1} Combined Damage equal to {0}% {STAT#1} and {1}% {STAT#2} to the selected enemy ({2} Hits)": {
+        "fr": "Inflige des dégâts d'attaque hybrides {PORTÉE#1} à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du {STAT#1} et {1} % du {STAT#2} ({2} coups au total)",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee"
+          ],
+          "STAT#1": [
+            "taijutsu"
+          ],
+          "STAT#2": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals {PORTÉE#1} Combined Damage equal to {0}% {STAT#1} and {1}% Jujutsu to the selected enemy": {
+        "fr": "Inflige des dégâts d'attaque hybrides {PORTÉE#1} à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du {STAT#1} et {1} % du jujutsu",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee",
+            "ranged"
+          ],
+          "STAT#1": [
+            "taijutsu"
+          ]
+        },
+        "fiches": 7
+      },
+      "Deals {PORTÉE#1} Combined Damage equal to {0}% {STAT#1} and {1}% Jujutsu to the selected enemy ({2} Hits)": {
+        "fr": "Inflige des dégâts d'attaque hybrides {PORTÉE#1} à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du {STAT#1} et {1} % du jujutsu ({2} coups au total)",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee"
+          ],
+          "STAT#1": [
+            "taijutsu"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals {PORTÉE#1} Combined Damage equal to {0}% Taijutsu and {1}% {STAT#1} to the selected enemy": {
+        "fr": "Inflige des dégâts d'attaque hybrides {PORTÉE#1} à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu et {1} % du {STAT#1}",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee",
+            "ranged"
+          ],
+          "STAT#1": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 7
+      },
+      "Deals {PORTÉE#1} Combined Damage equal to {0}% Taijutsu and {1}% {STAT#1} to the selected enemy ({2} Hits)": {
+        "fr": "Inflige des dégâts d'attaque hybrides {PORTÉE#1} à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu et {1} % du {STAT#1} ({2} coups au total)",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee"
+          ],
+          "STAT#1": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals {PORTÉE#1} Combined Damage equal to {0}% Taijutsu and {1}% Jujutsu to the selected enemy": {
+        "fr": "Inflige des dégâts d'attaque hybrides {PORTÉE#1} à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu et {1} % du jujutsu",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee",
+            "ranged"
+          ]
+        },
+        "fiches": 7
+      },
+      "Deals {PORTÉE#1} Combined Damage equal to {0}% Taijutsu and {1}% Jujutsu to the selected enemy ({2} Hits)": {
+        "fr": "Inflige des dégâts d'attaque hybrides {PORTÉE#1} à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu et {1} % du jujutsu ({2} coups au total)",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals {PORTÉE#1} Mixed Damage equal to {0}% {STAT#1} & {1}% {STAT#2} to the selected enemy ({2} Hits)": {
+        "fr": "▼ Sur l'ennemi ciblé\nInflige des dégâts d'attaque hybrides {PORTÉE#1} équivalant à {0} % du {STAT#1} et {1} % du {STAT#2} ({2} coups au total)",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "ranged"
+          ],
+          "STAT#1": [
+            "taijutsu"
+          ],
+          "STAT#2": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals {PORTÉE#1} Mixed Damage equal to {0}% {STAT#1} & {1}% Jujutsu to the selected enemy ({2} Hits)": {
+        "fr": "▼ Sur l'ennemi ciblé\nInflige des dégâts d'attaque hybrides {PORTÉE#1} équivalant à {0} % du {STAT#1} et {1} % du jujutsu ({2} coups au total)",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "ranged"
+          ],
+          "STAT#1": [
+            "taijutsu"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals {PORTÉE#1} Mixed Damage equal to {0}% Taijutsu & {1}% {STAT#1} to the selected enemy ({2} Hits)": {
+        "fr": "▼ Sur l'ennemi ciblé\nInflige des dégâts d'attaque hybrides {PORTÉE#1} équivalant à {0} % du taijutsu et {1} % du {STAT#1} ({2} coups au total)",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "ranged"
+          ],
+          "STAT#1": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals {PORTÉE#1} Mixed Damage equal to {0}% Taijutsu & {1}% Jujutsu to the selected enemy ({2} Hits)": {
+        "fr": "▼ Sur l'ennemi ciblé\nInflige des dégâts d'attaque hybrides {PORTÉE#1} équivalant à {0} % du taijutsu et {1} % du jujutsu ({2} coups au total)",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "ranged"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals Melee Combined Damage equal to {0}% {STAT#1} and {1}% {STAT#2} to the selected enemy": {
+        "fr": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du {STAT#1} et {1} % du {STAT#2}",
+        "valeurs_vues": {
+          "STAT#1": [
+            "taijutsu"
+          ],
+          "STAT#2": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 5
+      },
+      "Deals Melee Combined Damage equal to {0}% {STAT#1} and {1}% {STAT#2} to the selected enemy ({2} Hits)": {
+        "fr": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du {STAT#1} et {1} % du {STAT#2} ({2} coups au total)",
+        "valeurs_vues": {
+          "STAT#1": [
+            "taijutsu"
+          ],
+          "STAT#2": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals Melee Combined Damage equal to {0}% {STAT#1} and {1}% Jujutsu to the selected enemy": {
+        "fr": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du {STAT#1} et {1} % du jujutsu",
+        "valeurs_vues": {
+          "STAT#1": [
+            "taijutsu"
+          ]
+        },
+        "fiches": 5
+      },
+      "Deals Melee Combined Damage equal to {0}% {STAT#1} and {1}% Jujutsu to the selected enemy ({2} Hits)": {
+        "fr": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du {STAT#1} et {1} % du jujutsu ({2} coups au total)",
+        "valeurs_vues": {
+          "STAT#1": [
+            "taijutsu"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals Melee Combined Damage equal to {0}% Taijutsu and {1}% {STAT#1} to the selected enemy": {
+        "fr": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu et {1} % du {STAT#1}",
+        "valeurs_vues": {
+          "STAT#1": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 5
+      },
+      "Deals Melee Combined Damage equal to {0}% Taijutsu and {1}% {STAT#1} to the selected enemy ({2} Hits)": {
+        "fr": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu et {1} % du {STAT#1} ({2} coups au total)",
+        "valeurs_vues": {
+          "STAT#1": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals Ranged Combined Damage equal to {0}% {STAT#1} and {1}% {STAT#2} to the selected enemy": {
+        "fr": "Inflige des dégâts d'attaque hybrides à distance à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du {STAT#1} et {1} % du {STAT#2}",
+        "valeurs_vues": {
+          "STAT#1": [
+            "taijutsu"
+          ],
+          "STAT#2": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals Ranged Combined Damage equal to {0}% {STAT#1} and {1}% Jujutsu to the selected enemy": {
+        "fr": "Inflige des dégâts d'attaque hybrides à distance à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du {STAT#1} et {1} % du jujutsu",
+        "valeurs_vues": {
+          "STAT#1": [
+            "taijutsu"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals Ranged Combined Damage equal to {0}% Taijutsu and {1}% {STAT#1} to the selected enemy": {
+        "fr": "Inflige des dégâts d'attaque hybrides à distance à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu et {1} % du {STAT#1}",
+        "valeurs_vues": {
+          "STAT#1": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals ranged Mixed Damage equal to {0}% {STAT#1} & {1}% {STAT#2} to the selected enemy ({2} Hits)": {
+        "fr": "▼ Sur l'ennemi ciblé\nInflige des dégâts d'attaque hybrides à distance équivalant à {0} % du {STAT#1} et {1} % du {STAT#2} ({2} coups au total)",
+        "valeurs_vues": {
+          "STAT#1": [
+            "taijutsu"
+          ],
+          "STAT#2": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals ranged Mixed Damage equal to {0}% {STAT#1} & {1}% Jujutsu to the selected enemy ({2} Hits)": {
+        "fr": "▼ Sur l'ennemi ciblé\nInflige des dégâts d'attaque hybrides à distance équivalant à {0} % du {STAT#1} et {1} % du jujutsu ({2} coups au total)",
+        "valeurs_vues": {
+          "STAT#1": [
+            "taijutsu"
+          ]
+        },
+        "fiches": 2
+      },
+      "Deals ranged Mixed Damage equal to {0}% Taijutsu & {1}% {STAT#1} to the selected enemy ({2} Hits)": {
+        "fr": "▼ Sur l'ennemi ciblé\nInflige des dégâts d'attaque hybrides à distance équivalant à {0} % du taijutsu et {1} % du {STAT#1} ({2} coups au total)",
+        "valeurs_vues": {
+          "STAT#1": [
+            "jujutsu"
+          ]
+        },
+        "fiches": 2
+      },
+      "Decreases {POSSESSEUR#1} Damage Received by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une réduction de {0} % des dégâts subis à {POSSESSEUR#1} ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ],
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 2
+      },
+      "Decreases {POSSESSEUR#1} Damage Received by {0}% ({1} Turns)": {
+        "fr": "Applique une réduction de {0} % des dégâts subis à {POSSESSEUR#1} ({1} tours)",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ]
+        },
+        "fiches": 2
+      },
+      "Decreases own and combo ally's Damage Received by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une réduction de {0} % des dégâts subis à soi-même et au partenaire de l'ultime coopérative ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 5
+      },
+      "Decreases own Damage Received by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une réduction de {0} % des dégâts subis à soi-même ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 2
+      },
+      "Decreases the selected enemy's Critical Hit Resistance by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique à ces ennemis une baisse de {0} % de la résistance aux CRIT pendant {1} {DURÉE#1}",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 2
+      },
+      "Fills {POSSESSEUR#1} Ultimate Skill Gauge by {0}": {
+        "fr": "Remplit de {0} la jauge de compétence ultime de {POSSESSEUR#1}",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "all allies'"
+          ]
+        },
+        "fiches": 2
+      },
+      "Grants Conceal Status to self ({0} {DURÉE#1})": {
+        "fr": "Confère l'état Dissimulation à soi-même ({0} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 2
+      },
+      "Grants Evasion Status to self ({0} {DURÉE#1}/{1} Time)": {
+        "fr": "Confère l'état d'esquive à soi-même ({0} {DURÉE#1} / {1} fois)",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turn",
+            "turns"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases {POSSESSEUR#1} {CARAC#1} by {0}%": {
+        "fr": "Applique une augmentation de {0} % des dégâts {CARAC#1} à {POSSESSEUR#1}",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ],
+          "CARAC#1": [
+            "damage dealt"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases {POSSESSEUR#1} {CARAC#1} by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % du taux de {CARAC#1} à {POSSESSEUR#1} ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ],
+          "CARAC#1": [
+            "critical hit rate"
+          ],
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 4
+      },
+      "Increases {POSSESSEUR#1} {CARAC#1} by {0}% ({1} {DURÉE#1}),": {
+        "fr": "Applique une augmentation de {0} % des dégâts {CARAC#1} à {POSSESSEUR#1} ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ],
+          "CARAC#1": [
+            "damage dealt"
+          ],
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases {POSSESSEUR#1} {CARAC#1} by {0}% ({1} Turns)": {
+        "fr": "Applique une augmentation de {0} % du taux de {CARAC#1} à {POSSESSEUR#1} ({1} tours)",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ],
+          "CARAC#1": [
+            "critical hit rate"
+          ]
+        },
+        "fiches": 4
+      },
+      "Increases {POSSESSEUR#1} {CARAC#1} by {0}% ({1} Turns),": {
+        "fr": "Applique une augmentation de {0} % des dégâts {CARAC#1} à {POSSESSEUR#1} ({1} tours)",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ],
+          "CARAC#1": [
+            "damage dealt"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases {POSSESSEUR#1} Critical Hit rate by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % du taux de CRIT à {POSSESSEUR#1} ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ],
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 4
+      },
+      "Increases {POSSESSEUR#1} Critical Hit rate by {0}% ({1} Turns)": {
+        "fr": "Applique une augmentation de {0} % du taux de CRIT à {POSSESSEUR#1} ({1} tours)",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ]
+        },
+        "fiches": 4
+      },
+      "Increases {POSSESSEUR#1} Damage Dealt by {0}%": {
+        "fr": "Applique une augmentation de {0} % des dégâts infligés à {POSSESSEUR#1}",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases {POSSESSEUR#1} Damage Dealt by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % des dégâts infligés à {POSSESSEUR#1} ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ],
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 3
+      },
+      "Increases {POSSESSEUR#1} Damage Dealt by {0}% ({1} {DURÉE#1}),": {
+        "fr": "Applique une augmentation de {0} % des dégâts infligés à {POSSESSEUR#1} ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ],
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases {POSSESSEUR#1} Damage Dealt by {0}% ({1} Turns)": {
+        "fr": "Applique une augmentation de {0} % des dégâts infligés à {POSSESSEUR#1} ({1} tours)",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ]
+        },
+        "fiches": 3
+      },
+      "Increases {POSSESSEUR#1} Damage Dealt by {0}% ({1} Turns),": {
+        "fr": "Applique une augmentation de {0} % des dégâts infligés à {POSSESSEUR#1} ({1} tours)",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases {POSSESSEUR#1} Jujutsu Stat by {0}%": {
+        "fr": "Applique une augmentation de {0} % du jujutsu à {POSSESSEUR#1}",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases {POSSESSEUR#1} Taijutsu Stat by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % du taijutsu à {POSSESSEUR#1} pendant {1} {DURÉE#1}",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ],
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 3
+      },
+      "Increases {POSSESSEUR#1} Taijutsu Stat by {0}% ({1} Turns)": {
+        "fr": "Applique une augmentation de {0} % du taijutsu à {POSSESSEUR#1} pendant {1} tours",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ]
+        },
+        "fiches": 3
+      },
+      "Increases {POSSESSEUR#1} Taijutsu&{CARAC#1} by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % du {CARAC#1} à {POSSESSEUR#1} pendant {1} {DURÉE#1}",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "all allies'",
+            "own"
+          ],
+          "CARAC#1": [
+            "jujutsu stat"
+          ],
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases {POSSESSEUR#1} Taijutsu&{CARAC#1} by {0}% ({1} Turns)": {
+        "fr": "Applique une augmentation de {0} % du {CARAC#1} à {POSSESSEUR#1} pendant {1} tours",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "all allies'",
+            "own"
+          ],
+          "CARAC#1": [
+            "jujutsu stat"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases {POSSESSEUR#1} Taijutsu&Jujutsu Stat by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % du jujutsu à {POSSESSEUR#1} pendant {1} {DURÉE#1}",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "all allies'",
+            "own"
+          ],
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases {POSSESSEUR#1} Taijutsu&Jujutsu Stat by {0}% ({1} Turns)": {
+        "fr": "Applique une augmentation de {0} % du jujutsu à {POSSESSEUR#1} pendant {1} tours",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "all allies'",
+            "own"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases own {CARAC#1} by {0}%": {
+        "fr": "Applique une augmentation de {0} % des dégâts {CARAC#1} à soi-même",
+        "valeurs_vues": {
+          "CARAC#1": [
+            "damage dealt"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases own {CARAC#1} by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % du taux de {CARAC#1} à soi-même ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "CARAC#1": [
+            "critical hit rate"
+          ],
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 4
+      },
+      "Increases own {CARAC#1} by {0}% ({1} {DURÉE#1}),": {
+        "fr": "Applique une augmentation de {0} % des dégâts {CARAC#1} à soi-même ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "CARAC#1": [
+            "damage dealt"
+          ],
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases own {CARAC#1} by {0}% ({1} Turns)": {
+        "fr": "Applique une augmentation de {0} % du taux de {CARAC#1} à soi-même ({1} tours)",
+        "valeurs_vues": {
+          "CARAC#1": [
+            "critical hit rate"
+          ]
+        },
+        "fiches": 4
+      },
+      "Increases own {CARAC#1} by {0}% ({1} Turns),": {
+        "fr": "Applique une augmentation de {0} % des dégâts {CARAC#1} à soi-même ({1} tours)",
+        "valeurs_vues": {
+          "CARAC#1": [
+            "damage dealt"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases own and Combo Ally's {CARAC#1} by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % du {CARAC#1} à soi-même et au partenaire de l'ultime coopérative ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "CARAC#1": [
+            "jujutsu stat",
+            "taijutsu stat"
+          ],
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 25
+      },
+      "Increases own and Combo Ally's {CARAC#1} by {0}% ({1} Turns)": {
+        "fr": "Applique une augmentation de {0} % du {CARAC#1} à soi-même et au partenaire de l'ultime coopérative ({1} tours)",
+        "valeurs_vues": {
+          "CARAC#1": [
+            "jujutsu stat",
+            "taijutsu stat"
+          ]
+        },
+        "fiches": 25
+      },
+      "Increases own and Combo Ally's Black Flash Rate by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % du taux de Rayon Noir à soi-même et au partenaire de l'ultime coopérative ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 3
+      },
+      "Increases own and Combo Ally's Break Damage by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % des dégâts de BREAK à soi-même et au partenaire de l'ultime coopérative ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 9
+      },
+      "Increases own and Combo Ally's Critical Hit Rate by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 8
+      },
+      "Increases own and Combo Ally's Damage by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 15
+      },
+      "Increases own and Combo ally's Damage Dealt by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 14
+      },
+      "Increases own and Combo Ally's Jujutsu Damage by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases own and Combo Ally's Jujutsu Stat by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % du jujutsu à soi-même et au partenaire de l'ultime coopérative ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 13
+      },
+      "Increases own and Combo Ally's Taijutsu Stat by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % du taijutsu à soi-même et au partenaire de l'ultime coopérative ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 12
+      },
+      "Increases own and the Combo Ally's {CARAC#1} by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % des dégâts {CARAC#1} à soi-même et au partenaire de l'ultime coopérative ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "CARAC#1": [
+            "damage dealt"
+          ],
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 10
+      },
+      "Increases own and the Combo Ally's {CARAC#1} by {0}% ({1} Turns)": {
+        "fr": "Applique une augmentation de {0} % des dégâts {CARAC#1} à soi-même et au partenaire de l'ultime coopérative ({1} tours)",
+        "valeurs_vues": {
+          "CARAC#1": [
+            "damage dealt"
+          ]
+        },
+        "fiches": 10
+      },
+      "Increases own and the combo ally's Critical Hit Damage by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % des dégâts CRIT à soi-même et au partenaire de l'ultime coopérative ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 3
+      },
+      "Increases own and the combo ally's critical hit rate by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 3
+      },
+      "Increases own and the combo ally's Damage Dealt by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 10
+      },
+      "Increases own and the Combo Ally's Jujutsu Stat by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % du jujutsu à soi-même et au partenaire de l'ultime coopérative ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 5
+      },
+      "Increases own Critical Hit rate by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % du taux de CRIT à soi-même ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 4
+      },
+      "Increases own Damage Dealt by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % des dégâts infligés à soi-même ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 3
+      },
+      "Increases own Damage Dealt by {0}% ({1} {DURÉE#1}),": {
+        "fr": "Applique une augmentation de {0} % des dégâts infligés à soi-même ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases own Taijutsu Stat by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % du taijutsu à soi-même pendant {1} {DURÉE#1}",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 3
+      },
+      "Increases the selected enemy's Break Damage Received by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % des dégâts de BREAK subis ({1} {DURÉE#1})",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 3
+      },
+      "Increases the selected enemy's Jujutsu damage received by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % des dégâts de jujutsu subis à ces ennemis pendant {1} {DURÉE#1}",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 2
+      },
+      "Increases the selected enemy's Taijutsu Damage Received by {0}% ({1} {DURÉE#1})": {
+        "fr": "Applique une augmentation de {0} % des dégâts de taijutsu subis à ces ennemis pendant {1} {DURÉE#1}",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turns"
+          ]
+        },
+        "fiches": 4
+      },
+      "Recovers {POSSESSEUR#1} Cursed Energy by {0}": {
+        "fr": "Récupère {0} d'énergie occulte pour {POSSESSEUR#1}",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ]
+        },
+        "fiches": 12
+      },
+      "Recovers {POSSESSEUR#1} Cursed Energy by {0} (Bypass Limit)": {
+        "fr": "Récupère {0} d'énergie occulte pour {POSSESSEUR#1} (sans limite)",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ]
+        },
+        "fiches": 2
+      },
+      "Recovers {POSSESSEUR#1} HP by {0}%": {
+        "fr": "Récupère {0} % de PV pour {POSSESSEUR#1}",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ]
+        },
+        "fiches": 2
+      },
+      "Sacrifices {0}% of {POSSESSEUR#1} HP": {
+        "fr": "Inflige à {POSSESSEUR#1} des dégâts équivalant à {0} % de ses PV",
+        "valeurs_vues": {
+          "POSSESSEUR#1": [
+            "own"
+          ]
+        },
+        "fiches": 2
+      },
+      "When targeted by an enemy's {PORTÉE#1} attack ({0} Time per {DURÉE#1}),": {
+        "fr": "Lorsqu'il est ciblé par une attaque {PORTÉE#1} d'un ennemi ({0} fois par {DURÉE#1}),",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee"
+          ],
+          "DURÉE#1": [
+            "turn"
+          ]
+        },
+        "fiches": 2
+      },
+      "When targeted by an enemy's {PORTÉE#1} attack ({0} Time per Turn),": {
+        "fr": "Lorsqu'il est ciblé par une attaque {PORTÉE#1} d'un ennemi ({0} fois par tour),",
+        "valeurs_vues": {
+          "PORTÉE#1": [
+            "melee"
+          ]
+        },
+        "fiches": 2
+      },
+      "When targeted by an enemy's Melee attack ({0} Time per {DURÉE#1}),": {
+        "fr": "Lorsqu'il est ciblé par une attaque au corps à corps d'un ennemi ({0} fois par {DURÉE#1}),",
+        "valeurs_vues": {
+          "DURÉE#1": [
+            "turn"
+          ]
+        },
+        "fiches": 2
+      }
+    }
+  },
+  "valeurs_manuelles": {
+    "affiliation": {
+      "Curse User": null
+    }
+  },
+  "lignes_manuelles": {},
+  "noms_manuels": {},
+  "fragments_manuels": {}
+}

@@ -1,0 +1,54 @@
+name: Synchro wiki
+
+on:
+  schedule:
+    - cron: '0 4 * * *'   # tous les jours vers 4 h UTC (GitHub peut décaler le lancement de quelques minutes)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-wiki
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Synchroniser depuis le wiki
+        env:
+          # Facultatif : sans ce secret, les lignes non couvertes par le glossaire restent en anglais.
+          DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
+        run: >
+          node scripts/sync-wiki.mjs
+          --report "$RUNNER_TEMP/sync-report.md"
+          --commit-message "$RUNNER_TEMP/commit-message.txt"
+
+      - name: Conserver le rapport
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sync-report
+          path: ${{ runner.temp }}/sync-report.md
+          if-no-files-found: ignore
+
+      - name: Commit si data/characters.json a changé
+        run: |
+          if git diff --quiet -- data/characters.json; then
+            echo "Aucun changement dans data/characters.json : pas de commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/characters.json
+          if [ -f data/traductions-deepl.json ]; then git add data/traductions-deepl.json; fi
+          git commit -F "$RUNNER_TEMP/commit-message.txt"
+          git push

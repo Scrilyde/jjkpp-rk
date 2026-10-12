@@ -1,0 +1,4 @@
+# Clé DeepL locale (DEEPL_API_KEY=...) : ne jamais versionner
+.env
+# Rapport de synchro local
+sync-report.md
