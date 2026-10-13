@@ -32,8 +32,8 @@
   --c-jaune:#d6a421;--c-vert:#2e9f5d;--c-bleu:#356cd7;--c-rouge:#d13730;
   /* texte posé sur une couleur d'élément : foncé sur jaune et vert, blanc sur bleu et rouge (contraste ≥ 4,5:1) */
   --on-dark:#0a0c10;--on-light:#ffffff;
-  /* bandes d'élément (texte blanc) : jaune et vert foncés pour que le blanc atteigne 4,5:1 */
-  --strip-jaune:#947117;--strip-vert:#27874f;--strip-bleu:var(--c-bleu);--strip-rouge:var(--c-rouge);
+  /* bandes d'élément (texte blanc) : vert foncé pour que le blanc atteigne 4,5:1 */
+  --strip-jaune:#d6a421;--strip-vert:#27874f;--strip-bleu:var(--c-bleu);--strip-rouge:var(--c-rouge);
   /* fonds pastel d'un élément mis en avant (mode jour) */
   --soft-jaune:#feedbc;--soft-vert:#d9f8e4;--soft-bleu:#deedff;--soft-rouge:#ffdbdb;
   --r:5px;--r-s:4px;--r-card:12px;--pill:999px;
@@ -168,7 +168,7 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
 .card-body{flex:1;min-width:0;padding:11px 13px 10px;display:flex;flex-direction:column;gap:8px}
 .card-head{display:flex;gap:10px;align-items:center}
 .icon{flex:none;object-fit:cover;background:var(--sf2);border-radius:var(--r-s)}
-.card .icon{width:64px;height:64px}
+.card .icon{width:76px;height:76px}
 .card-id{flex:1;min-width:0}
 .meta{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--mu);min-width:0}
 .meta .marks{color:var(--ink)}
@@ -202,9 +202,9 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
 .btn-outline{height:50px;border:1.5px solid var(--ink);border-radius:var(--pill);display:flex;align-items:center;justify-content:center;padding:0 24px;font-size:15px;font-weight:600}
 .btn-outline:hover{background:var(--sf)}
 
-/* ---- Tableau (bureau) ---- */
+/* ---- Tableau ---- */
 .table-wrap{padding:6px 32px 24px;overflow-x:auto}
-.ftable{width:100%;min-width:900px;border-collapse:collapse;table-layout:fixed;font-size:13px}
+.ftable{width:100%;min-width:1100px;border-collapse:collapse;table-layout:fixed;font-size:13px}
 .ftable th{height:44px;padding:0 0 9px;vertical-align:bottom;border-bottom:1px solid var(--ink);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);text-align:left;white-space:nowrap}
 .ftable th.r{text-align:right;padding-right:12px}
 .ftable th.r.s{padding-right:10px}
@@ -214,11 +214,11 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
 .ftable th[aria-sort] button{color:var(--ink)}
 .ftable th[aria-sort] button::after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:2px;background:var(--ink)}
 .ftable th[aria-sort] button .arr{color:var(--ink)}
-.ftable td{height:58px;border-bottom:1px solid var(--ln);vertical-align:middle;padding:0}
+.ftable td{height:64px;border-bottom:1px solid var(--ln);vertical-align:middle;padding:0}
 .ftable tbody tr{cursor:pointer}
 .ftable tbody tr:hover{background:var(--sf2)}
-.tk{width:26px;height:26px;border-radius:var(--r-s);background:var(--el-fill);color:var(--el-on);display:flex;align-items:center;justify-content:center;font-size:15px}
-.ftable .icon{width:46px;height:46px}
+.tk{width:26px;height:26px;border-radius:var(--r-s);background:var(--el-fill);color:var(--on-light);display:flex;align-items:center;justify-content:center;font-size:15px}
+.ftable .icon{width:52px;height:52px}
 .tname{min-width:0;padding-right:12px}
 .tname .epi{margin:0;font-size:11px;line-height:1.2}
 .tname a{display:block;font-size:14.5px;font-weight:700;line-height:1.25;letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:none}
@@ -251,7 +251,7 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
 .pn a:hover,.d-nav .pn a:hover{border-color:var(--ink)}
 .fiche{display:flex;flex-direction:column}
 .fiche-side{display:contents}
-.idcard{margin:16px;display:flex;background:var(--sf);border:1px solid var(--ln);border-radius:var(--r);overflow:hidden}
+.idcard{margin:16px;display:flex;background:var(--sf);border:1px solid var(--ln);border-radius:var(--r-card);overflow:hidden}
 .idcard .strip{width:40px;padding:14px 0;gap:12px}
 .idcard .strip .k{font-size:27px}
 .idcard .strip .el{font-size:10px;letter-spacing:.24em}
@@ -259,7 +259,7 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
 .idcard-title{display:flex;flex-direction:column;gap:12px}
 .idcard-head{display:flex;gap:12px;align-items:center}
 .idcard-id{flex:1;min-width:0}
-.idcard .icon{width:80px;height:80px}
+.idcard .icon{width:96px;height:96px}
 .idcard .meta{font-size:11.5px}
 .idcard .epi{margin-top:5px;font-size:13.5px;line-height:1.3;white-space:normal}
 .idcard h1{margin:0;font-weight:700;font-size:26px;line-height:1.1;letter-spacing:-.02em;overflow-wrap:break-word}
@@ -441,6 +441,10 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
 @media (max-width:959.98px){
   .skill-meta{display:none}
   .d-results-head{display:none}
+  .m-view{align-self:flex-start}
+  .m-view>button{flex:1}
+  .table-wrap{padding:6px 16px 16px;-webkit-overflow-scrolling:touch}
+  .ftable{min-width:1000px}
   body[data-route="fiche"] .topbar{display:none}
 }
 @media (max-width:420px){
