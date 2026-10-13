@@ -139,7 +139,7 @@
 
   function cardHTML(r) {
     const td = (r.tai || 0) >= (r.juj || 0);
-    const stat = (short, long, v, max, strong) => `<div class="stat"><div class="stat-top"><span class="lab"><span class="lab-short">${short}</span><span class="lab-long">${long}</span></span><span class="v${strong ? '' : ' weak'}">${nf(v)}</span></div><div class="bar"><i${strong ? '' : ' class="weak"'} style="width:${pct(v, max)}"></i></div></div>`;
+    const stat = (short, long, v, max, strong, k) => `<div class="stat" data-s="${k}"><div class="stat-top"><span class="lab"><span class="lab-short">${short}</span><span class="lab-long">${long}</span></span><span class="v${strong ? '' : ' weak'}">${nf(v)}</span></div><div class="bar"><i${strong ? '' : ' class="weak"'} style="width:${pct(v, max)}"></i></div></div>`;
     return `<a class="card" data-el="${esc(r.el)}" href="${ficheHref(r)}" aria-label="${esc(r.d['titre'] || r.name)} — ${esc(r.rar)}, ${esc(r.el)}">
 <div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
 <div class="card-body">
@@ -147,7 +147,7 @@
 <div class="card-id"><div class="meta">${marks(r.rar)}<span class="rar">${esc(r.rar)}</span><span class="role">${esc(r.role || '—')}<span class="m-only"> · ${esc(r.spe || '—')}</span></span></div>
 <div class="epi">(${esc(r.epi)})</div><div class="name">${esc(r.name)}</div></div>
 ${r.rn ? '<span class="stamp-rn" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div>
-<div class="stats">${stat('PV', 'PV', r.pv, maxPV, true)}${stat('TAI', 'TAIJUTSU', r.tai, maxST, td)}${stat('JUJ', 'JUJUTSU', r.juj, maxST, !td)}</div>
+<div class="stats">${stat('PV', 'PV', r.pv, maxPV, true, 'pv')}${stat('TAI', 'TAIJUTSU', r.tai, maxST, td, 'tai')}${stat('JUJ', 'JUJUTSU', r.juj, maxST, !td, 'juj')}</div>
 <div class="card-foot"><span>EO <span class="num">${nf(r.eoi)}</span> / <span class="num">${nf(r.eom)}</span></span><span>Jauge<span class="m-only"> sp.</span> <span class="num">${nf(r.js)}</span></span>${r.rn ? '<span class="end rn m-only">Rayon Noir</span>' : ''}<span class="end d-only">${esc(r.spe)}</span></div>
 </div></a>`;
   }
@@ -158,14 +158,14 @@ ${r.rn ? '<span class="stamp-rn" title="Rayon Noir"><span>黒</span><span>閃</s
       const on = state.tri === key, arrow = on ? (state.ordre === 'asc' ? '↑' : '↓') : '↕';
       return `<th scope="col"${cls ? ` class="${cls}"` : ''}${on ? ` aria-sort="${state.ordre === 'asc' ? 'ascending' : 'descending'}"` : ''}><button type="button" data-sort="${key}">${label} <span class="arr" aria-hidden="true">${arrow}</span></button></th>`;
     };
-    const num = (v, max, strong) => `<td class="tnum"><div class="v${strong ? '' : ' weak'}">${nf(v)}</div><div class="bar"><i${strong ? '' : ' class="weak"'} style="width:${pct(v, max)}"></i></div></td>`;
+    const num = (v, max, strong, k) => `<td class="tnum" data-s="${k}"><div class="v${strong ? '' : ' weak'}">${nf(v)}</div><div class="bar"><i${strong ? '' : ' class="weak"'} style="width:${pct(v, max)}"></i></div></td>`;
     const rows = list.map(r => {
       const td = (r.tai || 0) >= (r.juj || 0);
       return `<tr data-href="${ficheHref(r)}"><td><span class="tk" data-el="${esc(r.el)}" aria-label="${esc(r.el)}"><span class="k">${r.k}</span></span></td>
 <td><img class="icon" src="${esc(r.icon)}" alt="" loading="lazy" decoding="async" width="52" height="52"></td>
 <td class="tname"><div class="epi">(${esc(r.epi)})</div><a href="${ficheHref(r)}">${esc(r.name)}</a></td>
 <td><span class="trar">${marks(r.rar)}<span class="num">${esc(r.rar)}</span></span></td><td>${esc(r.role || '—')}</td><td class="mu">${esc(r.spe || '—')}</td>
-${num(r.pv, maxPV, true)}${num(r.tai, maxST, td)}${num(r.juj, maxST, !td)}
+${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST, !td, 'juj')}
 <td class="ts">${nf(r.eoi)}</td><td class="ts">${nf(r.eom)}</td><td class="ts">${nf(r.js)}</td><td class="tc">${r.rn ? '<span class="stamp-rn row" role="img" aria-label="Rayon Noir" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</td></tr>`;
     }).join('');
     return `<div class="table-wrap"><table class="ftable"><caption class="visually-hidden">Fiches, cliquez un en-tête pour trier</caption>
@@ -308,19 +308,20 @@ ${num(r.pv, maxPV, true)}${num(r.tai, maxST, td)}${num(r.juj, maxST, !td)}
       const t = p => ({ 1: b[p + 'effet'] || '', 10: b[p + 'effet_niv10'] || '' });
       const modCost = p => b[p + 'coût_énergie'] ?? costIn(b[p + 'effet'] || b[p + 'effet_niv10']);
       return {
-        type, short, unit, noLevels: !!opts.noLevels, name: b['nom'] || '', cost: cost ?? null,
+        type, short, unit, kind: opts.kind || '', noLevels: !!opts.noLevels, name: b['nom'] || '', cost: cost ?? null,
         names: { v1: b['modifié_nom'], v2: b['modifié2_nom'] },
         text: { base: t(''), v1: t('modifié_'), v2: t('modifié2_') },
         costs: { v1: opts.fixedCost ? cost : modCost('modifié_') ?? cost ?? null, v2: opts.fixedCost ? cost : modCost('modifié2_') ?? cost ?? null },
       };
     };
     const an = d['attaque_normale'] || {}, ul = d['ultime'] || {}, co = d['ultime_coopérative'] || {};
-    const out = [mk('Attaque normale', 'Norm.', an, null, 'EO')];
-    (d['compétences'] || []).forEach((c, i) => { const n = c['indice'] ?? i + 1; out.push(mk('Compétence ' + n, 'C' + n, c, c['coût_énergie'], 'EO')); });
-    out.push(mk('Ultime', 'Ult.', ul, s['jauge_spéciale'], 'Jauge', { fixedCost: true }));
-    (d['compétences_auto'] || []).forEach((c, i) => { const n = c['indice'] ?? i + 1; out.push(mk('Compétence auto ' + n, 'Auto ' + n, c, null, '', { noLevels: true })); });
-    if (co['effet']) out.push(mk('Ultime coopérative', 'Coop.', { effet: co['effet'] }, null, '', { noLevels: true }));
-    if (co['effet_renforcé']) out.push(mk('Ultime coopérative renforcée', 'Coop.+', { effet: co['effet_renforcé'] }, null, '', { noLevels: true }));
+    // L'attaque normale est affichée comme « Compétence 1 » ; les compétences suivantes sont décalées d'un rang.
+    const out = [mk('Compétence 1', 'C1', an, null, 'EO', { kind: 'c1' })];
+    (d['compétences'] || []).forEach((c, i) => { const n = (c['indice'] ?? i + 1) + 1; out.push(mk('Compétence ' + n, 'C' + n, c, c['coût_énergie'], 'EO', { kind: 'c' + Math.min(n, 3) })); });
+    out.push(mk('Ultime', 'Ult.', ul, s['jauge_spéciale'], 'Jauge', { fixedCost: true, kind: 'ult' }));
+    (d['compétences_auto'] || []).forEach((c, i) => { const n = c['indice'] ?? i + 1; out.push(mk('Compétence auto ' + n, 'Auto ' + n, c, null, '', { noLevels: true, kind: 'auto' })); });
+    if (co['effet']) out.push(mk('Ultime coopérative', 'Coop.', { effet: co['effet'] }, null, '', { noLevels: true, kind: 'coop' }));
+    if (co['effet_renforcé']) out.push(mk('Ultime coopérative renforcée', 'Coop.+', { effet: co['effet_renforcé'] }, null, '', { noLevels: true, kind: 'coop' }));
     return out;
   }
   const hasVer = (sk, v) => !!(sk.text[v] && (sk.text[v][1] || sk.text[v][10]));
@@ -340,7 +341,7 @@ ${num(r.pv, maxPV, true)}${num(r.tai, maxST, td)}${num(r.juj, maxST, !td)}
     return out;
   }
   function lineHTML(ln) {
-    const segs = ln.t.split(/(\d+(?:[.,]\d+)?\s?%|«[^»]+»)/g).filter(Boolean).map(s => (/^(\d|«)/.test(s) ? `<b>${esc(s)}</b>` : esc(s))).join('');
+    const segs = ln.t.split(/(\d+(?:[.,]\d+)?\s?%|«[^»]+»)/g).filter(Boolean).map(s => (/^\d/.test(s) ? `<b class="pc">${esc(s)}</b>` : s[0] === '«' ? `<b class="st">${esc(s)}</b>` : esc(s))).join('');
     return `<div class="ln ${ln.ty} ${ln.sp}"><span class="mk" aria-hidden="true">${ln.mk}</span><span class="t"><span${ln.en ? ' class="en"' : ''}>${segs}</span>${ln.en ? '<span class="en-badge" title="Ligne restée en anglais">EN</span>' : ''}</span></div>`;
   }
 
@@ -373,7 +374,7 @@ ${num(r.pv, maxPV, true)}${num(r.tai, maxST, td)}${num(r.juj, maxST, !td)}
       const costBox = cost != null ? `<div class="cost"><span class="num">${nf(cost)}</span><span class="u">${esc(sk.unit)}</span></div>` : '';
       sk.tocCost = cost != null ? nf(cost) + ' ' + sk.unit : '';
       sk.tocName = name || sk.type;
-      return `<section class="skill" id="sk-${i}" aria-label="${esc(sk.type)}${name ? ' : ' + esc(name) : ''}">
+      return `<section class="skill" id="sk-${i}" data-kind="${sk.kind}" aria-label="${esc(sk.type)}${name ? ' : ' + esc(name) : ''}">
 <div class="skill-meta"><div class="skill-type">${esc(sk.type)}</div>${costBox}${mod}</div>
 <div class="skill-main"><div class="skill-top"><div><div class="skill-type">${esc(sk.type)}</div>${name ? `<h3>${esc(name)}</h3>` : ''}</div>${costBox}</div>${mod}
 <div class="lines">${missing ? '<p class="missing">Donnée niv. 1 absente de la source ; aucune valeur inventée.</p>' : lines.length ? lines.map(lineHTML).join('') : '<p class="missing">Aucune description disponible.</p>'}</div></div></section>`;
@@ -412,7 +413,7 @@ ${notes.length ? `<div class="kit-notes">${notes.join('')}</div>` : ''}</div>${n
       labels[v] = nm ? { text: nm, generic: false } : { text: fallback, generic: true };
     }
     const kit = kitHTML(r, skills, lvl, ver, labels);
-    const toc = `<h2>Sommaire du kit</h2>${skills.map((sk, i) => `<button type="button" data-goto="sk-${i}"><span class="sh">${esc(sk.short)}</span><span>${esc(sk.tocName)}</span><span class="tc">${esc(sk.tocCost)}</span></button>`).join('')}`;
+    const toc = `<h2>Sommaire du kit</h2>${skills.map((sk, i) => `<button type="button" data-goto="sk-${i}" data-kind="${sk.kind}"><span class="sh">${esc(sk.short)}</span><span>${esc(sk.tocName)}</span><span class="tc">${esc(sk.tocCost)}</span></button>`).join('')}`;
     return { lvl, kit, toc };
   }
 
@@ -432,7 +433,7 @@ ${notes.length ? `<div class="kit-notes">${notes.join('')}</div>` : ''}</div>${n
     const nav = (x, dir) => x ? `<a href="${ficheHref(x)}${lvl === 10 ? '?niv=10' : ''}" data-nav aria-label="Fiche ${dir === 'prev' ? 'précédente' : 'suivante'} : ${esc(x.d['titre'] || x.name)}">${dir === 'prev' ? '‹<span class="who">' + esc(x.name) + '</span>' : '<span class="who">' + esc(x.name) + '</span>›'}</a>`
       : `<a aria-disabled="true" aria-label="Pas de fiche ${dir === 'prev' ? 'précédente' : 'suivante'}">${dir === 'prev' ? '‹' : '›'}</a>`;
     const td = (r.tai || 0) >= (r.juj || 0);
-    const sstat = (lab, v, max, strong) => `<div><div class="lab">${lab}</div><div class="v${strong === false ? ' weak' : ''}">${nf(v)}</div>${max ? `<div class="bar"><i${strong === false ? ' class="weak"' : ''} style="width:${pct(v, max)}"></i></div>` : ''}</div>`;
+    const sstat = (lab, v, max, strong, k) => `<div data-s="${k}"><div class="lab">${lab}</div><div class="v${strong === false ? ' weak' : ''}">${nf(v)}</div>${max ? `<div class="bar"><i${strong === false ? ' class="weak"' : ''} style="width:${pct(v, max)}"></i></div>` : ''}</div>`;
     document.title = (r.d['titre'] || r.name) + ' · JJKPP [RK]';
     view.innerHTML = `<nav class="m-nav" aria-label="Navigation de fiche"><a class="btn-back" href="${esc(lastListHash)}" data-back><span class="arr" aria-hidden="true">←</span>Fiches</a><div class="pn">${nav(prev, 'prev').replace(/<span class="who">[^<]*<\/span>/, '')}${nav(next, 'next').replace(/<span class="who">[^<]*<\/span>/, '')}</div></nav>
 <nav class="d-nav" aria-label="Navigation de fiche"><div class="crumbs"><a class="btn-back" href="${esc(lastListHash)}" data-back>← Toutes les fiches</a><span class="sep" aria-hidden="true">/</span><span class="cur">(${esc(r.epi)}) ${esc(r.name)}</span></div><div class="pn">${nav(prev, 'prev')}${nav(next, 'next')}</div></nav>
@@ -447,7 +448,7 @@ ${notes.length ? `<div class="kit-notes">${notes.join('')}</div>` : ''}</div>${n
 ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div>
 <h1 tabindex="-1">${esc(r.name)}</h1></div>
 <dl class="info"><dt>Rôle</dt><dd>${esc(r.role || '—')}</dd><dt>Spécialité</dt><dd>${esc(r.spe || '—')}</dd><dt>Affiliation</dt><dd>${esc(r.d['affiliation'] || '—')}</dd><dt>Sortie</dt><dd>${esc(dateFr(r.d['date_de_sortie']))}</dd></dl>
-<div class="sgrid">${sstat('PV', r.pv, maxPV, true)}${sstat('Taijutsu', r.tai, maxST, td)}${sstat('Jujutsu', r.juj, maxST, !td)}${sstat('EO init.', r.eoi)}${sstat('EO max.', r.eom)}${sstat('Jauge sp.', r.js)}</div>
+<div class="sgrid">${sstat('PV', r.pv, maxPV, true, 'pv')}${sstat('Taijutsu', r.tai, maxST, td, 'tai')}${sstat('Jujutsu', r.juj, maxST, !td, 'juj')}${sstat('EO init.', r.eoi, 0, undefined, 'eoi')}${sstat('EO max.', r.eom, 0, undefined, 'eom')}${sstat('Jauge sp.', r.js, 0, undefined, 'js')}</div>
 </div></section>
 <nav class="toc" aria-label="Sommaire du kit">${toc}</nav>
 </div>
@@ -468,7 +469,9 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
     const s = p.toString();
     history.replaceState(null, '', '#/fiche/' + encodeURIComponent(route.id) + (s ? '?' + s : ''));
     const { lvl, kit, toc } = ficheKit(r, s);
+    const before = new Map([...view.querySelectorAll('#kit .seg')].map(g => [g.getAttribute('aria-label'), segBox(g)]));
     view.querySelector('#kit').innerHTML = kit;
+    view.querySelectorAll('#kit .seg').forEach(g => placeSeg(g, before.get(g.getAttribute('aria-label'))));
     view.querySelector('.toc').innerHTML = toc;
     view.querySelectorAll('[data-nav][href]').forEach(a => { a.setAttribute('href', a.getAttribute('href').split('?')[0] + (lvl === 10 ? '?niv=10' : '')); });
     const again = view.querySelector(`#kit [${attr.name}="${attr.value}"]`);
@@ -544,6 +547,38 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
     }
   });
 
+  /* ---------------- Segments : pastille glissante ---------------- */
+
+  // La pastille (::before du .seg) est placée sous le bouton pressé via des variables CSS ; un changement de bouton la fait glisser.
+  function segBox(g) {
+    return g.classList.contains('seg-on') ? ['--seg-x', '--seg-y', '--seg-w', '--seg-h'].map(v => g.style.getPropertyValue(v)) : null;
+  }
+  function setBox(g, box) { ['--seg-x', '--seg-y', '--seg-w', '--seg-h'].forEach((v, i) => g.style.setProperty(v, box[i])); }
+  function placeSeg(g, from) {
+    const on = g.querySelector(':scope>button[aria-pressed="true"]');
+    if (!on || !on.offsetWidth) { g.classList.remove('seg-on'); return; }
+    const box = [on.offsetLeft + 'px', on.offsetTop + 'px', on.offsetWidth + 'px', on.offsetHeight + 'px'];
+    const animate = from || segBox(g);
+    g.classList.add('seg-still');
+    if (animate) setBox(g, animate); else setBox(g, box);
+    g.classList.toggle('seg-fill', on.classList.contains('fill'));
+    g.classList.add('seg-on');
+    void g.offsetWidth;
+    g.classList.remove('seg-still');
+    if (animate) setBox(g, box);
+  }
+  const placeAllSegs = () => document.querySelectorAll('.seg').forEach(g => { g.classList.remove('seg-on'); placeSeg(g); });
+  new MutationObserver(muts => {
+    const seen = new Set();
+    muts.forEach(m => {
+      if (m.type === 'attributes') { const g = m.target.parentElement; if (g && g.classList.contains('seg')) seen.add(g); return; }
+      m.addedNodes.forEach(n => { if (n.nodeType === 1) (n.matches('.seg') ? [n] : n.querySelectorAll('.seg')).forEach(g => { if (!g.classList.contains('seg-on')) seen.add(g); }); });
+    });
+    seen.forEach(g => placeSeg(g));
+  }).observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['aria-pressed'] });
+  window.addEventListener('resize', placeAllSegs);
+  if (document.fonts) document.fonts.ready.then(placeAllSegs);
+
   DESKTOP.addEventListener('change', () => {
     closeSheet();
     if (current === 'list') updateList();
@@ -551,6 +586,7 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
   window.addEventListener('hashchange', onRoute);
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   paintTheme();
+  placeAllSegs();
 
   const getJSON = url => fetch(url).then(res => { if (!res.ok) throw new Error(url + ' : HTTP ' + res.status); return res.json(); });
   Promise.all([getJSON('data/characters.json'), getJSON('data/categories.json')])
