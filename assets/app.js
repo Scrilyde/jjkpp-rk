@@ -85,7 +85,7 @@
       return (typeof x === 'string' ? x.localeCompare(y, 'fr') : x - y) * dir || a.i - b.i;
     });
   }
-  const tableMode = () => DESKTOP.matches && state.vue === 'tableau';
+  const tableMode = () => state.vue === 'tableau';
   const visibleOrder = () => (tableMode() ? sorted(filtered()) : filtered());
 
   /* ---------------- URL ---------------- */
@@ -143,7 +143,7 @@
     return `<a class="card" data-el="${esc(r.el)}" href="${ficheHref(r)}" aria-label="${esc(r.d['titre'] || r.name)} — ${esc(r.rar)}, ${esc(r.el)}">
 <div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
 <div class="card-body">
-<div class="card-head"><img class="icon" src="${esc(r.icon)}" alt="" loading="lazy" decoding="async" width="64" height="64">
+<div class="card-head"><img class="icon" src="${esc(r.icon)}" alt="" loading="lazy" decoding="async" width="76" height="76">
 <div class="card-id"><div class="meta">${marks(r.rar)}<span class="rar">${esc(r.rar)}</span><span class="role">${esc(r.role || '—')}<span class="m-only"> · ${esc(r.spe || '—')}</span></span></div>
 <div class="epi">(${esc(r.epi)})</div><div class="name">${esc(r.name)}</div></div>
 ${r.rn ? '<span class="stamp-rn" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div>
@@ -162,15 +162,15 @@ ${r.rn ? '<span class="stamp-rn" title="Rayon Noir"><span>黒</span><span>閃</s
     const rows = list.map(r => {
       const td = (r.tai || 0) >= (r.juj || 0);
       return `<tr data-href="${ficheHref(r)}"><td><span class="tk" data-el="${esc(r.el)}" aria-label="${esc(r.el)}"><span class="k">${r.k}</span></span></td>
-<td><img class="icon" src="${esc(r.icon)}" alt="" loading="lazy" decoding="async" width="46" height="46"></td>
+<td><img class="icon" src="${esc(r.icon)}" alt="" loading="lazy" decoding="async" width="52" height="52"></td>
 <td class="tname"><div class="epi">(${esc(r.epi)})</div><a href="${ficheHref(r)}">${esc(r.name)}</a></td>
 <td><span class="trar">${marks(r.rar)}<span class="num">${esc(r.rar)}</span></span></td><td>${esc(r.role || '—')}</td><td class="mu">${esc(r.spe || '—')}</td>
 ${num(r.pv, maxPV, true)}${num(r.tai, maxST, td)}${num(r.juj, maxST, !td)}
 <td class="ts">${nf(r.eoi)}</td><td class="ts">${nf(r.eom)}</td><td class="ts">${nf(r.js)}</td><td class="tc">${r.rn ? '<span class="stamp-rn row" role="img" aria-label="Rayon Noir" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</td></tr>`;
     }).join('');
     return `<div class="table-wrap"><table class="ftable"><caption class="visually-hidden">Fiches, cliquez un en-tête pour trier</caption>
-<colgroup><col style="width:36px"><col style="width:48px"><col><col style="width:60px"><col style="width:100px"><col style="width:80px"><col style="width:104px"><col style="width:104px"><col style="width:104px"><col style="width:56px"><col style="width:56px"><col style="width:68px"><col style="width:40px"></colgroup>
-<thead><tr>${th('', '<span class="visually-hidden">Élément</span>')}${th('', '<span class="visually-hidden">Icône</span>')}${th('personnage', 'Personnage')}${th('rarete', 'Rar.')}${th('', 'Rôle')}${th('', 'Spécialité')}${th('pv', 'PV', 'r')}${th('tai', 'Taijutsu', 'r')}${th('juj', 'Jujutsu', 'r')}${th('', 'EO in.', 'r s')}${th('', 'EO max', 'r s')}${th('', 'Jauge', 'r s')}${th('', '<span title="Rayon Noir">黒閃</span>', 'c')}</tr></thead>
+<colgroup><col style="width:36px"><col style="width:64px"><col><col style="width:72px"><col style="width:100px"><col style="width:80px"><col style="width:104px"><col style="width:104px"><col style="width:104px"><col style="width:56px"><col style="width:56px"><col style="width:68px"><col style="width:40px"></colgroup>
+<thead><tr>${th('', '<span class="visually-hidden">Élément</span>')}${th('', '<span class="visually-hidden">Icône</span>')}${th('personnage', 'Personnage')}${th('rarete', 'Rar.')}${th('', 'Rôle')}${th('', 'Spécialité')}${th('pv', 'PV', 'r')}${th('tai', 'Taijutsu', 'r')}${th('juj', 'Jujutsu', 'r')}${th('', 'EO in.', 'r s')}${th('', 'EO max', 'r s')}${th('', 'Jauge', 'r s')}${th('', '<span title="Rayon Noir">BF</span>', 'c')}</tr></thead>
 <tbody>${rows}</tbody></table></div>`;
   }
 
@@ -215,6 +215,7 @@ ${num(r.pv, maxPV, true)}${num(r.tai, maxST, td)}${num(r.juj, maxST, !td)}
   <button type="button" class="btn-filters" data-open-filters aria-haspopup="dialog" aria-controls="filters">Filtres<span class="badge-n" hidden></span></button></div>
   <div class="el-quick" role="group" aria-label="Élément">${ELEMENTS.map(e => `<button type="button" data-el="${e}" data-g="élément" data-v="${e}" aria-pressed="false"><span class="k">${KANJI[e]}</span><span class="lab">${e}</span></button>`).join('')}</div>
   <div class="count-row"><div class="count"><span class="n"></span><span class="of"></span></div><button type="button" class="link-reset" data-reset hidden>Tout réinitialiser</button></div>
+  <div class="m-view seg" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true">Cartes</button><button type="button" data-view="tableau" aria-pressed="false">Tableau</button></div>
   <div class="chips"></div>
 </div>
 <div class="filters-wrap" id="filters-wrap">
@@ -441,7 +442,7 @@ ${notes.length ? `<div class="kit-notes">${notes.join('')}</div>` : ''}</div>${n
 <section class="idcard" aria-label="Identité">
 <div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
 <div class="idcard-body">
-<div class="idcard-title"><div class="idcard-head"><img class="icon" src="${esc(r.icon)}" alt="" decoding="async" width="80" height="80">
+<div class="idcard-title"><div class="idcard-head"><img class="icon" src="${esc(r.icon)}" alt="" decoding="async" width="96" height="96">
 <div class="idcard-id"><div class="meta">${marks(r.rar, 'big')}<span class="rar">${esc(r.rar)}</span><span>${esc(r.cats.join(' · '))}</span></div>
 <div class="epi">(${esc(r.epi)})</div></div>
 ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div>
