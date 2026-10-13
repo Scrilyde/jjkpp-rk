@@ -169,8 +169,7 @@ ${num(r.pv, maxPV, true)}${num(r.tai, maxST, td)}${num(r.juj, maxST, !td)}
 <td class="ts">${nf(r.eoi)}</td><td class="ts">${nf(r.eom)}</td><td class="ts">${nf(r.js)}</td><td class="tc">${r.rn ? '<span class="stamp-rn row" role="img" aria-label="Rayon Noir" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</td></tr>`;
     }).join('');
     return `<div class="table-wrap"><table class="ftable"><caption class="visually-hidden">Fiches, cliquez un en-tête pour trier</caption>
-<colgroup><col style="width:36px"><col style="width:64px"><col><col style="width:72px"><col style="width:100px"><col style="width:80px"><col style="width:104px"><col style="width:104px"><col style="width:104px"><col style="width:56px"><col style="width:56px"><col style="width:68px"><col style="width:40px"></colgroup>
-<thead><tr>${th('', '<span class="visually-hidden">Élément</span>')}${th('', '<span class="visually-hidden">Icône</span>')}${th('personnage', 'Personnage')}${th('rarete', 'Rar.')}${th('', 'Rôle')}${th('', 'Spécialité')}${th('pv', 'PV', 'r')}${th('tai', 'Taijutsu', 'r')}${th('juj', 'Jujutsu', 'r')}${th('', 'EO in.', 'r s')}${th('', 'EO max', 'r s')}${th('', 'Jauge', 'r s')}${th('', '<span title="Rayon Noir">BF</span>', 'c')}</tr></thead>
+<thead><tr>${th('', '<span class="visually-hidden">Élément</span>')}${th('', '<span class="visually-hidden">Icône</span>')}${th('personnage', 'Personnage')}${th('rarete', 'Rar.')}${th('', 'Rôle')}${th('', 'Spécialité')}${th('pv', 'PV', 'r')}${th('tai', '<span class="thl">Taijutsu</span><span class="ths">Tai</span>', 'r')}${th('juj', '<span class="thl">Jujutsu</span><span class="ths">Juj</span>', 'r')}${th('', 'EO in.', 'r s')}${th('', 'EO max', 'r s')}${th('', 'Jauge', 'r s')}${th('', '<span title="Rayon Noir">BF</span>', 'c')}</tr></thead>
 <tbody>${rows}</tbody></table></div>`;
   }
 

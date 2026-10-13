@@ -203,8 +203,33 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
 .btn-outline:hover{background:var(--sf)}
 
 /* ---- Tableau ---- */
-.table-wrap{padding:6px 32px 24px;overflow-x:auto}
-.ftable{width:100%;min-width:1100px;border-collapse:collapse;table-layout:fixed;font-size:13px}
+.table-wrap{padding:6px 32px 24px;overflow-x:auto;container-type:inline-size}
+.ftable{width:100%;min-width:288px;border-collapse:collapse;table-layout:fixed;font-size:13px}
+/* Largeurs des colonnes (la colonne Personnage prend le reste).
+   Quand la place manque, les colonnes se replient en douceur, dans l'ordre :
+   Jauge, EO max, EO in., Rareté, Rôle, Spécialité ; puis le nom rétrécit
+   (jusqu'à 110px), puis PV / Taijutsu / Jujutsu (jusqu'à 76px), puis le nom
+   disparaît, et enfin tout se resserre un peu pour tenir sur un téléphone. */
+.ftable th:nth-child(1){width:clamp(30px,30px + (100cqi - 288px) * .075,36px)}
+.ftable th:nth-child(2){width:clamp(48px,48px + (100cqi - 288px) * .2,64px)}
+.ftable th:nth-child(3),.ftable td.tname{overflow:hidden}
+.ftable th:nth-child(4){width:clamp(0px,100cqi - 832px,72px)}
+.ftable th:nth-child(5){width:clamp(0px,100cqi - 732px,100px)}
+.ftable th:nth-child(6){width:clamp(0px,100cqi - 652px,80px)}
+.ftable th:nth-child(7),.ftable th:nth-child(8),.ftable th:nth-child(9){width:clamp(60px,max(76px + (100cqi - 478px) / 3,min(76px,60px + (100cqi - 288px) * .2)),104px)}
+.ftable th:nth-child(10){width:clamp(0px,100cqi - 904px,56px)}
+.ftable th:nth-child(11){width:clamp(0px,100cqi - 960px,56px)}
+.ftable th:nth-child(12){width:clamp(0px,100cqi - 1016px,68px)}
+.ftable th:nth-child(13){width:clamp(30px,30px + (100cqi - 288px) * .125,40px)}
+.ftable th.r.s:nth-child(10){padding-right:clamp(0px,100cqi - 904px,10px)}
+.ftable th.r.s:nth-child(11){padding-right:clamp(0px,100cqi - 960px,10px)}
+.ftable th.r.s:nth-child(12){padding-right:clamp(0px,100cqi - 1016px,10px)}
+.ftable :is(th,td):is(:nth-child(4),:nth-child(5),:nth-child(6),:nth-child(10),:nth-child(11),:nth-child(12)){overflow:hidden;white-space:nowrap;text-overflow:clip}
+.ftable .ths{display:none}
+@container (max-width:519.98px){
+  .ftable .thl{display:none}
+  .ftable .ths{display:inline}
+}
 .ftable th{height:44px;padding:0 0 9px;vertical-align:bottom;border-bottom:1px solid var(--ink);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);text-align:left;white-space:nowrap}
 .ftable th.r{text-align:right;padding-right:12px}
 .ftable th.r.s{padding-right:10px}
@@ -218,9 +243,9 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
 .ftable tbody tr{cursor:pointer}
 .ftable tbody tr:hover{background:var(--sf2)}
 .tk{width:26px;height:26px;border-radius:var(--r-s);background:var(--el-fill);color:var(--on-light);display:flex;align-items:center;justify-content:center;font-size:15px}
-.ftable .icon{width:52px;height:52px}
+.ftable .icon{display:block;width:min(52px,100% - 4px);height:auto;aspect-ratio:1}
 .tname{min-width:0;padding-right:12px}
-.tname .epi{margin:0;font-size:11px;line-height:1.2}
+.tname .epi{margin:0;font-size:11px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tname a{display:block;font-size:14.5px;font-weight:700;line-height:1.25;letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:none}
 .trar{display:flex;align-items:center;gap:6px}
 .trar .num{font-size:12px}
@@ -444,7 +469,6 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
   .m-view{align-self:flex-start}
   .m-view>button{flex:1}
   .table-wrap{padding:6px 16px 16px;-webkit-overflow-scrolling:touch}
-  .ftable{min-width:1000px}
   body[data-route="fiche"] .topbar{display:none}
 }
 @media (max-width:420px){
