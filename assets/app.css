@@ -375,14 +375,14 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
   .view{display:flex;align-items:center;gap:10px}
   .view .vl{font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mu)}
 
-  .cards{padding:22px 32px;grid-template-columns:repeat(auto-fill,minmax(296px,1fr));gap:16px}
+  .cards{padding:22px 32px;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:16px}
   .strip{width:22px;padding:12px 0;gap:9px}
   .strip .k{font-size:15px}
   .card-body{padding:15px 16px 14px;gap:13px}
   .card-head{gap:13px}
   .card .meta{font-size:12px}
   .card .epi{margin-top:5px;font-size:12.5px}
-  .card .name{font-size:19px;line-height:1.18;white-space:normal;overflow:visible}
+  .card .name{font-size:19px;line-height:1.18}
   .stamp-rn{font-size:11px;align-self:auto}
   .stats{gap:12px}
   .stat-top{display:block}
