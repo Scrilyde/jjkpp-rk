@@ -242,5 +242,9 @@
       "fiches": 4
     }
   ],
-  "règles_manuelles": {}
+  "règles_manuelles": {
+    "deal": null,
+    "enemies break": null,
+    "enemies damage dealt": null
+  }
 }

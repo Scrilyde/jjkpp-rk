@@ -226,6 +226,8 @@ async function main() {
     if (override) { const bad = override.filter(c => !categoryNames.has(c)); if (bad.length) uncategorized.push(`${f['titre']} : catégories inconnues ${bad.map(c => `« ${c} »`).join(', ')}`); }
     else if (!known.has(f['rôle'])) uncategorized.push(`${f['titre']} : ${f['rôle'] ? `rôle « ${f['rôle']} » absent de data/categories.json` : 'rôle vide'}`);
   }
+  // Spécialité vide : la fiche n'apparaît que sous « Tous » pour ce filtre.
+  const noSpeciality = result.filter(f => !String(f['spécialité'] ?? '').trim()).map(f => f['titre']);
 
   // ---- Écritures ----
   const modified = fiches.filter((f, i) => JSON.stringify(f) !== snapshot[i]);
@@ -240,7 +242,7 @@ async function main() {
   const withPage = results.filter(r => r.title && r.exists).length;
   md.push(`# Rapport de synchro wiki — ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC\n`);
   md.push(`Source : [JJK - Phantom Parade Wiki](${WIKI}) (CC BY-SA 3.0), ${client.calls} appel(s) API.${DRY ? ' **Simulation (--dry-run) : rien n\'a été écrit.**' : ''}\n`);
-  md.push(`| | |\n|---|---|\n| Fiches du site | ${fiches.length} |\n| Fiches de personnage sur le wiki | ${pageCount} |\n| Fiches rapprochées d'une page | ${withPage} |\n| Fiches ajoutées | ${added.length} |\n| Fiches modifiées | ${modified.length} |\n| À vérifier (conflits, sans correspondance, propositions, catégories) | ${report.conflicts.length + report.noMatch.length + proposals.length + uncategorized.length} |\n`);
+  md.push(`| | |\n|---|---|\n| Fiches du site | ${fiches.length} |\n| Fiches de personnage sur le wiki | ${pageCount} |\n| Fiches rapprochées d'une page | ${withPage} |\n| Fiches ajoutées | ${added.length} |\n| Fiches modifiées | ${modified.length} |\n| À vérifier (conflits, sans correspondance, propositions, catégories, spécialités) | ${report.conflicts.length + report.noMatch.length + proposals.length + uncategorized.length + noSpeciality.length} |\n`);
   if (added.length) {
     md.push('## Fiches ajoutées\n');
     for (const b of built) {
@@ -262,6 +264,7 @@ async function main() {
   section('Conflits de rapprochement (non fusionnés)', report.conflicts, true);
   section('Fiches sans correspondance sur le wiki (renseigner page_wiki à la main)', report.noMatch, true);
   section('Fiches sans catégorie (visibles seulement sous « Tous » : compléter data/categories.json ou le champ « catégories »)', uncategorized, true);
+  section('Fiches à spécialité vide (visibles seulement sous « Tous » pour la spécialité)', noSpeciality, true);
   section('Pages wiki ressemblant à une fiche non rapprochée (non ajoutées)', proposals.map(p => `${link(p.title)} ↔ ${p.fiches.map(t => `« ${t} »`).join(', ')}`), true);
   section('Avertissements', report.warnings, true);
   section('Valeurs illisibles (non appliquées)', report.unreadable, true);
@@ -288,7 +291,7 @@ async function main() {
     fs.writeFileSync(COMMIT_MESSAGE, lines.join('\n') + '\n');
   }
 
-  say(`\n${withPage} fiche(s) rapprochée(s), ${added.length} ajoutée(s), ${modified.length} modifiée(s), ${report.conflicts.length + report.noMatch.length + proposals.length + uncategorized.length} à vérifier — rapport : ${path.relative(process.cwd(), REPORT)}${DRY ? ' (simulation)' : ''}`);
+  say(`\n${withPage} fiche(s) rapprochée(s), ${added.length} ajoutée(s), ${modified.length} modifiée(s), ${report.conflicts.length + report.noMatch.length + proposals.length + uncategorized.length + noSpeciality.length} à vérifier — rapport : ${path.relative(process.cwd(), REPORT)}${DRY ? ' (simulation)' : ''}`);
   if (!changed) say('Aucun changement de données.');
 }
 
