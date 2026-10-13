@@ -6,10 +6,13 @@
 //    S'y ajoutent, à la demande du mainteneur : page_wiki, date au format JJ-MM-AAAA, icône hébergée par le wiki.
 //  - rapprochement : page_wiki (fait foi) > url_wiki > clé_icône = UnitN > clé_image = Card Art (unique des deux côtés).
 //    Tout cas incertain (conflit, fiche sans correspondance, page ressemblante) va dans le rapport sans être fusionné.
-//  - nouveaux personnages : construits depuis le wiki et traduits via data/glossaire.json (+ DeepL si DEEPL_API_KEY).
+//  - nouveaux personnages : construits depuis le wiki et traduits via data/glossaire.json (+ DeepL si DEEPL_API_KEY) ;
+//    étiquettes déduites du texte anglais via data/etiquettes.json et marquées dans « étiquettes_automatiques ».
+//  - catégories (data/categories.json) : tout rôle qui n'y figure pas, sur une fiche sans champ « catégories », est signalé.
 //
 // Usage : node scripts/sync-wiki.mjs [--dry-run] [--report <fichier.md>] [--commit-message <fichier>]
 //         [--data <characters.json>] [--glossaire <glossaire.json>] [--deepl-cache <fichier.json>] [--cache <dossier>]
+//         [--categories <categories.json>] [--etiquettes <etiquettes.json>]
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -17,6 +20,7 @@ import { createClient, loadWiki, fetchImageUrls, cleanWikitext, isBlank, WIKI, U
 import { matchFiches, wikiKit, ignoredParams, parseStat, normalizeDate, blackFlash, titleFromUrl, STATS } from './lib/fiches.mjs';
 import { createTranslator } from './lib/traduction.mjs';
 import { loadDotEnv, readCache, writeCache, translateKeys, DEEPL_URL } from './lib/deepl.mjs';
+import { kitWords, deduceTags } from './lib/etiquettes.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -25,6 +29,8 @@ const DRY = args.includes('--dry-run');
 const DATA = path.resolve(opt('--data', path.join(ROOT, 'data', 'characters.json')));
 const GLOSSAIRE = path.resolve(opt('--glossaire', path.join(ROOT, 'data', 'glossaire.json')));
 const DEEPL_CACHE = path.resolve(opt('--deepl-cache', path.join(ROOT, 'data', 'traductions-deepl.json')));
+const CATEGORIES = path.resolve(opt('--categories', path.join(ROOT, 'data', 'categories.json')));
+const ETIQUETTES = path.resolve(opt('--etiquettes', path.join(ROOT, 'data', 'etiquettes.json')));
 const REPORT = path.resolve(opt('--report', path.join(ROOT, 'sync-report.md')));
 const COMMIT_MESSAGE = opt('--commit-message', null);
 const MIN_WIKI_PAGES = 50;   // garde-fou : en dessous, le wiki est probablement indisponible ou vandalisé
@@ -72,7 +78,7 @@ function translateKit(kit, tr) {
   return { kit: out, review, count };
 }
 
-function buildFiche(title, w, unit, iconUrl, tr) {
+function buildFiche(title, w, unit, iconUrl, tr, tagTable) {
   const m = /^\((.*)\)\s*(.*)$/.exec(title);
   const untranslated = [];
   const value = (table, raw, fallback = raw) => {
@@ -84,6 +90,7 @@ function buildFiche(title, w, unit, iconUrl, tr) {
   const role = cleanWikitext(w['Role']), focus = cleanWikitext(w['Focus']), aff = isBlank(w['Affiliation']) ? null : cleanWikitext(w['Affiliation']);
   const { kit, notes } = wikiKit(w);
   const t = translateKit(kit, tr);
+  const tags = deduceTags(kitWords(kit, isBlank(w['Characteristic']) ? '' : cleanWikitext(w['Characteristic'])), tagTable);
   const statistiques = Object.fromEntries(STATS.map(([k, wk]) => [k, parseStat(w[wk])]));
   statistiques['rayon_noir'] = value('rayon_noir', blackFlash(w), 'N/D');
   const fiche = {
@@ -99,6 +106,8 @@ function buildFiche(title, w, unit, iconUrl, tr) {
     'limité': tr.value('limité', isBlank(w['Limited-Yes']) ? null : cleanWikitext(w['Limited-Yes'])) ?? false,
     'statistiques': statistiques,
     ...t.kit,
+    'étiquettes': [...tags.keys()],
+    ...(tags.size ? { 'étiquettes_automatiques': [...tags.keys()] } : {}),
     'clé_image': cleanWikitext(w['Card Art']) || null,
     'clé_icône': unit,
     'url_icône': iconUrl,
@@ -107,13 +116,15 @@ function buildFiche(title, w, unit, iconUrl, tr) {
     fiche['traduction_automatique'] = Object.fromEntries(Object.entries(t.review).filter(([, v]) => v.length));
   fiche['page_wiki'] = title;
   const badStats = STATS.filter(([k]) => statistiques[k] == null).map(([, wk]) => `${wk} = « ${w[wk] ?? ''} »`);
-  return { fiche, count: t.count, review: t.review, untranslated, notes, badStats, ignored: ignoredParams(w) };
+  return { fiche, count: t.count, review: t.review, untranslated, notes, badStats, ignored: ignoredParams(w), tags };
 }
 
 async function main() {
   loadDotEnv(path.join(ROOT, '.env'));
   const fiches = JSON.parse(fs.readFileSync(DATA, 'utf8'));
   const glossaire = JSON.parse(fs.readFileSync(GLOSSAIRE, 'utf8'));
+  const categoryRoles = JSON.parse(fs.readFileSync(CATEGORIES, 'utf8'))['catégories'] || {};
+  const tagTable = fs.existsSync(ETIQUETTES) ? JSON.parse(fs.readFileSync(ETIQUETTES, 'utf8')) : {};
   const snapshot = fiches.map(f => JSON.stringify(f));
   const client = createClient({ cacheDir: opt('--cache', null), log: console.log });
   const say = s => console.log(s);
@@ -190,7 +201,7 @@ async function main() {
   let deepl = readCache(DEEPL_CACHE), deeplNote = null, deeplNew = 0;
   const build = () => {
     const tr = createTranslator(glossaire, { deepl });
-    const built = newPages.map(p => ({ ...p, ...buildFiche(p.title, p.w, p.unit, p.unit ? icons[p.unit] ?? null : null, tr) }));
+    const built = newPages.map(p => ({ ...p, ...buildFiche(p.title, p.w, p.unit, p.unit ? icons[p.unit] ?? null : null, tr, tagTable) }));
     return { tr, built };
   };
   let { tr, built } = build();
@@ -206,6 +217,16 @@ async function main() {
   const added = built.map(b => b.fiche);
   const result = [...added, ...fiches];
 
+  // ---- Catégories : rôle absent de data/categories.json (la fiche n'apparaît que sous « Tous ») ----
+  const known = new Set(Object.values(categoryRoles).flat());
+  const categoryNames = new Set(Object.keys(categoryRoles));
+  const uncategorized = [];
+  for (const f of result) {
+    const override = Array.isArray(f['catégories']) && f['catégories'].length ? f['catégories'] : null;
+    if (override) { const bad = override.filter(c => !categoryNames.has(c)); if (bad.length) uncategorized.push(`${f['titre']} : catégories inconnues ${bad.map(c => `« ${c} »`).join(', ')}`); }
+    else if (!known.has(f['rôle'])) uncategorized.push(`${f['titre']} : ${f['rôle'] ? `rôle « ${f['rôle']} » absent de data/categories.json` : 'rôle vide'}`);
+  }
+
   // ---- Écritures ----
   const modified = fiches.filter((f, i) => JSON.stringify(f) !== snapshot[i]);
   const changed = added.length > 0 || modified.length > 0;
@@ -219,7 +240,7 @@ async function main() {
   const withPage = results.filter(r => r.title && r.exists).length;
   md.push(`# Rapport de synchro wiki — ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC\n`);
   md.push(`Source : [JJK - Phantom Parade Wiki](${WIKI}) (CC BY-SA 3.0), ${client.calls} appel(s) API.${DRY ? ' **Simulation (--dry-run) : rien n\'a été écrit.**' : ''}\n`);
-  md.push(`| | |\n|---|---|\n| Fiches du site | ${fiches.length} |\n| Fiches de personnage sur le wiki | ${pageCount} |\n| Fiches rapprochées d'une page | ${withPage} |\n| Fiches ajoutées | ${added.length} |\n| Fiches modifiées | ${modified.length} |\n| À vérifier (conflits, sans correspondance, propositions) | ${report.conflicts.length + report.noMatch.length + proposals.length} |\n`);
+  md.push(`| | |\n|---|---|\n| Fiches du site | ${fiches.length} |\n| Fiches de personnage sur le wiki | ${pageCount} |\n| Fiches rapprochées d'une page | ${withPage} |\n| Fiches ajoutées | ${added.length} |\n| Fiches modifiées | ${modified.length} |\n| À vérifier (conflits, sans correspondance, propositions, catégories) | ${report.conflicts.length + report.noMatch.length + proposals.length + uncategorized.length} |\n`);
   if (added.length) {
     md.push('## Fiches ajoutées\n');
     for (const b of built) {
@@ -230,6 +251,8 @@ async function main() {
       if (b.untranslated.length) md.push(`Valeurs laissées en anglais : ${b.untranslated.join(', ')}.\n`);
       if (b.ignored.length) md.push(`Paramètres ignorés (non repris) : ${b.ignored.join(', ')}.\n`);
       if (b.notes.length) md.push(`Valeurs annotées : ${b.notes.join(' ; ')}.\n`);
+      if (b.tags.size) md.push(`Étiquettes automatiques (à relire) : ${[...b.tags].map(([t, k]) => `${t} (« ${k.join(' », « ')} »)`).join(' ; ')}.
+`);
       if (b.badStats.length) md.push(`**Statistiques illisibles** : ${b.badStats.join(' ; ')}.\n`);
       section('Lignes composées à relire', b.review['composées'].map(x => `\`${x.champ}\` l. ${x.ligne} — ${x.en}`), true);
       section('Lignes traduites par DeepL à relire', b.review['deepl'].map(x => `\`${x.champ}\` l. ${x.ligne} — ${x.en}`), true);
@@ -238,6 +261,7 @@ async function main() {
   md.push('## À vérifier\n');
   section('Conflits de rapprochement (non fusionnés)', report.conflicts, true);
   section('Fiches sans correspondance sur le wiki (renseigner page_wiki à la main)', report.noMatch, true);
+  section('Fiches sans catégorie (visibles seulement sous « Tous » : compléter data/categories.json ou le champ « catégories »)', uncategorized, true);
   section('Pages wiki ressemblant à une fiche non rapprochée (non ajoutées)', proposals.map(p => `${link(p.title)} ↔ ${p.fiches.map(t => `« ${t} »`).join(', ')}`), true);
   section('Avertissements', report.warnings, true);
   section('Valeurs illisibles (non appliquées)', report.unreadable, true);
@@ -264,7 +288,7 @@ async function main() {
     fs.writeFileSync(COMMIT_MESSAGE, lines.join('\n') + '\n');
   }
 
-  say(`\n${withPage} fiche(s) rapprochée(s), ${added.length} ajoutée(s), ${modified.length} modifiée(s), ${report.conflicts.length + report.noMatch.length + proposals.length} à vérifier — rapport : ${path.relative(process.cwd(), REPORT)}${DRY ? ' (simulation)' : ''}`);
+  say(`\n${withPage} fiche(s) rapprochée(s), ${added.length} ajoutée(s), ${modified.length} modifiée(s), ${report.conflicts.length + report.noMatch.length + proposals.length + uncategorized.length} à vérifier — rapport : ${path.relative(process.cwd(), REPORT)}${DRY ? ' (simulation)' : ''}`);
   if (!changed) say('Aucun changement de données.');
 }
 

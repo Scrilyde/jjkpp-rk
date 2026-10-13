@@ -1,0 +1,246 @@
+{
+  "_à_propos": "Généré par scripts/derive-etiquettes.mjs. Règles « mot-clé du texte anglais du wiki → étiquette » apprises sur les fiches existantes ; appliquées par la synchro aux nouvelles fiches seulement (étiquettes marquées dans « étiquettes_automatiques »). « règles_manuelles » n'est jamais écrasé et prime : { \"mot-clé\": \"Étiquette\" } ajoute une règle, { \"mot-clé\": null } en désactive une.",
+  "évaluation_leave_one_out": {
+    "fiches": 92,
+    "précision": 0.95,
+    "rappel": 0.52,
+    "par_étiquette": {
+      "Bonus : dégâts reçus réduits": {
+        "précision": 1,
+        "rappel": 0.56,
+        "exclue": false
+      },
+      "Bonus de brisure": {
+        "précision": null,
+        "rappel": 0,
+        "exclue": false
+      },
+      "Bonus de CRIT": {
+        "précision": null,
+        "rappel": 0,
+        "exclue": false
+      },
+      "Bonus de dégâts infligés": {
+        "précision": 0.86,
+        "rappel": 0.5,
+        "exclue": false
+      },
+      "Bonus de statistiques": {
+        "précision": 0.67,
+        "rappel": 0.31,
+        "exclue": true
+      },
+      "Charge d'ultime accélérée": {
+        "précision": 0,
+        "rappel": 0,
+        "exclue": true
+      },
+      "Compte à rebours d'ultime": {
+        "précision": 0,
+        "rappel": 0,
+        "exclue": true
+      },
+      "Contre-attaque": {
+        "précision": 1,
+        "rappel": 0.93,
+        "exclue": false
+      },
+      "Dégâts CRIT": {
+        "précision": null,
+        "rappel": 0,
+        "exclue": false
+      },
+      "Dégâts sur la durée": {
+        "précision": 0.63,
+        "rappel": 0.56,
+        "exclue": true
+      },
+      "Énergie occulte": {
+        "précision": null,
+        "rappel": 0,
+        "exclue": false
+      },
+      "Étourdissement": {
+        "précision": 0.95,
+        "rappel": 0.87,
+        "exclue": false
+      },
+      "Malus : dégâts de BREAK reçus accrus": {
+        "précision": 1,
+        "rappel": 1,
+        "exclue": false
+      },
+      "Malus : dégâts de statistique accrus": {
+        "précision": 0.59,
+        "rappel": 0.38,
+        "exclue": true
+      },
+      "Malus : dégâts reçus accrus": {
+        "précision": 0.67,
+        "rappel": 0.46,
+        "exclue": true
+      },
+      "Malus : résistance CRIT réduite": {
+        "précision": 0.95,
+        "rappel": 0.95,
+        "exclue": false
+      },
+      "Malus : statistiques accrues": {
+        "précision": null,
+        "rappel": 0,
+        "exclue": false
+      },
+      "Provocation": {
+        "précision": 0.85,
+        "rappel": 0.73,
+        "exclue": false
+      },
+      "Rayon Noir": {
+        "précision": 1,
+        "rappel": 1,
+        "exclue": false
+      },
+      "Réduction des dégâts": {
+        "précision": 0,
+        "rappel": 0,
+        "exclue": true
+      },
+      "Réduction des dégâts de statistique": {
+        "précision": 0,
+        "rappel": 0,
+        "exclue": true
+      },
+      "Résurrection": {
+        "précision": 1,
+        "rappel": 0.86,
+        "exclue": false
+      },
+      "Soin": {
+        "précision": 1,
+        "rappel": 0.8,
+        "exclue": false
+      },
+      "Taux de Rayon Noir": {
+        "précision": null,
+        "rappel": 0,
+        "exclue": false
+      },
+      "Territoire": {
+        "précision": 0.8,
+        "rappel": 0.67,
+        "exclue": false
+      }
+    }
+  },
+  "règles": [
+    {
+      "mot_clé": "allies damage received",
+      "étiquette": "Bonus : dégâts reçus réduits",
+      "précision": 1,
+      "fiches": 5
+    },
+    {
+      "mot_clé": "allies critical",
+      "étiquette": "Bonus de CRIT",
+      "précision": 1,
+      "fiches": 3
+    },
+    {
+      "mot_clé": "allies damage dealt",
+      "étiquette": "Bonus de dégâts infligés",
+      "précision": 1,
+      "fiches": 6
+    },
+    {
+      "mot_clé": "countered",
+      "étiquette": "Contre-attaque",
+      "précision": 1,
+      "fiches": 9
+    },
+    {
+      "mot_clé": "grants counter",
+      "étiquette": "Contre-attaque",
+      "précision": 1,
+      "fiches": 9
+    },
+    {
+      "mot_clé": "deal",
+      "étiquette": "Contre-attaque",
+      "précision": 1,
+      "fiches": 3
+    },
+    {
+      "mot_clé": "stuns",
+      "étiquette": "Étourdissement",
+      "précision": 1,
+      "fiches": 12
+    },
+    {
+      "mot_clé": "stop all enemies",
+      "étiquette": "Étourdissement",
+      "précision": 1,
+      "fiches": 5
+    },
+    {
+      "mot_clé": "enemies break",
+      "étiquette": "Étourdissement",
+      "précision": 1,
+      "fiches": 4
+    },
+    {
+      "mot_clé": "enemies damage dealt",
+      "étiquette": "Étourdissement",
+      "précision": 1,
+      "fiches": 4
+    },
+    {
+      "mot_clé": "break damage received",
+      "étiquette": "Malus : dégâts de BREAK reçus accrus",
+      "précision": 1,
+      "fiches": 14
+    },
+    {
+      "mot_clé": "hit resistance",
+      "étiquette": "Malus : résistance CRIT réduite",
+      "précision": 1,
+      "fiches": 19
+    },
+    {
+      "mot_clé": "enemies attacks",
+      "étiquette": "Provocation",
+      "précision": 1,
+      "fiches": 6
+    },
+    {
+      "mot_clé": "enemy's attacks",
+      "étiquette": "Provocation",
+      "précision": 1,
+      "fiches": 5
+    },
+    {
+      "mot_clé": "flash",
+      "étiquette": "Rayon Noir",
+      "précision": 1,
+      "fiches": 20
+    },
+    {
+      "mot_clé": "revival",
+      "étiquette": "Résurrection",
+      "précision": 1,
+      "fiches": 6
+    },
+    {
+      "mot_clé": "allies hp",
+      "étiquette": "Soin",
+      "précision": 1,
+      "fiches": 4
+    },
+    {
+      "mot_clé": "depletes",
+      "étiquette": "Territoire",
+      "précision": 1,
+      "fiches": 4
+    }
+  ],
+  "règles_manuelles": {}
+}

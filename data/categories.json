@@ -1,0 +1,8 @@
+{
+  "_à_propos": "Catégorie de chaque fiche, déduite de son rôle. Utilisé par le filtre « Catégorie » de la page et contrôlé par la synchro (un rôle absent d'ici est signalé dans le rapport ; la fiche n'apparaît alors que sous « Tous »). Une fiche peut remplacer la déduction par un champ « catégories » (tableau), ex. [\"Support\", \"Spécialiste\"]. L'ordre des catégories ici est celui des pastilles.",
+  "catégories": {
+    "DPS": ["Attaquant"],
+    "Support": ["Soutien", "Soigneur", "Renforceur"],
+    "Spécialiste": ["Affaiblisseur", "Entravant", "Défenseur", "Tank", "Agitateur"]
+  }
+}
