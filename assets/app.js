@@ -143,7 +143,7 @@
     return `<a class="card" data-el="${esc(r.el)}" href="${ficheHref(r)}" aria-label="${esc(r.d['titre'] || r.name)} — ${esc(r.rar)}, ${esc(r.el)}">
 <div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
 <div class="card-body">
-<div class="card-head"><img class="icon" src="${esc(r.icon)}" alt="" loading="lazy" decoding="async" width="56" height="56">
+<div class="card-head"><img class="icon" src="${esc(r.icon)}" alt="" loading="lazy" decoding="async" width="50" height="50">
 <div class="card-id"><div class="meta">${marks(r.rar)}<span class="rar">${esc(r.rar)}</span><span class="role">${esc(r.role || '—')}<span class="m-only"> · ${esc(r.spe || '—')}</span></span></div>
 <div class="epi">(${esc(r.epi)})</div><div class="name">${esc(r.name)}</div></div>
 ${r.rn ? '<span class="stamp-rn" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div>
@@ -441,10 +441,11 @@ ${notes.length ? `<div class="kit-notes">${notes.join('')}</div>` : ''}</div>${n
 <section class="idcard" aria-label="Identité">
 <div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
 <div class="idcard-body">
-<div class="idcard-head"><img class="icon" src="${esc(r.icon)}" alt="" decoding="async" width="128" height="128">
+<div class="idcard-title"><div class="idcard-head"><img class="icon" src="${esc(r.icon)}" alt="" decoding="async" width="50" height="50">
 <div class="idcard-id"><div class="meta">${marks(r.rar, 'big')}<span class="rar">${esc(r.rar)}</span><span>${esc(r.cats.join(' · '))}</span></div>
-<div class="epi">(${esc(r.epi)})</div><h1 tabindex="-1">${esc(r.name)}</h1></div>
+<div class="epi">(${esc(r.epi)})</div></div>
 ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div>
+<h1 tabindex="-1">${esc(r.name)}</h1></div>
 <dl class="info"><dt>Rôle</dt><dd>${esc(r.role || '—')}</dd><dt>Spécialité</dt><dd>${esc(r.spe || '—')}</dd><dt>Affiliation</dt><dd>${esc(r.d['affiliation'] || '—')}</dd><dt>Sortie</dt><dd>${esc(dateFr(r.d['date_de_sortie']))}</dd></dl>
 <div class="sgrid">${sstat('PV', r.pv, maxPV, true)}${sstat('Taijutsu', r.tai, maxST, td)}${sstat('Jujutsu', r.juj, maxST, !td)}${sstat('EO init.', r.eoi)}${sstat('EO max.', r.eom)}${sstat('Jauge sp.', r.js)}</div>
 </div></section>
