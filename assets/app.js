@@ -225,7 +225,7 @@ ${num(r.pv, maxPV, true)}${num(r.tai, maxST, td)}${num(r.juj, maxST, !td)}
     <div class="filters-body">
       <input class="search" type="search" placeholder="Nom ou épithète…" aria-label="Rechercher un nom ou une épithète" autocomplete="off" spellcheck="false" data-search>
       ${GROUPS.map(groupHTML).join('')}
-      <div class="reset-help"><button type="button" class="link-reset" data-reset>Tout réinitialiser</button><span>Plusieurs choix dans un groupe : l'un ou l'autre. Entre groupes : tous à la fois.</span></div>
+      <div class="reset-help"><button type="button" class="link-reset" data-reset>Tout réinitialiser</button></div>
     </div>
     <div class="sheet-foot"><button type="button" class="btn-see" data-close-filters></button></div>
   </div>
