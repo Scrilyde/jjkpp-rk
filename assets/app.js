@@ -128,7 +128,7 @@
     const t = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
     document.querySelectorAll('[data-theme-set]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.themeSet === t)));
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.content = t === 'light' ? '#EDE7DA' : '#12100E';
+    if (meta) meta.content = t === 'light' ? '#fdf7f2' : '#0e121a';
   }
   function setTheme(t) {
     document.documentElement.setAttribute('data-theme', t);
