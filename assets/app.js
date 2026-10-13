@@ -68,7 +68,6 @@
     return GROUPS.every(g => g === skip || !st[g].length || st[g].some(v => has(r, g, v)));
   }
   const filtered = (st = state) => DATA.filter(r => matches(r, st));
-  const facet = (g, v) => DATA.filter(r => matches(r, state, g) && has(r, g, v)).length;
   const active = (st = state) => GROUPS.flatMap(g => st[g].map(v => ({ g, v })));
   const options = g => (g === 'élément' ? ELEMENTS : g === 'rareté' ? RARITIES : g === 'catégorie' ? CATEGORIES : SPECIALITIES);
 
@@ -147,7 +146,7 @@
 <div class="card-head"><img class="icon" src="${esc(r.icon)}" alt="" loading="lazy" decoding="async" width="56" height="56">
 <div class="card-id"><div class="meta">${marks(r.rar)}<span class="rar">${esc(r.rar)}</span><span class="role">${esc(r.role || '—')}<span class="m-only"> · ${esc(r.spe || '—')}</span></span></div>
 <div class="epi">(${esc(r.epi)})</div><div class="name">${esc(r.name)}</div></div>
-${r.rn ? '<span class="stamp-rn" title="Rayon Noir">黒閃</span>' : ''}</div>
+${r.rn ? '<span class="stamp-rn" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div>
 <div class="stats">${stat('PV', 'PV', r.pv, maxPV, true)}${stat('TAI', 'TAIJUTSU', r.tai, maxST, td)}${stat('JUJ', 'JUJUTSU', r.juj, maxST, !td)}</div>
 <div class="card-foot"><span>EO <span class="num">${nf(r.eoi)}</span> / <span class="num">${nf(r.eom)}</span></span><span>Jauge<span class="m-only"> sp.</span> <span class="num">${nf(r.js)}</span></span>${r.rn ? '<span class="end rn m-only">Rayon Noir</span>' : ''}<span class="end d-only">${esc(r.spe)}</span></div>
 </div></a>`;
@@ -167,7 +166,7 @@ ${r.rn ? '<span class="stamp-rn" title="Rayon Noir">黒閃</span>' : ''}</div>
 <td class="tname"><div class="epi">(${esc(r.epi)})</div><a href="${ficheHref(r)}">${esc(r.name)}</a></td>
 <td><span class="trar">${marks(r.rar)}<span class="num">${esc(r.rar)}</span></span></td><td>${esc(r.role || '—')}</td><td class="mu">${esc(r.spe || '—')}</td>
 ${num(r.pv, maxPV, true)}${num(r.tai, maxST, td)}${num(r.juj, maxST, !td)}
-<td class="ts">${nf(r.eoi)}</td><td class="ts">${nf(r.eom)}</td><td class="ts">${nf(r.js)}</td><td class="tc">${r.rn ? '<span class="stamp-rn row" role="img" aria-label="Rayon Noir" title="Rayon Noir">黒閃</span>' : ''}</td></tr>`;
+<td class="ts">${nf(r.eoi)}</td><td class="ts">${nf(r.eom)}</td><td class="ts">${nf(r.js)}</td><td class="tc">${r.rn ? '<span class="stamp-rn row" role="img" aria-label="Rayon Noir" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</td></tr>`;
     }).join('');
     return `<div class="table-wrap"><table class="ftable"><caption class="visually-hidden">Fiches, cliquez un en-tête pour trier</caption>
 <colgroup><col style="width:36px"><col style="width:48px"><col><col style="width:60px"><col style="width:100px"><col style="width:80px"><col style="width:104px"><col style="width:104px"><col style="width:104px"><col style="width:56px"><col style="width:56px"><col style="width:68px"><col style="width:40px"></colgroup>
@@ -203,10 +202,10 @@ ${num(r.pv, maxPV, true)}${num(r.tai, maxST, td)}${num(r.juj, maxST, !td)}
     const head = `<div class="fgroup-head"><span>${GROUP_LABEL[g]}</span><span class="sel" data-sel="${g}"></span></div>`;
     if (g === 'élément') {
       return `<div class="fgroup" role="group" aria-label="${GROUP_LABEL[g]}">${head}<div class="el-grid">${ELEMENTS.map(e =>
-        `<button type="button" data-el="${e}" data-g="${g}" data-v="${e}" aria-pressed="false"><span class="k">${KANJI[e]}</span><span class="lab">${e} <span class="num n"></span></span></button>`).join('')}</div></div>`;
+        `<button type="button" data-el="${e}" data-g="${g}" data-v="${e}" aria-pressed="false"><span class="k">${KANJI[e]}</span><span class="lab">${e}</span></button>`).join('')}</div></div>`;
     }
     return `<div class="fgroup" role="group" aria-label="${GROUP_LABEL[g]}">${head}<div class="opt-grid">${options(g).map(v =>
-      `<button type="button" data-g="${g}" data-v="${esc(v)}" aria-pressed="false">${g === 'rareté' ? marks(v) : ''}${esc(v)}<span class="n"></span></button>`).join('')}</div></div>`;
+      `<button type="button" data-g="${g}" data-v="${esc(v)}" aria-pressed="false">${g === 'rareté' ? marks(v) : ''}${esc(v)}</button>`).join('')}</div></div>`;
   }
 
   function renderListSkeleton() {
@@ -252,12 +251,7 @@ ${num(r.pv, maxPV, true)}${num(r.tai, maxST, td)}${num(r.juj, maxST, !td)}
     const badge = view.querySelector('.btn-filters .badge-n');
     badge.hidden = !act.length; badge.textContent = act.length;
     view.querySelector('.btn-filters').setAttribute('aria-label', 'Filtres' + (act.length ? ` (${act.length} actif${act.length > 1 ? 's' : ''})` : ''));
-    view.querySelectorAll('[data-g][data-v]').forEach(b => {
-      const g = b.dataset.g, v = b.dataset.v;
-      b.setAttribute('aria-pressed', String(state[g].includes(v)));
-      const c = b.querySelector('.n');
-      if (c) c.textContent = facet(g, v);
-    });
+    view.querySelectorAll('[data-g][data-v]').forEach(b => b.setAttribute('aria-pressed', String(state[b.dataset.g].includes(b.dataset.v))));
     view.querySelectorAll('[data-sel]').forEach(e => { const k = state[e.dataset.sel].length; e.textContent = k ? k + ' sélect.' : ''; });
     view.querySelector('.btn-see').textContent = 'Voir ' + fiches(n);
     view.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === state.vue)));
@@ -450,7 +444,7 @@ ${notes.length ? `<div class="kit-notes">${notes.join('')}</div>` : ''}</div>${n
 <div class="idcard-head"><img class="icon" src="${esc(r.icon)}" alt="" decoding="async" width="128" height="128">
 <div class="idcard-id"><div class="meta">${marks(r.rar, 'big')}<span class="rar">${esc(r.rar)}</span><span>${esc(r.cats.join(' · '))}</span></div>
 <div class="epi">(${esc(r.epi)})</div><h1 tabindex="-1">${esc(r.name)}</h1></div>
-${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon Noir">黒閃</span>' : ''}</div>
+${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div>
 <dl class="info"><dt>Rôle</dt><dd>${esc(r.role || '—')}</dd><dt>Spécialité</dt><dd>${esc(r.spe || '—')}</dd><dt>Affiliation</dt><dd>${esc(r.d['affiliation'] || '—')}</dd><dt>Sortie</dt><dd>${esc(dateFr(r.d['date_de_sortie']))}</dd></dl>
 <div class="sgrid">${sstat('PV', r.pv, maxPV, true)}${sstat('Taijutsu', r.tai, maxST, td)}${sstat('Jujutsu', r.juj, maxST, !td)}${sstat('EO init.', r.eoi)}${sstat('EO max.', r.eom)}${sstat('Jauge sp.', r.js)}</div>
 </div></section>
