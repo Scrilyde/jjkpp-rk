@@ -143,7 +143,7 @@
     return `<a class="card" data-el="${esc(r.el)}" href="${ficheHref(r)}" aria-label="${esc(r.d['titre'] || r.name)} — ${esc(r.rar)}, ${esc(r.el)}">
 <div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
 <div class="card-body">
-<div class="card-head"><img class="icon" src="${esc(r.icon)}" alt="" loading="lazy" decoding="async" width="50" height="50">
+<div class="card-head"><img class="icon" src="${esc(r.icon)}" alt="" loading="lazy" decoding="async" width="64" height="64">
 <div class="card-id"><div class="meta">${marks(r.rar)}<span class="rar">${esc(r.rar)}</span><span class="role">${esc(r.role || '—')}<span class="m-only"> · ${esc(r.spe || '—')}</span></span></div>
 <div class="epi">(${esc(r.epi)})</div><div class="name">${esc(r.name)}</div></div>
 ${r.rn ? '<span class="stamp-rn" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div>
@@ -162,7 +162,7 @@ ${r.rn ? '<span class="stamp-rn" title="Rayon Noir"><span>黒</span><span>閃</s
     const rows = list.map(r => {
       const td = (r.tai || 0) >= (r.juj || 0);
       return `<tr data-href="${ficheHref(r)}"><td><span class="tk" data-el="${esc(r.el)}" aria-label="${esc(r.el)}"><span class="k">${r.k}</span></span></td>
-<td><img class="icon" src="${esc(r.icon)}" alt="" loading="lazy" decoding="async" width="38" height="38"></td>
+<td><img class="icon" src="${esc(r.icon)}" alt="" loading="lazy" decoding="async" width="46" height="46"></td>
 <td class="tname"><div class="epi">(${esc(r.epi)})</div><a href="${ficheHref(r)}">${esc(r.name)}</a></td>
 <td><span class="trar">${marks(r.rar)}<span class="num">${esc(r.rar)}</span></span></td><td>${esc(r.role || '—')}</td><td class="mu">${esc(r.spe || '—')}</td>
 ${num(r.pv, maxPV, true)}${num(r.tai, maxST, td)}${num(r.juj, maxST, !td)}
@@ -441,7 +441,7 @@ ${notes.length ? `<div class="kit-notes">${notes.join('')}</div>` : ''}</div>${n
 <section class="idcard" aria-label="Identité">
 <div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
 <div class="idcard-body">
-<div class="idcard-title"><div class="idcard-head"><img class="icon" src="${esc(r.icon)}" alt="" decoding="async" width="50" height="50">
+<div class="idcard-title"><div class="idcard-head"><img class="icon" src="${esc(r.icon)}" alt="" decoding="async" width="80" height="80">
 <div class="idcard-id"><div class="meta">${marks(r.rar, 'big')}<span class="rar">${esc(r.rar)}</span><span>${esc(r.cats.join(' · '))}</span></div>
 <div class="epi">(${esc(r.epi)})</div></div>
 ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div>
