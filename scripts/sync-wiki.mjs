@@ -6,13 +6,12 @@
 //    S'y ajoutent, à la demande du mainteneur : page_wiki, date au format JJ-MM-AAAA, icône hébergée par le wiki.
 //  - rapprochement : page_wiki (fait foi) > url_wiki > clé_icône = UnitN > clé_image = Card Art (unique des deux côtés).
 //    Tout cas incertain (conflit, fiche sans correspondance, page ressemblante) va dans le rapport sans être fusionné.
-//  - nouveaux personnages : construits depuis le wiki et traduits via data/glossaire.json (+ DeepL si DEEPL_API_KEY) ;
-//    étiquettes déduites du texte anglais via data/etiquettes.json et marquées dans « étiquettes_automatiques ».
+//  - nouveaux personnages : construits depuis le wiki et traduits via data/glossaire.json (+ DeepL si DEEPL_API_KEY).
 //  - catégories (data/categories.json) : tout rôle qui n'y figure pas, sur une fiche sans champ « catégories », est signalé.
 //
 // Usage : node scripts/sync-wiki.mjs [--dry-run] [--report <fichier.md>] [--commit-message <fichier>]
 //         [--data <characters.json>] [--glossaire <glossaire.json>] [--deepl-cache <fichier.json>] [--cache <dossier>]
-//         [--categories <categories.json>] [--etiquettes <etiquettes.json>]
+//         [--categories <categories.json>]
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -20,7 +19,6 @@ import { createClient, loadWiki, fetchImageUrls, cleanWikitext, isBlank, WIKI, U
 import { matchFiches, wikiKit, ignoredParams, parseStat, normalizeDate, blackFlash, titleFromUrl, STATS } from './lib/fiches.mjs';
 import { createTranslator } from './lib/traduction.mjs';
 import { loadDotEnv, readCache, writeCache, translateKeys, DEEPL_URL } from './lib/deepl.mjs';
-import { kitWords, deduceTags } from './lib/etiquettes.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -30,7 +28,6 @@ const DATA = path.resolve(opt('--data', path.join(ROOT, 'data', 'characters.json
 const GLOSSAIRE = path.resolve(opt('--glossaire', path.join(ROOT, 'data', 'glossaire.json')));
 const DEEPL_CACHE = path.resolve(opt('--deepl-cache', path.join(ROOT, 'data', 'traductions-deepl.json')));
 const CATEGORIES = path.resolve(opt('--categories', path.join(ROOT, 'data', 'categories.json')));
-const ETIQUETTES = path.resolve(opt('--etiquettes', path.join(ROOT, 'data', 'etiquettes.json')));
 const REPORT = path.resolve(opt('--report', path.join(ROOT, 'sync-report.md')));
 const COMMIT_MESSAGE = opt('--commit-message', null);
 const MIN_WIKI_PAGES = 50;   // garde-fou : en dessous, le wiki est probablement indisponible ou vandalisé
@@ -78,7 +75,7 @@ function translateKit(kit, tr) {
   return { kit: out, review, count };
 }
 
-function buildFiche(title, w, unit, iconUrl, tr, tagTable) {
+function buildFiche(title, w, unit, iconUrl, tr) {
   const m = /^\((.*)\)\s*(.*)$/.exec(title);
   const untranslated = [];
   const value = (table, raw, fallback = raw) => {
@@ -90,7 +87,6 @@ function buildFiche(title, w, unit, iconUrl, tr, tagTable) {
   const role = cleanWikitext(w['Role']), focus = cleanWikitext(w['Focus']), aff = isBlank(w['Affiliation']) ? null : cleanWikitext(w['Affiliation']);
   const { kit, notes } = wikiKit(w);
   const t = translateKit(kit, tr);
-  const tags = deduceTags(kitWords(kit, isBlank(w['Characteristic']) ? '' : cleanWikitext(w['Characteristic'])), tagTable);
   const statistiques = Object.fromEntries(STATS.map(([k, wk]) => [k, parseStat(w[wk])]));
   statistiques['rayon_noir'] = value('rayon_noir', blackFlash(w), 'N/D');
   const fiche = {
@@ -106,8 +102,7 @@ function buildFiche(title, w, unit, iconUrl, tr, tagTable) {
     'limité': tr.value('limité', isBlank(w['Limited-Yes']) ? null : cleanWikitext(w['Limited-Yes'])) ?? false,
     'statistiques': statistiques,
     ...t.kit,
-    'étiquettes': [...tags.keys()],
-    ...(tags.size ? { 'étiquettes_automatiques': [...tags.keys()] } : {}),
+    'étiquettes': [],
     'clé_image': cleanWikitext(w['Card Art']) || null,
     'clé_icône': unit,
     'url_icône': iconUrl,
@@ -116,7 +111,7 @@ function buildFiche(title, w, unit, iconUrl, tr, tagTable) {
     fiche['traduction_automatique'] = Object.fromEntries(Object.entries(t.review).filter(([, v]) => v.length));
   fiche['page_wiki'] = title;
   const badStats = STATS.filter(([k]) => statistiques[k] == null).map(([, wk]) => `${wk} = « ${w[wk] ?? ''} »`);
-  return { fiche, count: t.count, review: t.review, untranslated, notes, badStats, ignored: ignoredParams(w), tags };
+  return { fiche, count: t.count, review: t.review, untranslated, notes, badStats, ignored: ignoredParams(w) };
 }
 
 async function main() {
@@ -124,7 +119,6 @@ async function main() {
   const fiches = JSON.parse(fs.readFileSync(DATA, 'utf8'));
   const glossaire = JSON.parse(fs.readFileSync(GLOSSAIRE, 'utf8'));
   const categoryRoles = JSON.parse(fs.readFileSync(CATEGORIES, 'utf8'))['catégories'] || {};
-  const tagTable = fs.existsSync(ETIQUETTES) ? JSON.parse(fs.readFileSync(ETIQUETTES, 'utf8')) : {};
   const snapshot = fiches.map(f => JSON.stringify(f));
   const client = createClient({ cacheDir: opt('--cache', null), log: console.log });
   const say = s => console.log(s);
@@ -201,7 +195,7 @@ async function main() {
   let deepl = readCache(DEEPL_CACHE), deeplNote = null, deeplNew = 0;
   const build = () => {
     const tr = createTranslator(glossaire, { deepl });
-    const built = newPages.map(p => ({ ...p, ...buildFiche(p.title, p.w, p.unit, p.unit ? icons[p.unit] ?? null : null, tr, tagTable) }));
+    const built = newPages.map(p => ({ ...p, ...buildFiche(p.title, p.w, p.unit, p.unit ? icons[p.unit] ?? null : null, tr) }));
     return { tr, built };
   };
   let { tr, built } = build();
@@ -253,8 +247,6 @@ async function main() {
       if (b.untranslated.length) md.push(`Valeurs laissées en anglais : ${b.untranslated.join(', ')}.\n`);
       if (b.ignored.length) md.push(`Paramètres ignorés (non repris) : ${b.ignored.join(', ')}.\n`);
       if (b.notes.length) md.push(`Valeurs annotées : ${b.notes.join(' ; ')}.\n`);
-      if (b.tags.size) md.push(`Étiquettes automatiques (à relire) : ${[...b.tags].map(([t, k]) => `${t} (« ${k.join(' », « ')} »)`).join(' ; ')}.
-`);
       if (b.badStats.length) md.push(`**Statistiques illisibles** : ${b.badStats.join(' ; ')}.\n`);
       section('Lignes composées à relire', b.review['composées'].map(x => `\`${x.champ}\` l. ${x.ligne} — ${x.en}`), true);
       section('Lignes traduites par DeepL à relire', b.review['deepl'].map(x => `\`${x.champ}\` l. ${x.ligne} — ${x.en}`), true);
