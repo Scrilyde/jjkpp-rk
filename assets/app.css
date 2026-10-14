@@ -176,8 +176,8 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
 .el-grid .lab{font-size:12.5px;color:var(--mu)}
 .el-grid button[aria-pressed="true"]{background:var(--el-fill);border-color:var(--el-fill)}
 .el-grid button[aria-pressed="true"] .k,.el-grid button[aria-pressed="true"] .lab{color:var(--el-on)}
-.opt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
-.opt-grid button{height:44px;background:color-mix(in srgb,var(--acc) 6%,var(--btn));border:1px solid color-mix(in srgb,var(--acc) 30%,var(--ln2));transition:background-color .2s,border-color .2s,color .2s;border-radius:var(--pill);display:flex;align-items:center;justify-content:center;gap:7px;padding:0 10px;font-size:13.5px;color:var(--ink);white-space:nowrap}
+.opt-grid{display:flex;gap:6px}
+.opt-grid button{flex:1 1 0;min-width:max-content;height:44px;background:color-mix(in srgb,var(--acc) 6%,var(--btn));border:1px solid color-mix(in srgb,var(--acc) 30%,var(--ln2));transition:background-color .2s,border-color .2s,color .2s;border-radius:var(--pill);display:flex;align-items:center;justify-content:center;gap:7px;padding:0 10px;font-size:13.5px;color:var(--ink);white-space:nowrap}
 .opt-grid button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:var(--acc-on);font-weight:600}
 .el-grid button:hover:not([aria-pressed="true"]),.el-quick button:hover:not([aria-pressed="true"]){background:color-mix(in srgb,var(--el-fill) 22%,var(--btn));border-color:var(--el-fill)}
 .opt-grid button:hover:not([aria-pressed="true"]){background:var(--acc-soft);border-color:var(--acc)}
@@ -392,7 +392,7 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
   .el-grid button{height:40px}
   .el-grid .k{font-size:19px}
   .el-grid .lab{font-size:12.5px}
-  .opt-grid button{height:38px;gap:6px;padding:0 6px;font-size:12.5px}
+  .opt-grid button{height:38px;gap:6px;padding:0 10px;font-size:12.5px}
 
   .d-results-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding:22px 32px 18px;border-bottom:1px solid var(--ln)}
   .d-results-head .left{display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap}
