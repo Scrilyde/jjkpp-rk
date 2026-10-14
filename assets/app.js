@@ -204,7 +204,7 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
         `<button type="button" data-el="${e}" data-g="${g}" data-v="${e}" aria-pressed="false"><span class="k">${KANJI[e]}</span><span class="lab">${e}</span></button>`).join('')}</div></div>`;
     }
     return `<div class="fgroup" role="group" aria-label="${GROUP_LABEL[g]}">${head}<div class="opt-grid">${options(g).map(v =>
-      `<button type="button" data-g="${g}" data-v="${esc(v)}" aria-pressed="false">${g === 'rareté' ? marks(v) : ''}${esc(v)}</button>`).join('')}</div></div>`;
+      `<button type="button" data-g="${g}" data-v="${esc(v)}" aria-pressed="false">${g === 'rareté' ? marks(v) : ''}<span class="lab" data-t="${esc(v)}">${esc(v)}</span></button>`).join('')}</div></div>`;
   }
 
   function renderListSkeleton() {
