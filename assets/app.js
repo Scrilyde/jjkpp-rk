@@ -385,9 +385,9 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
     if (target) notes.push(`<span>${nMod} compétence${nMod > 1 ? 's changent' : ' change'} ${esc(phrase(target))}</span>`);
     if (nEN) notes.push(`<span><span class="en-badge">EN</span>${nEN} ligne${nEN > 1 ? 's restées' : ' restée'} en anglais, soulignée${nEN > 1 ? 's' : ''} en pointillé</span>`);
     const verSeg = versions.length ? `<div class="grp"><span class="tlab">Version</span><div class="seg ver v${versions.length + 1}" role="group" aria-label="Version du kit">
-<button type="button" data-ver="base" aria-pressed="${ver === 'base'}">Base</button>${versions.map(v => `<button type="button" class="fill" data-ver="${v}" aria-pressed="${ver === v}">${esc(labels[v].text)}</button>`).join('')}</div></div>` : '';
+<button type="button" data-ver="base" aria-pressed="${ver === 'base'}"><span class="lab" data-t="Base">Base</span></button>${versions.map(v => `<button type="button" class="fill" data-ver="${v}" aria-pressed="${ver === v}"><span class="lab" data-t="${esc(labels[v].text)}">${esc(labels[v].text)}</span></button>`).join('')}</div></div>` : '';
     return `<div class="kit-head"><h2 id="kit-title">Kit de compétences</h2>
-<div class="kit-toggles${versions.length ? '' : ' one'}"><div class="grp"><span class="tlab">Niveau</span><div class="seg lvl" role="group" aria-label="Niveau du kit"><button type="button" data-lvl="1" aria-pressed="${lvl === 1}">Niv. 1</button><button type="button" data-lvl="10" aria-pressed="${lvl === 10}">Niv. 10</button></div></div>${verSeg}</div>
+<div class="kit-toggles${versions.length ? '' : ' one'}"><div class="grp"><span class="tlab">Niveau</span><div class="seg lvl" role="group" aria-label="Niveau du kit"><button type="button" data-lvl="1" aria-pressed="${lvl === 1}"><span class="lab" data-t="Niv. 1">Niv. 1</span></button><button type="button" data-lvl="10" aria-pressed="${lvl === 10}"><span class="lab" data-t="Niv. 10">Niv. 10</span></button></div></div>${verSeg}</div>
 ${notes.length ? `<div class="kit-notes">${notes.join('')}</div>` : ''}</div>${notes.length ? `<div class="kit-notes after">${notes.join('')}</div>` : ''}${sections}`;
   }
 
@@ -469,9 +469,15 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
     const s = p.toString();
     history.replaceState(null, '', '#/fiche/' + encodeURIComponent(route.id) + (s ? '?' + s : ''));
     const { lvl, kit, toc } = ficheKit(r, s);
-    const before = new Map([...view.querySelectorAll('#kit .seg')].map(g => [g.getAttribute('aria-label'), segBox(g)]));
+    // Les sélecteurs déjà affichés sont gardés tels quels : seul aria-pressed change, la pastille et les couleurs glissent sans saut.
+    const keep = view.querySelector('#kit .kit-toggles');
     view.querySelector('#kit').innerHTML = kit;
-    view.querySelectorAll('#kit .seg').forEach(g => placeSeg(g, before.get(g.getAttribute('aria-label'))));
+    const fresh = view.querySelector('#kit .kit-toggles');
+    if (keep && fresh && keep.querySelectorAll('button').length === fresh.querySelectorAll('button').length) {
+      const pressed = [...fresh.querySelectorAll('button')].map(b => b.getAttribute('aria-pressed'));
+      fresh.replaceWith(keep);
+      keep.querySelectorAll('button').forEach((b, i) => { if (b.getAttribute('aria-pressed') !== pressed[i]) b.setAttribute('aria-pressed', pressed[i]); });
+    }
     view.querySelector('.toc').innerHTML = toc;
     view.querySelectorAll('[data-nav][href]').forEach(a => { a.setAttribute('href', a.getAttribute('href').split('?')[0] + (lvl === 10 ? '?niv=10' : '')); });
     const again = view.querySelector(`#kit [${attr.name}="${attr.value}"]`);
