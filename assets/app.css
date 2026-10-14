@@ -38,7 +38,7 @@
 :root{
   /* couleurs d'élément (bandes, kanji, accents), identiques dans les deux modes */
   --c-jaune:#d6a421;--c-vert:#2e9f5d;--c-bleu:#356cd7;--c-rouge:#d13730;
-  /* texte posé sur une couleur d'élément : foncé sur jaune et vert, blanc sur bleu et rouge (contraste ≥ 4,5:1) */
+  /* texte posé sur une couleur d'élément : blanc pour les quatre éléments */
   --on-dark:#0a0c10;--on-light:#ffffff;
   /* bandes d'élément (texte blanc) : vert foncé pour que le blanc atteigne 4,5:1 */
   --strip-jaune:#d6a421;--strip-vert:#27874f;--strip-bleu:var(--c-bleu);--strip-rouge:var(--c-rouge);
@@ -53,8 +53,8 @@
 [data-s="eoi"]{--s:var(--s-eoi)}[data-s="eom"]{--s:var(--s-eom)}[data-s="js"]{--s:var(--s-js)}
 /* couleur des compétences (étiquette, coût, conditions) : celle de l'élément du personnage */
 [data-kind]{--k:var(--el-tx)}
-[data-el="Jaune"]{--el-fill:var(--c-jaune);--el-tx:var(--c-jaune);--el-on:var(--on-dark);--el-soft:var(--soft-jaune);--el-strip:var(--strip-jaune)}
-[data-el="Vert"]{--el-fill:var(--c-vert);--el-tx:var(--c-vert);--el-on:var(--on-dark);--el-soft:var(--soft-vert);--el-strip:var(--strip-vert)}
+[data-el="Jaune"]{--el-fill:var(--c-jaune);--el-tx:var(--c-jaune);--el-on:var(--on-light);--el-soft:var(--soft-jaune);--el-strip:var(--strip-jaune)}
+[data-el="Vert"]{--el-fill:var(--c-vert);--el-tx:var(--c-vert);--el-on:var(--on-light);--el-soft:var(--soft-vert);--el-strip:var(--strip-vert)}
 [data-el="Bleu"]{--el-fill:var(--c-bleu);--el-tx:var(--c-bleu);--el-on:var(--on-light);--el-soft:var(--soft-bleu);--el-strip:var(--strip-bleu)}
 [data-el="Rouge"]{--el-fill:var(--c-rouge);--el-tx:var(--c-rouge);--el-on:var(--on-light);--el-soft:var(--soft-rouge);--el-strip:var(--strip-rouge)}
 /* texte coloré par élément : variantes éclaircies la nuit, assombries le jour, pour rester lisible */
