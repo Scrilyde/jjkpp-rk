@@ -533,15 +533,16 @@ body[data-route="fiche"] .topbar{position:static}
 
 /* cartes : léger soulèvement au survol */
 .card{transition:transform .2s cubic-bezier(.2,.7,.3,1),border-color .2s}
-/* au survol, le cadre reprend le dégradé de la bande d'élément */
+/* au survol, le cadre reprend le dégradé de la bande d'élément ;
+   sous la bande, le fond laisse voir ce dégradé pour éviter un liseré dans les coins arrondis */
 .card:hover{
   transform:translateY(-3px);
   border-color:transparent;
   background:
-    linear-gradient(var(--sf),var(--sf)) padding-box,
+    linear-gradient(90deg,transparent 20px,var(--sf) 20px) padding-box,
     linear-gradient(180deg,var(--el-strip,var(--ln2)),var(--el-strip2,var(--el-strip,var(--ln2)))) border-box;
   background:
-    linear-gradient(var(--sf),var(--sf)) padding-box,
+    linear-gradient(90deg,transparent 20px,var(--sf) 20px) padding-box,
     linear-gradient(180deg in oklch,var(--el-strip,var(--ln2)),var(--el-strip2,var(--el-strip,var(--ln2)))) border-box
 }
 .card .name{font-weight:800}
