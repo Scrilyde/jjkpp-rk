@@ -158,19 +158,21 @@ ${r.rn ? '<span class="stamp-rn" title="Rayon Noir"><span>黒</span><span>閃</s
       const on = state.tri === key, arrow = on ? (state.ordre === 'asc' ? '↑' : '↓') : '↕';
       return `<th scope="col"${cls ? ` class="${cls}"` : ''}${on ? ` aria-sort="${state.ordre === 'asc' ? 'ascending' : 'descending'}"` : ''}><button type="button" data-sort="${key}">${label} <span class="arr" aria-hidden="true">${arrow}</span></button></th>`;
     };
+    // infos secondaires regroupées dans une seule colonne à écarts fixes : les statistiques les recouvrent quand la place manque
+    const sortBtn = (key, label) => {
+      const on = state.tri === key, arrow = on ? (state.ordre === 'asc' ? '↑' : '↓') : '↕';
+      return `<button type="button" data-sort="${key}">${label} <span class="arr" aria-hidden="true">${arrow}</span></button>`;
+    };
     const num = (v, max, strong, k) => `<td class="tnum" data-s="${k}"><div class="v${strong ? '' : ' weak'}">${nf(v)}</div><div class="bar"><i${strong ? '' : ' class="weak"'} style="width:${pct(v, max)}"></i></div></td>`;
     const rows = list.map(r => {
       const td = (r.tai || 0) >= (r.juj || 0);
-      return `<tr data-href="${ficheHref(r)}"><td><span class="tk" data-el="${esc(r.el)}" aria-label="${esc(r.el)}"><span class="k">${r.k}</span></span></td>
-<td><img class="icon" src="${esc(r.icon)}" alt="" loading="lazy" decoding="async" width="52" height="52"></td>
-<td class="tname"><div class="epi">(${esc(r.epi)})</div><a href="${ficheHref(r)}">${esc(r.name)}</a></td>
-<td><span class="trar">${marks(r.rar)}<span class="num">${esc(r.rar)}</span></span></td><td>${esc(r.role || '—')}</td><td class="mu">${esc(r.spe || '—')}</td>
-${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST, !td, 'juj')}
-<td class="ts">${nf(r.eoi)}</td><td class="ts">${nf(r.eom)}</td><td class="ts">${nf(r.js)}</td><td class="tc">${r.rn ? '<span class="stamp-rn row" role="img" aria-label="Rayon Noir" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</td></tr>`;
+      return `<tr data-href="${ficheHref(r)}" data-el="${esc(r.el)}"><td><div class="tname"><img class="icon" src="${esc(r.icon)}" alt="" loading="lazy" decoding="async" width="40" height="40"><div class="tname-id"><div class="tname-row"><a href="${ficheHref(r)}" title="(${esc(r.epi)})">${esc(r.name)}</a>${r.rn ? '<span class="stamp-rn row" role="img" aria-label="Rayon Noir" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div><div class="epi">(${esc(r.epi)})</div></div></div></td>
+<td class="sec"><div class="fade"><span class="c-el"><span class="tdot" aria-hidden="true"></span>${esc(r.el)}</span><span class="c-rar">${esc(r.rar)}</span><span class="c-role">${esc(r.role || '—')}</span><span class="c-spe">${esc(r.spe || '—')}</span></div></td>
+${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST, !td, 'juj')}</tr>`;
     }).join('');
-    return `<div class="table-wrap"><table class="ftable"><caption class="visually-hidden">Fiches, cliquez un en-tête pour trier</caption>
-<thead><tr>${th('', '<span class="visually-hidden">Élément</span>')}${th('', '<span class="visually-hidden">Icône</span>')}${th('personnage', 'Personnage')}${th('rarete', 'Rar.')}${th('', 'Rôle')}${th('', 'Spécialité')}${th('pv', 'PV', 'r')}${th('tai', '<span class="thl">Taijutsu</span><span class="ths">Tai</span>', 'r')}${th('juj', '<span class="thl">Jujutsu</span><span class="ths">Juj</span>', 'r')}${th('', 'EO in.', 'r s')}${th('', 'EO max', 'r s')}${th('', 'Jauge', 'r s')}${th('', '<span title="Rayon Noir">BF</span>', 'c')}</tr></thead>
-<tbody>${rows}</tbody></table></div>`;
+    return `<div class="table-wrap"><div class="tpanel"><table class="ftable"><caption class="visually-hidden">Fiches, cliquez un en-tête pour trier</caption>
+<thead><tr>${th('personnage', 'Personnage')}<th scope="col" class="sec"${state.tri === 'rarete' ? ` aria-sort="${state.ordre === 'asc' ? 'ascending' : 'descending'}"` : ''}><div class="fade"><span class="c-el">Élément</span><span class="c-rar">${sortBtn('rarete', 'Rareté')}</span><span class="c-role">Rôle</span><span class="c-spe">Spécialité</span></div></th>${th('pv', 'PV')}${th('tai', '<span class="thl">Taijutsu</span><span class="ths">Tai</span>')}${th('juj', '<span class="thl">Jujutsu</span><span class="ths">Juj</span>')}</tr></thead>
+<tbody>${rows}</tbody></table></div></div>`;
   }
 
   function emptyHTML() {
