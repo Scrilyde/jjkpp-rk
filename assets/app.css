@@ -79,7 +79,7 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
 
 /* Marques de rareté (3 barres) */
 .marks{display:inline-flex;gap:2px;flex:none}
-.marks i{width:3px;height:10px;background:currentColor}
+.marks i{width:3px;height:10px;background:currentColor;border-radius:999px}
 .marks.r2 i:nth-child(3),.marks.r1 i:nth-child(n+2){opacity:.22}
 .marks.big i{height:11px}
 .marks.bigger i{height:12px}
