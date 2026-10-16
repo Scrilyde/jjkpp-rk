@@ -517,16 +517,33 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
 .topbar{position:sticky;top:0;z-index:20}
 body[data-route="fiche"] .topbar{position:static}
 
-/* bandes d'élément : dégradé vers une teinte plus sombre */
-.strip{background:linear-gradient(180deg,var(--el-strip,var(--ln2)),color-mix(in srgb,var(--el-strip,var(--ln2)) 62%,#000))}
+/* bandes d'élément : dégradé discret vers une teinte voisine plus profonde */
+[data-el="Jaune"]{--el-strip2:#c27f17}
+[data-el="Vert"]{--el-strip2:#1b6f55}
+[data-el="Bleu"]{--el-strip2:#2f4fb8}
+[data-el="Rouge"]{--el-strip2:#a82434}
+.strip{
+  background:linear-gradient(180deg,var(--el-strip,var(--ln2)),var(--el-strip2,var(--el-strip,var(--ln2))));
+  background:linear-gradient(180deg in oklch,var(--el-strip,var(--ln2)),var(--el-strip2,var(--el-strip,var(--ln2))))
+}
 .strip .el{font-weight:800}
 
 /* portraits arrondis, sans cadre */
 .card .icon,.idcard .icon{border-radius:12px}
 
 /* cartes : léger soulèvement au survol */
-.card{transition:transform .18s,border-color .18s}
-.card:hover{transform:translateY(-3px);border-color:var(--el-fill,var(--ln2))}
+.card{transition:transform .2s cubic-bezier(.2,.7,.3,1),border-color .2s}
+/* au survol, le cadre reprend le dégradé de la bande d'élément */
+.card:hover{
+  transform:translateY(-3px);
+  border-color:transparent;
+  background:
+    linear-gradient(var(--sf),var(--sf)) padding-box,
+    linear-gradient(180deg,var(--el-strip,var(--ln2)),var(--el-strip2,var(--el-strip,var(--ln2)))) border-box;
+  background:
+    linear-gradient(var(--sf),var(--sf)) padding-box,
+    linear-gradient(180deg in oklch,var(--el-strip,var(--ln2)),var(--el-strip2,var(--el-strip,var(--ln2)))) border-box
+}
 .card .name{font-weight:800}
 
 /* filtres et compteurs */
