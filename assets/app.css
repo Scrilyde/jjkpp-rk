@@ -247,7 +247,9 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
 .ftable th:nth-child(3),.ftable th:nth-child(4),.ftable th:nth-child(5){width:clamp(62px,62px + (100cqi - 360px) * .2,120px)}
 /* colonne des infos secondaires : largeur qui se referme en continu, contenu à positions fixes */
 .ftable .sec{padding-left:0;padding-right:0;text-overflow:clip}
-.ftable th.sec{width:clamp(0px,100cqi - 600px,480px)}
+/* une fois Rareté, Rôle et Spécialité recouverts, la colonne se referme trois fois plus vite :
+   l'Élément disparaît entre 712px et 675px de panneau au lieu de traîner jusqu'à 600px */
+.ftable th.sec{width:clamp(0px,min(100cqi - 600px,(100cqi - 712px) * 3 + 112px),480px)}
 .ftable .sec .fade{display:flex;width:100%}
 .c-el{flex:none;width:112px}.c-rar{flex:none;width:96px}.c-role{flex:none;width:132px}.c-spe{flex:none;width:116px}
 .c-el,.c-rar,.c-role,.c-spe{overflow:hidden;text-overflow:ellipsis;padding-right:12px}
@@ -263,7 +265,7 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
 .ftable tbody tr:hover{background:var(--sf2)}
 .ftable tbody tr:last-child td{border-bottom:0}
 /* liseré de la couleur d'élément : n'apparaît qu'une fois la pastille de l'élément recouverte */
-.ftable tbody td:first-child{box-shadow:inset clamp(0px,(624px - 100cqi) * .125,3px) 0 0 var(--el-fill)}
+.ftable tbody td:first-child{box-shadow:inset clamp(0px,(683px - 100cqi) * .375,3px) 0 0 var(--el-fill)}
 .tname{display:flex;align-items:center;gap:clamp(8px,8px + (100cqi - 340px) * .04,12px);min-width:0}
 /* portrait toujours lisible sur téléphone : 30px minimum, 40px dès que la place le permet */
 .tname .icon{flex:none;width:clamp(30px,30px + (100cqi - 340px) * .1,40px);height:auto;aspect-ratio:1;border-radius:8px}
