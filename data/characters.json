@@ -1,5 +1,112 @@
 [
   {
+    "titre": "(Lumière froide du crépuscule) Atsuya Kusakabe",
+    "nom": "Atsuya Kusakabe",
+    "épithète": "Lumière froide du crépuscule",
+    "rareté": "SSR",
+    "élément": "Rouge",
+    "rôle": "Affaiblisseur",
+    "spécialité": "Taijutsu",
+    "affiliation": "Cadres du lycée de jujutsu de Tokyo",
+    "date_de_sortie": "19-10-2026",
+    "visible": true,
+    "limité": false,
+    "sp": false,
+    "dans_le_pool": false,
+    "statistiques": {
+      "pv": 42529,
+      "atq": 12663,
+      "jujutsu": 10344,
+      "énergie_occulte_initiale": 50,
+      "énergie_occulte_max": 100,
+      "jauge_spéciale": 1460,
+      "rayon_noir": "Non"
+    },
+    "attaque_normale": {
+      "nom": "Entaille dévastatrice",
+      "clé_image": "RedSSRKusakabeNormalAttack1",
+      "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 88,62 % du taijutsu (2 coups au total)\n\nProlonge de 1 tour les effets suivants appliqués à la même cible :\n· Augmentation des dégâts subis de type « 幻 » (Rouge) (Kusakabe)\n※ Ne s'active pas pendant 3 tours après avoir pris effet\n\nRécupère 10 d'énergie occulte pour soi-même (sans limite)",
+      "effet_niv10": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 150,00 % du taijutsu (2 coups au total)\n\nProlonge de 1 tour les effets suivants appliqués à la même cible :\n· Augmentation des dégâts subis de type « 幻 » (Rouge) (Kusakabe)\n※ Ne s'active pas pendant 3 tours après avoir pris effet\n\nRécupère 10 d'énergie occulte pour soi-même (sans limite)"
+    },
+    "compétences": [
+      {
+        "indice": 1,
+        "nom": "Style de l'Ombre nouvelle : « Dégainer la lame »",
+        "clé_image": "RedSSRKusakabeS1",
+        "coût_énergie": 30,
+        "effet": "Inflige des dégâts d'attaque au corps à corps à tous les ennemis équivalant à 177,24 % du taijutsu\n\n▼ Lorsque soi-même est dans l'état « Territoire simple »\nApplique une augmentation de 8,52 % des dégâts subis de type « 幻 » (Rouge) (Kusakabe) à tous les ennemis pendant 4 tours\n\n▼ Lorsque soi-même n'est pas dans l'état « Territoire simple »\nApplique l'état « Territoire simple » à soi-même pendant 4 tours à la fin de la compétence",
+        "effet_niv10": "Inflige des dégâts d'attaque au corps à corps à tous les ennemis équivalant à 300,00 % du taijutsu\n\n▼ Lorsque soi-même est dans l'état « Territoire simple »\nApplique une augmentation de 15,00 % des dégâts subis de type « 幻 » (Rouge) (Kusakabe) à tous les ennemis pendant 4 tours\n\n▼ Lorsque soi-même n'est pas dans l'état « Territoire simple »\nApplique l'état « Territoire simple » à soi-même pendant 4 tours à la fin de la compétence"
+      },
+      {
+        "indice": 2,
+        "nom": "Entailles continues",
+        "clé_image": "RedSSRKusakabeS2",
+        "coût_énergie": 25,
+        "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 265,77 % du taijutsu (3 coups au total)\nApplique une augmentation de 8,52 % des dégâts subis de type « 幻 » (Rouge) (Kusakabe) à ces ennemis pendant 4 tours",
+        "effet_niv10": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 450,00 % du taijutsu (3 coups au total)\nApplique une augmentation de 15,00 % des dégâts subis de type « 幻 » (Rouge) (Kusakabe) à ces ennemis pendant 4 tours"
+      }
+    ],
+    "ultime": {
+      "nom": "Frappe frénétique : Éclair unique",
+      "clé_image": "RedSSRKusakabeUlt1",
+      "effet": "Inflige des dégâts d'attaque au corps à corps à tous les ennemis équivalant à 886,02 % du taijutsu\nApplique une augmentation de 8,52 % des dégâts subis de type « 幻 » (Rouge) (Kusakabe) à ces ennemis pendant 4 tours\nApplique une baisse de 12,17 % de la résistance aux CRIT (Kusakabe) à ces ennemis pendant 4 tours (écrasement)\n\nApplique une augmentation de l'efficacité de consommation d'énergie occulte à soi-même pendant 4 tours\nApplique Attraction à soi-même pendant 1 tour\n\n▼ Lorsque soi-même n'est pas dans l'état « Territoire simple »\nApplique l'état « Territoire simple » à soi-même pendant 4 tours à la fin de la compétence",
+      "effet_niv10": "Inflige des dégâts d'attaque au corps à corps à tous les ennemis équivalant à 1500,00 % du taijutsu\nApplique une augmentation de 15,00 % des dégâts subis de type « 幻 » (Rouge) (Kusakabe) à ces ennemis pendant 4 tours\nApplique une baisse de 20,00 % de la résistance aux CRIT (Kusakabe) à ces ennemis pendant 4 tours (écrasement)\n\nApplique une augmentation de l'efficacité de consommation d'énergie occulte à soi-même pendant 4 tours\nApplique Attraction à soi-même pendant 1 tour\n\n▼ Lorsque soi-même n'est pas dans l'état « Territoire simple »\nApplique l'état « Territoire simple » à soi-même pendant 4 tours à la fin de la compétence"
+    },
+    "compétences_auto": [
+      {
+        "indice": 1,
+        "nom": "Interception",
+        "clé_image": "CounterAutoSkillIcon1",
+        "effet": "▼ Dans l'état de contre-attaque, lorsque soi-même subit une attaque au corps à corps / lorsque l'énergie occulte est d'au moins 5\nInflige des dégâts d'attaque au corps à corps à l'ennemi ayant attaqué soi-même au corps à corps équivalant à 250,00 % du taijutsu\nApplique une baisse de 10,00 % de la résistance aux CRIT à cet ennemi pendant 2 tours\n\nApplique une augmentation de 10,00 % du taux de CRIT à soi-même pendant 2 tours\nApplique une augmentation de 10,00 % du taijutsu à soi-même pendant 2 tours\n\nConsomme 5 d'énergie occulte de soi-même\n※ Aucune énergie occulte n'est consommée si les dégâts de contre-attaque sont un CRIT"
+      },
+      {
+        "indice": 2,
+        "nom": "Territoire simple",
+        "clé_image": "SimpleDomainAutoSkill1",
+        "effet": "▼ Au début du combat\nApplique l'état « Territoire simple » à soi-même pendant 4 tours\n\n▼ Dans l'état « Territoire simple », confère les effets suivants\n· Réduction de 40,00 % des dégâts de jujutsu subis\n· Augmentation de 30,00 % du taijutsu\n· Augmentation de 25,00 % du taux de CRIT\n· État de contre-attaque (4 tours / 2 fois)\n· Augmentation de l'efficacité de consommation d'énergie occulte de la compétence 2 « Style de l'Ombre nouvelle : « Dégainer la lame » »\n· Annule les effets continus de l'Extension du Territoire des ennemis sur soi-même\n· Annule les effets d'invalidation de l'annulation d'attaque causés par l'Extension du Territoire / l'Amplification de territoire des ennemis\n※ Le montant des effets augmente avec le niveau de la compétence 2 « Style de l'Ombre nouvelle : « Dégainer la lame » »\n\n▼ Lorsqu'un ennemi active une Extension du Territoire, ou tant qu'un ennemi est dans une Extension du Territoire\nSi soi-même n'est pas dans l'état « Territoire simple »\nApplique l'état « Territoire simple » à soi-même pendant 4 tours\n\n▼ Lorsque soi-même est dans l'état « Territoire simple » / lorsque l'énergie occulte est d'au moins 5 / lorsque les PV sont d'au moins 20 % / lorsque soi-même subit une attaque à distance\nActive « Parade » avec les effets suivants\nApplique une réduction de 50,00 % des dégâts d'attaque à distance subis à soi-même\nConsomme 5 d'énergie occulte de soi-même\n※ En cas de dégâts qui réduiraient les PV à 0, les PV restent à 1"
+      },
+      {
+        "indice": 3,
+        "nom": "Couverture",
+        "clé_image": "CoverAutoSkillIcon1",
+        "effet": "▼ Lorsque soi-même est dans l'état « Territoire simple » / lorsque l'énergie occulte est d'au moins 10 / lorsque les PV sont d'au moins 20 %\nSi un allié (autre que soi-même) devait être mis hors combat par une attaque à cible unique, annule cette attaque\n※ Ne s'active pas pendant 3 tours après avoir pris effet\n\nApplique les effets suivants à soi-même :\n· Consomme 10 d'énergie occulte\n· Subit des dégâts équivalant à 20,00 % des PV (ne se retire pas du combat en subissant ces dégâts)"
+      },
+      {
+        "indice": 4,
+        "nom": "Amélioration des CRIT",
+        "clé_image": "CritUp",
+        "effet": "▼ Lorsque soi-même réussit un CRIT (2 fois seulement pendant le tour)\nApplique une augmentation de 45,00 % du taijutsu à tous les alliés de type « 幻 » (Rouge) pendant 4 tours\nApplique une augmentation de 10,00 % du taux de CRIT à tous les alliés de type « 幻 » (Rouge) pendant 4 tours\n\nApplique une augmentation de 10,00 % du taux de CRIT à soi-même pendant 4 tours\n※ Plusieurs CRIT au sein d'une même compétence ne comptent que pour 1 fois"
+      }
+    ],
+    "ultime_coopérative": {
+      "effet": "Inflige des dégâts d'attaque au corps à corps à tous les ennemis équivalant à 320 % du taijutsu\nApplique une augmentation de 40 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)\nRécupère 10 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative",
+      "effet_renforcé": ""
+    },
+    "analyse": [],
+    "histoire": "Un exorciste de grade 1 qui enseigne au lycée préfectoral de jujutsu de Tokyo.",
+    "étiquettes": [
+      "Contre-attaque",
+      "Provocation",
+      "Malus : dégâts reçus accrus",
+      "Malus : résistance CRIT réduite",
+      "Bonus de statistiques",
+      "Bonus de CRIT",
+      "Bonus : dégâts reçus réduits"
+    ],
+    "clé_image": "RedSSRKusakabeArt1",
+    "url_image": null,
+    "url_gif_illustration": null,
+    "clé_icône": "RedSSRKusakabeIcon1",
+    "priorité_compétences": [
+      1,
+      3,
+      2,
+      0
+    ],
+    "url_icône": "https://cdn.jjkppdb.com/character_icons/RedSSRKusakabeIcon1.png",
+    "page_wiki": null
+  },
+  {
     "titre": "(Rondo de la belle lame) Mei Mei",
     "nom": "Mei Mei",
     "épithète": "Rondo de la belle lame",
