@@ -1,5 +1,66 @@
 [
   {
+    "titre": "(Mastery of 24 Frames Per Second) Naoya Zen'in",
+    "nom": "Naoya Zen'in",
+    "épithète": "Mastery of 24 Frames Per Second",
+    "rareté": "SSR",
+    "élément": "Bleu",
+    "rôle": "Affaiblisseur",
+    "spécialité": "Hybride",
+    "affiliation": "Exorciste de grade spécial 1",
+    "date_de_sortie": "30-10-2026",
+    "limité": false,
+    "statistiques": {
+      "pv": null,
+      "atq": null,
+      "jujutsu": null,
+      "énergie_occulte_initiale": null,
+      "énergie_occulte_max": null,
+      "jauge_spéciale": 1558,
+      "rayon_noir": "N/D"
+    },
+    "attaque_normale": {
+      "nom": "Instant Combo",
+      "clé_image": "BlueSSRNaoyaNormalAttack1",
+      "effet": "Deals melee Mixed Damage equal to % Taijutsu and % Jujutsu to the selected enemy (Multi-Hit)\nRecovers own Cursed Energy by",
+      "effet_niv10": "Deals melee Mixed Damage equal to % Taijutsu and % Jujutsu to the selected enemy (Multi-Hit)\nRecovers own Cursed Energy by"
+    },
+    "compétences": [
+      {
+        "indice": 1,
+        "nom": "Projection Sorcery",
+        "clé_image": "BlueSSRNaoyaS11",
+        "coût_énergie": 15,
+        "effet": "Increases own Break Damage (Removed after activation)\n(This effect will increase further with more \"Projection Sorcery\" State Counts)\n\"Projection Sorcery\" State Count +2 (Up to 24)\n\nDeals melee Mixed Damage equal to % Taijutsu and % Jujutsu to the selected enemy\nIncreases the effectiveness of \"影\" (Blue) Weakness Attribute (3 Turns/Cannot be Stacked)\nIncreases \"影\" (Blue) Jujutsu Damage Received (3 Turns)\nInflicts Disruption (Special) (2 Turns/2 Times)",
+        "effet_niv10": "Increases own Break Damage (Removed after activation)\n(This effect will increase further with more \"Projection Sorcery\" State Counts)\n\"Projection Sorcery\" State Count +2 (Up to 24)\n\nDeals melee Mixed Damage equal to % Taijutsu and % Jujutsu to the selected enemy\nIncreases the effectiveness of \"影\" (Blue) Weakness Attribute (3 Turns/Cannot be Stacked)\nIncreases \"影\" (Blue) Jujutsu Damage Received (3 Turns)\nInflicts Disruption (Special) (2 Turns/2 Times)"
+      },
+      {
+        "indice": 2,
+        "nom": "Overwhelming Speed",
+        "clé_image": "BlueSSRNaoyaS21",
+        "coût_énergie": 25,
+        "effet": "Deals melee Mixed Damage equal to % Taijutsu and % Jujutsu to the selected enemy (5 Hits)\n\nIncreases own Break Damage (Removed after activation)\n(This effect will increase further with more \"Projection Sorcery\" State Counts)\n\nDeals an additional melee Mixed Damage equal to % Taijutsu and % Jujutsu to the selected enemy\nIncreases \"影\" (Blue) Damage Received (3 Turns/Cannot be Stacked)\nIncreases \"影\" (Blue) Jujutsu Damage Received (3 Turns)\nDecreases Critical Hit Resistance (2 Turns)",
+        "effet_niv10": "Deals melee Mixed Damage equal to % Taijutsu and % Jujutsu to the selected enemy (5 Hits)\n\nIncreases own Break Damage (Removed after activation)\n(This effect will increase further with more \"Projection Sorcery\" State Counts)\n\nDeals an additional melee Mixed Damage equal to % Taijutsu and % Jujutsu to the selected enemy\nIncreases \"影\" (Blue) Damage Received (3 Turns/Cannot be Stacked)\nIncreases \"影\" (Blue) Jujutsu Damage Received (3 Turns)\nDecreases Critical Hit Resistance (2 Turns)"
+      }
+    ],
+    "ultime": {
+      "nom": "I'll Punch Through You at Top Speed",
+      "clé_image": "BlueSSRNaoyaUlt1",
+      "effet": "Increases own Break Damage (Removed after activation)\n(This effect will increase further with more \"Projection Sorcery\" State Counts)\n\"Projection Sorcery\" State Count +5 (Up to 24)\n\nDeals melee Mixed Damage equal to % Taijutsu and % Jujutsu to the selected enemy\nIncreases the effectiveness of \"影\" (Blue) Weakness Attribute (3 Turns/Cannot be Stacked)\nIncreases \"影\" (Blue) Damage Received (3 Turns/Cannot be Stacked)\nIncreases \"影\" (Blue) Jujutsu Damage Received (3 Turns)\nDecreases Critical Hit Resistance (2 Turns)\n\nDeals an additional melee Mixed Damage equal to % Taijutsu and % Jujutsu to the selected enemy\nInflicts Disruption (Special) (2 Turns/2 Times)",
+      "effet_niv10": "Increases own Break Damage (Removed after activation)\n(This effect will increase further with more \"Projection Sorcery\" State Counts)\n\"Projection Sorcery\" State Count +5 (Up to 24)\n\nDeals melee Mixed Damage equal to % Taijutsu and % Jujutsu to the selected enemy\nIncreases the effectiveness of \"影\" (Blue) Weakness Attribute (3 Turns/Cannot be Stacked)\nIncreases \"影\" (Blue) Damage Received (3 Turns/Cannot be Stacked)\nIncreases \"影\" (Blue) Jujutsu Damage Received (3 Turns)\nDecreases Critical Hit Resistance (2 Turns)\n\nDeals an additional melee Mixed Damage equal to % Taijutsu and % Jujutsu to the selected enemy\nInflicts Disruption (Special) (2 Turns/2 Times)"
+    },
+    "compétences_auto": [],
+    "ultime_coopérative": {
+      "effet": "",
+      "effet_renforcé": ""
+    },
+    "étiquettes": [],
+    "clé_image": "BlueSSRNaoyaArt1",
+    "clé_icône": null,
+    "url_icône": null,
+    "page_wiki": "(Mastery of 24 Frames Per Second) Naoya Zen'in"
+  },
+  {
     "titre": "(Lumière froide du crépuscule) Atsuya Kusakabe",
     "nom": "Atsuya Kusakabe",
     "épithète": "Lumière froide du crépuscule",
