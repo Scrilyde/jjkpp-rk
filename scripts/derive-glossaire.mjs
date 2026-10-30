@@ -288,7 +288,7 @@ async function main() {
   const previous = fs.existsSync(outPath) ? JSON.parse(fs.readFileSync(outPath, 'utf8')) : {};
   const sorted = o => Object.fromEntries(Object.entries(o).sort(([a], [b]) => a.localeCompare(b)));
   const glossaire = {
-    '_à_propos': 'Généré par scripts/derive-glossaire.mjs à partir des fiches existantes rapprochées du wiki. « lignes » : motifs de ligne EN → FR ({0}, {1}… = nombres, recopiés au format français). « fragments » : équivalents FR de fragments interchangeables et cadres de ligne ; une ligne n\'est composée que si tous ses fragments sont connus. Les sections « *_manuel(le)s » ne sont jamais écrasées et priment sur les sections dérivées ; une valeur null y signifie « laisser en anglais ».',
+    '_à_propos': 'Généré par scripts/derive-glossaire.mjs à partir des fiches existantes rapprochées du wiki. « lignes » : motifs de ligne EN → FR ({0}, {1}… = nombres, recopiés au format français). « fragments » : équivalents FR de fragments interchangeables et cadres de ligne ; une ligne n\'est composée que si tous ses fragments sont connus. Les sections « *_manuel(le)s » ne sont jamais écrasées et priment sur les sections dérivées ; une valeur null y signifie « laisser en anglais ». « termes_manuels » : vocabulaire EN → FR imposé à DeepL ; « corrections_deepl » : [motif regex, remplacement] appliqués aux traductions DeepL (ni l\'un ni l\'autre n\'est écrasé).',
     'valeurs': {
       'élément': majority(vals('Type', f => f['élément'])),
       'rôle': ROLE,
@@ -304,6 +304,8 @@ async function main() {
     'lignes_manuelles': previous['lignes_manuelles'] || {},
     'noms_manuels': previous['noms_manuels'] || {},
     'fragments_manuels': previous['fragments_manuels'] || {},
+    'termes_manuels': previous['termes_manuels'] || {},
+    'corrections_deepl': previous['corrections_deepl'] || [],
   };
   if (args.includes('--dry-run')) { console.log('\n--dry-run : glossaire non écrit.'); return; }
   fs.writeFileSync(outPath, JSON.stringify(glossaire, null, 2) + '\n');

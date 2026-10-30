@@ -62,9 +62,14 @@ function translateKit(kit, tr) {
     }
     return r.text;
   };
+  const name = (value, champ) => {
+    const r = tr.nameInfo(value);
+    if (r.source === 'deepl') review['deepl'].push({ 'champ': champ, 'en': value });
+    return r.fr;
+  };
   const EFFECTS = ['effet', 'effet_niv10', 'modifié_effet', 'modifié_effet_niv10', 'effet_renforcé'];
   const block = (b, champ) => Object.fromEntries(Object.entries(b).map(([k, v]) =>
-    [k, EFFECTS.includes(k) && typeof v === 'string' ? text(v, `${champ}.${k}`) : k === 'nom' ? tr.name(v) : v]));
+    [k, EFFECTS.includes(k) && typeof v === 'string' ? text(v, `${champ}.${k}`) : k === 'nom' ? name(v, `${champ}.nom`) : v]));
   const out = {
     'attaque_normale': block(kit['attaque_normale'], 'attaque_normale'),
     'compétences': kit['compétences'].map((c, i) => block(c, `compétences[${i}]`)),
@@ -72,7 +77,7 @@ function translateKit(kit, tr) {
     'compétences_auto': kit['compétences_auto'].map((c, i) => block(c, `compétences_auto[${i}]`)),
     'ultime_coopérative': block(kit['ultime_coopérative'], 'ultime_coopérative'),
   };
-  return { kit: out, review, count };
+  return { kit: out, review, count, name };
 }
 
 function buildFiche(title, w, unit, iconUrl, tr) {
@@ -92,7 +97,7 @@ function buildFiche(title, w, unit, iconUrl, tr) {
   const fiche = {
     'titre': title,
     'nom': cleanWikitext(w['Card Name']) || (m ? m[2] : title),
-    'épithète': m ? m[1] : null,
+    'épithète': m ? t.name(m[1], 'épithète') : null,
     'rareté': cleanWikitext(w['Rarity']),
     'élément': value('élément', cleanWikitext(w['Type'])),
     'rôle': value('rôle', role),
@@ -193,20 +198,31 @@ async function main() {
   // ---- Nouvelles fiches (2 passes si DeepL est configuré) ----
   const deeplKey = process.env.DEEPL_API_KEY || '';
   let deepl = readCache(DEEPL_CACHE), deeplNote = null, deeplNew = 0;
+  const corrections = glossaire['corrections_deepl'] || [];
   const build = () => {
-    const tr = createTranslator(glossaire, { deepl });
+    const tr = createTranslator(glossaire, { deepl: deepl.lignes, deeplNames: deepl.noms });
     const built = newPages.map(p => ({ ...p, ...buildFiche(p.title, p.w, p.unit, p.unit ? icons[p.unit] ?? null : null, tr) }));
     return { tr, built };
   };
   let { tr, built } = build();
-  if (tr.pending.size && deeplKey) {
-    const keys = [...tr.pending.values()].filter(k => !(k in deepl));
-    say(`DeepL : ${keys.length} ligne(s) à traduire…`);
-    const res = await translateKeys(keys, { apiKey: deeplKey, url: process.env.DEEPL_API_URL || DEEPL_URL, log: say });
-    deeplNew = Object.keys(res.translations).length;
-    if (res.error) deeplNote = `${res.error} — ${deeplNew} ligne(s) traduite(s) avant l'erreur, les autres restent en anglais.`;
-    if (deeplNew) { deepl = { ...deepl, ...res.translations }; ({ tr, built } = build()); }
-  } else if (tr.pending.size) deeplNote = `DEEPL_API_KEY absent : ${tr.pending.size} ligne(s) distincte(s) restent en anglais.`;
+  const pendingCount = () => tr.pending.size + tr.pendingNames.size;
+  if (pendingCount() && deeplKey) {
+    // Noms d'abord : une fois traduits, ils sont protégés dans les lignes qui les citent (« "Projection Sorcery" State… »).
+    const url = process.env.DEEPL_API_URL || DEEPL_URL;
+    const errors = [];
+    for (const [section, pending] of [['noms', () => [...tr.pendingNames]], ['lignes', () => [...tr.pending.values()]]]) {
+      const keys = pending().filter(k => !(k in deepl[section]));
+      if (!keys.length) continue;
+      say(`DeepL : ${keys.length} ${section === 'noms' ? 'nom(s)' : 'ligne(s)'} à traduire…`);
+      const res = await translateKeys(keys, { apiKey: deeplKey, url, terms: tr.terms(), corrections: section === 'lignes' ? corrections : [], log: say });
+      const n = Object.keys(res.translations).length;
+      deeplNew += n;
+      if (res.error) errors.push(`${res.error} — ${n} ${section === 'noms' ? 'nom(s)' : 'ligne(s)'} traduit(e)s avant l'erreur, les autres restent en anglais.`);
+      if (n) { deepl = { ...deepl, [section]: { ...deepl[section], ...res.translations } }; ({ tr, built } = build()); }
+      if (res.error) break;
+    }
+    if (errors.length) deeplNote = errors.join(' ');
+  } else if (pendingCount()) deeplNote = `DEEPL_API_KEY absent : ${tr.pending.size} ligne(s) et ${tr.pendingNames.size} nom(s) distinct(s) restent en anglais.`;
   built.sort((a, b) => dateKey(b.fiche['date_de_sortie']).localeCompare(dateKey(a.fiche['date_de_sortie'])));
   const added = built.map(b => b.fiche);
   const result = [...added, ...fiches];
@@ -249,7 +265,7 @@ async function main() {
       if (b.notes.length) md.push(`Valeurs annotées : ${b.notes.join(' ; ')}.\n`);
       if (b.badStats.length) md.push(`**Statistiques illisibles** : ${b.badStats.join(' ; ')}.\n`);
       section('Lignes composées à relire', b.review['composées'].map(x => `\`${x.champ}\` l. ${x.ligne} — ${x.en}`), true);
-      section('Lignes traduites par DeepL à relire', b.review['deepl'].map(x => `\`${x.champ}\` l. ${x.ligne} — ${x.en}`), true);
+      section('Lignes et noms traduits par DeepL à relire', b.review['deepl'].map(x => `\`${x.champ}\`${x.ligne ? ` l. ${x.ligne}` : ''} — ${x.en}`), true);
     }
   }
   md.push('## À vérifier\n');
