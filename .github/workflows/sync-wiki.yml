@@ -26,7 +26,7 @@ jobs:
       - name: Synchroniser depuis le wiki
         env:
           # Facultatif : sans ce secret, les lignes non couvertes par le glossaire restent en anglais.
-          DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
+          DEEPL_API_KEY: 0acedf17-662c-4a67-8136-2c7d079d641b:fx
         run: >
           node scripts/sync-wiki.mjs
           --report "$RUNNER_TEMP/sync-report.md"
