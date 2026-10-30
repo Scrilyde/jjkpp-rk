@@ -1,5 +1,5 @@
 {
-  "_à_propos": "Généré par scripts/derive-glossaire.mjs à partir des fiches existantes rapprochées du wiki. « lignes » : motifs de ligne EN → FR ({0}, {1}… = nombres, recopiés au format français). « fragments » : équivalents FR de fragments interchangeables et cadres de ligne ; une ligne n'est composée que si tous ses fragments sont connus. Les sections « *_manuel(le)s » ne sont jamais écrasées et priment sur les sections dérivées ; une valeur null y signifie « laisser en anglais ».",
+  "_à_propos": "Généré par scripts/derive-glossaire.mjs à partir des fiches existantes rapprochées du wiki. « lignes » : motifs de ligne EN → FR ({0}, {1}… = nombres, recopiés au format français). « fragments » : équivalents FR de fragments interchangeables et cadres de ligne ; une ligne n'est composée que si tous ses fragments sont connus. Les sections « *_manuel(le)s » ne sont jamais écrasées et priment sur les sections dérivées ; une valeur null y signifie « laisser en anglais ». « termes_manuels » : vocabulaire EN → FR imposé à DeepL ; « corrections_deepl » : [motif regex, remplacement] appliqués aux traductions DeepL (ni l'un ni l'autre n'est écrasé).",
   "valeurs": {
     "élément": {
       "BlueType": "Bleu",
@@ -1618,7 +1618,177 @@
       "Curse User": null
     }
   },
-  "lignes_manuelles": {},
-  "noms_manuels": {},
-  "fragments_manuels": {}
+  "lignes_manuelles": {
+    "After evading an attack:": "Lorsque soi-même esquive avec succès :",
+    "At the start of battle, grants Counter State to self": "Au début du combat, confère l'état de Contre à soi-même",
+    "At the start of turn: (All cannot be stacked)": "Au début du tour : (aucun effet n'est cumulable)",
+    "Deals an additional melee Mixed Damage equal to {0}% Taijutsu & {1}% Jujutsu to the selected enemy": "Inflige en plus des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu et {1} % du jujutsu",
+    "Deals an additional melee Mixed Damage equal to {0}% Taijutsu and {1}% Jujutsu to the selected enemy": "Inflige en plus des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu et {1} % du jujutsu",
+    "Deals melee Mixed Damage equal to {0}% Taijutsu & {1}% Jujutsu to the selected enemy": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu et {1} % du jujutsu",
+    "Deals melee Mixed Damage equal to {0}% Taijutsu & {1}% Jujutsu to the selected enemy ({2} Hits)": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu et {1} % du jujutsu ({2} coups au total)",
+    "Deals melee Mixed Damage equal to {0}% Taijutsu and {1}% Jujutsu to the selected enemy": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu et {1} % du jujutsu",
+    "Deals melee Mixed Damage equal to {0}% Taijutsu and {1}% Jujutsu to the selected enemy ({2} Hits)": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à {0} % du taijutsu et {1} % du jujutsu ({2} coups au total)",
+    "Decreases Critical Hit Resistance by {0}% ({1} Turns)": "Applique une baisse de {0} % de la résistance aux CRIT ({1} tours)",
+    "If receiving a melee attack (Once per Turn): (Scaled with S{0} Level),": "Lorsque soi-même subit une attaque au corps à corps (une fois par tour) : (évolue avec le niveau de la compétence {0}),",
+    "Immune to melee attack counters when attacking": "Ignore l'état de contre-attaque de l'ennemi lors de ses attaques au corps à corps",
+    "Increases \"夜\" (Green) Damage Received by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts subis de type « 夜 » (Vert) ({1} tours)",
+    "Increases \"夜\" (Green) Damage Received by {0}% ({1} Turns/Cannot be Buffed)": "Applique une augmentation de {0} % des dégâts subis de type « 夜 » (Vert) ({1} tours / ne peut pas être renforcée)",
+    "Increases \"夜\" (Green) Damage Received by {0}% ({1} Turns/Cannot be Stacked)": "Applique une augmentation de {0} % des dégâts subis de type « 夜 » (Vert) ({1} tours / non cumulable)",
+    "Increases \"夜\" (Green) Jujutsu Damage Received by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts de jujutsu subis de type « 夜 » (Vert) ({1} tours)",
+    "Increases \"夜\" (Green) Jujutsu Damage Received by {0}% ({1} Turns/Cannot be Buffed)": "Applique une augmentation de {0} % des dégâts de jujutsu subis de type « 夜 » (Vert) ({1} tours / ne peut pas être renforcée)",
+    "Increases \"夜\" (Green) Jujutsu Damage Received by {0}% ({1} Turns/Cannot be Stacked)": "Applique une augmentation de {0} % des dégâts de jujutsu subis de type « 夜 » (Vert) ({1} tours / non cumulable)",
+    "Increases \"夜\" (Green) Taijutsu Damage Received by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts de taijutsu subis de type « 夜 » (Vert) ({1} tours)",
+    "Increases \"夜\" (Green) Taijutsu Damage Received by {0}% ({1} Turns/Cannot be Buffed)": "Applique une augmentation de {0} % des dégâts de taijutsu subis de type « 夜 » (Vert) ({1} tours / ne peut pas être renforcée)",
+    "Increases \"夜\" (Green) Taijutsu Damage Received by {0}% ({1} Turns/Cannot be Stacked)": "Applique une augmentation de {0} % des dégâts de taijutsu subis de type « 夜 » (Vert) ({1} tours / non cumulable)",
+    "Increases \"幻\" (Red) Damage Received by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts subis de type « 幻 » (Rouge) ({1} tours)",
+    "Increases \"幻\" (Red) Damage Received by {0}% ({1} Turns/Cannot be Buffed)": "Applique une augmentation de {0} % des dégâts subis de type « 幻 » (Rouge) ({1} tours / ne peut pas être renforcée)",
+    "Increases \"幻\" (Red) Damage Received by {0}% ({1} Turns/Cannot be Stacked)": "Applique une augmentation de {0} % des dégâts subis de type « 幻 » (Rouge) ({1} tours / non cumulable)",
+    "Increases \"幻\" (Red) Jujutsu Damage Received by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts de jujutsu subis de type « 幻 » (Rouge) ({1} tours)",
+    "Increases \"幻\" (Red) Jujutsu Damage Received by {0}% ({1} Turns/Cannot be Buffed)": "Applique une augmentation de {0} % des dégâts de jujutsu subis de type « 幻 » (Rouge) ({1} tours / ne peut pas être renforcée)",
+    "Increases \"幻\" (Red) Jujutsu Damage Received by {0}% ({1} Turns/Cannot be Stacked)": "Applique une augmentation de {0} % des dégâts de jujutsu subis de type « 幻 » (Rouge) ({1} tours / non cumulable)",
+    "Increases \"幻\" (Red) Taijutsu Damage Received by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts de taijutsu subis de type « 幻 » (Rouge) ({1} tours)",
+    "Increases \"幻\" (Red) Taijutsu Damage Received by {0}% ({1} Turns/Cannot be Buffed)": "Applique une augmentation de {0} % des dégâts de taijutsu subis de type « 幻 » (Rouge) ({1} tours / ne peut pas être renforcée)",
+    "Increases \"幻\" (Red) Taijutsu Damage Received by {0}% ({1} Turns/Cannot be Stacked)": "Applique une augmentation de {0} % des dégâts de taijutsu subis de type « 幻 » (Rouge) ({1} tours / non cumulable)",
+    "Increases \"影\" (Blue) Damage Received by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts subis de type « 影 » (Bleu) ({1} tours)",
+    "Increases \"影\" (Blue) Damage Received by {0}% ({1} Turns/Cannot be Buffed)": "Applique une augmentation de {0} % des dégâts subis de type « 影 » (Bleu) ({1} tours / ne peut pas être renforcée)",
+    "Increases \"影\" (Blue) Damage Received by {0}% ({1} Turns/Cannot be Stacked)": "Applique une augmentation de {0} % des dégâts subis de type « 影 » (Bleu) ({1} tours / non cumulable)",
+    "Increases \"影\" (Blue) Jujutsu Damage Received by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts de jujutsu subis de type « 影 » (Bleu) ({1} tours)",
+    "Increases \"影\" (Blue) Jujutsu Damage Received by {0}% ({1} Turns/Cannot be Buffed)": "Applique une augmentation de {0} % des dégâts de jujutsu subis de type « 影 » (Bleu) ({1} tours / ne peut pas être renforcée)",
+    "Increases \"影\" (Blue) Jujutsu Damage Received by {0}% ({1} Turns/Cannot be Stacked)": "Applique une augmentation de {0} % des dégâts de jujutsu subis de type « 影 » (Bleu) ({1} tours / non cumulable)",
+    "Increases \"影\" (Blue) Taijutsu Damage Received by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts de taijutsu subis de type « 影 » (Bleu) ({1} tours)",
+    "Increases \"影\" (Blue) Taijutsu Damage Received by {0}% ({1} Turns/Cannot be Buffed)": "Applique une augmentation de {0} % des dégâts de taijutsu subis de type « 影 » (Bleu) ({1} tours / ne peut pas être renforcée)",
+    "Increases \"影\" (Blue) Taijutsu Damage Received by {0}% ({1} Turns/Cannot be Stacked)": "Applique une augmentation de {0} % des dégâts de taijutsu subis de type « 影 » (Bleu) ({1} tours / non cumulable)",
+    "Increases \"行\" (Yellow) Damage Received by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts subis de type « 行 » (Jaune) ({1} tours)",
+    "Increases \"行\" (Yellow) Damage Received by {0}% ({1} Turns/Cannot be Buffed)": "Applique une augmentation de {0} % des dégâts subis de type « 行 » (Jaune) ({1} tours / ne peut pas être renforcée)",
+    "Increases \"行\" (Yellow) Damage Received by {0}% ({1} Turns/Cannot be Stacked)": "Applique une augmentation de {0} % des dégâts subis de type « 行 » (Jaune) ({1} tours / non cumulable)",
+    "Increases \"行\" (Yellow) Jujutsu Damage Received by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts de jujutsu subis de type « 行 » (Jaune) ({1} tours)",
+    "Increases \"行\" (Yellow) Jujutsu Damage Received by {0}% ({1} Turns/Cannot be Buffed)": "Applique une augmentation de {0} % des dégâts de jujutsu subis de type « 行 » (Jaune) ({1} tours / ne peut pas être renforcée)",
+    "Increases \"行\" (Yellow) Jujutsu Damage Received by {0}% ({1} Turns/Cannot be Stacked)": "Applique une augmentation de {0} % des dégâts de jujutsu subis de type « 行 » (Jaune) ({1} tours / non cumulable)",
+    "Increases \"行\" (Yellow) Taijutsu Damage Received by {0}% ({1} Turns)": "Applique une augmentation de {0} % des dégâts de taijutsu subis de type « 行 » (Jaune) ({1} tours)",
+    "Increases \"行\" (Yellow) Taijutsu Damage Received by {0}% ({1} Turns/Cannot be Buffed)": "Applique une augmentation de {0} % des dégâts de taijutsu subis de type « 行 » (Jaune) ({1} tours / ne peut pas être renforcée)",
+    "Increases \"行\" (Yellow) Taijutsu Damage Received by {0}% ({1} Turns/Cannot be Stacked)": "Applique une augmentation de {0} % des dégâts de taijutsu subis de type « 行 » (Jaune) ({1} tours / non cumulable)",
+    "Increases own Break Damage by {0}% (Removed after activation)": "Applique une augmentation de {0} % des dégâts de BREAK à soi-même (retiré après l'activation de la compétence)",
+    "Increases the effectiveness of \"夜\" (Green) Weakness Attribute by {0}% ({1} Turns)": "Applique une augmentation de {0} % de l'efficacité de l'attribut de faiblesse « 夜 » (Vert) ({1} tours)",
+    "Increases the effectiveness of \"夜\" (Green) Weakness Attribute by {0}% ({1} Turns/Cannot be Stacked)": "Applique une augmentation de {0} % de l'efficacité de l'attribut de faiblesse « 夜 » (Vert) ({1} tours / non cumulable)",
+    "Increases the effectiveness of \"夜\" (Green) Weakness Attribute by {0}% ({1} Turns/Cannot be Stacked/Buffed/Nerfed)": "Applique une augmentation de {0} % de l'efficacité de l'attribut de faiblesse « 夜 » (Vert) ({1} tours / non cumulable / ne peut être ni renforcée ni affaiblie)",
+    "Increases the effectiveness of \"幻\" (Red) Weakness Attribute by {0}% ({1} Turns)": "Applique une augmentation de {0} % de l'efficacité de l'attribut de faiblesse « 幻 » (Rouge) ({1} tours)",
+    "Increases the effectiveness of \"幻\" (Red) Weakness Attribute by {0}% ({1} Turns/Cannot be Stacked)": "Applique une augmentation de {0} % de l'efficacité de l'attribut de faiblesse « 幻 » (Rouge) ({1} tours / non cumulable)",
+    "Increases the effectiveness of \"幻\" (Red) Weakness Attribute by {0}% ({1} Turns/Cannot be Stacked/Buffed/Nerfed)": "Applique une augmentation de {0} % de l'efficacité de l'attribut de faiblesse « 幻 » (Rouge) ({1} tours / non cumulable / ne peut être ni renforcée ni affaiblie)",
+    "Increases the effectiveness of \"影\" (Blue) Weakness Attribute by {0}% ({1} Turns)": "Applique une augmentation de {0} % de l'efficacité de l'attribut de faiblesse « 影 » (Bleu) ({1} tours)",
+    "Increases the effectiveness of \"影\" (Blue) Weakness Attribute by {0}% ({1} Turns/Cannot be Stacked)": "Applique une augmentation de {0} % de l'efficacité de l'attribut de faiblesse « 影 » (Bleu) ({1} tours / non cumulable)",
+    "Increases the effectiveness of \"影\" (Blue) Weakness Attribute by {0}% ({1} Turns/Cannot be Stacked/Buffed/Nerfed)": "Applique une augmentation de {0} % de l'efficacité de l'attribut de faiblesse « 影 » (Bleu) ({1} tours / non cumulable / ne peut être ni renforcée ni affaiblie)",
+    "Increases the effectiveness of \"行\" (Yellow) Weakness Attribute by {0}% ({1} Turns)": "Applique une augmentation de {0} % de l'efficacité de l'attribut de faiblesse « 行 » (Jaune) ({1} tours)",
+    "Increases the effectiveness of \"行\" (Yellow) Weakness Attribute by {0}% ({1} Turns/Cannot be Stacked)": "Applique une augmentation de {0} % de l'efficacité de l'attribut de faiblesse « 行 » (Jaune) ({1} tours / non cumulable)",
+    "Increases the effectiveness of \"行\" (Yellow) Weakness Attribute by {0}% ({1} Turns/Cannot be Stacked/Buffed/Nerfed)": "Applique une augmentation de {0} % de l'efficacité de l'attribut de faiblesse « 行 » (Jaune) ({1} tours / non cumulable / ne peut être ni renforcée ni affaiblie)",
+    "Inflicts Disruption (Special) ({0} Turns/{1} Times/Chance: {2}%)": "Applique Perturbation (spéciale) ({0} tours / {1} fois / chance : {2} %)",
+    "Recovers own and Combo Ally's Critical Hit Rate by {0}% ({1} Turns)": "Applique une augmentation de {0} % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative ({1} tours)"
+  },
+  "noms_manuels": {
+    "Instant Combo": "Combo instantané",
+    "Instant Combo (Follow-Up)": "Combo instantané (suivi)",
+    "Projection Sorcery": "Sorcellerie de projection",
+    "Projection Sorcery (Counter)": "Sorcellerie de projection (contre)",
+    "Projection Sorcery (Auto)": "Sorcellerie de projection (passif)",
+    "Overwhelming Speed": "Vitesse écrasante",
+    "I'll Punch Through You at Top Speed": "Je vais te transpercer à pleine vitesse",
+    "Mastery of 24 Frames Per Second": "Maîtrise des 24 images par seconde"
+  },
+  "fragments_manuels": {},
+  "termes_manuels": {
+    "Black Flash": "Rayon Noir",
+    "Combo Ally": "partenaire de l'ultime coopérative",
+    "Cursed Energy": "énergie occulte",
+    "Darkness": "Ténèbres",
+    "Disruption": "Perturbation",
+    "Domain": "Territoire",
+    "Guaranteed-Hit": "Touche garantie",
+    "Ultimate Gauge": "jauge d'ultime",
+    "Ultimate Skill Gauge": "jauge d'ultime"
+  },
+  "corrections_deepl": [
+    [
+      "\\s*(?:(?:par|pour|à|de)\\s+)?<[a-z]+\\b[^<>]*\\/?>",
+      ""
+    ],
+    [
+      "l'ennemi sélectionné",
+      "l'ennemi ciblé"
+    ],
+    [
+      "les ennemis sélectionnés",
+      "les ennemis ciblés"
+    ],
+    [
+      "dégâts de rupture",
+      "dégâts de BREAK"
+    ],
+    [
+      "résistance aux coups critiques",
+      "résistance aux CRIT"
+    ],
+    [
+      "taux de coups? critiques?",
+      "taux de CRIT"
+    ],
+    [
+      "dégâts (?:de coups? )?critiques",
+      "dégâts CRIT"
+    ],
+    [
+      "énergie (?:maudite|occulte maudite)",
+      "énergie occulte"
+    ],
+    [
+      "\\((?:[Bb]leu(?:e?s?))\\)",
+      "(Bleu)"
+    ],
+    [
+      "\\((?:[Rr]ouges?)\\)",
+      "(Rouge)"
+    ],
+    [
+      "\\((?:[Vv]ert(?:e?s?))\\)",
+      "(Vert)"
+    ],
+    [
+      "\\((?:[Jj]aunes?)\\)",
+      "(Jaune)"
+    ],
+    [
+      "(?<!^)\\bTaijutsu\\b",
+      "taijutsu"
+    ],
+    [
+      "(?<!^)\\bJujutsu\\b",
+      "jujutsu"
+    ],
+    [
+      "(\\{\\d+\\} %) de (taijutsu|jujutsu)",
+      "$1 du $2"
+    ],
+    [
+      "dégâts mixtes",
+      "dégâts d'attaque hybrides"
+    ],
+    [
+      "équivalent(?:e?s?) à",
+      "équivalant à"
+    ],
+    [
+      "\\/ Ne ",
+      "/ ne "
+    ],
+    [
+      "\\/ Chance :",
+      "/ chance :"
+    ],
+    [
+      "\\(Chance :",
+      "(chance :"
+    ],
+    [
+      "ne peut pas être cumulée?s?",
+      "non cumulable"
+    ]
+  ]
 }

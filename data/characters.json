@@ -2,7 +2,7 @@
   {
     "titre": "(Mastery of 24 Frames Per Second) Naoya Zen'in",
     "nom": "Naoya Zen'in",
-    "épithète": "Mastery of 24 Frames Per Second",
+    "épithète": "Maîtrise des 24 images par seconde",
     "rareté": "SSR",
     "élément": "Bleu",
     "rôle": "Affaiblisseur",
@@ -20,96 +20,74 @@
       "rayon_noir": "N/D"
     },
     "attaque_normale": {
-      "nom": "Instant Combo",
+      "nom": "Combo instantané",
       "clé_image": "BlueSSRNaoyaNormalAttack1",
-      "effet": "Inflige des dégâts mixtes équivalents à 85,4 % de Taijutsu et 85,4 % de Jujutsu à l'ennemi sélectionné (2 coups)\n« Projection Sorcery » Nombre d'états +3 (jusqu'à 24)\nRécupère 5 d'énergie occulte pour soi-même",
-      "effet_niv10": "Inflige des dégâts mixtes équivalents à 100 % de Taijutsu et 100 % de Jujutsu à l'ennemi sélectionné (2 coups)\n« Projection Sorcery » Nombre d'états +3 (jusqu'à 24)\nRécupère 5 d'énergie occulte pour soi-même"
+      "effet": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 85,4 % du taijutsu et 85,4 % du jujutsu (2 coups au total)\nÉtat « Sorcellerie de projection » +3 (jusqu'à 24)\nRécupère 5 d'énergie occulte pour soi-même",
+      "effet_niv10": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 100 % du taijutsu et 100 % du jujutsu (2 coups au total)\nÉtat « Sorcellerie de projection » +3 (jusqu'à 24)\nRécupère 5 d'énergie occulte pour soi-même"
     },
     "compétences": [
       {
         "indice": 1,
-        "nom": "Projection Sorcery",
+        "nom": "Sorcellerie de projection",
         "clé_image": "BlueSSRNaoyaS11",
         "coût_énergie": 15,
-        "effet": "Augmente les dégâts de rupture infligés par le personnage de 50 % (effet supprimé après activation)\n(Augmente encore en fonction du nombre de « Projection Sorcery », jusqu'à 200 % avec 24)\n« Projection Sorcery » Nombre d'états +2 (jusqu'à 24)\n\nInflige des dégâts mixtes équivalents à 173,5 % de Taijutsu et 173,5 % de Jujutsu à l'ennemi sélectionné\nAugmente l'efficacité de l'attribut de vulnérabilité « 影 » (Bleu) de 14,3 % (3 tours / ne peut pas être cumulé)\nAugmente de 14,3 % les dégâts de Jujutsu « 影 » (Bleu) subis (pendant 3 tours)\nInflige « Perturbation » (Spécial) (2 tours / 2 fois / Chance : 50 %)",
-        "effet_niv10": "Augmente les dégâts de rupture infligés par le personnage de 50 % (effet supprimé après activation)\n(Augmente encore en fonction du nombre de « Projection Sorcery », jusqu'à 200 % avec 24)\n« Projection Sorcery » Nombre d'états +2 (jusqu'à 24)\n\nInflige des dégâts mixtes équivalents à 275 % de Taijutsu et 275 % de Jujutsu à l'ennemi sélectionné\nAugmente l'efficacité de l'attribut de vulnérabilité « 影 » (Bleu) de 30 % (3 tours / ne peut pas être cumulé)\nAugmente de 30 % les dégâts de Jujutsu « 影 » (Bleu) subis (pendant 3 tours)\nInflige « Perturbation » (Spécial) (2 tours / 2 fois / Chance : 50 %)"
+        "effet": "Applique une augmentation de 50 % des dégâts de BREAK à soi-même (retiré après l'activation de la compétence)\n(Augmente encore selon le nombre d'états « Sorcellerie de projection », jusqu'à 200 % avec 24 états)\nÉtat « Sorcellerie de projection » +2 (jusqu'à 24)\n\nInflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 173,5 % du taijutsu et 173,5 % du jujutsu\nApplique une augmentation de 14,3 % de l'efficacité de l'attribut de faiblesse « 影 » (Bleu) (3 tours / non cumulable)\nApplique une augmentation de 14,3 % des dégâts de jujutsu subis de type « 影 » (Bleu) (3 tours)\nApplique Perturbation (spéciale) (2 tours / 2 fois / chance : 50 %)",
+        "effet_niv10": "Applique une augmentation de 50 % des dégâts de BREAK à soi-même (retiré après l'activation de la compétence)\n(Augmente encore selon le nombre d'états « Sorcellerie de projection », jusqu'à 200 % avec 24 états)\nÉtat « Sorcellerie de projection » +2 (jusqu'à 24)\n\nInflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 275 % du taijutsu et 275 % du jujutsu\nApplique une augmentation de 30 % de l'efficacité de l'attribut de faiblesse « 影 » (Bleu) (3 tours / non cumulable)\nApplique une augmentation de 30 % des dégâts de jujutsu subis de type « 影 » (Bleu) (3 tours)\nApplique Perturbation (spéciale) (2 tours / 2 fois / chance : 50 %)"
       },
       {
         "indice": 2,
-        "nom": "Overwhelming Speed",
+        "nom": "Vitesse écrasante",
         "clé_image": "BlueSSRNaoyaS21",
         "coût_énergie": 25,
-        "effet": "Inflige des dégâts mixtes équivalents à 34 % de Taijutsu et 34 % de Jujutsu à l'ennemi sélectionné (5 coups)\n\nAugmente les dégâts de rupture infligés par le personnage de 50 % (effet supprimé après activation)\n(Augmente encore en fonction du nombre de « Projection Sorcery », jusqu'à 200 % avec 24)\n\nInflige des dégâts mixtes supplémentaires au corps à corps équivalents à 151,7 % de Taijutsu et 151,7 % de Jujutsu à l'ennemi sélectionné\nAugmente les dégâts « 影 » (bleus) subis de 14,3 % (3 tours / non cumulable)\nAugmente de 14,3 % les dégâts de Jujutsu « 影 » (Bleu) subis (pendant 3 tours)\nRéduit la résistance aux coups critiques de 6,1 % (2 tours)",
-        "effet_niv10": "Inflige des dégâts mixtes équivalents à 75 % de Taijutsu et 75 % de Jujutsu à l'ennemi sélectionné (5 coups)\n\nAugmente les dégâts de rupture infligés par le personnage de 50 % (effet supprimé après activation)\n(Augmente encore en fonction du nombre de « Projection Sorcery », jusqu'à 200 % avec 24)\n\nInflige des dégâts mixtes supplémentaires au corps à corps équivalents à 250 % de Taijutsu et 250 % de Jujutsu à l'ennemi sélectionné\nAugmente les dégâts « 影 » (bleus) subis de 30 % (3 tours / non cumulable)\nAugmente de 30 % les dégâts de Jujutsu « 影 » (Bleu) subis (pendant 3 tours)\nRéduit la résistance aux coups critiques de 10 % (2 tours)"
+        "effet": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 34 % du taijutsu et 34 % du jujutsu (5 coups au total)\n\nApplique une augmentation de 50 % des dégâts de BREAK à soi-même (retiré après l'activation de la compétence)\n(Augmente encore selon le nombre d'états « Sorcellerie de projection », jusqu'à 200 % avec 24 états)\n\nInflige en plus des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 151,7 % du taijutsu et 151,7 % du jujutsu\nApplique une augmentation de 14,3 % des dégâts subis de type « 影 » (Bleu) (3 tours / non cumulable)\nApplique une augmentation de 14,3 % des dégâts de jujutsu subis de type « 影 » (Bleu) (3 tours)\nApplique une baisse de 6,1 % de la résistance aux CRIT (2 tours)",
+        "effet_niv10": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 75 % du taijutsu et 75 % du jujutsu (5 coups au total)\n\nApplique une augmentation de 50 % des dégâts de BREAK à soi-même (retiré après l'activation de la compétence)\n(Augmente encore selon le nombre d'états « Sorcellerie de projection », jusqu'à 200 % avec 24 états)\n\nInflige en plus des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 250 % du taijutsu et 250 % du jujutsu\nApplique une augmentation de 30 % des dégâts subis de type « 影 » (Bleu) (3 tours / non cumulable)\nApplique une augmentation de 30 % des dégâts de jujutsu subis de type « 影 » (Bleu) (3 tours)\nApplique une baisse de 10 % de la résistance aux CRIT (2 tours)"
       }
     ],
     "ultime": {
-      "nom": "I'll Punch Through You at Top Speed",
+      "nom": "Je vais te transpercer à pleine vitesse",
       "clé_image": "BlueSSRNaoyaUlt1",
-      "effet": "Augmente les dégâts de rupture infligés par le personnage de 50 % (effet supprimé après activation)\n(Augmente encore en fonction du nombre de « Projection Sorcery », jusqu'à 200 % avec 24)\n« Projection Sorcery » Nombre d'états +5 (jusqu'à 24)\n\nInflige des dégâts mixtes équivalents à 241,4 % de Taijutsu et 241,4 % de Jujutsu à l'ennemi sélectionné\nAugmente l'efficacité de l'attribut de vulnérabilité « 影 » (Bleu) de 14,3 % (3 tours / Ne peut être cumulé / amélioré / affaibli)\nAugmente les dégâts « 影 » (bleus) subis de 14,3 % (3 tours / non cumulable)\nAugmente de 14,3 % les dégâts de Jujutsu « 影 » (Bleu) subis (pendant 3 tours)\nRéduit la résistance aux coups critiques de 6,1 % (2 tours)\n\nInflige des dégâts mixtes supplémentaires au corps à corps équivalents à 265,8 % de Taijutsu et 265,8 % de Jujutsu à l'ennemi sélectionné\nInflige « Perturbation » (Spécial) (2 tours / 2 fois / Chance : 90 %)",
-      "effet_niv10": "Augmente les dégâts de rupture infligés par le personnage de 50 % (effet supprimé après activation)\n(Augmente encore en fonction du nombre de « Projection Sorcery », jusqu'à 200 % avec 24)\n« Projection Sorcery » Nombre d'états +5 (jusqu'à 24)\n\nInflige des dégâts mixtes équivalents à 400 % de Taijutsu et 400 % de Jujutsu à l'ennemi sélectionné\nAugmente l'efficacité de l'attribut de vulnérabilité « 影 » (Bleu) de 30 % (3 tours / Ne peut être cumulé / amélioré / affaibli)\nAugmente les dégâts « 影 » (bleus) subis de 30 % (3 tours / non cumulable)\nAugmente de 30 % les dégâts de Jujutsu « 影 » (Bleu) subis (pendant 3 tours)\nRéduit la résistance aux coups critiques de 10 % (2 tours)\n\nInflige des dégâts mixtes supplémentaires au corps à corps équivalents à 450 % de Taijutsu et 450 % de Jujutsu à l'ennemi sélectionné\nInflige « Perturbation » (Spécial) (2 tours / 2 fois / Chance : 90 %)"
+      "effet": "Applique une augmentation de 50 % des dégâts de BREAK à soi-même (retiré après l'activation de la compétence)\n(Augmente encore selon le nombre d'états « Sorcellerie de projection », jusqu'à 200 % avec 24 états)\nÉtat « Sorcellerie de projection » +5 (jusqu'à 24)\n\nInflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 241,4 % du taijutsu et 241,4 % du jujutsu\nApplique une augmentation de 14,3 % de l'efficacité de l'attribut de faiblesse « 影 » (Bleu) (3 tours / non cumulable / ne peut être ni renforcée ni affaiblie)\nApplique une augmentation de 14,3 % des dégâts subis de type « 影 » (Bleu) (3 tours / non cumulable)\nApplique une augmentation de 14,3 % des dégâts de jujutsu subis de type « 影 » (Bleu) (3 tours)\nApplique une baisse de 6,1 % de la résistance aux CRIT (2 tours)\n\nInflige en plus des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 265,8 % du taijutsu et 265,8 % du jujutsu\nApplique Perturbation (spéciale) (2 tours / 2 fois / chance : 90 %)",
+      "effet_niv10": "Applique une augmentation de 50 % des dégâts de BREAK à soi-même (retiré après l'activation de la compétence)\n(Augmente encore selon le nombre d'états « Sorcellerie de projection », jusqu'à 200 % avec 24 états)\nÉtat « Sorcellerie de projection » +5 (jusqu'à 24)\n\nInflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 400 % du taijutsu et 400 % du jujutsu\nApplique une augmentation de 30 % de l'efficacité de l'attribut de faiblesse « 影 » (Bleu) (3 tours / non cumulable / ne peut être ni renforcée ni affaiblie)\nApplique une augmentation de 30 % des dégâts subis de type « 影 » (Bleu) (3 tours / non cumulable)\nApplique une augmentation de 30 % des dégâts de jujutsu subis de type « 影 » (Bleu) (3 tours)\nApplique une baisse de 10 % de la résistance aux CRIT (2 tours)\n\nInflige en plus des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 450 % du taijutsu et 450 % du jujutsu\nApplique Perturbation (spéciale) (2 tours / 2 fois / chance : 90 %)"
     },
     "compétences_auto": [
       {
         "indice": 1,
-        "nom": "Instant Combo (Follow-Up)",
+        "nom": "Combo instantané (suivi)",
         "clé_image": "InstantComboFollowUp",
-        "effet": "Si « Projection Sorcery » ou « Instant Combo » a été utilisé et a infligé des dégâts : (40 % de chances / proportionnel au niveau de 1)\n▼ Sur l'ennemi ciblé\nInflige des dégâts d'attaque hybrides au corps à corps équivalant à 150 % du taijutsu et 150 % du jujutsu (2 coups au total)\nAugmente de 15 % les dégâts de Jujutsu « 影 » (Bleu) subis par <img id=\"2\"/> (2 tours / Ne peut pas être renforcé)\nAugmente les dégâts « 影 » (Bleu) subis de 10 % (2 tours / Ne peut pas être renforcé)\n« Projection Sorcery » Nombre d'états +2 (jusqu'à 24)"
+        "effet": "Si « Sorcellerie de projection » ou « Combo instantané » inflige des dégâts : (chance : 40 % / évolue avec le niveau de la compétence 1)\nInflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 150 % du taijutsu et 150 % du jujutsu (2 coups au total)\nApplique une augmentation de 15 % des dégâts de jujutsu subis de type « 影 » (Bleu) (2 tours / ne peut pas être renforcée)\nApplique une augmentation de 10 % des dégâts subis de type « 影 » (Bleu) (2 tours / ne peut pas être renforcée)\nÉtat « Sorcellerie de projection » +2 (jusqu'à 24)"
       },
       {
         "indice": 2,
-        "nom": "Projection Sorcery (Counter)",
+        "nom": "Sorcellerie de projection (contre)",
         "clé_image": "ProjectionSorcery(Counter)",
-        "effet": "Au début du combat, se confère l’état « Contre-attaque ».\n\nEn cas d'attaque au corps à corps (une fois par tour) : (proportionnel au niveau de S 2),\nAugmente les dégâts de rupture infligés par le personnage de 50 % (effet supprimé après activation)\n(Augmente encore en fonction du nombre de « Projection Sorcery », jusqu'à 200 % avec 24)\nInflige des dégâts mixtes équivalents à 75 % de Taijutsu et 75 % de Jujutsu à l'ennemi sélectionné\nRéduit la résistance aux coups critiques de 5 % (2 tours)\nAugmente de 10 % les dégâts de Jujutsu « 影 » (Bleu) subis (pendant 2 tours)\nInflige « Perturbation » (Spécial) (2 tours / 2 fois / Chance : 50 %)"
+        "effet": "Au début du combat, confère l'état de Contre à soi-même\n\nLorsque soi-même subit une attaque au corps à corps (une fois par tour) : (évolue avec le niveau de la compétence 2),\nApplique une augmentation de 50 % des dégâts de BREAK à soi-même (retiré après l'activation de la compétence)\n(Augmente encore selon le nombre d'états « Sorcellerie de projection », jusqu'à 200 % avec 24 états)\nInflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 75 % du taijutsu et 75 % du jujutsu\nApplique une baisse de 5 % de la résistance aux CRIT (2 tours)\nApplique une augmentation de 10 % des dégâts de jujutsu subis de type « 影 » (Bleu) (2 tours)\nApplique Perturbation (spéciale) (2 tours / 2 fois / chance : 50 %)"
       },
       {
         "indice": 3,
-        "nom": "Projection Sorcery (Auto)",
+        "nom": "Sorcellerie de projection (passif)",
         "clé_image": "YouAreTooSlow",
-        "effet": "Immunisé contre les contre-attaques au corps à corps lorsqu'il attaque\n\nAu début du tour : (Les cartes ne peuvent pas toutes être empilées)\nAugmente vos statistiques de Taijutsu et de Jujutsu de 6 % (Magie de projection) (jusqu'à 30 % avec les compteurs 16)\n5 % de chances d'esquiver et augmente la vitesse de recharge de sa jauge d'ultime de 5 % (jusqu'à 20 % avec 24 compteurs)\nL'immunité aux ténèbres et la probabilité de réaliser un combo instantané (suite) ont été augmentées à 60 % (activées avec 8 compteurs ou plus)\nEffet « coup assuré » (activé lorsque le compteur 16 est supérieur à X)\nExécution garantie de la combo instantanée (suite) (activée lorsque le compteur 24 est atteint)\n\nAprès avoir esquivé une attaque :\nRécupère 5 d'énergie occulte pour soi-même (sans limite)\n« Projection Sorcery » Nombre d'états +1 (jusqu'à 24)"
+        "effet": "Ignore l'état de contre-attaque de l'ennemi lors de ses attaques au corps à corps\n\nAu début du tour : (aucun effet n'est cumulable)\nApplique une augmentation de 6 % du taijutsu et du jujutsu à soi-même (Sorcellerie de projection) (jusqu'à 30 % avec 16 états)\nChance d'esquive de 5 % et applique une augmentation de 5 % de la vitesse de charge de la jauge d'ultime à soi-même (jusqu'à 20 % avec 24 états)\nImmunité aux Ténèbres et chance de déclencher « Combo instantané (suivi) » portée à 60 % (à partir de 8 états)\nConfère Touche garantie à soi-même (à partir de 16 états)\nDéclenchement garanti de « Combo instantané (suivi) » (à 24 états)\n\nLorsque soi-même esquive avec succès :\nRécupère 5 d'énergie occulte pour soi-même (sans limite)\nÉtat « Sorcellerie de projection » +1 (jusqu'à 24)"
       }
     ],
     "ultime_coopérative": {
-      "effet": "Inflige des dégâts mixtes équivalents à 96 % de Taijutsu et 96 % de Jujutsu à l'ennemi sélectionné\nApplique une augmentation de 30 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)",
-      "effet_renforcé": "Inflige des dégâts mixtes équivalents à 160 % de Taijutsu et 160 % de Jujutsu à l'ennemi sélectionné\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)\nRestaure le taux de coup critique du personnage et de son allié en combo de 30 % (3 tours)"
+      "effet": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 96 % du taijutsu et 96 % du jujutsu\nApplique une augmentation de 30 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)",
+      "effet_renforcé": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 160 % du taijutsu et 160 % du jujutsu\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)\nApplique une augmentation de 30 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (3 tours)"
     },
     "étiquettes": [],
     "clé_image": "BlueSSRNaoyaArt1",
     "clé_icône": "BlueSSRNaoyaIcon1",
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/f6/BlueSSRNaoyaIcon1.jpeg/revision/latest?cb=20261030071753",
     "traduction_automatique": {
-      "composées": [
-        {
-          "champ": "compétences_auto[0].effet",
-          "ligne": 2,
-          "en": "Deals melee Mixed Damage equal to 150% Taijutsu & 150% Jujutsu to the selected enemy (2 Hits)"
-        }
-      ],
       "deepl": [
         {
           "champ": "attaque_normale.effet",
-          "ligne": 1,
-          "en": "Deals melee Mixed Damage equal to 85.4% Taijutsu and 85.4% Jujutsu to the selected enemy (2 Hits)"
-        },
-        {
-          "champ": "attaque_normale.effet",
           "ligne": 2,
           "en": "\"Projection Sorcery\" State Count +3 (Up to 24)"
         },
         {
           "champ": "attaque_normale.effet_niv10",
-          "ligne": 1,
-          "en": "Deals melee Mixed Damage equal to 100% Taijutsu and 100% Jujutsu to the selected enemy (2 Hits)"
-        },
-        {
-          "champ": "attaque_normale.effet_niv10",
           "ligne": 2,
           "en": "\"Projection Sorcery\" State Count +3 (Up to 24)"
-        },
-        {
-          "champ": "compétences[0].effet",
-          "ligne": 1,
-          "en": "Increases own Break Damage by 50% (Removed after activation)"
         },
         {
           "champ": "compétences[0].effet",
@@ -122,31 +100,6 @@
           "en": "\"Projection Sorcery\" State Count +2 (Up to 24)"
         },
         {
-          "champ": "compétences[0].effet",
-          "ligne": 5,
-          "en": "Deals melee Mixed Damage equal to 173.5% Taijutsu and 173.5% Jujutsu to the selected enemy"
-        },
-        {
-          "champ": "compétences[0].effet",
-          "ligne": 6,
-          "en": "Increases the effectiveness of \"影\" (Blue) Weakness Attribute by 14.3% (3 Turns/Cannot be Stacked)"
-        },
-        {
-          "champ": "compétences[0].effet",
-          "ligne": 7,
-          "en": "Increases \"影\" (Blue) Jujutsu Damage Received by 14.3% (3 Turns)"
-        },
-        {
-          "champ": "compétences[0].effet",
-          "ligne": 8,
-          "en": "Inflicts Disruption (Special) (2 Turns/2 Times/Chance: 50%)"
-        },
-        {
-          "champ": "compétences[0].effet_niv10",
-          "ligne": 1,
-          "en": "Increases own Break Damage by 50% (Removed after activation)"
-        },
-        {
           "champ": "compétences[0].effet_niv10",
           "ligne": 2,
           "en": "(Increases further based on \"Projection Sorcery\" Count, up to 200% with 24 Counts)"
@@ -157,99 +110,14 @@
           "en": "\"Projection Sorcery\" State Count +2 (Up to 24)"
         },
         {
-          "champ": "compétences[0].effet_niv10",
-          "ligne": 5,
-          "en": "Deals melee Mixed Damage equal to 275% Taijutsu and 275% Jujutsu to the selected enemy"
-        },
-        {
-          "champ": "compétences[0].effet_niv10",
-          "ligne": 6,
-          "en": "Increases the effectiveness of \"影\" (Blue) Weakness Attribute by 30% (3 Turns/Cannot be Stacked)"
-        },
-        {
-          "champ": "compétences[0].effet_niv10",
-          "ligne": 7,
-          "en": "Increases \"影\" (Blue) Jujutsu Damage Received by 30% (3 Turns)"
-        },
-        {
-          "champ": "compétences[0].effet_niv10",
-          "ligne": 8,
-          "en": "Inflicts Disruption (Special) (2 Turns/2 Times/Chance: 50%)"
-        },
-        {
-          "champ": "compétences[1].effet",
-          "ligne": 1,
-          "en": "Deals melee Mixed Damage equal to 34% Taijutsu and 34% Jujutsu to the selected enemy (5 Hits)"
-        },
-        {
-          "champ": "compétences[1].effet",
-          "ligne": 3,
-          "en": "Increases own Break Damage by 50% (Removed after activation)"
-        },
-        {
           "champ": "compétences[1].effet",
           "ligne": 4,
           "en": "(Increases further based on \"Projection Sorcery\" Count, up to 200% with 24 Counts)"
         },
         {
-          "champ": "compétences[1].effet",
-          "ligne": 6,
-          "en": "Deals an additional melee Mixed Damage equal to 151.7% Taijutsu and 151.7% Jujutsu to the selected enemy"
-        },
-        {
-          "champ": "compétences[1].effet",
-          "ligne": 7,
-          "en": "Increases \"影\" (Blue) Damage Received by 14.3% (3 Turns/Cannot be Stacked)"
-        },
-        {
-          "champ": "compétences[1].effet",
-          "ligne": 8,
-          "en": "Increases \"影\" (Blue) Jujutsu Damage Received by 14.3% (3 Turns)"
-        },
-        {
-          "champ": "compétences[1].effet",
-          "ligne": 9,
-          "en": "Decreases Critical Hit Resistance by 6.1% (2 Turns)"
-        },
-        {
-          "champ": "compétences[1].effet_niv10",
-          "ligne": 1,
-          "en": "Deals melee Mixed Damage equal to 75% Taijutsu and 75% Jujutsu to the selected enemy (5 Hits)"
-        },
-        {
-          "champ": "compétences[1].effet_niv10",
-          "ligne": 3,
-          "en": "Increases own Break Damage by 50% (Removed after activation)"
-        },
-        {
           "champ": "compétences[1].effet_niv10",
           "ligne": 4,
           "en": "(Increases further based on \"Projection Sorcery\" Count, up to 200% with 24 Counts)"
-        },
-        {
-          "champ": "compétences[1].effet_niv10",
-          "ligne": 6,
-          "en": "Deals an additional melee Mixed Damage equal to 250% Taijutsu and 250% Jujutsu to the selected enemy"
-        },
-        {
-          "champ": "compétences[1].effet_niv10",
-          "ligne": 7,
-          "en": "Increases \"影\" (Blue) Damage Received by 30% (3 Turns/Cannot be Stacked)"
-        },
-        {
-          "champ": "compétences[1].effet_niv10",
-          "ligne": 8,
-          "en": "Increases \"影\" (Blue) Jujutsu Damage Received by 30% (3 Turns)"
-        },
-        {
-          "champ": "compétences[1].effet_niv10",
-          "ligne": 9,
-          "en": "Decreases Critical Hit Resistance by 10% (2 Turns)"
-        },
-        {
-          "champ": "ultime.effet",
-          "ligne": 1,
-          "en": "Increases own Break Damage by 50% (Removed after activation)"
         },
         {
           "champ": "ultime.effet",
@@ -262,46 +130,6 @@
           "en": "\"Projection Sorcery\" State Count +5 (Up to 24)"
         },
         {
-          "champ": "ultime.effet",
-          "ligne": 5,
-          "en": "Deals melee Mixed Damage equal to 241.4% Taijutsu and 241.4% Jujutsu to the selected enemy"
-        },
-        {
-          "champ": "ultime.effet",
-          "ligne": 6,
-          "en": "Increases the effectiveness of \"影\" (Blue) Weakness Attribute by 14.3% (3 Turns/Cannot be Stacked/Buffed/Nerfed)"
-        },
-        {
-          "champ": "ultime.effet",
-          "ligne": 7,
-          "en": "Increases \"影\" (Blue) Damage Received by 14.3% (3 Turns/Cannot be Stacked)"
-        },
-        {
-          "champ": "ultime.effet",
-          "ligne": 8,
-          "en": "Increases \"影\" (Blue) Jujutsu Damage Received by 14.3% (3 Turns)"
-        },
-        {
-          "champ": "ultime.effet",
-          "ligne": 9,
-          "en": "Decreases Critical Hit Resistance by 6.1% (2 Turns)"
-        },
-        {
-          "champ": "ultime.effet",
-          "ligne": 11,
-          "en": "Deals an additional melee Mixed Damage equal to 265.8% Taijutsu and 265.8% Jujutsu to the selected enemy"
-        },
-        {
-          "champ": "ultime.effet",
-          "ligne": 12,
-          "en": "Inflicts Disruption (Special) (2 Turns/2 Times/Chance: 90%)"
-        },
-        {
-          "champ": "ultime.effet_niv10",
-          "ligne": 1,
-          "en": "Increases own Break Damage by 50% (Removed after activation)"
-        },
-        {
           "champ": "ultime.effet_niv10",
           "ligne": 2,
           "en": "(Increases further based on \"Projection Sorcery\" Count, up to 200% with 24 Counts)"
@@ -310,41 +138,6 @@
           "champ": "ultime.effet_niv10",
           "ligne": 3,
           "en": "\"Projection Sorcery\" State Count +5 (Up to 24)"
-        },
-        {
-          "champ": "ultime.effet_niv10",
-          "ligne": 5,
-          "en": "Deals melee Mixed Damage equal to 400% Taijutsu and 400% Jujutsu to the selected enemy"
-        },
-        {
-          "champ": "ultime.effet_niv10",
-          "ligne": 6,
-          "en": "Increases the effectiveness of \"影\" (Blue) Weakness Attribute by 30% (3 Turns/Cannot be Stacked/Buffed/Nerfed)"
-        },
-        {
-          "champ": "ultime.effet_niv10",
-          "ligne": 7,
-          "en": "Increases \"影\" (Blue) Damage Received by 30% (3 Turns/Cannot be Stacked)"
-        },
-        {
-          "champ": "ultime.effet_niv10",
-          "ligne": 8,
-          "en": "Increases \"影\" (Blue) Jujutsu Damage Received by 30% (3 Turns)"
-        },
-        {
-          "champ": "ultime.effet_niv10",
-          "ligne": 9,
-          "en": "Decreases Critical Hit Resistance by 10% (2 Turns)"
-        },
-        {
-          "champ": "ultime.effet_niv10",
-          "ligne": 11,
-          "en": "Deals an additional melee Mixed Damage equal to 450% Taijutsu and 450% Jujutsu to the selected enemy"
-        },
-        {
-          "champ": "ultime.effet_niv10",
-          "ligne": 12,
-          "en": "Inflicts Disruption (Special) (2 Turns/2 Times/Chance: 90%)"
         },
         {
           "champ": "compétences_auto[0].effet",
@@ -353,68 +146,13 @@
         },
         {
           "champ": "compétences_auto[0].effet",
-          "ligne": 3,
-          "en": "Increases \"影\" (Blue) Jujutsu Damage Received by 15% (2 Turns/Cannot be Buffed)"
-        },
-        {
-          "champ": "compétences_auto[0].effet",
-          "ligne": 4,
-          "en": "Increases \"影\" (Blue) Damage Received by 10% (2 Turns/Cannot be Buffed)"
-        },
-        {
-          "champ": "compétences_auto[0].effet",
           "ligne": 5,
           "en": "\"Projection Sorcery\" State Count +2 (Up to 24)"
         },
         {
           "champ": "compétences_auto[1].effet",
-          "ligne": 1,
-          "en": "At the start of battle, grants Counter State to self"
-        },
-        {
-          "champ": "compétences_auto[1].effet",
-          "ligne": 3,
-          "en": "If receiving a melee attack (Once per Turn): (Scaled with S2 Level),"
-        },
-        {
-          "champ": "compétences_auto[1].effet",
-          "ligne": 4,
-          "en": "Increases own Break Damage by 50% (Removed after activation)"
-        },
-        {
-          "champ": "compétences_auto[1].effet",
           "ligne": 5,
           "en": "(Increases further based on \"Projection Sorcery\" Count, up to 200% with 24 Counts)"
-        },
-        {
-          "champ": "compétences_auto[1].effet",
-          "ligne": 6,
-          "en": "Deals melee Mixed Damage equal to 75% Taijutsu & 75% Jujutsu to the selected enemy"
-        },
-        {
-          "champ": "compétences_auto[1].effet",
-          "ligne": 7,
-          "en": "Decreases Critical Hit Resistance by 5% (2 Turns)"
-        },
-        {
-          "champ": "compétences_auto[1].effet",
-          "ligne": 8,
-          "en": "Increases \"影\" (Blue) Jujutsu Damage Received by 10% (2 Turns)"
-        },
-        {
-          "champ": "compétences_auto[1].effet",
-          "ligne": 9,
-          "en": "Inflicts Disruption (Special) (2 Turns/2 Times/Chance: 50%)"
-        },
-        {
-          "champ": "compétences_auto[2].effet",
-          "ligne": 1,
-          "en": "Immune to melee attack counters when attacking"
-        },
-        {
-          "champ": "compétences_auto[2].effet",
-          "ligne": 3,
-          "en": "At the start of turn: (All cannot be stacked)"
         },
         {
           "champ": "compétences_auto[2].effet",
@@ -443,28 +181,8 @@
         },
         {
           "champ": "compétences_auto[2].effet",
-          "ligne": 10,
-          "en": "After evading an attack:"
-        },
-        {
-          "champ": "compétences_auto[2].effet",
           "ligne": 12,
           "en": "\"Projection Sorcery\" State Count +1 (Up to 24)"
-        },
-        {
-          "champ": "ultime_coopérative.effet",
-          "ligne": 1,
-          "en": "Deals melee Mixed Damage equal to 96% Taijutsu & 96% Jujutsu to the selected enemy"
-        },
-        {
-          "champ": "ultime_coopérative.effet_renforcé",
-          "ligne": 1,
-          "en": "Deals melee Mixed Damage equal to 160% Taijutsu & 160% Jujutsu to the selected enemy"
-        },
-        {
-          "champ": "ultime_coopérative.effet_renforcé",
-          "ligne": 3,
-          "en": "Recovers own and Combo Ally's Critical Hit Rate by 30% (3 Turns)"
         }
       ]
     },

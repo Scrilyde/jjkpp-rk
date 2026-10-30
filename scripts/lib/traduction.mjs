@@ -112,11 +112,12 @@ export function uniqueWordIndex(text, part) {
 
 const own = (o, k) => o != null && Object.prototype.hasOwnProperty.call(o, k);
 
-export function createTranslator(glossaire, { deepl = {} } = {}) {
+export function createTranslator(glossaire, { deepl = {}, deeplNames = {} } = {}) {
   const manual = new Map(Object.entries(glossaire['lignes_manuelles'] || {}).map(([k, v]) => [lookupKey(k), v]));
   const lines = new Map(Object.entries(glossaire['lignes'] || {}).map(([k, v]) => [lookupKey(k), v]));
   const deeplLines = new Map(Object.entries(deepl).map(([k, v]) => [lookupKey(k), v]));
   const names = { ...(glossaire['noms'] || {}), ...(glossaire['noms_manuels'] || {}) };
+  const deeplNameMap = new Map(Object.entries(deeplNames));
   const frag = glossaire['fragments'] || {};
   const tokenize = tokenizer(frag['vocabulaire']);
   const frames = new Map(Object.entries(frag['cadres'] || {}).map(([k, v]) => [lookupKey(k), v]));
@@ -126,6 +127,7 @@ export function createTranslator(glossaire, { deepl = {} } = {}) {
     return frag['valeurs']?.[cls]?.[value] ?? null;
   };
   const pending = new Map();   // clés restées en anglais → graphie d'origine (pour DeepL)
+  const pendingNames = new Set();   // noms (compétences, épithètes) restés en anglais
 
   function compose(key) {
     const tokens = tokenize(key);
@@ -163,8 +165,18 @@ export function createTranslator(glossaire, { deepl = {} } = {}) {
     return { fr: en, source: 'anglais' };
   }
 
+  // Nom de compétence ou épithète : glossaire > cache DeepL > anglais.
+  function nameInfo(en) {
+    if (!en) return { fr: en, source: null };
+    if (own(names, en)) return { fr: names[en] ?? en, source: names[en] == null ? 'anglais' : 'glossaire' };
+    if (deeplNameMap.has(en)) return { fr: deeplNameMap.get(en), source: 'deepl' };
+    pendingNames.add(en);
+    return { fr: en, source: 'anglais' };
+  }
+
   return {
     pending,
+    pendingNames,
     // Texte multiligne → { text, lines: [{ n, en, fr, source, cadre }] } ; chaque ligne est traduite indépendamment.
     translate(en) {
       if (en == null || en === '') return { text: en, lines: [] };
@@ -172,7 +184,10 @@ export function createTranslator(glossaire, { deepl = {} } = {}) {
       return { text: details.map(d => d.fr).join('\n'), lines: details.filter(d => d.source) };
     },
     text(en) { return this.translate(en).text; },
-    name: en => (en && names[en]) || en,
+    nameInfo,
+    name: en => nameInfo(en).fr,
+    // Termes EN → FR connus (noms, cache DeepL, termes_manuels), protégés tels quels lors des appels DeepL.
+    terms: () => ({ ...Object.fromEntries(deeplNameMap), ...names, ...(glossaire['termes_manuels'] || {}) }),
     // Valeur d'une table (élément, rôle…) ; null si inconnue ou volontairement laissée en anglais.
     value(table, en) {
       const m = glossaire['valeurs_manuelles']?.[table];
