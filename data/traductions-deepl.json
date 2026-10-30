@@ -1,0 +1,32 @@
+{
+  "_à_propos": "Cache des traductions DeepL (scripts/sync-wiki.mjs). Clé : ligne anglaise dont les nombres sont remplacés par {0}, {1}… ; valeur : traduction FR avec les mêmes marqueurs. Une ligne présente ici n'est jamais retraduite ; corriger une valeur à la main est sans risque.",
+  "lignes": {
+    "\"Projection Sorcery\" State Count +{0} (Up to {1})": "« Projection Sorcery » Nombre d'états +{0} (jusqu'à {1})",
+    "(Increases further based on \"Projection Sorcery\" Count, up to {0}% with {1} Counts)": "(Augmente encore en fonction du nombre de « Projection Sorcery », jusqu'à {0} % avec {1})",
+    "{0}% Chance to Evade & Increases own Ultimate Gauge Charging Rate by {1}% (Up to {2}% with {3} Counts)": "{0} % de chances d'esquiver et augmente la vitesse de recharge de sa jauge d'ultime de {1} % (jusqu'à {2} % avec {3} compteurs)",
+    "After evading an attack:": "Après avoir esquivé une attaque :",
+    "At the start of battle, grants Counter State to self": "Au début du combat, se confère l’état « Contre-attaque ».",
+    "At the start of turn: (All cannot be stacked)": "Au début du tour : (Les cartes ne peuvent pas toutes être empilées)",
+    "Darkness Immunity & Chance of performing Instant Combo (Follow-Up) increased to {0}% (Activated with {1}+ Counts)": "L'immunité aux ténèbres et la probabilité de réaliser un combo instantané (suite) ont été augmentées à {0} % (activées avec {1} compteurs ou plus)",
+    "Deals an additional melee Mixed Damage equal to {0}% Taijutsu and {1}% Jujutsu to the selected enemy": "Inflige des dégâts mixtes supplémentaires au corps à corps équivalents à {0} % de Taijutsu et {1} % de Jujutsu à l'ennemi sélectionné",
+    "Deals melee Mixed Damage equal to {0}% Taijutsu & {1}% Jujutsu to the selected enemy": "Inflige des dégâts mixtes équivalents à {0} % de Taijutsu et {1} % de Jujutsu à l'ennemi sélectionné",
+    "Deals melee Mixed Damage equal to {0}% Taijutsu and {1}% Jujutsu to the selected enemy": "Inflige des dégâts mixtes équivalents à {0} % de Taijutsu et {1} % de Jujutsu à l'ennemi sélectionné",
+    "Deals melee Mixed Damage equal to {0}% Taijutsu and {1}% Jujutsu to the selected enemy ({2} Hits)": "Inflige des dégâts mixtes équivalents à {0} % de Taijutsu et {1} % de Jujutsu à l'ennemi sélectionné ({2} coups)",
+    "Decreases Critical Hit Resistance by {0}% ({1} Turns)": "Réduit la résistance aux coups critiques de {0} % ({1} tours)",
+    "Guaranteed to perform Instant Combo (Follow-Up) (Activated with {0} Counts)": "Exécution garantie de la combo instantanée (suite) (activée lorsque le compteur {0} est atteint)",
+    "Guaranteed-Hit Effect (Activated with {0}+ Counts)": "Effet « coup assuré » (activé lorsque le compteur {0} est supérieur à X)",
+    "If \"Projection Sorcery\" or \"Instant Combo\" was used and dealt damage: ({0}% Chance/Scaled with S{1} Level)": "Si « Projection Sorcery » ou « Instant Combo » a été utilisé et a infligé des dégâts : ({0} % de chances / proportionnel au niveau de {1})",
+    "If receiving a melee attack (Once per Turn): (Scaled with S{0} Level),": "En cas d'attaque au corps à corps (une fois par tour) : (proportionnel au niveau de S {0}),",
+    "Immune to melee attack counters when attacking": "Immunisé contre les contre-attaques au corps à corps lorsqu'il attaque",
+    "Increases \"影\" (Blue) Damage Received by {0}% ({1} Turns/Cannot be Buffed)": "Augmente les dégâts « 影 » (Bleu) subis de {0} % ({1} tours / Ne peut pas être renforcé)",
+    "Increases \"影\" (Blue) Damage Received by {0}% ({1} Turns/Cannot be Stacked)": "Augmente les dégâts « 影 » (bleus) subis de {0} % ({1} tours / non cumulable)",
+    "Increases \"影\" (Blue) Jujutsu Damage Received by {0}% ({1} Turns)": "Augmente de {0} % les dégâts de Jujutsu « 影 » (Bleu) subis (pendant {1} tours)",
+    "Increases \"影\" (Blue) Jujutsu Damage Received by {0}% ({1} Turns/Cannot be Buffed)": "Augmente de {0} % les dégâts de Jujutsu « 影 » (Bleu) subis par <img id=\"2\"/> ({1} tours / Ne peut pas être renforcé)",
+    "Increases own Break Damage by {0}% (Removed after activation)": "Augmente les dégâts de rupture infligés par le personnage de {0} % (effet supprimé après activation)",
+    "Increases own Taijutsu & Jujutsu Stat by {0}% (Projection Sorcery) (Up to {1}% with {2} Counts)": "Augmente vos statistiques de Taijutsu et de Jujutsu de {0} % (Magie de projection) (jusqu'à {1} % avec les compteurs {2})",
+    "Increases the effectiveness of \"影\" (Blue) Weakness Attribute by {0}% ({1} Turns/Cannot be Stacked)": "Augmente l'efficacité de l'attribut de vulnérabilité « 影 » (Bleu) de {0} % ({1} tours / ne peut pas être cumulé)",
+    "Increases the effectiveness of \"影\" (Blue) Weakness Attribute by {0}% ({1} Turns/Cannot be Stacked/Buffed/Nerfed)": "Augmente l'efficacité de l'attribut de vulnérabilité « 影 » (Bleu) de {0} % ({1} tours / Ne peut être cumulé / amélioré / affaibli)",
+    "Inflicts Disruption (Special) ({0} Turns/{1} Times/Chance: {2}%)": "Inflige « Perturbation » (Spécial) ({0} tours / {1} fois / Chance : {2} %)",
+    "Recovers own and Combo Ally's Critical Hit Rate by {0}% ({1} Turns)": "Restaure le taux de coup critique du personnage et de son allié en combo de {0} % ({1} tours)"
+  }
+}
