@@ -251,6 +251,7 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
   }
 
   function renderListSkeleton() {
+    view.dataset.collection = state.collection;
     view.innerHTML = `<div class="list-layout">
 <div class="m-tools">
   <div class="search-row"><input class="search" type="search" placeholder="Nom ou épithète…" aria-label="Rechercher un nom ou une épithète" autocomplete="off" spellcheck="false" data-search>
@@ -308,7 +309,6 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
     document.body.dataset.route = 'list';
     document.title = LIST_TITLE;
     if (!view.querySelector('.list-layout') || view.dataset.collection !== state.collection) renderListSkeleton();
-    view.dataset.collection = state.collection;
     lastListHash = listHash();
     updateList();
   }
@@ -380,6 +380,7 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
       if (l[0] === '▼') { ty = 'c'; mk = '▼'; t = l.slice(1).trim(); }
       else if (l[0] === '※') { ty = 'n'; mk = '※'; t = l.slice(1).trim(); }
       else if (l[0] === '·') { ty = 'b'; mk = '–'; t = l.slice(1).trim(); }
+      t = t.replace(/\p{L}/u, c => c.toLocaleUpperCase('fr-FR'));
       out.push({ ty, mk, t, en: EN.test(l), sp: !out.length ? '' : gap ? 'gap' : 'near' });
       gap = false;
     });
@@ -552,7 +553,7 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
   /* ---------------- Événements ---------------- */
 
   document.addEventListener('click', e => {
-    const t = e.target.closest('[data-collection],[data-memory-sort],[data-theme-set],[data-g],[data-remove],[data-reset],[data-open-filters],[data-close-filters],[data-view],[data-sort],[data-back],[data-nav],[data-lvl],[data-ver],[data-goto],tr[data-href]');
+    const t = e.target.closest('button[data-collection],[data-memory-sort],[data-theme-set],[data-g],[data-remove],[data-reset],[data-open-filters],[data-close-filters],[data-view],[data-sort],[data-back],[data-nav],[data-lvl],[data-ver],[data-goto],tr[data-href]');
     if (!t) return;
     if (t.dataset.collection) {
       state.collection = t.dataset.collection; state.q = ''; state.tri = ''; state.ordre = 'desc'; GROUPS.forEach(g => { state[g] = []; });

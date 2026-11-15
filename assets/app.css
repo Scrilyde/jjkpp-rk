@@ -617,7 +617,8 @@ body[data-route="fiche"] .topbar{position:static}
 .memory-table .tnum{vertical-align:top}
 .memory-table .bonus-value{align-items:flex-end}
 .memory-table .tname a{white-space:normal}
-.memory-art{display:block;width:100%;height:auto;max-height:360px;object-fit:cover;border-radius:10px}
+/* Réserver le format de l'illustration avant son chargement évite le flash de la fiche sans image. */
+.memory-art{display:block;width:100%;height:auto;aspect-ratio:2/1;max-height:360px;object-fit:cover;border-radius:10px}
 .memory-nav{display:flex;justify-content:space-between;gap:12px;padding:18px 16px}
 .memory-fiche .idcard{display:block}
 .memory-fiche .skill-top h3{font-size:18px}
