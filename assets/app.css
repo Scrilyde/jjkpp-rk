@@ -632,6 +632,7 @@ body[data-route="fiche"] .topbar{position:static}
 .memory-table .tname{min-width:0}
 .memory-table .tname a{overflow:hidden;text-overflow:ellipsis}
 .memory-table .bonus-value{font-size:13px}
+.memory-table th,.memory-table th button,.memory-table .tname a,.memory-table .bonus-value{font-weight:400}
 
 /* Les souvenirs partagent la typographie et les colonnes des personnages. */
 .memory-card .card-head .name{margin-top:3px}
