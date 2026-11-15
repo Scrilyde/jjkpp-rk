@@ -659,12 +659,13 @@ body[data-route="fiche"] .topbar{position:static}
    Le fond sombre, l’image et le voile sont limités à la surface intérieure. */
 .card.illustrated{
   --card-edge:color-mix(in srgb,var(--el-fill,var(--acc)) 30%,var(--ln));
-  border:0;padding:1px;background:var(--card-edge);
+  --card-frame:1px;
+  border:0;padding:var(--card-frame);background:var(--card-edge);
   transition:transform .2s cubic-bezier(.2,.7,.3,1),background-color .2s;
 }
 .card-surface{
   position:relative;isolation:isolate;display:flex;flex:1;min-width:0;
-  overflow:hidden;border-radius:calc(var(--r-card) - 1px);background:#19202b;
+  overflow:hidden;border-radius:calc(var(--r-card) - var(--card-frame));background:#19202b;
 }
 .card.illustrated:hover{--card-edge:var(--el-fill,var(--acc));background:var(--card-edge)}
 @media(prefers-reduced-motion:reduce){.card.illustrated{transition:none}}
@@ -676,7 +677,7 @@ body[data-route="fiche"] .topbar{position:static}
 .card.illustrated[data-el]{
   --strip-width:24px;
   background:
-    linear-gradient(90deg,transparent var(--strip-width),var(--card-edge) var(--strip-width)),
+    linear-gradient(90deg,transparent calc(var(--strip-width) + var(--card-frame)),var(--card-edge) calc(var(--strip-width) + var(--card-frame))),
     linear-gradient(180deg,var(--el-strip),var(--el-strip2));
 }
 .card.illustrated[data-el] .card-surface{
