@@ -194,7 +194,8 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
 .card{display:flex;background:var(--sf);border:1px solid var(--ln);border-radius:var(--r-card);overflow:hidden;text-decoration:none;color:var(--ink);min-width:0}
 .card:hover{border-color:var(--ln2)}
 .strip{width:24px;flex:none;background:var(--el-strip,var(--ln2));color:var(--on-light);display:flex;flex-direction:column;align-items:center;padding:10px 0;gap:8px}
-.strip .k{font-size:16px}
+/* Même cadratin et centrage optique que les tampons, quelle que soit l'icône. */
+.strip .k{display:block;flex:none;width:1em;height:1em;font-size:16px;line-height:1;text-align:center;transform:translateY(.055em)}
 .strip .el{writing-mode:vertical-rl;font-size:8.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
 .card-body{flex:1;min-width:0;padding:11px 13px 10px;display:flex;flex-direction:column;gap:8px}
 .card-head{display:flex;gap:10px;align-items:center}
