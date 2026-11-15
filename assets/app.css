@@ -687,3 +687,18 @@ body[data-route="fiche"] .topbar{position:static}
 .card.illustrated[data-el] .card-art{left:var(--strip-width);width:calc(100% - var(--strip-width))}
 .card.illustrated[data-el] .card-surface::after{left:var(--strip-width)}
 @media(min-width:960px){.card.illustrated[data-el]{--strip-width:22px}}
+
+/* Cartes Jour : le voile clair accompagne les surfaces ivoire du site. */
+:root[data-theme="light"] .card.illustrated{
+  --ink:#1c1a16;--mu:#655d53;--fa:#736a5f;--sf:#fefdf9;
+  color:var(--ink);
+}
+:root[data-theme="light"] .card-surface{background:#fefdf9}
+:root[data-theme="light"] .card-surface::after{
+  background:linear-gradient(180deg,rgba(254,253,249,.03),rgba(254,253,249,.4) 20%,rgba(254,253,249,.94) 43%,#fefdf9 82%);
+}
+:root[data-theme="light"] .card.illustrated .meta,
+:root[data-theme="light"] .card.illustrated .name,
+:root[data-theme="light"] .card.illustrated .epi{text-shadow:none}
+:root[data-theme="light"] .card.illustrated .bar{background:#e2dccd}
+:root[data-theme="light"] .memory-card .rar{color:#67459e}
