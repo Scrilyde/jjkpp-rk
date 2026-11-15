@@ -27,6 +27,7 @@ function browser(fetch) {
   vm.runInContext(source.replace('  onRoute();\n})();', `
     globalThis.renders = [];
     renderList = () => renders.push(state.collection);
+    updateList = () => renders.push(state.collection);
     renderFiche = route => renders.push(route.id);
     globalThis.api = { loadCollection, onRoute, records: () => DATA, imageAttrs, cardHTML, transitionContent, state, commitList };
   })();`), context);
@@ -188,4 +189,23 @@ test('un changement de vue pendant le chargement conserve la dernière demande',
   assert.equal(b.api.state.vue, 'tableau');
   assert.ok(b.location.hash.includes('vue=tableau'));
   assert.deepEqual(Array.from(b.renders), ['souvenirs']);
+});
+
+
+test('revenir à la collection chargée annule le changement encore en attente', async () => {
+  let release;
+  const b = browser(url => url.includes('souvenirs')
+    ? new Promise(resolve => { release = () => resolve(response(url)); }) : response(url));
+  await b.api.onRoute();
+  b.api.state.collection = 'souvenirs';
+  const pending = b.api.commitList(true);
+  b.api.state.collection = 'personnages';
+  b.api.commitList(true);
+  assert.equal(b.renders.at(-1), 'personnages');
+  const count = b.renders.length;
+  release();
+  await pending;
+  assert.equal(b.api.state.collection, 'personnages');
+  assert.equal(b.renders.length, count);
+  assert.ok(!b.location.hash.includes('souvenirs'));
 });

@@ -211,8 +211,11 @@
     lastListHash = listHash();
     history.replaceState(null, '', lastListHash);
     syncListControls();
-    // Une collection en cours de chargement garde la dernière vue demandée.
-    if (view.dataset.collection !== state.collection) return onRoute();
+    // Seule une collection encore absente attend le réseau. Les deux sélecteurs
+    // appliquent sinon le même changement immédiat, en annulant la route en attente.
+    if (!rawCollections[state.collection].length) return onRoute();
+    ++routeVersion;
+    view.removeAttribute('aria-busy');
     return transitionContent(updateList, () => current === 'list', animate);
   }
 
@@ -668,10 +671,7 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
     if (t.dataset.collection) {
       if (t.dataset.collection === state.collection) return;
       state.collection = t.dataset.collection; state.q = ''; state.tri = ''; state.ordre = 'desc'; GROUPS.forEach(g => { state[g] = []; });
-      lastListHash = listHash();
-      history.replaceState(null, '', lastListHash);
-      syncListControls();
-      return onRoute();
+      return commitList(true);
     }
     if (t.dataset.memorySort) { state.tri = t.dataset.memorySort; state.ordre = 'desc'; return commitList(); }
     if (t.dataset.g) {
