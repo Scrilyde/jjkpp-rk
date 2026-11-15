@@ -715,7 +715,10 @@ body[data-route="fiche"] .topbar{position:static}
 }
 .seg.seg-pair:has(>button:nth-child(2)[aria-pressed="true"])::before{transform:translateX(calc(100% + 2px))}
 .seg.seg-pair>button[aria-pressed="true"]{background:transparent}
-.seg.seg-pair>button{min-width:0}
+/* Le texte change immédiatement : un clic inverse ne garde pas la couleur
+   sombre de la pastille précédente pendant son glissement. */
+.seg.seg-pair>button{min-width:0;transition:none}
+.seg.seg-pair>button:hover:not([aria-pressed="true"]){background:transparent}
 .card.illustrated{content-visibility:auto;contain-intrinsic-block-size:auto 240px}
 @media(min-width:960px){.card.illustrated{contain-intrinsic-block-size:auto 260px}}
 @media(prefers-reduced-motion:reduce){.seg.seg-pair::before{transition:none}}
