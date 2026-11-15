@@ -265,6 +265,9 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
   }
 
   function renderListSkeleton() {
+    // Garder les pastilles et leur position lors du changement de collection.
+    const switches = [...view.querySelectorAll('.collection-switch')];
+    const focused = document.activeElement;
     view.dataset.collection = state.collection;
     view.innerHTML = `<div class="list-layout">
 <div class="m-tools">
@@ -272,7 +275,7 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
   <button type="button" class="btn-filters" data-open-filters aria-haspopup="dialog" aria-controls="filters">Filtres<span class="badge-n" hidden></span></button></div>
   <div class="el-quick" role="group" aria-label="Élément">${(isMemory() ? [] : ELEMENTS).map(e => `<button type="button" data-el="${e}" data-g="élément" data-v="${e}" aria-pressed="false"><span class="k">${KANJI[e]}</span><span class="lab">${e}</span></button>`).join('')}</div>
   <div class="count-row"><div class="count"><span class="n"></span><span class="of"></span></div><button type="button" class="link-reset" data-reset hidden>Tout réinitialiser</button></div>
-  <div class="m-view-tools"><div class="collection-switch seg" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}">Personnages</button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}">Souvenirs</button></div><div class="m-view seg" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true">Cartes</button><button type="button" data-view="tableau" aria-pressed="false">Tableau</button></div></div>
+  <div class="m-view-tools"><div class="collection-switch seg" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}"><span class="lab" data-t="Personnages">Personnages</span></button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}"><span class="lab" data-t="Souvenirs">Souvenirs</span></button></div><div class="m-view seg" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true">Cartes</button><button type="button" data-view="tableau" aria-pressed="false">Tableau</button></div></div>
   <div class="chips"></div>
 </div>
 <div class="filters-wrap" id="filters-wrap">
@@ -290,9 +293,13 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
 </div>
 <div class="results">
   <div class="d-results-head"><div class="left"><div class="count"><span class="n"></span><span class="of"></span></div><div class="chips"></div></div>
-  <div class="view"><div class="collection-switch seg" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}">Personnages</button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}">Souvenirs</button></div><span class="vl">Vue</span><div class="seg" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true">Cartes</button><button type="button" data-view="tableau" aria-pressed="false">Tableau</button></div></div></div>
+  <div class="view"><div class="collection-switch seg" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}"><span class="lab" data-t="Personnages">Personnages</span></button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}"><span class="lab" data-t="Souvenirs">Souvenirs</span></button></div><span class="vl">Vue</span><div class="seg" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true">Cartes</button><button type="button" data-view="tableau" aria-pressed="false">Tableau</button></div></div></div>
   <div class="results-body"></div>
 </div></div>`;
+    view.querySelectorAll('.collection-switch').forEach((fresh, i) => {
+      if (switches[i]) fresh.replaceWith(switches[i]);
+    });
+    if (switches.some(g => g.contains(focused))) focused.focus({ preventScroll: true });
     const foot = document.querySelector('body > .site-footer').cloneNode(true);
     foot.classList.add('in-results');
     view.querySelector('.results').appendChild(foot);
@@ -312,6 +319,7 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
     view.querySelectorAll('[data-g][data-v]').forEach(b => b.setAttribute('aria-pressed', String(state[b.dataset.g].includes(b.dataset.v))));
     view.querySelectorAll('[data-sel]').forEach(e => { const k = state[e.dataset.sel].length; e.textContent = k ? k + ' sélect.' : ''; });
     view.querySelector('.btn-see').textContent = 'Voir ' + fiches(n);
+    view.querySelectorAll('[data-collection]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.collection === state.collection)));
     view.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === state.vue)));
     view.querySelectorAll('[data-memory-sort]').forEach(b => b.setAttribute('aria-pressed', String(state.tri === b.dataset.memorySort)));
     const body = view.querySelector('.results-body');
@@ -556,7 +564,7 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
       ? (r.id.startsWith('souvenir-') ? 'souvenirs' : 'personnages')
       : (new URLSearchParams(r.qs).get('collection') === 'souvenirs' ? 'souvenirs' : 'personnages');
     view.setAttribute('aria-busy', 'true');
-    if (!collectionRequests.has(target)) view.innerHTML = '<p class="noscript" role="status">Chargement des fiches…</p>';
+    if (!collectionRequests.has(target) && !(current === 'list' && r.name === 'list')) view.innerHTML = '<p class="noscript" role="status">Chargement des fiches…</p>';
     try {
       await loadCollection(target);
     } catch (error) {
@@ -599,6 +607,7 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
     const t = e.target.closest('button[data-collection],[data-memory-sort],[data-g],[data-remove],[data-reset],[data-open-filters],[data-close-filters],[data-view],[data-sort],[data-back],[data-nav],[data-lvl],[data-ver],[data-goto],tr[data-href]');
     if (!t) return;
     if (t.dataset.collection) {
+      if (t.dataset.collection === state.collection) return;
       state.collection = t.dataset.collection; state.q = ''; state.tri = ''; state.ordre = 'desc'; GROUPS.forEach(g => { state[g] = []; });
       lastListHash = listHash();
       history.replaceState(null, '', lastListHash);
