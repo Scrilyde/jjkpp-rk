@@ -10,11 +10,11 @@
 :root,:root[data-theme="dark"]{
   color-scheme:dark;
   /* surfaces : fond, en-tête, cartes, tuiles, boutons de filtre, champ de recherche, survol */
-  --bg:#0d1119;--hd:#0d1119;--sf:#151b28;--tile:#1b2232;--btn:#151b28;--field:#151b28;--sf2:#1b2232;--side:#0f141e;
+  --bg:#141a27;--hd:#1a2234;--sf:#1d273a;--tile:#253149;--btn:#1d273a;--field:#1a2539;--sf2:#253149;--side:#182133;
   /* traits */
-  --ln:#242c3f;--ln2:#323b52;
+  --ln:#303c55;--ln2:#465674;
   /* texte : principal, secondaire, discret, indication du champ, texte sur bouton actif */
-  --ink:#eff1fe;--mu:#8b93a3;--fa:#7c8494;--ph:#a3aab8;--inv:#0a0c10;
+  --ink:#eff1fe;--mu:#a8b2c8;--fa:#96a2bc;--ph:#b1bdd4;--inv:#0a0c10;
   --scrim:rgba(3,4,7,.76);
   /* tampon Rayon Noir (rouge éclairci pour rester lisible sur fond nuit) */
   --rn:#f0574d;
@@ -663,3 +663,34 @@ body[data-route="fiche"] .topbar{position:static}
 .card.illustrated[data-el] .card-art{left:var(--strip-width);width:calc(100% - var(--strip-width))}
 .card.illustrated[data-el] .card-surface::after{left:var(--strip-width)}
 @media(min-width:960px){.card.illustrated[data-el]{--strip-width:22px}}
+
+/* Accents ponctuels sur les surfaces nuit, sans modifier les illustrations. */
+:root{--warm:#e7bf79;--fresh:#8acbb7;--lilac:#c4b0ee}
+.brand-name{color:#dce5ff}
+.brand-rk{color:var(--warm)}
+.topbar{border-bottom-color:#52648a}
+.brand::before{
+  content:"";align-self:center;flex:none;width:7px;height:24px;border-radius:3px;
+  background:linear-gradient(180deg,var(--warm) 0 48%,var(--acc) 48% 100%);
+}
+.fgroup{--group-accent:var(--acc)}
+.fgroup[aria-label="Rareté"]{--group-accent:var(--warm)}
+.fgroup[aria-label="Catégorie"]{--group-accent:var(--fresh)}
+.fgroup[aria-label="Spécialité"]{--group-accent:var(--lilac)}
+.fgroup-head>span:first-child{color:var(--group-accent)}
+.fgroup-head>span:first-child::before{
+  content:"";display:inline-block;width:5px;height:5px;margin-right:8px;
+  border-radius:50%;background:currentColor;vertical-align:middle;
+}
+.fgroup .opt-grid button:not([aria-pressed="true"]){
+  background:color-mix(in srgb,var(--group-accent) 8%,var(--btn));
+  border-color:color-mix(in srgb,var(--group-accent) 32%,var(--ln));
+}
+.fgroup .opt-grid button:hover:not([aria-pressed="true"]){
+  background:color-mix(in srgb,var(--group-accent) 17%,var(--btn));border-color:var(--group-accent);
+}
+.meta:has(.marks.r3) .rar{color:var(--warm)}
+.meta:has(.marks.r2) .rar{color:var(--lilac)}
+.site-footer a{text-decoration-color:var(--acc)}
+.site-footer a:hover{color:var(--acc)}
+.ftable th[aria-sort] button,.ftable th[aria-sort] button .arr{color:var(--warm)}
