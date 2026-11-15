@@ -668,10 +668,17 @@ body[data-route="fiche"] .topbar{position:static}
 :root{--warm:#e7bf79;--fresh:#8acbb7;--lilac:#c4b0ee}
 .brand-name{color:#dce5ff}
 .brand-rk{color:var(--warm)}
-.topbar{border-bottom-color:#52648a}
-.brand::before{
-  content:"";align-self:center;flex:none;width:7px;height:24px;border-radius:3px;
-  background:linear-gradient(180deg,var(--warm) 0 48%,var(--acc) 48% 100%);
+/* Les quatre éléments soulignent le logo, sur la ligne de l’en-tête. */
+.topbar{
+  border-bottom-color:#52648a;
+  background-image:linear-gradient(90deg,
+    var(--c-jaune) 0 25%,var(--c-vert) 25% 50%,
+    var(--c-bleu) 50% 75%,var(--c-rouge) 75% 100%);
+  background-repeat:no-repeat;background-size:122px 3px;
+  background-position:16px bottom;
+}
+@media(min-width:960px){
+  .topbar{background-size:148px 3px;background-position:32px bottom}
 }
 .fgroup{--group-accent:var(--acc)}
 .fgroup[aria-label="Rareté"]{--group-accent:var(--warm)}
