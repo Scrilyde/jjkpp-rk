@@ -157,44 +157,62 @@
     const l = /^#\/?(?:\?(.*))?$/.exec(h);
     return { name: 'list', qs: l ? l[1] || '' : '' };
   }
-  // Fondu entre les états, avec annulation lors de clics rapprochés.
-  let contentTransition, contentAnimations = [], transitionVersion = 0;
-  function transitionContent(update, valid = () => true) {
-    const version = ++transitionVersion;
-    if (contentTransition) contentTransition.skipTransition();
+  // Seuls les résultats se croisent : les boutons restent vivants et cliquables.
+  let contentAnimations = [], contentGhost;
+  function stopContentAnimation() {
     contentAnimations.forEach(a => a.cancel());
     contentAnimations = [];
-    const apply = () => { if (version === transitionVersion && valid()) update(); };
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { apply(); return; }
-    if (document.startViewTransition) {
-      const transition = document.startViewTransition(apply);
-      contentTransition = transition;
-      // Une transition remplacée rejette ready, même si son rendu aboutit.
-      transition.ready.catch(() => {});
-      return transition.finished.catch(() => {}).finally(() => {
-        if (contentTransition === transition) contentTransition = null;
+    if (contentGhost) contentGhost.remove();
+    contentGhost = null;
+  }
+  function transitionContent(update, valid = () => true, animate = true) {
+    stopContentAnimation();
+    if (!valid()) return;
+    const motion = animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !!view.animate;
+    const before = motion ? view.querySelector('.results-body') : null;
+    const previous = before ? [...before.childNodes] : [];
+    update(); // L’état est appliqué sans attendre une animation.
+    if (!motion) return;
+    const after = view.querySelector('.results-body');
+    const incoming = after ? after.firstElementChild : view;
+    if (before && before === after && previous.length) {
+      const outgoing = document.createElement('div');
+      outgoing.className = 'results-leaving';
+      outgoing.setAttribute('aria-hidden', 'true');
+      outgoing.inert = true;
+      outgoing.append(...previous);
+      after.appendChild(outgoing);
+      contentGhost = outgoing;
+      const leave = outgoing.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 150, easing: 'ease-out', fill: 'forwards' });
+      contentAnimations.push(leave);
+      leave.finished.catch(() => {}).finally(() => {
+        outgoing.remove();
+        contentAnimations = contentAnimations.filter(a => a !== leave);
+        if (contentGhost === outgoing) contentGhost = null;
       });
     }
-    // Repli pour les navigateurs sans View Transitions.
-    if (!view.animate) { apply(); return; }
-    const leave = view.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 110, fill: 'forwards' });
-    contentAnimations = [leave];
-    return leave.finished.catch(() => {}).then(() => {
-      if (version !== transitionVersion) return;
-      leave.cancel();
-      if (!valid()) return;
-      update();
-      const enter = view.animate([{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 180, easing: 'ease-out' });
-      contentAnimations = [enter];
-      return enter.finished.catch(() => {});
-    });
+    if (incoming) {
+      const enter = incoming.animate([{ opacity: 0, transform: 'translateY(4px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 180, easing: 'ease-out' });
+      contentAnimations.push(enter);
+      return enter.finished.catch(() => {}).finally(() => {
+        contentAnimations = contentAnimations.filter(a => a !== enter);
+      });
+    }
   }
 
+  function syncListControls() {
+    view.querySelectorAll('[data-collection], [data-view]').forEach(b => {
+      const pressed = String(b.dataset.collection ? b.dataset.collection === state.collection : b.dataset.view === state.vue);
+      if (b.getAttribute('aria-pressed') !== pressed) b.setAttribute('aria-pressed', pressed);
+    });
+  }
   function commitList(animate = false) {
     lastListHash = listHash();
     history.replaceState(null, '', lastListHash);
-    if (animate) return transitionContent(updateList, () => current === 'list');
-    updateList();
+    syncListControls();
+    // Une collection en cours de chargement garde la dernière vue demandée.
+    if (view.dataset.collection !== state.collection) return onRoute();
+    return transitionContent(updateList, () => current === 'list', animate);
   }
 
   /* ---------------- Liste ---------------- */
@@ -299,9 +317,6 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
   }
 
   function renderListSkeleton() {
-    // Garder les pastilles et leur position lors du changement de collection.
-    const switches = [...view.querySelectorAll('.collection-switch')];
-    const focused = document.activeElement;
     view.dataset.collection = state.collection;
     view.innerHTML = `<div class="list-layout">
 <div class="m-tools">
@@ -309,7 +324,7 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
   <button type="button" class="btn-filters" data-open-filters aria-haspopup="dialog" aria-controls="filters">Filtres<span class="badge-n" hidden></span></button></div>
   <div class="el-quick" role="group" aria-label="Élément">${(isMemory() ? [] : ELEMENTS).map(e => `<button type="button" data-el="${e}" data-g="élément" data-v="${e}" aria-pressed="false"><span class="k">${KANJI[e]}</span><span class="lab">${e}</span></button>`).join('')}</div>
   <div class="count-row"><div class="count"><span class="n"></span><span class="of"></span></div><button type="button" class="link-reset" data-reset hidden>Tout réinitialiser</button></div>
-  <div class="m-view-tools"><div class="collection-switch seg" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}"><span class="lab" data-t="Personnages">Personnages</span></button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}"><span class="lab" data-t="Souvenirs">Souvenirs</span></button></div><div class="m-view seg" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true">Cartes</button><button type="button" data-view="tableau" aria-pressed="false">Tableau</button></div></div>
+  <div class="m-view-tools"><div class="collection-switch seg" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}"><span class="lab" data-t="Personnages">Personnages</span></button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}"><span class="lab" data-t="Souvenirs">Souvenirs</span></button></div><div class="m-view seg" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true"><span class="lab" data-t="Cartes">Cartes</span></button><button type="button" data-view="tableau" aria-pressed="false"><span class="lab" data-t="Tableau">Tableau</span></button></div></div>
   <div class="chips"></div>
 </div>
 <div class="filters-wrap" id="filters-wrap">
@@ -327,19 +342,20 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
 </div>
 <div class="results">
   <div class="d-results-head"><div class="left"><div class="count"><span class="n"></span><span class="of"></span></div><div class="chips"></div></div>
-  <div class="view"><div class="collection-switch seg" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}"><span class="lab" data-t="Personnages">Personnages</span></button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}"><span class="lab" data-t="Souvenirs">Souvenirs</span></button></div><span class="vl">Vue</span><div class="seg" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true">Cartes</button><button type="button" data-view="tableau" aria-pressed="false">Tableau</button></div></div></div>
+  <div class="view"><div class="collection-switch seg" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}"><span class="lab" data-t="Personnages">Personnages</span></button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}"><span class="lab" data-t="Souvenirs">Souvenirs</span></button></div><span class="vl">Vue</span><div class="seg" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true"><span class="lab" data-t="Cartes">Cartes</span></button><button type="button" data-view="tableau" aria-pressed="false"><span class="lab" data-t="Tableau">Tableau</span></button></div></div></div>
   <div class="results-body"></div>
 </div></div>`;
-    view.querySelectorAll('.collection-switch').forEach((fresh, i) => {
-      if (switches[i]) fresh.replaceWith(switches[i]);
-    });
-    if (switches.some(g => g.contains(focused))) focused.focus({ preventScroll: true });
     const foot = document.querySelector('body > .site-footer').cloneNode(true);
     foot.classList.add('in-results');
     view.querySelector('.results').appendChild(foot);
   }
 
   function updateList() {
+    if (view.dataset.collection !== state.collection) {
+      view.dataset.collection = state.collection;
+      view.querySelector('.filters-body').innerHTML = `<input class="search" type="search" placeholder="Nom ou épithète…" aria-label="Rechercher un nom ou une épithète" autocomplete="off" spellcheck="false" data-search>${groups().map(groupHTML).join('')}${isMemory() ? memorySortHTML() : ''}<div class="reset-help"><button type="button" class="link-reset" data-reset>Tout réinitialiser</button></div>`;
+      view.querySelector('.el-quick').innerHTML = (isMemory() ? [] : ELEMENTS).map(e => `<button type="button" data-el="${e}" data-g="élément" data-v="${e}" aria-pressed="false"><span class="k">${KANJI[e]}</span><span class="lab">${e}</span></button>`).join('');
+    }
     const res = sorted(filtered()), n = res.length, act = active(), anything = act.length > 0 || !!state.q.trim() || !!state.tri;
     view.querySelectorAll('[data-search]').forEach(i => { if (i.value !== state.q) i.value = state.q; });
     view.querySelectorAll('.count .n').forEach(e => { e.textContent = n; });
@@ -353,8 +369,7 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
     view.querySelectorAll('[data-g][data-v]').forEach(b => b.setAttribute('aria-pressed', String(state[b.dataset.g].includes(b.dataset.v))));
     view.querySelectorAll('[data-sel]').forEach(e => { const k = state[e.dataset.sel].length; e.textContent = k ? k + ' sélect.' : ''; });
     view.querySelector('.btn-see').textContent = 'Voir ' + fiches(n);
-    view.querySelectorAll('[data-collection]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.collection === state.collection)));
-    view.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === state.vue)));
+    syncListControls();
     view.querySelectorAll('[data-memory-sort]').forEach(b => b.setAttribute('aria-pressed', String(state.tri === b.dataset.memorySort)));
     const body = view.querySelector('.results-body');
     body.innerHTML = !n ? emptyHTML() : tableMode() ? tableHTML(res) : `<div class="cards">${res.map(cardHTML).join('')}</div>`;
@@ -364,7 +379,7 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
   function renderList() {
     document.body.dataset.route = 'list';
     document.title = LIST_TITLE;
-    if (!view.querySelector('.list-layout') || view.dataset.collection !== state.collection) renderListSkeleton();
+    if (!view.querySelector('.list-layout')) renderListSkeleton();
     lastListHash = listHash();
     updateList();
   }
@@ -647,6 +662,7 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
       state.collection = t.dataset.collection; state.q = ''; state.tri = ''; state.ordre = 'desc'; GROUPS.forEach(g => { state[g] = []; });
       lastListHash = listHash();
       history.replaceState(null, '', lastListHash);
+      syncListControls();
       return onRoute();
     }
     if (t.dataset.memorySort) { state.tri = t.dataset.memorySort; state.ordre = 'desc'; return commitList(); }
@@ -699,22 +715,17 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
   /* ---------------- Segments : pastille glissante ---------------- */
 
   // La pastille (::before du .seg) est placée sous le bouton pressé via des variables CSS ; un changement de bouton la fait glisser.
-  function segBox(g) {
-    return g.classList.contains('seg-on') ? ['--seg-x', '--seg-y', '--seg-w', '--seg-h'].map(v => g.style.getPropertyValue(v)) : null;
-  }
   function setBox(g, box) { ['--seg-x', '--seg-y', '--seg-w', '--seg-h'].forEach((v, i) => g.style.setProperty(v, box[i])); }
-  function placeSeg(g, from) {
+  function placeSeg(g) {
     const on = g.querySelector(':scope>button[aria-pressed="true"]');
     if (!on || !on.offsetWidth) { g.classList.remove('seg-on'); return; }
-    const box = [on.offsetLeft + 'px', on.offsetTop + 'px', on.offsetWidth + 'px', on.offsetHeight + 'px'];
-    const animate = from || segBox(g);
-    g.classList.add('seg-still');
-    if (animate) setBox(g, animate); else setBox(g, box);
+    const initial = !g.classList.contains('seg-on');
+    if (initial) g.classList.add('seg-still');
     g.classList.toggle('seg-fill', on.classList.contains('fill'));
+    // CSS reprend naturellement à la position visible, même à mi-glissement.
+    setBox(g, [on.offsetLeft + 'px', on.offsetTop + 'px', on.offsetWidth + 'px', on.offsetHeight + 'px']);
     g.classList.add('seg-on');
-    void g.offsetWidth;
-    g.classList.remove('seg-still');
-    if (animate) setBox(g, box);
+    if (initial) { void g.offsetWidth; g.classList.remove('seg-still'); }
   }
   const placeAllSegs = () => document.querySelectorAll('.seg').forEach(g => { g.classList.remove('seg-on'); placeSeg(g); });
   new MutationObserver(muts => {

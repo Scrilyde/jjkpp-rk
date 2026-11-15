@@ -702,17 +702,6 @@ body[data-route="fiche"] .topbar{position:static}
 .site-footer a:hover{color:var(--acc)}
 .ftable th[aria-sort] button,.ftable th[aria-sort] button .arr{color:var(--warm)}
 
-/* Transitions de contenu : l’en-tête reste fixe pendant le fondu. */
-@media(prefers-reduced-motion:no-preference){
-  #view{view-transition-name:site-content}
-  ::view-transition-old(root),::view-transition-new(root){animation:none}
-  ::view-transition-group(site-content){animation:none}
-  ::view-transition-old(site-content){animation:content-leave 180ms ease-out both}
-  ::view-transition-new(site-content){animation:content-enter 240ms ease-out both}
-}
-::view-transition{pointer-events:none}
-@keyframes content-leave{to{opacity:0}}
-@keyframes content-enter{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-@media(prefers-reduced-motion:reduce){
-  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
-}
+/* Le fondu reste dans les résultats ; les sélecteurs ne sont jamais capturés. */
+.results-body{position:relative;isolation:isolate;overflow:clip}
+.results-leaving{position:absolute;inset:0 0 auto;z-index:1;pointer-events:none}

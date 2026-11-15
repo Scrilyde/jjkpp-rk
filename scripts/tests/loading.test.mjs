@@ -8,12 +8,13 @@ const characters = JSON.parse(fs.readFileSync(new URL('../../data/characters.jso
 const memories = JSON.parse(fs.readFileSync(new URL('../../data/souvenirs.json', import.meta.url)));
 
 function browser(fetch) {
-  const view = { setAttribute() {}, removeAttribute() {}, innerHTML: '' };
+  const view = { setAttribute() {}, removeAttribute() {}, innerHTML: '', dataset: { collection: 'personnages' }, querySelectorAll: () => [] };
+  const location = { hash: '#/' };
   const listeners = {};
   const context = vm.createContext({
     listeners, HTMLImageElement: class {},
     fetch, URLSearchParams, setTimeout, clearTimeout,
-    location: { hash: '#/' }, history: {},
+    location, history: { replaceState(_state, _title, hash) { location.hash = hash; } },
     document: {
       title: 'Test', body: {}, fonts: null,
       getElementById: () => view, querySelectorAll: () => [], querySelector: () => null,
@@ -27,7 +28,7 @@ function browser(fetch) {
     globalThis.renders = [];
     renderList = () => renders.push(state.collection);
     renderFiche = route => renders.push(route.id);
-    globalThis.api = { loadCollection, onRoute, records: () => DATA, imageAttrs, cardHTML, transitionContent };
+    globalThis.api = { loadCollection, onRoute, records: () => DATA, imageAttrs, cardHTML, transitionContent, state, commitList };
   })();`), context);
   return context;
 }
@@ -156,19 +157,11 @@ test('les nouveaux formats animés sont également exclus de la conversion autom
 });
 
 
-test('une transition remplacée ne peut pas afficher un ancien état', async () => {
-  const b = browser(response), callbacks = [], renders = [];
-  let skipped = 0;
-  b.document.startViewTransition = callback => {
-    callbacks.push(callback);
-    return { ready: Promise.reject(new Error('transition remplacée')), finished: Promise.resolve(), skipTransition() { skipped++; } };
-  };
-  const first = b.api.transitionContent(() => renders.push('ancienne'));
-  const second = b.api.transitionContent(() => renders.push('récente'));
-  callbacks[0](); callbacks[1]();
-  await Promise.all([first, second]);
-  assert.deepEqual(renders, ['récente']);
-  assert.equal(skipped, 1);
+test('un rendu périmé est ignoré et le dernier état est appliqué sans délai', () => {
+  const b = browser(response), renders = [];
+  b.api.transitionContent(() => renders.push('périmé'), () => false);
+  b.api.transitionContent(() => renders.push('récent'));
+  assert.deepEqual(renders, ['récent']);
 });
 
 test('la réduction des animations applique le contenu immédiatement', () => {
@@ -177,4 +170,22 @@ test('la réduction des animations applique le contenu immédiatement', () => {
   b.document.startViewTransition = () => { throw new Error('aucune transition attendue'); };
   b.api.transitionContent(() => renders.push('contenu'));
   assert.deepEqual(renders, ['contenu']);
+});
+
+
+test('un changement de vue pendant le chargement conserve la dernière demande', async () => {
+  let release;
+  const b = browser(url => url.includes('souvenirs')
+    ? new Promise(resolve => { release = () => resolve(response(url)); }) : response(url));
+  b.api.state.collection = 'souvenirs';
+  b.location.hash = '#/?collection=souvenirs';
+  const collection = b.api.onRoute();
+  b.api.state.vue = 'tableau';
+  const view = b.api.commitList(true);
+  release();
+  await Promise.all([collection, view]);
+  assert.equal(b.api.state.collection, 'souvenirs');
+  assert.equal(b.api.state.vue, 'tableau');
+  assert.ok(b.location.hash.includes('vue=tableau'));
+  assert.deepEqual(Array.from(b.renders), ['souvenirs']);
 });
