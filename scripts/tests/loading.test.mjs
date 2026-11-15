@@ -8,12 +8,13 @@ const characters = JSON.parse(fs.readFileSync(new URL('../../data/characters.jso
 const memories = JSON.parse(fs.readFileSync(new URL('../../data/souvenirs.json', import.meta.url)));
 
 function browser(fetch) {
-  const view = { setAttribute() {}, removeAttribute() {}, innerHTML: '' };
+  const view = { setAttribute() {}, removeAttribute() {}, innerHTML: '', dataset: { collection: 'personnages' }, querySelectorAll: () => [] };
+  const location = { hash: '#/' };
   const listeners = {};
   const context = vm.createContext({
     listeners, HTMLImageElement: class {},
     fetch, URLSearchParams, setTimeout, clearTimeout,
-    location: { hash: '#/' }, history: {},
+    location, history: { replaceState(_state, _title, hash) { location.hash = hash; } },
     document: {
       title: 'Test', body: {}, fonts: null,
       getElementById: () => view, querySelectorAll: () => [], querySelector: () => null,
@@ -26,8 +27,9 @@ function browser(fetch) {
   vm.runInContext(source.replace('  onRoute();\n})();', `
     globalThis.renders = [];
     renderList = () => renders.push(state.collection);
+    updateList = () => renders.push(state.collection);
     renderFiche = route => renders.push(route.id);
-    globalThis.api = { loadCollection, onRoute, records: () => DATA, imageAttrs, cardHTML };
+    globalThis.api = { loadCollection, onRoute, records: () => DATA, imageAttrs, cardHTML, transitionContent, state, commitList };
   })();`), context);
   return context;
 }
@@ -153,4 +155,57 @@ test('les nouveaux formats animés sont également exclus de la conversion autom
     const source = 'https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/ab/' + filename;
     assert.equal(b.api.imageAttrs(source, 640, '400px'), `src="${source}"`);
   }
+});
+
+
+test('un rendu périmé est ignoré et le dernier état est appliqué sans délai', () => {
+  const b = browser(response), renders = [];
+  b.api.transitionContent(() => renders.push('périmé'), () => false);
+  b.api.transitionContent(() => renders.push('récent'));
+  assert.deepEqual(renders, ['récent']);
+});
+
+test('la réduction des animations applique le contenu immédiatement', () => {
+  const b = browser(response), renders = [];
+  b.window.matchMedia = () => ({ matches: true });
+  b.document.startViewTransition = () => { throw new Error('aucune transition attendue'); };
+  b.api.transitionContent(() => renders.push('contenu'));
+  assert.deepEqual(renders, ['contenu']);
+});
+
+
+test('un changement de vue pendant le chargement conserve la dernière demande', async () => {
+  let release;
+  const b = browser(url => url.includes('souvenirs')
+    ? new Promise(resolve => { release = () => resolve(response(url)); }) : response(url));
+  b.api.state.collection = 'souvenirs';
+  b.location.hash = '#/?collection=souvenirs';
+  const collection = b.api.onRoute();
+  b.api.state.vue = 'tableau';
+  const view = b.api.commitList(true);
+  release();
+  await Promise.all([collection, view]);
+  assert.equal(b.api.state.collection, 'souvenirs');
+  assert.equal(b.api.state.vue, 'tableau');
+  assert.ok(b.location.hash.includes('vue=tableau'));
+  assert.deepEqual(Array.from(b.renders), ['souvenirs']);
+});
+
+
+test('revenir à la collection chargée annule le changement encore en attente', async () => {
+  let release;
+  const b = browser(url => url.includes('souvenirs')
+    ? new Promise(resolve => { release = () => resolve(response(url)); }) : response(url));
+  await b.api.onRoute();
+  b.api.state.collection = 'souvenirs';
+  const pending = b.api.commitList(true);
+  b.api.state.collection = 'personnages';
+  b.api.commitList(true);
+  assert.equal(b.renders.at(-1), 'personnages');
+  const count = b.renders.length;
+  release();
+  await pending;
+  assert.equal(b.api.state.collection, 'personnages');
+  assert.equal(b.renders.length, count);
+  assert.ok(!b.location.hash.includes('souvenirs'));
 });

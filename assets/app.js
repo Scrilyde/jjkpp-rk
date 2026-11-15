@@ -157,24 +157,66 @@
     const l = /^#\/?(?:\?(.*))?$/.exec(h);
     return { name: 'list', qs: l ? l[1] || '' : '' };
   }
-  function commitList() {
+  // Seuls les résultats se croisent : les boutons restent vivants et cliquables.
+  let contentAnimations = [], contentGhost;
+  function stopContentAnimation() {
+    contentAnimations.forEach(a => a.cancel());
+    contentAnimations = [];
+    if (contentGhost) contentGhost.remove();
+    contentGhost = null;
+  }
+  function transitionContent(update, valid = () => true, animate = true) {
+    stopContentAnimation();
+    if (!valid()) return;
+    const motion = animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !!view.animate;
+    const before = motion ? view.querySelector('.results-body') : null;
+    const previous = before ? [...before.childNodes] : [];
+    update(); // L’état est appliqué sans attendre une animation.
+    if (!motion) return;
+    const after = view.querySelector('.results-body');
+    const incoming = after ? after.firstElementChild : view;
+    if (before === after && previous.length === 1 && previous[0] === incoming) return;
+    if (before && before === after && previous.length) {
+      const outgoing = document.createElement('div');
+      outgoing.className = 'results-leaving';
+      outgoing.setAttribute('aria-hidden', 'true');
+      outgoing.inert = true;
+      outgoing.append(...previous);
+      after.appendChild(outgoing);
+      contentGhost = outgoing;
+      const leave = outgoing.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 150, easing: 'ease-out', fill: 'forwards' });
+      contentAnimations.push(leave);
+      leave.finished.catch(() => {}).finally(() => {
+        outgoing.remove();
+        contentAnimations = contentAnimations.filter(a => a !== leave);
+        if (contentGhost === outgoing) contentGhost = null;
+      });
+    }
+    if (incoming) {
+      const enter = incoming.animate([{ opacity: 0, transform: 'translateY(4px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 180, easing: 'ease-out' });
+      contentAnimations.push(enter);
+      return enter.finished.catch(() => {}).finally(() => {
+        contentAnimations = contentAnimations.filter(a => a !== enter);
+      });
+    }
+  }
+
+  function syncListControls() {
+    view.querySelectorAll('[data-collection], [data-view]').forEach(b => {
+      const pressed = String(b.dataset.collection ? b.dataset.collection === state.collection : b.dataset.view === state.vue);
+      if (b.getAttribute('aria-pressed') !== pressed) b.setAttribute('aria-pressed', pressed);
+    });
+  }
+  function commitList(animate = false) {
     lastListHash = listHash();
     history.replaceState(null, '', lastListHash);
-    updateList();
-  }
-
-  /* ---------------- Thème ---------------- */
-
-  function paintTheme() {
-    const t = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-    document.querySelectorAll('[data-theme-set]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.themeSet === t)));
-    const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.content = t === 'light' ? '#fdf7f2' : '#0e121a';
-  }
-  function setTheme(t) {
-    document.documentElement.setAttribute('data-theme', t);
-    try { localStorage.setItem('jjkpp-theme', t); } catch (e) { /* stockage indisponible : thème non mémorisé */ }
-    paintTheme();
+    syncListControls();
+    // Seule une collection encore absente attend le réseau. Les deux sélecteurs
+    // appliquent sinon le même changement immédiat, en annulant la route en attente.
+    if (!rawCollections[state.collection].length) return onRoute();
+    ++routeVersion;
+    view.removeAttribute('aria-busy');
+    return transitionContent(updateList, () => current === 'list', animate);
   }
 
   /* ---------------- Liste ---------------- */
@@ -189,7 +231,7 @@
       : `<div class="memory-stat" data-s="${k}"><span class="lab">${v}</span>${bonusHTML(r.d.bonus[k])}</div>`).join('');
   }
   function memoryCardHTML(r, index = 0) {
-    return `<a class="card memory-card illustrated" href="${ficheHref(r)}"><img class="card-art" referrerpolicy="no-referrer" ${imageAttrs(r.art, 640, CARD_SIZES)} alt="" ${cardLoading(index)} decoding="async"><div class="card-body"><div class="card-head"><div class="card-id"><div class="meta">${marks(r.rar)}<span class="rar">${esc(r.rar)}</span><span>Souvenir</span></div><div class="name" title="${esc(r.name)}">${esc(r.name)}</div></div></div><div class="stats memory-stats">${memoryStats(r, true)}</div></div></a>`;
+    return `<a class="card memory-card illustrated" href="${ficheHref(r)}"><div class="card-surface"><img class="card-art" referrerpolicy="no-referrer" ${imageAttrs(r.art, 640, CARD_SIZES)} alt="" ${cardLoading(index)} decoding="async"><div class="card-body"><div class="card-head"><div class="card-id"><div class="meta">${marks(r.rar)}<span class="rar">${esc(r.rar)}</span><span>Souvenir</span></div><div class="name" title="${esc(r.name)}">${esc(r.name)}</div></div></div><div class="stats memory-stats">${memoryStats(r, true)}</div></div></div></a>`;
   }
   function memoryTableHTML(list) {
     const th = (k,v) => `<th scope="col"${state.tri === k ? ` aria-sort="${state.ordre === 'asc' ? 'ascending':'descending'}"` : ''}><button type="button" data-sort="${k}">${v}${state.tri === k ? (state.ordre === 'asc' ? ' ↑':' ↓') : ' ↕'}</button></th>`;
@@ -209,7 +251,7 @@
     const td = (r.tai || 0) >= (r.juj || 0);
     const stat = (short, long, v, max, strong, k) => `<div class="stat" data-s="${k}"><div class="stat-top"><span class="lab"><span class="lab-short">${short}</span><span class="lab-long">${long}</span></span><span class="v${strong ? '' : ' weak'}">${nf(v)}</span></div><div class="bar"><i${strong ? '' : ' class="weak"'} style="width:${pct(v, max)}"></i></div></div>`;
     return `<a class="card illustrated" data-el="${esc(r.el)}" href="${ficheHref(r)}" aria-label="${esc(r.d['titre'] || r.name)} — ${esc(r.rar)}, ${esc(r.el)}">
-<img class="card-art" referrerpolicy="no-referrer" ${imageAttrs(r.art, 640, CARD_SIZES)} alt="" ${cardLoading(index)} decoding="async"><div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
+<div class="card-surface"><img class="card-art" referrerpolicy="no-referrer" ${imageAttrs(r.art, 640, CARD_SIZES)} alt="" ${cardLoading(index)} decoding="async"><div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
 <div class="card-body">
 <div class="card-head">
 <div class="card-id"><div class="meta">${marks(r.rar)}<span class="rar">${esc(r.rar)}</span><span class="role">${esc(r.role || '—')}<span class="m-only"> · ${esc(r.spe || '—')}</span></span></div>
@@ -217,7 +259,7 @@
 ${r.rn ? '<span class="stamp-rn" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div>
 <div class="stats">${stat('PV', 'PV', r.pv, maxPV, true, 'pv')}${stat('TAI', 'TAIJUTSU', r.tai, maxST, td, 'tai')}${stat('JUJ', 'JUJUTSU', r.juj, maxST, !td, 'juj')}</div>
 <div class="card-foot"><span>EO <span class="num">${nf(r.eoi)}</span> / <span class="num">${nf(r.eom)}</span></span><span>Jauge<span class="m-only"> sp.</span> <span class="num">${nf(r.js)}</span></span>${r.rn ? '<span class="end rn m-only">Rayon Noir</span>' : ''}<span class="end d-only">${esc(r.spe)}</span></div>
-</div></a>`;
+</div></div></a>`;
   }
 
   function tableHTML(list) {
@@ -286,7 +328,7 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
   <button type="button" class="btn-filters" data-open-filters aria-haspopup="dialog" aria-controls="filters">Filtres<span class="badge-n" hidden></span></button></div>
   <div class="el-quick" role="group" aria-label="Élément">${(isMemory() ? [] : ELEMENTS).map(e => `<button type="button" data-el="${e}" data-g="élément" data-v="${e}" aria-pressed="false"><span class="k">${KANJI[e]}</span><span class="lab">${e}</span></button>`).join('')}</div>
   <div class="count-row"><div class="count"><span class="n"></span><span class="of"></span></div><button type="button" class="link-reset" data-reset hidden>Tout réinitialiser</button></div>
-  <div class="m-view-tools"><div class="collection-switch seg" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}">Personnages</button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}">Souvenirs</button></div><div class="m-view seg" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true">Cartes</button><button type="button" data-view="tableau" aria-pressed="false">Tableau</button></div></div>
+  <div class="m-view-tools"><div class="collection-switch seg seg-pair" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}"><span class="lab" data-t="Personnages">Personnages</span></button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}"><span class="lab" data-t="Souvenirs">Souvenirs</span></button></div><div class="m-view seg seg-pair" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true"><span class="lab" data-t="Cartes">Cartes</span></button><button type="button" data-view="tableau" aria-pressed="false"><span class="lab" data-t="Tableau">Tableau</span></button></div></div>
   <div class="chips"></div>
 </div>
 <div class="filters-wrap" id="filters-wrap">
@@ -304,7 +346,7 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
 </div>
 <div class="results">
   <div class="d-results-head"><div class="left"><div class="count"><span class="n"></span><span class="of"></span></div><div class="chips"></div></div>
-  <div class="view"><div class="collection-switch seg" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}">Personnages</button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}">Souvenirs</button></div><span class="vl">Vue</span><div class="seg" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true">Cartes</button><button type="button" data-view="tableau" aria-pressed="false">Tableau</button></div></div></div>
+  <div class="view"><div class="collection-switch seg seg-pair" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}"><span class="lab" data-t="Personnages">Personnages</span></button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}"><span class="lab" data-t="Souvenirs">Souvenirs</span></button></div><span class="vl">Vue</span><div class="seg seg-pair" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true"><span class="lab" data-t="Cartes">Cartes</span></button><button type="button" data-view="tableau" aria-pressed="false"><span class="lab" data-t="Tableau">Tableau</span></button></div></div></div>
   <div class="results-body"></div>
 </div></div>`;
     const foot = document.querySelector('body > .site-footer').cloneNode(true);
@@ -312,7 +354,13 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
     view.querySelector('.results').appendChild(foot);
   }
 
+  const resultPanels = new Map(); // Au plus quatre vues sans filtre, réutilisées avec leurs images.
   function updateList() {
+    if (view.dataset.collection !== state.collection) {
+      view.dataset.collection = state.collection;
+      view.querySelector('.filters-body').innerHTML = `<input class="search" type="search" placeholder="Nom ou épithète…" aria-label="Rechercher un nom ou une épithète" autocomplete="off" spellcheck="false" data-search>${groups().map(groupHTML).join('')}${isMemory() ? memorySortHTML() : ''}<div class="reset-help"><button type="button" class="link-reset" data-reset>Tout réinitialiser</button></div>`;
+      view.querySelector('.el-quick').innerHTML = (isMemory() ? [] : ELEMENTS).map(e => `<button type="button" data-el="${e}" data-g="élément" data-v="${e}" aria-pressed="false"><span class="k">${KANJI[e]}</span><span class="lab">${e}</span></button>`).join('');
+    }
     const res = sorted(filtered()), n = res.length, act = active(), anything = act.length > 0 || !!state.q.trim() || !!state.tri;
     view.querySelectorAll('[data-search]').forEach(i => { if (i.value !== state.q) i.value = state.q; });
     view.querySelectorAll('.count .n').forEach(e => { e.textContent = n; });
@@ -326,17 +374,23 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
     view.querySelectorAll('[data-g][data-v]').forEach(b => b.setAttribute('aria-pressed', String(state[b.dataset.g].includes(b.dataset.v))));
     view.querySelectorAll('[data-sel]').forEach(e => { const k = state[e.dataset.sel].length; e.textContent = k ? k + ' sélect.' : ''; });
     view.querySelector('.btn-see').textContent = 'Voir ' + fiches(n);
-    view.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === state.vue)));
+    syncListControls();
     view.querySelectorAll('[data-memory-sort]').forEach(b => b.setAttribute('aria-pressed', String(state.tri === b.dataset.memorySort)));
     const body = view.querySelector('.results-body');
-    body.innerHTML = !n ? emptyHTML() : tableMode() ? tableHTML(res) : `<div class="cards">${res.map(cardHTML).join('')}</div>`;
+    const panelKey = !state.q.trim() && !act.length && !state.tri ? state.collection + '/' + state.vue : null;
+    const cached = panelKey && resultPanels.get(panelKey);
+    if (cached) body.replaceChildren(cached);
+    else {
+      body.innerHTML = !n ? emptyHTML() : tableMode() ? tableHTML(res) : `<div class="cards">${res.map(cardHTML).join('')}</div>`;
+      if (panelKey && n) resultPanels.set(panelKey, body.firstElementChild);
+    }
     live.textContent = fiches(n) + ' sur ' + collection().length;
   }
 
   function renderList() {
     document.body.dataset.route = 'list';
     document.title = LIST_TITLE;
-    if (!view.querySelector('.list-layout') || view.dataset.collection !== state.collection) renderListSkeleton();
+    if (!view.querySelector('.list-layout')) renderListSkeleton();
     lastListHash = listHash();
     updateList();
   }
@@ -570,7 +624,7 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
       ? (r.id.startsWith('souvenir-') ? 'souvenirs' : 'personnages')
       : (new URLSearchParams(r.qs).get('collection') === 'souvenirs' ? 'souvenirs' : 'personnages');
     view.setAttribute('aria-busy', 'true');
-    if (!collectionRequests.has(target)) view.innerHTML = '<p class="noscript" role="status">Chargement des fiches…</p>';
+    if (!collectionRequests.has(target) && !(current === 'list' && r.name === 'list')) view.innerHTML = '<p class="noscript" role="status">Chargement des fiches…</p>';
     try {
       await loadCollection(target);
     } catch (error) {
@@ -581,18 +635,20 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
     }
     if (version !== routeVersion) return;
     view.removeAttribute('aria-busy');
-    if (r.name === 'fiche') {
-      if (current === 'list') { listScroll = window.scrollY; cameFromList = true; }
-      current = 'fiche';
-      renderFiche(r);
-    } else {
-      const back = current === 'fiche';
-      current = 'list';
-      cameFromList = false;
-      readListParams(r.qs);
-      renderList();
-      if (back) requestAnimationFrame(() => window.scrollTo(0, listScroll));
-    }
+    return transitionContent(() => {
+      if (r.name === 'fiche') {
+        if (current === 'list') { listScroll = window.scrollY; cameFromList = true; }
+        current = 'fiche';
+        renderFiche(r);
+      } else {
+        const back = current === 'fiche';
+        current = 'list';
+        cameFromList = false;
+        readListParams(r.qs);
+        renderList();
+        if (back) requestAnimationFrame(() => window.scrollTo(0, listScroll));
+      }
+    }, () => version === routeVersion);
   }
 
   /* ---------------- Événements ---------------- */
@@ -610,16 +666,14 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
 
   document.addEventListener('click', e => {
     if (e.target.closest('[data-retry]')) return onRoute();
-    const t = e.target.closest('button[data-collection],[data-memory-sort],[data-theme-set],[data-g],[data-remove],[data-reset],[data-open-filters],[data-close-filters],[data-view],[data-sort],[data-back],[data-nav],[data-lvl],[data-ver],[data-goto],tr[data-href]');
+    const t = e.target.closest('button[data-collection],[data-memory-sort],[data-g],[data-remove],[data-reset],[data-open-filters],[data-close-filters],[data-view],[data-sort],[data-back],[data-nav],[data-lvl],[data-ver],[data-goto],tr[data-href]');
     if (!t) return;
     if (t.dataset.collection) {
+      if (t.dataset.collection === state.collection) return;
       state.collection = t.dataset.collection; state.q = ''; state.tri = ''; state.ordre = 'desc'; GROUPS.forEach(g => { state[g] = []; });
-      lastListHash = listHash();
-      history.replaceState(null, '', lastListHash);
-      return onRoute();
+      return commitList(true);
     }
     if (t.dataset.memorySort) { state.tri = t.dataset.memorySort; state.ordre = 'desc'; return commitList(); }
-    if (t.dataset.themeSet) return setTheme(t.dataset.themeSet);
     if (t.dataset.g) {
       const list = state[t.dataset.g], v = t.dataset.v;
       state[t.dataset.g] = list.includes(v) ? list.filter(x => x !== v) : list.concat(v);
@@ -633,7 +687,7 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
     if (t.hasAttribute('data-reset')) { state.q = ''; state.tri = ''; state.ordre = 'desc'; GROUPS.forEach(g => { state[g] = []; }); return commitList(); }
     if (t.hasAttribute('data-open-filters')) return openSheet();
     if (t.hasAttribute('data-close-filters')) return closeSheet();
-    if (t.dataset.view) { state.vue = t.dataset.view; return commitList(); }
+    if (t.dataset.view) { if (state.vue === t.dataset.view) return; state.vue = t.dataset.view; return commitList(true); }
     if (t.dataset.sort) {
       const k = t.dataset.sort;
       if (state.tri === k) state.ordre = state.ordre === 'desc' ? 'asc' : 'desc';
@@ -669,29 +723,25 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
   /* ---------------- Segments : pastille glissante ---------------- */
 
   // La pastille (::before du .seg) est placée sous le bouton pressé via des variables CSS ; un changement de bouton la fait glisser.
-  function segBox(g) {
-    return g.classList.contains('seg-on') ? ['--seg-x', '--seg-y', '--seg-w', '--seg-h'].map(v => g.style.getPropertyValue(v)) : null;
-  }
   function setBox(g, box) { ['--seg-x', '--seg-y', '--seg-w', '--seg-h'].forEach((v, i) => g.style.setProperty(v, box[i])); }
-  function placeSeg(g, from) {
+  function placeSeg(g) {
+    if (g.classList.contains('seg-pair')) return;
     const on = g.querySelector(':scope>button[aria-pressed="true"]');
     if (!on || !on.offsetWidth) { g.classList.remove('seg-on'); return; }
-    const box = [on.offsetLeft + 'px', on.offsetTop + 'px', on.offsetWidth + 'px', on.offsetHeight + 'px'];
-    const animate = from || segBox(g);
-    g.classList.add('seg-still');
-    if (animate) setBox(g, animate); else setBox(g, box);
+    const initial = !g.classList.contains('seg-on');
+    if (initial) g.classList.add('seg-still');
     g.classList.toggle('seg-fill', on.classList.contains('fill'));
+    // CSS reprend naturellement à la position visible, même à mi-glissement.
+    setBox(g, [on.offsetLeft + 'px', on.offsetTop + 'px', on.offsetWidth + 'px', on.offsetHeight + 'px']);
     g.classList.add('seg-on');
-    void g.offsetWidth;
-    g.classList.remove('seg-still');
-    if (animate) setBox(g, box);
+    if (initial) { void g.offsetWidth; g.classList.remove('seg-still'); }
   }
-  const placeAllSegs = () => document.querySelectorAll('.seg').forEach(g => { g.classList.remove('seg-on'); placeSeg(g); });
+  const placeAllSegs = () => document.querySelectorAll('.seg:not(.seg-pair)').forEach(g => { g.classList.remove('seg-on'); placeSeg(g); });
   new MutationObserver(muts => {
     const seen = new Set();
     muts.forEach(m => {
-      if (m.type === 'attributes') { const g = m.target.parentElement; if (g && g.classList.contains('seg')) seen.add(g); return; }
-      m.addedNodes.forEach(n => { if (n.nodeType === 1) (n.matches('.seg') ? [n] : n.querySelectorAll('.seg')).forEach(g => { if (!g.classList.contains('seg-on')) seen.add(g); }); });
+      if (m.type === 'attributes') { const g = m.target.parentElement; if (g && g.classList.contains('seg') && !g.classList.contains('seg-pair')) seen.add(g); return; }
+      m.addedNodes.forEach(n => { if (n.nodeType === 1 && !n.matches('.cards,.table-wrap,.results-leaving')) (n.matches('.seg:not(.seg-pair)') ? [n] : n.querySelectorAll('.seg:not(.seg-pair)')).forEach(g => { if (!g.classList.contains('seg-on')) seen.add(g); }); });
     });
     seen.forEach(g => placeSeg(g));
   }).observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['aria-pressed'] });
@@ -704,7 +754,6 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
   });
   window.addEventListener('hashchange', onRoute);
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-  paintTheme();
   placeAllSegs();
 
   const getJSON = url => fetch(url).then(res => { if (!res.ok) throw new Error(url + ' : HTTP ' + res.status); return res.json(); });
