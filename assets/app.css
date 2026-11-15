@@ -222,7 +222,7 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
    Spécialité, puis le Rôle, la Rareté et l'Élément. Marges, icône et statistiques se resserrent
    en continu. Toutes les tailles dépendent de la largeur du panneau. */
 .table-wrap{padding:6px 16px 24px}
-.tpanel{container-type:inline-size;background:var(--sf);border:1px solid var(--ln);border-radius:14px;overflow:hidden}
+.tpanel{--sf:#151b28;--sf2:#1b2232;--ln:#242c3f;container-type:inline-size;background:var(--sf);border:1px solid var(--ln);border-radius:14px;overflow:hidden}
 .ftable{--px:clamp(8px,8px + (100cqi - 380px) * .057,16px);width:100%;border-collapse:collapse;table-layout:fixed;font-size:14px}
 .ftable th,.ftable td{padding:12px var(--px);text-align:left;border-bottom:1px solid var(--ln);white-space:nowrap;vertical-align:middle;overflow:hidden;text-overflow:ellipsis}
 .ftable th:first-child,.ftable td:first-child{padding-left:clamp(12px,12px + (100cqi - 380px) * .029,16px)}
