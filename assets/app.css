@@ -593,3 +593,53 @@ body[data-route="fiche"] .topbar{position:static}
   .card .stamp-rn{top:20px;right:20px}
   .card-head:has(.stamp-rn) .card-id{padding-right:34px}
 }
+
+/* Collections séparées et illustrations plein cadre. */
+.m-view-tools{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.m-view-tools .seg>button{padding:6px 11px;font-size:12px}
+.m-view-tools .m-view{align-self:auto}
+.view{flex-wrap:wrap;justify-content:flex-end}
+.view .collection-switch{margin-right:12px}
+.sort-hint{color:var(--mu);font-size:12px;line-height:1.5}
+.card.illustrated{position:relative;isolation:isolate;min-height:240px;background:#19202b;color:#f6f2ec;--ink:#f6f2ec;--mu:#c4c7ce;--fa:#a3a7b1;--sf:#19202b;--el-tx:#f3e0b4}
+.card.illustrated:hover{background:#19202b;border-color:var(--ln2)}
+.card-art{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 30%;pointer-events:none}
+.card.illustrated::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(12,16,24,.2),rgba(12,16,24,.65) 35%,rgba(12,16,24,.96));pointer-events:none}
+.card.illustrated .card-body{justify-content:flex-end;gap:14px;padding-top:60px}
+.card.illustrated .meta,.card.illustrated .name,.card.illustrated .epi{text-shadow:0 1px 4px #111722}
+.card.illustrated .bar{background:rgba(210,216,226,.22)}
+.card.illustrated .strip{z-index:1;flex-shrink:0}
+.memory-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.memory-stat{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0}
+.memory-stat .lab{font-size:11px;text-transform:uppercase;color:var(--mu)}
+.bonus-value{display:inline-flex;flex-direction:column;align-items:flex-start;white-space:nowrap;font-family:var(--mono);font-weight:600;font-size:15px;line-height:1.5}
+.bonus-level{display:block;min-height:1.5em;color:var(--mu);font-size:10px;font-weight:400;line-height:1.5}
+.memory-table .tnum{vertical-align:top}
+.memory-table .bonus-value{align-items:flex-end}
+.memory-table .tname a{white-space:normal}
+.memory-art{display:block;width:100%;height:auto;max-height:360px;object-fit:cover;border-radius:10px}
+.memory-nav{display:flex;justify-content:space-between;gap:12px;padding:18px 16px}
+.memory-fiche .idcard{display:block}
+.memory-fiche .skill-top h3{font-size:18px}
+@media(min-width:960px){.m-view-tools{display:none}.d-results-head{flex-wrap:wrap}.memory-nav{padding:22px 32px}.card.illustrated{min-height:260px}}
+@media(max-width:380px){.m-view-tools{gap:5px}.m-view-tools .seg>button{padding:6px 8px;font-size:11px}}
+.memory-nav .pn a{width:auto;padding:0 12px;font-size:13px;white-space:nowrap}
+.memory-table{min-width:600px}
+.memory-table th:first-child{width:40%}
+.memory-table th:nth-child(2){width:110px}
+.memory-table tbody td:first-child{box-shadow:none}
+.memory-table .tname{min-width:0}
+.memory-table .tname a{overflow:hidden;text-overflow:ellipsis}
+.memory-table .bonus-value{font-size:13px}
+
+/* Les souvenirs partagent la typographie et les colonnes des personnages. */
+.memory-card .card-head .name{margin-top:3px}
+@media(min-width:960px){.memory-card .card-head .name{margin-top:5px}}
+
+/* Bonus des souvenirs : libellé à gauche, valeur et niveau centrés à droite. */
+.memory-card .stat-top{display:flex;justify-content:center;align-items:baseline;gap:clamp(8px,2vw,24px)}
+.memory-card .stat .lab{display:inline;flex-shrink:0}
+.memory-card .lab-short{display:inline}
+.memory-card .lab-long{display:none}
+.memory-card .stat .bonus-value{display:inline-flex;align-items:center;line-height:1.3}
+.memory-card .bonus-level{text-align:center}

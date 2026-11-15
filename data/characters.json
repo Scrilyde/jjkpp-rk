@@ -186,7 +186,8 @@
         }
       ]
     },
-    "page_wiki": "(Mastery of 24 Frames Per Second) Naoya Zen'in"
+    "page_wiki": "(Mastery of 24 Frames Per Second) Naoya Zen'in",
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/1/1b/BlueSSRNaoyaArt1.gif/revision/latest?cb=20261030121109"
   },
   {
     "titre": "(Lumière froide du crépuscule) Atsuya Kusakabe",
@@ -283,7 +284,7 @@
       "Bonus : dégâts reçus réduits"
     ],
     "clé_image": "RedSSRKusakabeArt1",
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/4/47/RedSSRKusakabeArt1.gif/revision/latest?cb=20261019213909",
     "url_gif_illustration": null,
     "clé_icône": "RedSSRKusakabeIcon1",
     "priorité_compétences": [
@@ -376,7 +377,7 @@
     "histoire": "Exorciste de grade 1 qui travaille en indépendante. Une pingre qui ne comprend pas les relations qui ne reposent pas sur l'argent.",
     "étiquettes": [],
     "clé_image": "GreenSSRMeiMeiArt1",
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/2/21/GreenMeiMeiSSRArt1.gif/revision/latest?cb=20261030122226",
     "url_gif_illustration": null,
     "clé_icône": "GreenSSRMeiMeiIcon1",
     "priorité_compétences": [],
@@ -473,7 +474,8 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/32/YellowSSRGetoIcon1.jpeg/revision/latest?cb=20260911102440",
-    "page_wiki": "(What Lies at the End) Suguru Geto (Teen)"
+    "page_wiki": "(What Lies at the End) Suguru Geto (Teen)",
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/2/2b/YellowSSRGetoArt1.gif/revision/latest?cb=20260911125158"
   },
   {
     "titre": "(Sentiments brûlants) Yu Haibara",
@@ -557,7 +559,7 @@
     "histoire": null,
     "étiquettes": [],
     "clé_image": "RedSSRHaibaraArt1",
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/99/RedSSRHaibaraArt1.gif/revision/latest?cb=20260831140035",
     "url_gif_illustration": null,
     "clé_icône": "RedSSRHaibaraIcon1",
     "priorité_compétences": [
@@ -662,7 +664,7 @@
       "Bonus de dégâts infligés"
     ],
     "clé_image": "GreenSSRInoArt1",
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/8/84/GreenInoSSRArt1.gif/revision/latest?cb=20260831141434",
     "url_gif_illustration": null,
     "clé_icône": "GreenSSRInoIcon1",
     "priorité_compétences": [
@@ -767,7 +769,7 @@
       "Malus : dégâts de BREAK reçus accrus"
     ],
     "clé_image": "BlueSSRMaiArt1",
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/91/BlueSSRMaiArt1.gif/revision/latest?cb=20260831142529",
     "url_gif_illustration": null,
     "clé_icône": "BlueSSRMaiIcon1",
     "priorité_compétences": [
@@ -866,7 +868,7 @@
       "Compte à rebours d'ultime"
     ],
     "clé_image": "RedSSRGakuganjiArt1",
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/4/48/RedSSRGakuganjiArt1.gif/revision/latest?cb=20260730131832",
     "url_gif_illustration": null,
     "clé_icône": "RedSSRGakuganjiIcon1",
     "priorité_compétences": [
@@ -960,7 +962,7 @@
       "Bonus : dégâts reçus réduits"
     ],
     "clé_image": "GreenIjichiSSRArt1",
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/6/6d/GreenIjichiSSRArt1.gif/revision/latest?cb=20260701005023",
     "url_gif_illustration": null,
     "clé_icône": "GreenIchijiSSRIcon1",
     "priorité_compétences": [
@@ -1055,7 +1057,7 @@
       "Malus : dégâts de statistique accrus"
     ],
     "clé_image": "BlueSSRNobaraArt1",
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/5/5c/BlueSSRNobaraArt1.gif/revision/latest?cb=20260531092122",
     "url_gif_illustration": null,
     "clé_icône": "BlueSSRNobaraIcon1",
     "analyse": [
@@ -1150,7 +1152,7 @@
       "Étourdissement"
     ],
     "clé_image": "GreenMegumiSSRArt2",
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/4/4a/GreenMegumiSSRArt2.gif/revision/latest?cb=20260531081057",
     "url_gif_illustration": null,
     "clé_icône": "GreenMegumiSSRIcon2",
     "analyse": [
@@ -1274,7 +1276,7 @@
     ],
     "clé_image": "YellowSSRGojoArt2",
     "clé_image_alt": "YellowSSRGojoArt2Alt",
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/1/11/YellowGojoSSRArt2.gif/revision/latest?cb=20260525144223",
     "url_gif_illustration": null,
     "clé_icône": "YellowSSRGojoIcon2",
     "priorité_compétences": [
@@ -1390,7 +1392,7 @@
     ],
     "clé_image": "BlueSSRYujiArt2",
     "clé_image_alt": "BlueSSRYujiArt2Alt",
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/a5/BlueSSRYujiArt2.gif/revision/latest?cb=20260525144728",
     "url_gif_illustration": null,
     "clé_icône": "BlueSSRYujiIcon2",
     "priorité_compétences": [
@@ -1529,7 +1531,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 256 % du jujutsu\nApplique une augmentation de 30 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 384 % du jujutsu\nApplique une augmentation de 30 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (4 tours)\nApplique une augmentation de 30 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (4 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/cb/RedSSRKenjakuArt1.gif/revision/latest?cb=20260424150619",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/cb/RedSSRKenjakuArt1.gif/revision/latest?cb=20260424150619",
     "sp": false,
     "clé_icône": "RedSSRKenjakuIcon1",
@@ -1670,7 +1672,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 320 % du taijutsu\nApplique une augmentation de 50 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (2 tours)\nApplique une augmentation de 50 % des dégâts infligés lors d'un CRIT à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 320 % du taijutsu\nApplique une augmentation de 50 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (2 tours)\nApplique une augmentation de 50 % des dégâts infligés lors d'un CRIT à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/0/01/YellowSSREijiArt1.gif/revision/latest?cb=20260416233143",
     "clé_icône": "YellowSSREijiIcon1",
     "priorité_compétences": [
       3,
@@ -1782,7 +1784,7 @@
       "effet": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 128 % du taijutsu et 128 % du jujutsu (ignore les Ténèbres)\nApplique une augmentation de 30 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ou aux ennemis ciblés équivalant à 192,00 % du taijutsu et 192,00 % du jujutsu. (ignore les Ténèbres)\nApplique une augmentation de 40,00 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours).\nRécupère 10 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative."
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/c7/YellowSSRYutaArt1.gif/revision/latest?cb=20260327054841",
     "url_gif_illustration": "",
     "sp": false,
     "clé_icône": "YellowSSRYutaIcon1",
@@ -1882,7 +1884,7 @@
       "effet": "Inflige des dégâts d'attaque hybrides à distance à l'ennemi ciblé équivalant à 64 % du taijutsu et 128 % du jujutsu (ignore les Ténèbres)\nApplique une augmentation de 30 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque hybrides à distance à l'ennemi ciblé équivalant à 128 % du taijutsu et 192 % du jujutsu (ignore les Ténèbres)\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)\nApplique une augmentation de 30 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (3 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/36/BlueSSRYagaArt1.gif/revision/latest?cb=20260319084830",
     "url_gif_illustration": "",
     "sp": false,
     "clé_icône": "BlueSSRYagaIcon1",
@@ -2026,7 +2028,7 @@
       "effet": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 96 % du taijutsu et 96 % du jujutsu\nApplique une augmentation de 30 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 160 % du taijutsu et 160 % du jujutsu\nApplique une augmentation de 30 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (4 tours)\nApplique une augmentation de 20 % du taux de Rayon Noir à soi-même et au partenaire de l'ultime coopérative (4 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/6/61/GreenNanamiSSRArt2.gif/revision/latest?cb=20260228022734",
     "url_gif_illustration": "",
     "sp": false,
     "clé_icône": "GreenSSRNanamiIcon2",
@@ -2143,7 +2145,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 192 % du jujutsu\nApplique une augmentation de 15 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 320 % du jujutsu\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)\nApplique une augmentation de 30 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/8/8e/RedSSRMomoArt1.gif/revision/latest?cb=20260225095933",
     "url_gif_illustration": "",
     "sp": false,
     "clé_icône": "RedSSRMomoIcon1",
@@ -2268,7 +2270,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 256 % du jujutsu\nApplique une augmentation de 30 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 384 % du jujutsu\nApplique une augmentation de 40 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)\nRécupère 10 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/0/05/YellowSSRUraumeArt1.gif/revision/latest?cb=20260222040448",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/0/05/YellowSSRUraumeArt1.gif/revision/latest?cb=20260222040448",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Step_back,_third-rate)_Uraume",
     "sp": false,
@@ -2407,7 +2409,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 256 % du taijutsu\nApplique une augmentation de 30 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 384 % du taijutsu\nApplique une augmentation de 40 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)\nApplique une augmentation de 30 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (3 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/90/GreenItadoriSSRArt2.gif/revision/latest?cb=20260109020956",
     "url_gif_illustration": "",
     "sp": false,
     "clé_icône": "GreenSSRYujiIcon2",
@@ -2534,7 +2536,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à tous les ennemis équivalant à 256 % du taijutsu\nRécupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à tous les ennemis équivalant à 384 % du taijutsu\nRécupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative\nRemplit de 220 la jauge d'ultime de soi-même et du partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/ee/BlueSSRGojoArt2.gif/revision/latest?cb=20251231022224",
     "url_gif_illustration": "",
     "sp": false,
     "clé_icône": "BlueSSRGojoIcon2",
@@ -2685,7 +2687,7 @@
       "effet": "Utilise des attaques au corps à corps infligeant des dégâts hybrides à l'ennemi ciblé équivalant à 80 % du taijutsu et 120 % du jujutsu (peut attaquer l'âme)\nApplique une augmentation de 10 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (4 tours)",
       "effet_renforcé": "Utilise des attaques au corps à corps infligeant des dégâts hybrides à l'ennemi ciblé équivalant à 120 % du taijutsu et 180 % du jujutsu (peut attaquer l'âme)\nApplique une augmentation de 15 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (5 tours)\nRécupère 15 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/a3/RedSSRMahitoArt1.gif/revision/latest?cb=20251204160252",
     "url_gif_illustration": "",
     "sp": false,
     "clé_icône": "RedSSRMahitoIcon1",
@@ -2805,7 +2807,7 @@
       "Contre-attaque"
     ],
     "clé_image": "YellowSSRSukunaArt1",
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/4/40/YellowSSRSukunaArt1.gif/revision/latest?cb=20251128083124",
     "url_gif_illustration": "",
     "clé_icône": "YellowSSRSukunaIcon1",
     "priorité_compétences": [
@@ -2948,7 +2950,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ou aux ennemis ciblés équivalant à 256,00 % du taijutsu.\nApplique une augmentation de 30,00 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours).",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ou aux ennemis ciblés équivalant à 384,00 % du taijutsu.\nApplique une augmentation de 40,00 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours).\nApplique une augmentation de 30,00 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (3 tours)."
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/f5/GreenSSRTodoArt1.gif/revision/latest?cb=20251121143330",
     "url_gif_illustration": "",
     "sp": false,
     "clé_icône": "GreenSSRTodoIcon1",
@@ -3099,7 +3101,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 256 % du taijutsu\nApplique une augmentation de 30 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 384 % du taijutsu\nApplique une augmentation de 40 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)\nApplique une augmentation de 40 % du taux de Rayon Noir à soi-même et au partenaire de l'ultime coopérative (3 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/fe/RedYujiSSRArt2.gif/revision/latest?cb=20251121143140",
     "sp": false,
     "clé_icône": "RedSSRYujiIcon2",
     "priorité_compétences": [
@@ -3223,7 +3225,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 256 % du jujutsu\nRécupère 30 % de PV pour soi-même et le partenaire de l'ultime coopérative",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 384 % du jujutsu\nRécupère 30 % de PV pour soi-même et le partenaire de l'ultime coopérative\nApplique une augmentation de 40 % des dégâts CRIT à soi-même et au partenaire de l'ultime coopérative (3 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b3/BlueSSRYutaArt1.gif/revision/latest?cb=20251020184359",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b3/BlueSSRYutaArt1.gif/revision/latest?cb=20251020184359",
     "sp": false,
     "clé_icône": "BlueSSRYutaIcon1",
@@ -3347,7 +3349,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à tous les ennemis équivalant à 192 % du taijutsu\nApplique une augmentation de 30 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à tous les ennemis équivalant à 320 % du taijutsu\nApplique une augmentation de 40 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)\nRécupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/8/80/YellowSSRKusakabeArt1.gif/revision/latest?cb=20251013071832",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/8/80/YellowSSRKusakabeArt1.gif/revision/latest?cb=20251013071832",
     "sp": false,
     "clé_icône": "YellowSSRKusakabeIcon1",
@@ -3469,7 +3471,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 256 % du jujutsu\nApplique une augmentation de 30 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 384 % du jujutsu\nApplique une augmentation de 50 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (2 tours)\nRécupère 10 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/a2/RedSSRJogoArt1.gif/revision/latest?cb=20250921130956",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/a2/RedSSRJogoArt1.gif/revision/latest?cb=20250921130956",
     "sp": false,
     "clé_icône": "RedSSRJogoIcon1",
@@ -3587,7 +3589,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 192 % du jujutsu (ignore les Ténèbres)\nApplique une augmentation de 30 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 320 % du jujutsu (ignore les Ténèbres)\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)\nApplique une augmentation de 30 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/4/46/RedSSRMegumiArt1.gif/revision/latest?cb=20250918051755",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/4/46/RedSSRMegumiArt1.gif/revision/latest?cb=20250918051755",
     "sp": false,
     "clé_icône": "RedSSRMegumiIcon1",
@@ -3708,7 +3710,7 @@
       "effet": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 64 % du taijutsu et 128 % du jujutsu\nApplique une augmentation de 22,2 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 128 % du taijutsu et 192 % du jujutsu\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (4 tours)\nRécupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/d/d4/BlueSSRNaobitoArt1.gif/revision/latest?cb=20250908032954",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Crushed_With_Speed)_Naobito_Zen'in",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/d/d4/BlueSSRNaobitoArt1.gif/revision/latest?cb=20250908032954",
     "sp": false,
@@ -3817,7 +3819,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 256 % du taijutsu\nApplique une augmentation de 30 % des dégâts CRIT à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 384 % du taijutsu\nApplique une augmentation de 60 % des dégâts CRIT à soi-même et au partenaire de l'ultime coopérative (3 tours)\nApplique une augmentation de 20 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (3 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/9c/YellowSSRTojiArt1.gif/revision/latest?cb=20250820124532",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/9c/YellowSSRTojiArt1.gif/revision/latest?cb=20250820124532",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Seance)_Toji_Fushiguro",
     "sp": false,
@@ -3943,7 +3945,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 192 % du jujutsu\nApplique une augmentation de 22 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 320 % du jujutsu\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (4 tours)\nApplique une augmentation de 30 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (4 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/fa/GreenSSRChosoArt1.gif/revision/latest?cb=20250806123949",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/fa/GreenSSRChosoArt1.gif/revision/latest?cb=20250806123949",
     "sp": false,
     "clé_icône": "GreenSSRChosoIcon1",
@@ -4073,7 +4075,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 192 % du jujutsu\nApplique une augmentation de 20 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (4 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 320 % du jujutsu\nApplique une augmentation de 30 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (4 tours)\nApplique une augmentation de 40 % des dégâts de BREAK à soi-même et au partenaire de l'ultime coopérative (4 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b7/YellowSSRDagonArt1.gif/revision/latest?cb=20250805190153",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b7/YellowSSRDagonArt1.gif/revision/latest?cb=20250805190153",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Unlimited_Shikigami)_Dagon",
     "sp": false,
@@ -4188,7 +4190,7 @@
       "effet": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 96 % du taijutsu et 96 % du jujutsu\nRécupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative",
       "effet_renforcé": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 160 % du taijutsu et 160 % du jujutsu\nRécupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative\nApplique une augmentation de 30 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (4 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/6/6c/RedSSRNanamiArt1.gif/revision/latest?cb=20250710181910",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/6/6c/RedSSRNanamiArt1.gif/revision/latest?cb=20250710181910",
     "sp": false,
     "clé_icône": "RedSSRNanamiIcon1",
@@ -4282,7 +4284,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé par la compétence du partenaire de l'ultime coopérative (ou à tous les ennemis si le partenaire n'a pas de cible) équivalant à 192 % du taijutsu\nRécupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé par la compétence du partenaire de l'ultime coopérative (ou à tous les ennemis si le partenaire n'a pas de cible) équivalant à 320 % du taijutsu\nRécupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative\nApplique une réduction de 30 % des dégâts subis à soi-même et au partenaire de l'ultime coopérative (4 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/2/23/GreenSSRShokoArt1.gif/revision/latest?cb=20250531153412",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/2/23/GreenSSRShokoArt1.gif/revision/latest?cb=20250531153412",
     "sp": false,
     "clé_icône": "GreenSSRShokoIcon1",
@@ -4415,7 +4417,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 256 % du jujutsu\nApplique une augmentation de 30 % des dégâts CRIT à soi-même et au partenaire de l'ultime coopérative (4 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 384 % du jujutsu\nApplique une augmentation de 60 % des dégâts CRIT à soi-même et au partenaire de l'ultime coopérative (4 tours)\nApplique une augmentation de 30 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (4 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b5/GreenSSRGojoArt2.gif/revision/latest?cb=20250521140007",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b5/GreenSSRGojoArt2.gif/revision/latest?cb=20250521140007",
     "sp": false,
     "clé_icône": "GreenSSRGojoIcon2",
@@ -4522,7 +4524,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 192 % du jujutsu\nRécupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 320 % du jujutsu\nRécupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative\nApplique une augmentation de 30 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (5 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/9e/BlueSSRInoArt1.gif/revision/latest?cb=20250519123909",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(No_Conceit)_Takuma_Ino",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/9e/BlueSSRInoArt1.gif/revision/latest?cb=20250519123909",
     "sp": false,
@@ -4623,7 +4625,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 192 % du jujutsu\nRécupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 320 % du jujutsu\nRécupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative\nApplique une augmentation de 50 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/7/75/RedSSRMeiMeiArt1.gif/revision/latest?cb=20250331084734",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/7/75/RedSSRMeiMeiArt1.gif/revision/latest?cb=20250331084734",
     "sp": false,
     "clé_icône": "RedSSRMeiMeiIcon1",
@@ -4733,7 +4735,7 @@
       "effet": "Applique une augmentation de 22,2 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)\nInflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 192 % du taijutsu",
       "effet_renforcé": "Applique une augmentation de 50 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)\nInflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 320 % du taijutsu\nRécupère 10 % de PV pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/0/09/BlueMakiSSRArt1.gif/revision/latest?cb=20250321092301",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/0/09/BlueMakiSSRArt1.gif/revision/latest?cb=20250321092301",
     "sp": false,
     "clé_icône": "BlueSSRMakiIcon1",
@@ -4834,7 +4836,7 @@
       "effet": "Récupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative\nInflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 192 % du taijutsu",
       "effet_renforcé": "Récupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative\nInflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 320 % du taijutsu\nApplique une réduction de 30 % des dégâts subis à soi-même et au partenaire de l'ultime coopérative (4 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b5/YellowSSRShokoSSRArt1.gif/revision/latest?cb=20250228054345",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b5/YellowSSRShokoSSRArt1.gif/revision/latest?cb=20250228054345",
     "sp": false,
     "clé_icône": "YellowSSRShokoIcon1",
@@ -4937,7 +4939,7 @@
       "effet": "Récupère 20 % de PV pour soi-même et le partenaire de l'ultime coopérative\nInflige des dégâts d'attaque à distance à tous les ennemis équivalant à 192 % du jujutsu",
       "effet_renforcé": "Récupère 20 % de PV pour soi-même et le partenaire de l'ultime coopérative\nInflige des dégâts d'attaque à distance à tous les ennemis équivalant à 320 % du jujutsu\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (4 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b8/RedSSRInumakiArt1.gif/revision/latest?cb=20250228124303",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b8/RedSSRInumakiArt1.gif/revision/latest?cb=20250228124303",
     "sp": false,
     "clé_icône": "RedSSRInumakiIcon1",
@@ -5048,7 +5050,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 192 % du jujutsu\nApplique une augmentation de 20 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 320 % du jujutsu\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)\nRécupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/6/65/GreenSSRMutaArt1.gif/revision/latest?cb=20250201221006",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/6/65/GreenSSRMutaArt1.gif/revision/latest?cb=20250201221006",
     "sp": false,
     "clé_icône": "GreenSSRKokichiIcon1",
@@ -5193,7 +5195,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 192 % du taijutsu\nApplique une augmentation de 30 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 320 % du taijutsu\nApplique une augmentation de 30 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (4 tours)\nApplique une augmentation de 30 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (4 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/a6/GreenSSRMiwaArt1.gif/revision/latest?cb=20250123152000",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/a6/GreenSSRMiwaArt1.gif/revision/latest?cb=20250123152000",
     "sp": true,
     "clé_icône": "GreenSSRMiwaIcon1",
@@ -5318,7 +5320,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 256 % du jujutsu\nApplique une augmentation de 20 % des dégâts de BREAK à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 384 % du jujutsu\nApplique une augmentation de 40 % des dégâts de BREAK à soi-même et au partenaire de l'ultime coopérative (2 tours)\nApplique une augmentation de 40 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/bb/BlueSSRSukunaArt1.gif/revision/latest?cb=20241229135909",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/bb/BlueSSRSukunaArt1.gif/revision/latest?cb=20241229135909",
     "sp": false,
     "clé_icône": "BlueSSRSukunaIcon1",
@@ -5436,7 +5438,7 @@
       "Malus : dégâts de statistique accrus"
     ],
     "clé_image": "BlueSSRMiguelArt1",
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/91/BlueSSRMiguelArt1.gif/revision/latest?cb=20241213194837",
     "url_gif_illustration": null,
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Delayed_Quota)_Miguel",
     "sp": true,
@@ -5555,7 +5557,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé par la compétence du partenaire de l'ultime coopérative (ou à tous les ennemis si le partenaire n'a pas de cible) équivalant à 256 % du jujutsu\nApplique une augmentation de 20 % des dégâts de BREAK à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé par la compétence du partenaire de l'ultime coopérative (ou à tous les ennemis si le partenaire n'a pas de cible) équivalant à 384 % du jujutsu\nApplique une augmentation de 40 % des dégâts de BREAK à soi-même et au partenaire de l'ultime coopérative (2 tours)\nApplique une augmentation de 30 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/af/RedSSRGojoArt1.gif/revision/latest?cb=20241129062551",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/af/RedSSRGojoArt1.gif/revision/latest?cb=20241129062551",
     "sp": false,
     "clé_icône": "RedSSRGojoIcon1",
@@ -5683,7 +5685,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 256 % du taijutsu\nRécupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 384 % du taijutsu\nRécupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative\nApplique une augmentation de 30 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (4 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/ab/YellowSSRYujiArt1.gif/revision/latest?cb=20241121035127",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/ab/YellowSSRYujiArt1.gif/revision/latest?cb=20241121035127",
     "sp": false,
     "clé_icône": "YellowSSRYujiIcon1",
@@ -5794,7 +5796,7 @@
       "effet": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 76,8 % du taijutsu et 96 % du jujutsu\nApplique une augmentation de 20 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 160 % du taijutsu et 160 % du jujutsu\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)\nRécupère 10 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/e3/YellowSSRKaitoArt.gif/revision/latest?cb=20241117130519",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/e3/YellowSSRKaitoArt.gif/revision/latest?cb=20241117130519",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(With_That_Will_In_Mind)_Kaito_Yuki",
     "sp": false,
@@ -5914,7 +5916,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 192 % du jujutsu\nApplique une augmentation de 20 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 320 % du jujutsu\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)\nApplique une augmentation de 30 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (3 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/0/06/GreenMegumiSSRArt1.gif/revision/latest?cb=20241031081159",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/0/06/GreenMegumiSSRArt1.gif/revision/latest?cb=20241031081159",
     "sp": false,
     "clé_icône": "GreenSSRMegumiIcon1",
@@ -6026,7 +6028,7 @@
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 384 % du jujutsu\nApplique une augmentation de 20 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (6 tours)\nApplique une augmentation de 15 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (6 tours)",
       "recharge": 120
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/d/d0/NobaraArt.gif/revision/latest?cb=20241021221331",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/d/d0/NobaraArt.gif/revision/latest?cb=20241021221331",
     "sp": false,
     "clé_icône": "GreenSSRNobaraIcon1",
@@ -6128,7 +6130,7 @@
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 320 % du jujutsu\nRécupère 20 % de PV pour soi-même et le partenaire de l'ultime coopérative\nRécupère 10 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative",
       "recharge": 120
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/36/BlueSSRInumakiArt1.gif/revision/latest?cb=20241002085413",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/36/BlueSSRInumakiArt1.gif/revision/latest?cb=20241002085413",
     "sp": false,
     "clé_icône": "BlueSSRInumakiIcon1",
@@ -6239,7 +6241,7 @@
       "effet": "Inflige des dégâts d'attaque hybrides à distance à l'ennemi ciblé équivalant à 96 % du taijutsu et 96 % du jujutsu\nApplique une augmentation de 20 % des dégâts de BREAK à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque hybrides à distance à l'ennemi ciblé équivalant à 160 % du taijutsu et 160 % du jujutsu\nApplique une augmentation de 50 % des dégâts de BREAK à soi-même et au partenaire de l'ultime coopérative (2 tours)\nRécupère 10 % de PV pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/1/18/RedSSRMaiArt1.gif/revision/latest?cb=20240921141521",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/1/18/RedSSRMaiArt1.gif/revision/latest?cb=20240921141521",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(The_Final_Bullet)_Mai_Zen'in",
     "sp": false,
@@ -6351,7 +6353,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 192 % du taijutsu\nApplique une augmentation de 20 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 192 % du taijutsu\nApplique une augmentation de 50 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)\nRécupère 10 % de PV pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/7/70/GreenSSRMakiArt1.gif/revision/latest?cb=20240831134353",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/7/70/GreenSSRMakiArt1.gif/revision/latest?cb=20240831134353",
     "sp": false,
     "clé_icône": "GreenSSRMakiIcon1",
@@ -6482,7 +6484,7 @@
       "effet": "Inflige des dégâts d'attaque hybrides à distance à tous les ennemis équivalant à 96 % du taijutsu et 96 % du jujutsu\nApplique une augmentation de 20 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (2 tours)\nApplique une augmentation de 20 % du taux de Rayon Noir à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque hybrides à distance à tous les ennemis équivalant à 160 % du taijutsu et 160 % du jujutsu\nApplique une augmentation de 50 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (2 tours)\nApplique une augmentation de 50 % du taux de Rayon Noir à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/2/29/BlueSSRNanamiArt1.gif/revision/latest?cb=20240820062851",
     "sp": true,
     "clé_icône": "BlueSSRNanamiIcon1",
     "priorité_compétences": [
@@ -6575,7 +6577,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 100 % du taijutsu\nApplique une augmentation de 15 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/aa/GreenSRGakuganjiArt1.gif/revision/latest?cb=20240730141351",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/aa/GreenSRGakuganjiArt1.gif/revision/latest?cb=20240730141351",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Cursed_Energy_Melody)_Yoshinobu_Gakuganji",
     "sp": false,
@@ -6685,7 +6687,7 @@
       "effet": "Inflige des dégâts d'attaque hybrides à distance à tous les ennemis équivalant à 128 % du taijutsu et 64 % du jujutsu\nApplique une augmentation de 30 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque hybrides à distance à tous les ennemis équivalant à 224 % du taijutsu et 96 % du jujutsu\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)\nApplique une augmentation de 40 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (3 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/aa/YellowSSRYagaArt1.gif/revision/latest?cb=20240730131414",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/aa/YellowSSRYagaArt1.gif/revision/latest?cb=20240730131414",
     "sp": false,
     "clé_icône": "YellowSSRYagaIcon1",
@@ -6800,7 +6802,7 @@
       "effet": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 109 % du taijutsu et 109 % du jujutsu\nApplique une augmentation de 20 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 160 % du taijutsu et 160 % du jujutsu\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)\nApplique une augmentation de 40 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/6/66/GreenSSRSakiArt1.gif/revision/latest?cb=20240709104135",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/6/66/GreenSSRSakiArt1.gif/revision/latest?cb=20240709104135",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Heart's_Resolve)_Saki_Rindo",
     "sp": true,
@@ -6924,7 +6926,7 @@
       "effet": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 96 % du taijutsu et 96 % du jujutsu (tous les ennemis avec l'ultime SP)\nApplique une augmentation de 30 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 160 % du taijutsu et 160 % du jujutsu (tous les ennemis avec l'ultime SP)\nApplique une augmentation de 30 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)\nApplique une augmentation de 30 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/aa/BlueMiwaSSRArt1.gif/revision/latest?cb=20240628104120",
     "sp": true,
     "clé_icône": "BlueSSRMiwaIcon1",
     "priorité_compétences": [
@@ -7034,7 +7036,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 256 % du taijutsu\nApplique une augmentation de 20,0 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 384 % du taijutsu\nApplique une augmentation de 40,0 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)\nApplique une augmentation de 20 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/c6/RedSSRTojiArt1.gif/revision/latest?cb=20240603064535",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/c6/RedSSRTojiArt1.gif/revision/latest?cb=20240603064535",
     "sp": false,
     "clé_icône": "RedSSRTojiIcon1",
@@ -7145,7 +7147,7 @@
       "effet": "Inflige des dégâts d'attaque hybrides à distance à l'ennemi ciblé équivalant à 96 % du taijutsu et 96 % du jujutsu\nApplique une augmentation de 20 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (4 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque hybrides à distance à l'ennemi ciblé équivalant à 160 % du taijutsu et 160 % du jujutsu\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (4 tours)\nApplique une augmentation de 40 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (4 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/c4/GreenGetoSSRArt1.gif/revision/latest?cb=20240531104027",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/c4/GreenGetoSSRArt1.gif/revision/latest?cb=20240531104027",
     "sp": false,
     "clé_icône": "GreenSSRGetoIcon1",
@@ -7257,7 +7259,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 256 % du jujutsu\nApplique une augmentation de 30 % des dégâts CRIT à soi-même et au partenaire de l'ultime coopérative (4 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 384 % du jujutsu\nApplique une augmentation de 60 % des dégâts CRIT à soi-même et au partenaire de l'ultime coopérative (4 tours)\nRécupère 10 % de PV pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/98/YellowGojoSSRArt1.gif/revision/latest?cb=20240521123808",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/98/YellowGojoSSRArt1.gif/revision/latest?cb=20240521123808",
     "sp": false,
     "clé_icône": "YellowGojoSSRIcon1",
@@ -7370,7 +7372,7 @@
       "effet": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 96 % du taijutsu et 96 % du jujutsu\nApplique une augmentation de 20 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (4 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 160 % du taijutsu et 160 % du jujutsu\nApplique une augmentation de 30 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (4 tours)\nApplique une augmentation de 30 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (4 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/6/6b/YellowSSRNanamiArt1.gif/revision/latest?cb=20240503054028",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/6/6b/YellowSSRNanamiArt1.gif/revision/latest?cb=20240503054028",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Overtime_Work)_Kento_Nanami",
     "sp": false,
@@ -7491,7 +7493,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à tous les ennemis équivalant à 192 % du taijutsu\nApplique une augmentation de 20 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à tous les ennemis équivalant à 320 % du taijutsu\nApplique une augmentation de 40 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)\nRécupère 10 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/8/89/RedSSRPandaArt1.gif/revision/latest?cb=20240419083113",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/8/89/RedSSRPandaArt1.gif/revision/latest?cb=20240419083113",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Need_Some_Help?)_Panda",
     "sp": true,
@@ -7627,7 +7629,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 210 % du taijutsu\nApplique l'état d'esquive à soi-même et au partenaire de l'ultime coopérative (3 tours / 1 fois)",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 338 % du taijutsu\nApplique l'état d'esquive à soi-même et au partenaire de l'ultime coopérative (3 tours / 1 fois)\nApplique une augmentation de 40 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/ff/BlueSSRItadoriArt1.gif/revision/latest?cb=20240412110935",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Cursed_Energy_Focusing)_Yuji_Itadori",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/ff/BlueSSRItadoriArt1.gif/revision/latest?cb=20240412110935",
     "sp": true,
@@ -7752,7 +7754,7 @@
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 384 % du jujutsu\nApplique une augmentation de 20 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (4 tours)\nApplique une réduction de 20 % des dégâts subis à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "recharge": 120
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/c3/GreenMahitoSSRArt1.gif/revision/latest?cb=20240412113310",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/c3/GreenMahitoSSRArt1.gif/revision/latest?cb=20240412113310",
     "sp": false,
     "clé_icône": "GreenSSRMahitoIcon1",
@@ -7870,7 +7872,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 192 % du taijutsu\nApplique une augmentation de 20 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 320 % du taijutsu\nApplique une augmentation de 50 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)\nRécupère 10 % de PV pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/f3/BlueTodoSSRArt1.gif/revision/latest?cb=20240331181917",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(With_Takada-Chan)_Aoi_Todo",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/f3/BlueTodoSSRArt1.gif/revision/latest?cb=20240331181917",
     "sp": true,
@@ -7994,7 +7996,7 @@
       "effet": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 96 % du taijutsu et 96 % du jujutsu\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 160 % du taijutsu et 160 % du jujutsu\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)\nRécupère 15 % de PV pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/e5/YellowMechamaruSSRArt1.gif/revision/latest?cb=20240322133723",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/e5/YellowMechamaruSSRArt1.gif/revision/latest?cb=20240322133723",
     "sp": true,
     "clé_icône": "YellowMechamaruSSRIcon1",
@@ -8111,7 +8113,7 @@
       "effet_renforcé": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 192 % du taijutsu et 192 % du jujutsu\nApplique une augmentation de 20 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (6 tours)\nApplique une augmentation de 15 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (6 tours)",
       "recharge": 120
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/e0/RedNobaraSSRArt1.gif/revision/latest?cb=20240229073234",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/e0/RedNobaraSSRArt1.gif/revision/latest?cb=20240229073234",
     "sp": true,
     "clé_icône": "RedNobaraSSRIcon1",
@@ -8222,7 +8224,7 @@
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 320 % du jujutsu\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)\nApplique une augmentation de 20 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "recharge": 120
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/ec/BlueNoritoshiSSRArt1.gif/revision/latest?cb=20240222004848",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/ec/BlueNoritoshiSSRArt1.gif/revision/latest?cb=20240222004848",
     "sp": true,
     "clé_icône": "BlueSSRKamoIcon1",
@@ -8325,7 +8327,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 192 % du jujutsu\nApplique une augmentation de 40,0 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 320 % du jujutsu\nApplique une augmentation de 40,0 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)\nApplique une augmentation de 30 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/ad/BlueMomoSSRArt1.gif/revision/latest?cb=20240222004942",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Don't_Look_Down_On_Me)_Momo_Nishimiya",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/ad/BlueMomoSSRArt1.gif/revision/latest?cb=20240222004942",
     "sp": false,
@@ -8443,7 +8445,7 @@
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 256 % du jujutsu\nApplique une augmentation de 80,0 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (3 tours)\nRécupère 10 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative",
       "recharge": 120
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/0/0e/GreenGojoSSRArt1.gif/revision/latest?cb=20240221044557",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/0/0e/GreenGojoSSRArt1.gif/revision/latest?cb=20240221044557",
     "sp": false,
     "clé_icône": "GreenGojoSSRIcon1",
@@ -8558,7 +8560,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 192 % du taijutsu\nApplique une augmentation de 40 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours / 1 fois)",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 320 % du taijutsu\nApplique une augmentation de 40 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)\nRécupère 10 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/9b/RedYujiSSRArt1.gif/revision/latest?cb=20240222005627",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/9b/RedYujiSSRArt1.gif/revision/latest?cb=20240222005627",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Nimble_Body)_Yuji_Itadori",
     "sp": false,
@@ -8674,7 +8676,7 @@
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 320 % du jujutsu\nApplique une augmentation de 30,0 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (4 tours)\nApplique une augmentation de 30 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (4 tours)",
       "recharge": 120
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/1/1c/YellowMegumiSSRArt1.gif/revision/latest?cb=20240221044548",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/1/1c/YellowMegumiSSRArt1.gif/revision/latest?cb=20240221044548",
     "sp": false,
     "clé_icône": "YellowMegumiSSRIcon1",
@@ -8790,7 +8792,7 @@
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 384 % du jujutsu\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)\nRécupère 20 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative",
       "recharge": 120
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/3b/BlueGetoSSRArt1.gif/revision/latest?cb=20231218002326",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(This_Is_Justice)_Suguru_Geto",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/3b/BlueGetoSSRArt1.gif/revision/latest?cb=20231218002326",
     "sp": true,
@@ -8937,7 +8939,7 @@
       "effet": "Applique une augmentation de 20 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)\nInflige des dégâts d'attaque à distance à tous les ennemis équivalant à 256 % du jujutsu",
       "effet_renforcé": "Applique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)\nInflige des dégâts d'attaque à distance à tous les ennemis équivalant à 384 % du jujutsu\nApplique une augmentation de 20 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/d/de/RedYutaSSRArt1.gif/revision/latest?cb=20231218002327",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/d/de/RedYutaSSRArt1.gif/revision/latest?cb=20231218002327",
     "sp": true,
     "clé_icône": "RedYutaSSRIcon1",
@@ -9036,7 +9038,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 106,0 % du jujutsu\nApplique une augmentation de 10,0 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "recharge": 120
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/cd/BlueToge0SRArt1.gif/revision/latest?cb=20231207090840",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Baton_of_Counterattack)_Toge_Inumaki",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/cd/BlueToge0SRArt1.gif/revision/latest?cb=20231207090840",
     "sp": false,
@@ -9124,7 +9126,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à tous les ennemis équivalant à 100,0 % du taijutsu\nApplique une augmentation de 10,0 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "recharge": 120
     },
-    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/a1/BlueMaki0SRArt1.png/revision/latest?cb=20231206151127",
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/af/BlueMaki0SRArt1.gif/revision/latest?cb=20231207032301",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Curses_Team_Up_If_They're_Weak)_Maki_Zen'in",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/af/BlueMaki0SRArt1.gif/revision/latest?cb=20231207032301",
     "sp": false,
@@ -9227,7 +9229,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque au corps à corps à tous les ennemis équivalant à 100 % du taijutsu\nApplique une augmentation de 10 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)\nRécupère 120 de jauge d'ultime pour l'allié ou les alliés qui n'effectuent pas l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/ec/BluePanda0SRArt1.gif/revision/latest?cb=20231207105145",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(The_Shortest_Route)_Panda",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/ec/BluePanda0SRArt1.gif/revision/latest?cb=20231207105145",
     "sp": false,
@@ -9344,7 +9346,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 192 % du jujutsu\nApplique une augmentation de 20,0 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 320 % du jujutsu\nApplique une augmentation de 30,0 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (3 tours)\nApplique une augmentation de 20 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (3 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b4/YellowJunpeiSSRArt1.gif/revision/latest?cb=20231130130608",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b4/YellowJunpeiSSRArt1.gif/revision/latest?cb=20231130130608",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Small_Fry_and_Reverse_Retribution)_Junpei_Yoshino",
     "sp": true,
@@ -9436,7 +9438,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 100,0 % du taijutsu\nApplique une augmentation de 10,0 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/ee/BlueKamoSRArt1.gif/revision/latest?cb=20231129050216",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Blood_of_the_Big_Three_Families)_Noritoshi_Kamo",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/ee/BlueKamoSRArt1.gif/revision/latest?cb=20231129050216",
     "sp": false,
@@ -9554,7 +9556,7 @@
       "Malus : dégâts reçus accrus"
     ],
     "clé_image": "BlueMegumiSSRArt1",
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/1/19/BlueMegumiSSRArt1.gif/revision/latest?cb=20231123002325",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Inherited_Cursed_Technique)_Megumi_Fushiguro",
     "sp": true,
     "ultime_coopérative": {
@@ -9673,7 +9675,7 @@
       "Territoire"
     ],
     "clé_image": "BlueJogoSSRArt1",
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/5/50/BlueJogoSSRArt1.gif/revision/latest?cb=20231123124645",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Pride_Of_A_Cursed_Spirit)_Jogo",
     "sp": true,
     "ultime_coopérative": {
@@ -9767,7 +9769,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé par la compétence du partenaire de l'ultime coopérative (ou à tous les ennemis si le partenaire n'a pas de cible) équivalant à 100 % du taijutsu\nRécupère 10 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/f6/BlueShokoSRArt1.gif/revision/latest?cb=20231129050215",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Reverse_Cursed_Technique)_Shoko_Ieiri",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/f6/BlueShokoSRArt1.gif/revision/latest?cb=20231129050215",
     "sp": false,
@@ -9859,7 +9861,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 100,0 % du taijutsu\nRécupère 10 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/9b/BlueItadoriRArt1.gif/revision/latest?cb=20240105072434",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Sukuna’s_Vessel)_Yuji_Itadori",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/9b/BlueItadoriRArt1.gif/revision/latest?cb=20240105072434",
     "sp": false,
@@ -9972,7 +9974,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 192 % du jujutsu\nApplique une augmentation de 20 % des dégâts de BREAK à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 320 % du jujutsu\nApplique une augmentation de 40 % des dégâts de BREAK à soi-même et au partenaire de l'ultime coopérative (2 tours)\nApplique une augmentation de 20 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/9e/BlueGojoSSRArt1.gif/revision/latest?cb=20231123124702",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(The_Strongest)_Satoru_Gojo",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/9e/BlueGojoSSRArt1.gif/revision/latest?cb=20231123124702",
     "sp": false,
@@ -10059,7 +10061,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 100,0 % du taijutsu\nRécupère 10 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/5/5d/BlueNobaraRArt1.gif/revision/latest?cb=20240104051003",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(To_Stay_True_To_Myself)_Nobara_Kugisaki",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/5/5d/BlueNobaraRArt1.gif/revision/latest?cb=20240104051003",
     "sp": false,
@@ -10147,7 +10149,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 50,0 % du jujutsu\nApplique une augmentation de 10,0 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/1/15/BlueJunpeiSRArt1.gif/revision/latest?cb=20231129050202",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Value_Of_Life)_Junpei_Yoshino",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/1/15/BlueJunpeiSRArt1.gif/revision/latest?cb=20231129050202",
     "sp": false,
@@ -10236,7 +10238,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 100 % du jujutsu\nApplique une augmentation de 10 % des dégâts de BREAK à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/0/0c/GreenMomoSRArt1.gif/revision/latest?cb=20231129050218",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/0/0c/GreenMomoSRArt1.gif/revision/latest?cb=20231129050218",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Aerial_Reconnaissance)_Momo_Nishimiya",
     "sp": false,
@@ -10315,7 +10317,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé par la compétence du partenaire de l'ultime coopérative (ou à tous les ennemis si le partenaire n'a pas de cible) équivalant à 100 % du taijutsu\nRécupère 10 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/ff/GreenIjichiRArt1.gif/revision/latest?cb=20231223035251",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/ff/GreenIjichiRArt1.gif/revision/latest?cb=20231223035251",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Background_Support)_Kiyotaka_Ijichi",
     "sp": false,
@@ -10396,7 +10398,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 70 % du taijutsu et 30 % du jujutsu\nApplique une réduction de 10 % des dégâts subis à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/f7/GreenSakiRArt1.gif/revision/latest?cb=20240107072552",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/f7/GreenSakiRArt1.gif/revision/latest?cb=20240107072552",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Cursed_Energy_Catastrophe)_Saki_Rindo",
     "sp": false,
@@ -10517,7 +10519,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 192 % du taijutsu\nApplique une augmentation de 20 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 320 % du taijutsu\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)\nApplique une augmentation de 20 % du taijutsu à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/9e/GreenItadoriSSRArt1.gif/revision/latest?cb=20231123124657",
     "sp": true,
     "clé_icône": "GreenItadoriSSRIcon1",
     "priorité_compétences": [
@@ -10645,7 +10647,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 192 % du taijutsu\nApplique une réduction de 20,0 % des dégâts subis à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 320 % du taijutsu\nApplique une réduction de 20,0 % des dégâts subis à soi-même et au partenaire de l'ultime coopérative (2 tours)\nApplique une augmentation de 20 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/f8/GreenPandaSSRArt1.gif/revision/latest?cb=20231123124657",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/f8/GreenPandaSSRArt1.gif/revision/latest?cb=20231123124657",
     "sp": false,
     "clé_icône": "GreenPandaSSRIcon1",
@@ -10739,7 +10741,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque à distance à tous les ennemis équivalant à 100,0 % du jujutsu\nRécupère 10 % de PV pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/e2/GreenMechSRArt1.gif/revision/latest?cb=20231226042240",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/e2/GreenMechSRArt1.gif/revision/latest?cb=20231226042240",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Mode:_Albatross)_Ultimate_Mechamaru",
     "sp": false,
@@ -10864,7 +10866,7 @@
       "effet": "Inflige des dégâts d'attaque hybrides à distance à tous les ennemis équivalant à 96 % du taijutsu et 96 % du jujutsu\nApplique une augmentation de 20 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (2 tours)\nApplique une augmentation de 20 % du taux de Rayon Noir à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque hybrides à distance à tous les ennemis équivalant à 160 % du taijutsu et 160 % du jujutsu\nApplique une augmentation de 40 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (3 tours)\nApplique une augmentation de 40 % du taux de Rayon Noir à soi-même et au partenaire de l'ultime coopérative (3 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/3f/GreenNanamiSSRArt1.gif/revision/latest?cb=20231123124657",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/3f/GreenNanamiSSRArt1.gif/revision/latest?cb=20231123124657",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Ratio_Technique)_Kento_Nanami",
     "sp": true,
@@ -10945,7 +10947,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 70,0 % du jujutsu\nApplique une augmentation de 10,0 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/7/7a/GreenKaitoSRArt1.gif/revision/latest?cb=20231225043115",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/7/7a/GreenKaitoSRArt1.gif/revision/latest?cb=20231225043115",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(The_Resolve_Of_Being_A_Sorcerer)_Kaito_Yuki",
     "sp": false,
@@ -11034,7 +11036,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 100,0 % du taijutsu\nRécupère 10 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/bf/GreenMegumiRArt1.gif/revision/latest?cb=20231224055901",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/bf/GreenMegumiRArt1.gif/revision/latest?cb=20231224055901",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Unfair_Salvation)_Megumi_Fushiguro",
     "sp": false,
@@ -11128,7 +11130,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 100 % du taijutsu\nApplique une augmentation de 10 % des dégâts de BREAK à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/fc/RedYagaSRArt1.gif/revision/latest?cb=20231129050226",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/fc/RedYagaSRArt1.gif/revision/latest?cb=20231129050226",
     "sp": false,
     "clé_icône": "RedYagaSRIcon1",
@@ -11241,7 +11243,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 192 % du taijutsu\nApplique une augmentation de 20 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (2 tours)\nApplique une augmentation de 20 % du taux de Rayon Noir à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 320 % du taijutsu\nApplique une augmentation de 50 % du taux de CRIT à soi-même et au partenaire de l'ultime coopérative (2 tours)\nApplique une augmentation de 30 % du taux de Rayon Noir à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/ef/RedTodoSSRArt1.gif/revision/latest?cb=20231123124657",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/ef/RedTodoSSRArt1.gif/revision/latest?cb=20231123124657",
     "sp": false,
     "clé_icône": "RedTodoSSRIcon1",
@@ -11332,7 +11334,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 106,0 % du jujutsu\nRécupère 20 % de PV pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/d/d9/RedTogeRArt1.gif/revision/latest?cb=20231221035830",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/d/d9/RedTogeRArt1.gif/revision/latest?cb=20231221035830",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Cursed_Power_of_Words)_Toge_Inumaki",
     "sp": false,
@@ -11427,7 +11429,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 50 % du taijutsu et 50 % du jujutsu\nApplique une augmentation de 10 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/4/48/RedMiwaSRArt1.gif/revision/latest?cb=20231129050229",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/4/48/RedMiwaSRArt1.gif/revision/latest?cb=20231129050229",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Determined_Counter)_Kasumi_Miwa",
     "sp": false,
@@ -11528,7 +11530,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé équivalant à 50 % du taijutsu et 50 % du jujutsu\nRécupère 10 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/3d/RedNanamiSRArt1.gif/revision/latest?cb=20231129050226",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/3d/RedNanamiSRArt1.gif/revision/latest?cb=20231129050226",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Ex-Office_Worker_Turned_Jujutsu_Sorcerer)_Kento_Nanami",
     "sp": false,
@@ -11617,7 +11619,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 100 % du taijutsu\nRemplit de 120 la jauge d'ultime de soi-même et du partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b7/RedMakiRArt1.gif/revision/latest?cb=20240108062010",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Innate_Talent)_Maki_Ze’nin",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b7/RedMakiRArt1.gif/revision/latest?cb=20240108062010",
     "sp": false,
@@ -11739,7 +11741,7 @@
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 192 % du taijutsu\nApplique une augmentation de 20 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)",
       "effet_renforcé": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 320 % du taijutsu\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/2/23/RedMakiSSRArt1.gif/revision/latest?cb=20231123124657",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/2/23/RedMakiSSRArt1.gif/revision/latest?cb=20231123124657",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Maverick_Outcast)_Maki_Zen'in",
     "sp": true,
@@ -11847,7 +11849,7 @@
       "effet": "Applique une augmentation de 20 % des dégâts de BREAK à soi-même et au partenaire de l'ultime coopérative (2 tours)\nInflige des dégâts d'attaque à distance à tous les ennemis équivalant à 192 % du jujutsu",
       "effet_renforcé": "Applique une augmentation de 20 % des dégâts de BREAK à soi-même et au partenaire de l'ultime coopérative (2 tours)\nInflige des dégâts d'attaque à distance à tous les ennemis équivalant à 320 % du jujutsu\nApplique une augmentation de 30 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/bf/RedHanamiSSRArt1.gif/revision/latest?cb=20231123124657",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/bf/RedHanamiSSRArt1.gif/revision/latest?cb=20231123124657",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(The_Thrill_Of_The_Fight)_Hanami",
     "sp": false,
@@ -11940,7 +11942,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 75,0 % du taijutsu\nApplique une augmentation de 10 % des dégâts de BREAK à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/6/6a/YellowMaiSRArt1.gif/revision/latest?cb=20231231034932",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/6/6a/YellowMaiSRArt1.gif/revision/latest?cb=20231231034932",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(A_Clever_Bullet)_Mai_Zen'in",
     "sp": false,
@@ -12026,7 +12028,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé par la compétence du partenaire de l'ultime coopérative (ou à tous les ennemis si le partenaire n'a pas de cible) équivalant à 100 % du jujutsu\nApplique une réduction de 10 % des dégâts subis à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/8/89/YellowKaitoRArt1.gif/revision/latest?cb=20231222041329",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/8/89/YellowKaitoRArt1.gif/revision/latest?cb=20231222041329",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Conjuring_Technique)_Kaito_Yuki",
     "sp": false,
@@ -12145,7 +12147,7 @@
       "effet": "Inflige des dégâts d'attaque à distance aux ennemis ciblés par sa propre compétence ultime équivalant à 192 % du jujutsu\nRemplit de 240 la jauge d'ultime de soi-même et du partenaire de l'ultime coopérative",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance aux ennemis ciblés par sa propre compétence ultime équivalant à 320 % du jujutsu\nRemplit de 240 la jauge d'ultime de soi-même et du partenaire de l'ultime coopérative\nApplique une augmentation de 40 % des dégâts infligés à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/34/YellowNobaraSSRArt1.gif/revision/latest?cb=20231123124702",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/34/YellowNobaraSSRArt1.gif/revision/latest?cb=20231123124702",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Girl_Of_Steel)_Nobara_Kugisaki",
     "sp": true,
@@ -12237,7 +12239,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 75,0 % du taijutsu\nApplique une augmentation de 10 % des dégâts de BREAK à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/34/YellowSakiSRArt1.gif/revision/latest?cb=20231129050226",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/34/YellowSakiSRArt1.gif/revision/latest?cb=20231129050226",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Just_Bring_It)_Saki_Rindo",
     "sp": false,
@@ -12318,7 +12320,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 100,0 % du taijutsu\nRécupère 10 d'énergie occulte pour soi-même et le partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/a2/YellowPandaRArt1.gif/revision/latest?cb=20240106042530",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/a2/YellowPandaRArt1.gif/revision/latest?cb=20240106042530",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Panda_Is_Not_A_Panda)_Panda",
     "sp": false,
@@ -12414,7 +12416,7 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts d'attaque au corps à corps à l'ennemi ciblé équivalant à 100 % du taijutsu\nRemplit de 120 la jauge d'ultime de soi-même et du partenaire de l'ultime coopérative"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/0/0d/YellowTodoSRArt1.gif/revision/latest?cb=20231129050236",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/0/0d/YellowTodoSRArt1.gif/revision/latest?cb=20231129050236",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Reckless_Grade_1)_Aoi_Todo",
     "sp": false,
@@ -12521,7 +12523,7 @@
       "effet": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 192 % du jujutsu\nRécupère 20,0 % de PV pour soi-même et le partenaire de l'ultime coopérative",
       "effet_renforcé": "Inflige des dégâts d'attaque à distance à l'ennemi ciblé équivalant à 320 % du jujutsu\nRécupère 20,0 % de PV pour soi-même et le partenaire de l'ultime coopérative\nApplique une augmentation de 30 % du jujutsu à soi-même et au partenaire de l'ultime coopérative (2 tours)"
     },
-    "url_image": null,
+    "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/ce/YellowTogeSSRArt1.gif/revision/latest?cb=20231123124702",
     "url_gif_illustration": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/ce/YellowTogeSSRArt1.gif/revision/latest?cb=20231123124702",
     "url_wiki": "https://jjk-phantom-parade.fandom.com/wiki/(Resolved_Cursed_Speech)_Toge_Inumaki",
     "sp": false,

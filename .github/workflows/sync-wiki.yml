@@ -23,32 +23,34 @@ jobs:
         with:
           node-version: 20
 
-      - name: Synchroniser depuis le wiki
+      - name: Synchroniser les personnages et souvenirs depuis le wiki
         env:
           # Facultatif : sans ce secret, les lignes non couvertes par le glossaire restent en anglais.
-          DEEPL_API_KEY: 0acedf17-662c-4a67-8136-2c7d079d641b:fx
-        run: >
-          node scripts/sync-wiki.mjs
-          --report "$RUNNER_TEMP/sync-report.md"
-          --commit-message "$RUNNER_TEMP/commit-message.txt"
+          DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
+        run: |
+          node scripts/sync-wiki.mjs --report "$RUNNER_TEMP/sync-report.md" --commit-message "$RUNNER_TEMP/commit-message.txt"
+          node scripts/sync-souvenirs.mjs --report "$RUNNER_TEMP/sync-souvenirs-report.md" --commit-message "$RUNNER_TEMP/commit-message.txt"
 
       - name: Conserver le rapport
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: sync-report
-          path: ${{ runner.temp }}/sync-report.md
+          path: ${{ runner.temp }}/sync*report.md
           if-no-files-found: ignore
 
-      - name: Commit si data/characters.json a changé
+      - name: Commit si les personnages, souvenirs ou traductions ont changé
         run: |
-          if git diff --quiet -- data/characters.json; then
-            echo "Aucun changement dans data/characters.json : pas de commit."
+          if git diff --quiet -- data/characters.json data/souvenirs.json data/traductions-deepl.json; then
+            echo "Aucun changement de données : pas de commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/characters.json
+          git add data/characters.json data/souvenirs.json
           if [ -f data/traductions-deepl.json ]; then git add data/traductions-deepl.json; fi
+          if [ ! -s "$RUNNER_TEMP/commit-message.txt" ]; then
+            echo "Synchro wiki : personnages, souvenirs et traductions" > "$RUNNER_TEMP/commit-message.txt"
+          fi
           git commit -F "$RUNNER_TEMP/commit-message.txt"
           git push

@@ -23,52 +23,63 @@
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const nf = v => (v == null || v === '' ? '—' : Number(v).toLocaleString('fr-FR'));
   const norm = s => String(s || '').toLocaleLowerCase('fr-FR').normalize('NFD').replace(/[̀-ͯ]/g, '');
-  const fiches = n => n + ' ' + (n > 1 ? 'fiches' : 'fiche');
+  const fiches = n => n + ' ' + (isMemory() ? (n > 1 ? 'souvenirs' : 'souvenir') : (n > 1 ? 'fiches' : 'fiche'));
   const pct = (v, max) => Math.max(3, Math.round((v || 0) / max * 100)) + '%';
   const marks = (r, cls = '') => `<span class="marks r${RANK[r] || 1}${cls ? ' ' + cls : ''}" aria-hidden="true"><i></i><i></i><i></i></span>`;
   const ficheHref = r => '#/fiche/' + encodeURIComponent(r.id);
 
   let DATA = [], BY_ID = new Map(), CATEGORIES = [], maxPV = 1, maxST = 1;
-  const state = { q: '', 'élément': [], 'rareté': [], 'catégorie': [], 'spécialité': [], vue: 'cartes', tri: '', ordre: 'desc' };
+  const state = { collection: 'personnages', q: '', 'élément': [], 'rareté': [], 'catégorie': [], 'spécialité': [], vue: 'cartes', tri: '', ordre: 'desc' };
   let current = null, listScroll = 0, cameFromList = false, lastListHash = '#/', sheetOpen = false, lastFocus = null;
 
   /* ---------------- Données ---------------- */
 
-  function prepare(list, categoryRoles) {
+  function prepare(list, categoryRoles, memories) {
     CATEGORIES = Object.keys(categoryRoles);
     const roleCats = {};
     for (const [cat, roles] of Object.entries(categoryRoles)) for (const role of roles) (roleCats[role] = roleCats[role] || []).push(cat);
     const used = new Set();
-    DATA = list.map((d, i) => {
+    DATA = [...list, ...memories].map((d, i) => {
+      const memory = !!d.bonus;
       const s = d['statistiques'] || {};
       // identifiant stable pour l'URL : clé d'image du jeu (unique), sinon clé d'icône
-      let id = String(d['clé_image'] || d['clé_icône'] || 'fiche-' + (i + 1));
+      let id = String(d.id || d['clé_image'] || d['clé_icône'] || 'fiche-' + (i + 1));
       while (used.has(id)) id += '-' + (i + 1);
       used.add(id);
       const epi = d['épithète'] || (/^\((.*)\)/.exec(d['titre'] || '') || [])[1] || '';
       const name = d['nom'] || d['titre'] || '';
       const cats = Array.isArray(d['catégories']) && d['catégories'].length ? d['catégories'] : (roleCats[d['rôle']] || []);
       return {
-        d, id, i, el: d['élément'] || '', k: KANJI[d['élément']] || '', epi, name, rar: d['rareté'] || '', role: d['rôle'] || '', spe: d['spécialité'] || '', cats,
-        pv: s['pv'], tai: s['atq'], juj: s['jujutsu'], eoi: s['énergie_occulte_initiale'], eom: s['énergie_occulte_max'], js: s['jauge_spéciale'],
+        d, id, i, memory, art: d.url_image || d.url_icône, el: d['élément'] || '', k: KANJI[d['élément']] || '', epi, name, rar: d['rareté'] || '', role: d['rôle'] || '', spe: d['spécialité'] || '', cats,
+        pv: memory ? bonusNumber(d.bonus.pv) : s['pv'], tai: memory ? bonusNumber(d.bonus.tai) : s['atq'], juj: memory ? bonusNumber(d.bonus.juj) : s['jujutsu'], eoi: s['énergie_occulte_initiale'], eom: s['énergie_occulte_max'], js: s['jauge_spéciale'],
         rn: s['rayon_noir'] === 'Oui', icon: d['url_icône'] || '', search: norm(epi + ' ' + name + ' ' + (d['titre'] || '')),
       };
     });
-    maxPV = Math.max(1, ...DATA.map(r => r.pv || 0));
-    maxST = Math.max(1, ...DATA.map(r => Math.max(r.tai || 0, r.juj || 0)));
+    maxPV = Math.max(1, ...DATA.filter(r => !r.memory).map(r => r.pv || 0));
+    maxST = Math.max(1, ...DATA.filter(r => !r.memory).map(r => Math.max(r.tai || 0, r.juj || 0)));
     BY_ID = new Map(DATA.map(r => [r.id, r]));
   }
 
   /* ---------------- Filtres : OU dans un groupe, ET entre groupes ---------------- */
 
+  const isMemory = () => state.collection === 'souvenirs';
+  const collection = () => DATA.filter(r => r.memory === isMemory());
+  const groups = () => isMemory() ? ['rareté'] : GROUPS;
+  const bonusNumber = v => { const m = /([\d]+(?:[.,]\d+)?)\s*%/.exec(String(v || '')); return m ? Number(m[1].replace(',', '.')) : -1; };
+  function bonusHTML(v) {
+    const text = String(v || '—').replace(/^(?:HP|PV|Taijutsu|Jujutsu)\s*:\s*/i, '').replace(/\s*\((?:Level|Lv\.?|Niv\.?)\s*(\d+)\)/gi, ' (Niv. $1)');
+    const m = /\s*(\(Niv\. \d+\))/.exec(text);
+    return `<span class="bonus-value">${esc(text.replace(/\s*\(Niv\. \d+\)/, '').replaceAll('.', ','))}<small class="bonus-level">${m ? esc(m[1]) : '&nbsp;'}</small></span>`;
+  }
+  const dateKey = r => { const m = /^(\d{2})-(\d{2})-(\d{4})$/.exec(r.d.date_de_sortie || ''); return m ? Number(m[3]+m[2]+m[1]) : 0; };
   const has = (r, g, v) => (g === 'élément' ? r.el === v : g === 'rareté' ? r.rar === v : g === 'spécialité' ? r.spe === v : r.cats.includes(v));
   function matches(r, st, skip) {
     const q = norm(st.q.trim());
     if (skip !== 'q' && q && !r.search.includes(q)) return false;
-    return GROUPS.every(g => g === skip || !st[g].length || st[g].some(v => has(r, g, v)));
+    return groups().every(g => g === skip || !st[g].length || st[g].some(v => has(r, g, v)));
   }
-  const filtered = (st = state) => DATA.filter(r => matches(r, st));
-  const active = (st = state) => GROUPS.flatMap(g => st[g].map(v => ({ g, v })));
+  const filtered = (st = state) => collection().filter(r => matches(r, st));
+  const active = (st = state) => groups().flatMap(g => st[g].map(v => ({ g, v })));
   const options = g => (g === 'élément' ? ELEMENTS : g === 'rareté' ? RARITIES : g === 'catégorie' ? CATEGORIES : SPECIALITIES);
 
   const SORTS = {
@@ -78,7 +89,7 @@
   };
   function sorted(list) {
     const key = SORTS[state.tri];
-    if (!key) return list;
+    if (!key) return isMemory() ? list.slice().sort((a,b) => dateKey(b)-dateKey(a) || a.i-b.i) : list;
     const dir = state.ordre === 'asc' ? 1 : -1;
     return list.slice().sort((a, b) => {
       const x = key(a), y = key(b);
@@ -86,12 +97,13 @@
     });
   }
   const tableMode = () => state.vue === 'tableau';
-  const visibleOrder = () => (tableMode() ? sorted(filtered()) : filtered());
+  const visibleOrder = () => sorted(filtered());
 
   /* ---------------- URL ---------------- */
 
   function listHash() {
     const p = new URLSearchParams();
+    if (isMemory()) p.set('collection', 'souvenirs');
     if (state.q.trim()) p.set('q', state.q.trim());
     for (const g of GROUPS) if (state[g].length) p.set(PARAM[g], state[g].join(','));
     if (state.vue === 'tableau') p.set('vue', 'tableau');
@@ -101,8 +113,10 @@
   }
   function readListParams(qs) {
     const p = new URLSearchParams(qs);
+    state.collection = p.get('collection') === 'souvenirs' ? 'souvenirs' : 'personnages';
     state.q = p.get('q') || '';
     for (const g of GROUPS) state[g] = (p.get(PARAM[g]) || '').split(',').filter(v => options(g).includes(v));
+    if (isMemory()) GROUPS.filter(g => g !== 'rareté').forEach(g => { state[g] = []; });
     state.vue = p.get('vue') === 'tableau' ? 'tableau' : 'cartes';
     const t = /^(personnage|rarete|pv|tai|juj)-(asc|desc)$/.exec(p.get('tri') || '');
     state.tri = t ? t[1] : '';
@@ -137,13 +151,39 @@
 
   /* ---------------- Liste ---------------- */
 
+
+  function memorySortHTML() {
+    return `<div class="fgroup" role="group" aria-label="Spécialité"><div class="fgroup-head"><span>Spécialité</span></div><div class="opt-grid">${[['pv','PV'],['tai','Taijutsu'],['juj','Jujutsu']].map(([k,v]) => `<button type="button" data-memory-sort="${k}" aria-pressed="${state.tri === k}">${v}</button>`).join('')}</div><span class="sort-hint">Du pourcentage le plus élevé au plus faible</span></div>`;
+  }
+  function memoryStats(r, compact = false) {
+    return [['pv','PV'],['tai','Taijutsu'],['juj','Jujutsu']].map(([k,v]) => compact
+      ? `<div class="stat" data-s="${k}"><div class="stat-top"><span class="lab"><span class="lab-short">${{pv: 'PV', tai: 'TAI', juj: 'JUJ'}[k]}</span><span class="lab-long">${v.toUpperCase()}</span></span>${bonusHTML(r.d.bonus[k]).replace('class="bonus-value"', 'class="bonus-value v"')}</div></div>`
+      : `<div class="memory-stat" data-s="${k}"><span class="lab">${v}</span>${bonusHTML(r.d.bonus[k])}</div>`).join('');
+  }
+  function memoryCardHTML(r) {
+    return `<a class="card memory-card illustrated" href="${ficheHref(r)}"><img class="card-art" referrerpolicy="no-referrer" src="${esc(r.art)}" alt="" loading="lazy" decoding="async"><div class="card-body"><div class="card-head"><div class="card-id"><div class="meta">${marks(r.rar)}<span class="rar">${esc(r.rar)}</span><span>Souvenir</span></div><div class="name" title="${esc(r.name)}">${esc(r.name)}</div></div></div><div class="stats memory-stats">${memoryStats(r, true)}</div></div></a>`;
+  }
+  function memoryTableHTML(list) {
+    const th = (k,v) => `<th scope="col"${state.tri === k ? ` aria-sort="${state.ordre === 'asc' ? 'ascending':'descending'}"` : ''}><button type="button" data-sort="${k}">${v}${state.tri === k ? (state.ordre === 'asc' ? ' ↑':' ↓') : ' ↕'}</button></th>`;
+    return `<div class="table-wrap"><div class="tpanel"><table class="ftable memory-table"><caption class="visually-hidden">Souvenirs, cliquez un en-tête pour trier</caption><thead><tr>${th('personnage','Souvenir')}${th('rarete','Rareté')}${th('pv','PV')}${th('tai','Taijutsu')}${th('juj','Jujutsu')}</tr></thead><tbody>${list.map(r => `<tr data-href="${ficheHref(r)}"><td><div class="tname"><img class="icon" referrerpolicy="no-referrer" src="${esc(r.icon || r.art)}" alt="" loading="lazy" width="40" height="40"><a href="${ficheHref(r)}">${esc(r.name)}</a></div></td><td>${esc(r.rar)}</td>${['pv','tai','juj'].map(k => `<td class="tnum">${bonusHTML(r.d.bonus[k])}</td>`).join('')}</tr>`).join('')}</tbody></table></div></div>`;
+  }
+  function renderMemory(r) {
+    const {prev,next} = neighbours(r);
+    const nav = (x,label) => x ? `<a href="${ficheHref(x)}" data-nav>${label}</a>` : '';
+    document.title = r.name + ' · Souvenir · JJKPP [RK]';
+    view.innerHTML = `<nav class="memory-nav"><a class="btn-back" href="${esc(lastListHash)}" data-back>← Souvenirs</a><div class="pn">${nav(prev,'‹ Précédent')}${nav(next,'Suivant ›')}</div></nav><div class="fiche memory-fiche"><div class="fiche-side"><section class="idcard"><div class="idcard-body"><img class="memory-art" referrerpolicy="no-referrer" src="${esc(r.art)}" alt="${esc(r.name)}"><div class="meta">${marks(r.rar)}<span>${esc(r.rar)} · Souvenir</span></div><h1 tabindex="-1">${esc(r.name)}</h1><dl class="info"><dt>Sortie</dt><dd>${esc(dateFr(r.d.date_de_sortie))}</dd></dl><div class="memory-stats">${memoryStats(r)}</div></div></section></div><section class="kit" aria-label="Effets du souvenir"><div class="kit-head"><h2>Effets du souvenir</h2></div>${r.d.effets.map(e => `<section class="skill"><div class="skill-meta"><div class="skill-type">${esc(e.nom)}</div></div><div class="skill-main"><div class="skill-top"><h3>${esc(e.nom)}</h3></div>${e.déblocage ? `<p class="sort-hint">${esc(e.déblocage)}</p>`:''}${e.recharge ? `<p class="sort-hint">Recharge : ${esc(e.recharge)} tours</p>`:''}<div class="lines">${parseLines(e.effet).map(lineHTML).join('')}</div></div></section>`).join('')}</section></div>`;
+    view.dataset.fiche = r.id;
+    window.scrollTo(0,0); view.querySelector('h1').focus({preventScroll:true});
+  }
+
   function cardHTML(r) {
+    if (r.memory) return memoryCardHTML(r);
     const td = (r.tai || 0) >= (r.juj || 0);
     const stat = (short, long, v, max, strong, k) => `<div class="stat" data-s="${k}"><div class="stat-top"><span class="lab"><span class="lab-short">${short}</span><span class="lab-long">${long}</span></span><span class="v${strong ? '' : ' weak'}">${nf(v)}</span></div><div class="bar"><i${strong ? '' : ' class="weak"'} style="width:${pct(v, max)}"></i></div></div>`;
-    return `<a class="card" data-el="${esc(r.el)}" href="${ficheHref(r)}" aria-label="${esc(r.d['titre'] || r.name)} — ${esc(r.rar)}, ${esc(r.el)}">
-<div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
+    return `<a class="card illustrated" data-el="${esc(r.el)}" href="${ficheHref(r)}" aria-label="${esc(r.d['titre'] || r.name)} — ${esc(r.rar)}, ${esc(r.el)}">
+<img class="card-art" referrerpolicy="no-referrer" src="${esc(r.art)}" alt="" loading="lazy" decoding="async"><div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
 <div class="card-body">
-<div class="card-head"><img class="icon" src="${esc(r.icon)}" alt="" loading="lazy" decoding="async" width="76" height="76">
+<div class="card-head">
 <div class="card-id"><div class="meta">${marks(r.rar)}<span class="rar">${esc(r.rar)}</span><span class="role">${esc(r.role || '—')}<span class="m-only"> · ${esc(r.spe || '—')}</span></span></div>
 <div class="epi">(${esc(r.epi)})</div><div class="name">${esc(r.name)}</div></div>
 ${r.rn ? '<span class="stamp-rn" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div>
@@ -153,6 +193,7 @@ ${r.rn ? '<span class="stamp-rn" title="Rayon Noir"><span>黒</span><span>閃</s
   }
 
   function tableHTML(list) {
+    if (isMemory()) return memoryTableHTML(list);
     const th = (key, label, cls = '') => {
       if (!key) return `<th scope="col"${cls ? ` class="${cls}"` : ''}>${label}</th>`;
       const on = state.tri === key, arrow = on ? (state.ordre === 'asc' ? '↑' : '↓') : '↕';
@@ -189,7 +230,7 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
     }
     return `<div class="empty"><div class="stamp-empty k" aria-hidden="true">無</div><h2>Aucune fiche ne correspond.</h2><p>${esc(msg)}</p>
 <div class="sugg">${sugg.map(s => `<button type="button" data-remove="${esc(s.action)}"><span>${esc(s.lab)}</span><span class="num">${fiches(s.n)} →</span></button>`).join('')}</div>
-<button type="button" class="btn-outline" data-reset>Tout réinitialiser · ${DATA.length} fiches</button></div>`;
+<button type="button" class="btn-outline" data-reset>Tout réinitialiser · ${fiches(collection().length)}</button></div>`;
   }
 
   function chipsHTML() {
@@ -214,9 +255,9 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
 <div class="m-tools">
   <div class="search-row"><input class="search" type="search" placeholder="Nom ou épithète…" aria-label="Rechercher un nom ou une épithète" autocomplete="off" spellcheck="false" data-search>
   <button type="button" class="btn-filters" data-open-filters aria-haspopup="dialog" aria-controls="filters">Filtres<span class="badge-n" hidden></span></button></div>
-  <div class="el-quick" role="group" aria-label="Élément">${ELEMENTS.map(e => `<button type="button" data-el="${e}" data-g="élément" data-v="${e}" aria-pressed="false"><span class="k">${KANJI[e]}</span><span class="lab">${e}</span></button>`).join('')}</div>
+  <div class="el-quick" role="group" aria-label="Élément">${(isMemory() ? [] : ELEMENTS).map(e => `<button type="button" data-el="${e}" data-g="élément" data-v="${e}" aria-pressed="false"><span class="k">${KANJI[e]}</span><span class="lab">${e}</span></button>`).join('')}</div>
   <div class="count-row"><div class="count"><span class="n"></span><span class="of"></span></div><button type="button" class="link-reset" data-reset hidden>Tout réinitialiser</button></div>
-  <div class="m-view seg" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true">Cartes</button><button type="button" data-view="tableau" aria-pressed="false">Tableau</button></div>
+  <div class="m-view-tools"><div class="collection-switch seg" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}">Personnages</button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}">Souvenirs</button></div><div class="m-view seg" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true">Cartes</button><button type="button" data-view="tableau" aria-pressed="false">Tableau</button></div></div>
   <div class="chips"></div>
 </div>
 <div class="filters-wrap" id="filters-wrap">
@@ -226,7 +267,7 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
     <div class="sheet-head"><h2 id="filters-title">Filtres</h2><div class="actions"><button type="button" class="link-reset" data-reset>Tout réinitialiser</button><button type="button" class="btn-close" data-close-filters aria-label="Fermer les filtres">×</button></div></div>
     <div class="filters-body">
       <input class="search" type="search" placeholder="Nom ou épithète…" aria-label="Rechercher un nom ou une épithète" autocomplete="off" spellcheck="false" data-search>
-      ${GROUPS.map(groupHTML).join('')}
+      ${groups().map(groupHTML).join('')}${isMemory() ? memorySortHTML() : ''}
       <div class="reset-help"><button type="button" class="link-reset" data-reset>Tout réinitialiser</button></div>
     </div>
     <div class="sheet-foot"><button type="button" class="btn-see" data-close-filters></button></div>
@@ -234,7 +275,7 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
 </div>
 <div class="results">
   <div class="d-results-head"><div class="left"><div class="count"><span class="n"></span><span class="of"></span></div><div class="chips"></div></div>
-  <div class="view"><span class="vl">Vue</span><div class="seg" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true">Cartes</button><button type="button" data-view="tableau" aria-pressed="false">Tableau</button></div></div></div>
+  <div class="view"><div class="collection-switch seg" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}">Personnages</button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}">Souvenirs</button></div><span class="vl">Vue</span><div class="seg" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true">Cartes</button><button type="button" data-view="tableau" aria-pressed="false">Tableau</button></div></div></div>
   <div class="results-body"></div>
 </div></div>`;
     const foot = document.querySelector('body > .site-footer').cloneNode(true);
@@ -243,10 +284,10 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
   }
 
   function updateList() {
-    const res = filtered(), n = res.length, act = active(), anything = act.length > 0 || !!state.q.trim();
+    const res = sorted(filtered()), n = res.length, act = active(), anything = act.length > 0 || !!state.q.trim() || !!state.tri;
     view.querySelectorAll('[data-search]').forEach(i => { if (i.value !== state.q) i.value = state.q; });
     view.querySelectorAll('.count .n').forEach(e => { e.textContent = n; });
-    view.querySelectorAll('.count .of').forEach(e => { e.textContent = (n > 1 ? 'fiches' : 'fiche') + ' sur ' + DATA.length; });
+    view.querySelectorAll('.count .of').forEach(e => { e.textContent = (isMemory() ? (n > 1 ? 'souvenirs' : 'souvenir') : (n > 1 ? 'fiches' : 'fiche')) + ' sur ' + collection().length; });
     view.querySelectorAll('.chips').forEach(e => { e.innerHTML = chipsHTML(); });
     view.querySelector('.count-row [data-reset]').hidden = !anything;
     view.querySelectorAll('.reset-help [data-reset], .sheet-head [data-reset]').forEach(b => { b.disabled = !anything; });
@@ -257,15 +298,17 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
     view.querySelectorAll('[data-sel]').forEach(e => { const k = state[e.dataset.sel].length; e.textContent = k ? k + ' sélect.' : ''; });
     view.querySelector('.btn-see').textContent = 'Voir ' + fiches(n);
     view.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === state.vue)));
+    view.querySelectorAll('[data-memory-sort]').forEach(b => b.setAttribute('aria-pressed', String(state.tri === b.dataset.memorySort)));
     const body = view.querySelector('.results-body');
-    body.innerHTML = !n ? emptyHTML() : tableMode() ? tableHTML(sorted(res)) : `<div class="cards">${res.map(cardHTML).join('')}</div>`;
-    live.textContent = fiches(n) + ' sur ' + DATA.length;
+    body.innerHTML = !n ? emptyHTML() : tableMode() ? tableHTML(res) : `<div class="cards">${res.map(cardHTML).join('')}</div>`;
+    live.textContent = fiches(n) + ' sur ' + collection().length;
   }
 
   function renderList() {
     document.body.dataset.route = 'list';
     document.title = LIST_TITLE;
-    if (!view.querySelector('.list-layout')) renderListSkeleton();
+    if (!view.querySelector('.list-layout') || view.dataset.collection !== state.collection) renderListSkeleton();
+    view.dataset.collection = state.collection;
     lastListHash = listHash();
     updateList();
   }
@@ -395,7 +438,7 @@ ${notes.length ? `<div class="kit-notes">${notes.join('')}</div>` : ''}</div>${n
 
   function neighbours(r) {
     let list = visibleOrder();
-    if (!list.includes(r)) list = DATA;
+    if (!list.includes(r)) list = DATA.filter(x => x.memory === r.memory);
     const i = list.indexOf(r);
     return { prev: list[i - 1] || null, next: list[i + 1] || null };
   }
@@ -430,6 +473,8 @@ ${notes.length ? `<div class="kit-notes">${notes.join('')}</div>` : ''}</div>${n
       view.querySelector('h1').focus({ preventScroll: true });
       return;
     }
+    if (r.memory !== isMemory()) { state.collection = r.memory ? 'souvenirs' : 'personnages'; state.q = ''; GROUPS.forEach(g => {state[g] = [];}); lastListHash = listHash(); }
+    if (r.memory) return renderMemory(r);
     const { lvl, kit, toc } = ficheKit(r, route.qs);
     const { prev, next } = neighbours(r);
     const nav = (x, dir) => x ? `<a href="${ficheHref(x)}${lvl === 10 ? '?niv=10' : ''}" data-nav aria-label="Fiche ${dir === 'prev' ? 'précédente' : 'suivante'} : ${esc(x.d['titre'] || x.name)}">${dir === 'prev' ? '‹<span class="who">' + esc(x.name) + '</span>' : '<span class="who">' + esc(x.name) + '</span>›'}</a>`
@@ -507,8 +552,13 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
   /* ---------------- Événements ---------------- */
 
   document.addEventListener('click', e => {
-    const t = e.target.closest('[data-theme-set],[data-g],[data-remove],[data-reset],[data-open-filters],[data-close-filters],[data-view],[data-sort],[data-back],[data-nav],[data-lvl],[data-ver],[data-goto],tr[data-href]');
+    const t = e.target.closest('[data-collection],[data-memory-sort],[data-theme-set],[data-g],[data-remove],[data-reset],[data-open-filters],[data-close-filters],[data-view],[data-sort],[data-back],[data-nav],[data-lvl],[data-ver],[data-goto],tr[data-href]');
     if (!t) return;
+    if (t.dataset.collection) {
+      state.collection = t.dataset.collection; state.q = ''; state.tri = ''; state.ordre = 'desc'; GROUPS.forEach(g => { state[g] = []; });
+      renderListSkeleton(); return commitList();
+    }
+    if (t.dataset.memorySort) { state.tri = t.dataset.memorySort; state.ordre = 'desc'; return commitList(); }
     if (t.dataset.themeSet) return setTheme(t.dataset.themeSet);
     if (t.dataset.g) {
       const list = state[t.dataset.g], v = t.dataset.v;
@@ -520,7 +570,7 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
       else { const [g, v] = t.dataset.remove.split('|'); state[g] = state[g].filter(x => x !== v); }
       return commitList();
     }
-    if (t.hasAttribute('data-reset')) { state.q = ''; GROUPS.forEach(g => { state[g] = []; }); return commitList(); }
+    if (t.hasAttribute('data-reset')) { state.q = ''; state.tri = ''; state.ordre = 'desc'; GROUPS.forEach(g => { state[g] = []; }); return commitList(); }
     if (t.hasAttribute('data-open-filters')) return openSheet();
     if (t.hasAttribute('data-close-filters')) return closeSheet();
     if (t.dataset.view) { state.vue = t.dataset.view; return commitList(); }
@@ -597,8 +647,8 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
   placeAllSegs();
 
   const getJSON = url => fetch(url).then(res => { if (!res.ok) throw new Error(url + ' : HTTP ' + res.status); return res.json(); });
-  Promise.all([getJSON('data/characters.json'), getJSON('data/categories.json')])
-    .then(([list, categories]) => { prepare(list, categories['catégories'] || {}); onRoute(); })
+  Promise.all([getJSON('data/characters.json'), getJSON('data/categories.json'), getJSON('data/souvenirs.json')])
+    .then(([list, categories, memories]) => { prepare(list, categories['catégories'] || {}, memories); onRoute(); })
     .catch(error => {
       console.error(error);
       view.innerHTML = '<p class="noscript">Impossible de charger les fiches (data/characters.json). Réessayez plus tard.</p>';
