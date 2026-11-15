@@ -688,15 +688,25 @@ body[data-route="fiche"] .topbar{position:static}
 .card.illustrated[data-el] .card-surface::after{left:var(--strip-width)}
 @media(min-width:960px){.card.illustrated[data-el]{--strip-width:22px}}
 
-/* Cartes Jour : le voile clair accompagne les surfaces ivoire du site. */
+/* Cartes Jour : illustration intacte au-dessus du panneau de lecture. */
 :root[data-theme="light"] .card.illustrated{
   --ink:#1c1a16;--mu:#655d53;--fa:#736a5f;--sf:#fefdf9;
   color:var(--ink);
 }
-:root[data-theme="light"] .card-surface{background:#fefdf9}
-:root[data-theme="light"] .card-surface::after{
-  background:linear-gradient(180deg,rgba(254,253,249,.03),rgba(254,253,249,.4) 20%,rgba(254,253,249,.94) 43%,#fefdf9 82%);
+:root[data-theme="light"] .card-surface{
+  --art-height:128px;
+  display:grid;grid-template-columns:1fr;grid-template-rows:var(--art-height) 1fr;
+  background:#fefdf9;
 }
+:root[data-theme="light"] .card.illustrated[data-el] .card-surface{grid-template-columns:var(--strip-width) minmax(0,1fr)}
+:root[data-theme="light"] .card.illustrated .card-art{height:var(--art-height);object-position:center 30%}
+:root[data-theme="light"] .card-surface::after{display:none}
+:root[data-theme="light"] .card.illustrated .strip{grid-column:1;grid-row:1 / -1}
+:root[data-theme="light"] .card.illustrated .card-body{
+  grid-column:-2 / -1;grid-row:2;padding-top:14px;padding-bottom:14px;
+  background:#fefdf9;justify-content:flex-start;
+}
+:root[data-theme="light"] .card .stamp-rn{top:calc(var(--art-height) + 14px)}
 :root[data-theme="light"] .card.illustrated .meta,
 :root[data-theme="light"] .card.illustrated .name,
 :root[data-theme="light"] .card.illustrated .epi{text-shadow:none}
