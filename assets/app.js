@@ -189,7 +189,7 @@
       : `<div class="memory-stat" data-s="${k}"><span class="lab">${v}</span>${bonusHTML(r.d.bonus[k])}</div>`).join('');
   }
   function memoryCardHTML(r, index = 0) {
-    return `<a class="card memory-card illustrated" href="${ficheHref(r)}"><img class="card-art" referrerpolicy="no-referrer" ${imageAttrs(r.art, 640, CARD_SIZES)} alt="" ${cardLoading(index)} decoding="async"><div class="card-body"><div class="card-head"><div class="card-id"><div class="meta">${marks(r.rar)}<span class="rar">${esc(r.rar)}</span><span>Souvenir</span></div><div class="name" title="${esc(r.name)}">${esc(r.name)}</div></div></div><div class="stats memory-stats">${memoryStats(r, true)}</div></div></a>`;
+    return `<a class="card memory-card illustrated" href="${ficheHref(r)}"><div class="card-surface"><img class="card-art" referrerpolicy="no-referrer" ${imageAttrs(r.art, 640, CARD_SIZES)} alt="" ${cardLoading(index)} decoding="async"><div class="card-body"><div class="card-head"><div class="card-id"><div class="meta">${marks(r.rar)}<span class="rar">${esc(r.rar)}</span><span>Souvenir</span></div><div class="name" title="${esc(r.name)}">${esc(r.name)}</div></div></div><div class="stats memory-stats">${memoryStats(r, true)}</div></div></div></a>`;
   }
   function memoryTableHTML(list) {
     const th = (k,v) => `<th scope="col"${state.tri === k ? ` aria-sort="${state.ordre === 'asc' ? 'ascending':'descending'}"` : ''}><button type="button" data-sort="${k}">${v}${state.tri === k ? (state.ordre === 'asc' ? ' ↑':' ↓') : ' ↕'}</button></th>`;
@@ -209,7 +209,7 @@
     const td = (r.tai || 0) >= (r.juj || 0);
     const stat = (short, long, v, max, strong, k) => `<div class="stat" data-s="${k}"><div class="stat-top"><span class="lab"><span class="lab-short">${short}</span><span class="lab-long">${long}</span></span><span class="v${strong ? '' : ' weak'}">${nf(v)}</span></div><div class="bar"><i${strong ? '' : ' class="weak"'} style="width:${pct(v, max)}"></i></div></div>`;
     return `<a class="card illustrated" data-el="${esc(r.el)}" href="${ficheHref(r)}" aria-label="${esc(r.d['titre'] || r.name)} — ${esc(r.rar)}, ${esc(r.el)}">
-<img class="card-art" referrerpolicy="no-referrer" ${imageAttrs(r.art, 640, CARD_SIZES)} alt="" ${cardLoading(index)} decoding="async"><div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
+<div class="card-surface"><img class="card-art" referrerpolicy="no-referrer" ${imageAttrs(r.art, 640, CARD_SIZES)} alt="" ${cardLoading(index)} decoding="async"><div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
 <div class="card-body">
 <div class="card-head">
 <div class="card-id"><div class="meta">${marks(r.rar)}<span class="rar">${esc(r.rar)}</span><span class="role">${esc(r.role || '—')}<span class="m-only"> · ${esc(r.spe || '—')}</span></span></div>
@@ -217,7 +217,7 @@
 ${r.rn ? '<span class="stamp-rn" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div>
 <div class="stats">${stat('PV', 'PV', r.pv, maxPV, true, 'pv')}${stat('TAI', 'TAIJUTSU', r.tai, maxST, td, 'tai')}${stat('JUJ', 'JUJUTSU', r.juj, maxST, !td, 'juj')}</div>
 <div class="card-foot"><span>EO <span class="num">${nf(r.eoi)}</span> / <span class="num">${nf(r.eom)}</span></span><span>Jauge<span class="m-only"> sp.</span> <span class="num">${nf(r.js)}</span></span>${r.rn ? '<span class="end rn m-only">Rayon Noir</span>' : ''}<span class="end d-only">${esc(r.spe)}</span></div>
-</div></a>`;
+</div></div></a>`;
   }
 
   function tableHTML(list) {

@@ -534,18 +534,8 @@ body[data-route="fiche"] .topbar{position:static}
 
 /* cartes : léger soulèvement au survol */
 .card{transition:transform .2s cubic-bezier(.2,.7,.3,1),border-color .2s}
-/* au survol, le cadre reprend le dégradé de la bande d'élément ;
-   sous la bande, le fond laisse voir ce dégradé pour éviter un liseré dans les coins arrondis */
-.card:hover{
-  transform:translateY(-3px);
-  border-color:transparent;
-  background:
-    linear-gradient(90deg,transparent 20px,var(--sf) 20px) padding-box,
-    linear-gradient(180deg,var(--el-strip,var(--ln2)),var(--el-strip2,var(--el-strip,var(--ln2)))) border-box;
-  background:
-    linear-gradient(90deg,transparent 20px,var(--sf) 20px) padding-box,
-    linear-gradient(180deg in oklch,var(--el-strip,var(--ln2)),var(--el-strip2,var(--el-strip,var(--ln2)))) border-box
-}
+/* Le survol déplace la carte sans changer les couches de son fond. */
+.card:hover{transform:translateY(-3px);border-color:var(--ln2)}
 .card .name{font-weight:800}
 
 /* filtres et compteurs */
@@ -605,7 +595,7 @@ body[data-route="fiche"] .topbar{position:static}
 .card.illustrated{position:relative;isolation:isolate;min-height:240px;background:#19202b;color:#f6f2ec;--ink:#f6f2ec;--mu:#c4c7ce;--fa:#a3a7b1;--sf:#19202b;--el-tx:#f3e0b4}
 .card.illustrated:hover{background:#19202b;border-color:var(--ln2)}
 .card-art{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 30%;pointer-events:none}
-.card.illustrated::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(12,16,24,.2),rgba(12,16,24,.65) 35%,rgba(12,16,24,.96));pointer-events:none}
+.card-surface::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(12,16,24,.2),rgba(12,16,24,.65) 35%,rgba(12,16,24,.96));pointer-events:none}
 .card.illustrated .card-body{justify-content:flex-end;gap:14px;padding-top:60px}
 .card.illustrated .meta,.card.illustrated .name,.card.illustrated .epi{text-shadow:0 1px 4px #111722}
 .card.illustrated .bar{background:rgba(210,216,226,.22)}
@@ -646,3 +636,53 @@ body[data-route="fiche"] .topbar{position:static}
 .memory-card .lab-long{display:none}
 .memory-card .stat .bonus-value{display:inline-flex;align-items:center;line-height:1.3}
 .memory-card .bonus-level{text-align:center}
+
+/* ---- Retouches discrètes : structure et palette d’origine conservées ---- */
+:root,:root[data-theme="dark"]{
+  --acc:#9aabf3;--acc-on:#11182b;--acc-soft:rgba(154,171,243,.12);
+}
+:root[data-theme="light"]{
+  --acc:#465cb0;--acc-on:#ffffff;--acc-soft:rgba(70,92,176,.08);
+}
+::selection{background:var(--acc);color:var(--acc-on)}
+:focus-visible{outline-color:var(--acc)}
+.brand-rk{color:var(--acc)}
+.topbar{border-bottom-color:color-mix(in srgb,var(--acc) 25%,var(--ln))}
+/* Un rappel de couleur sur les contrôles utiles, sans teinter les surfaces. */
+.count .n{color:var(--acc)}
+.fgroup-head .sel{color:var(--acc)}
+.search:focus{border-color:var(--acc);outline:2px solid var(--acc-soft);outline-offset:2px}
+.chip{background:var(--acc-soft);border-color:color-mix(in srgb,var(--acc) 35%,var(--ln))}
+.seg::before,.seg.seg-fill::before{box-shadow:none}
+/* Les éléments du jeu restent le principal repère coloré des cartes. */
+/* Le cadre est le fond du lien, jamais une couche rognée sur une autre bordure.
+   Le fond sombre, l’image et le voile sont limités à la surface intérieure. */
+.card.illustrated{
+  --card-edge:color-mix(in srgb,var(--el-fill,var(--acc)) 30%,var(--ln));
+  border:0;padding:1px;background:var(--card-edge);
+  transition:transform .2s cubic-bezier(.2,.7,.3,1),background-color .2s;
+}
+.card-surface{
+  position:relative;isolation:isolate;display:flex;flex:1;min-width:0;
+  overflow:hidden;border-radius:calc(var(--r-card) - 1px);background:#19202b;
+}
+.card.illustrated:hover{--card-edge:var(--el-fill,var(--acc));background:var(--card-edge)}
+@media(prefers-reduced-motion:reduce){.card.illustrated{transition:none}}
+.card.illustrated:focus-visible{outline-color:var(--el-fill,var(--acc))}
+.memory-card .rar{color:#c8b8ed}
+
+/* La bande et ses coins partagent le même fond coloré : aucune image ni
+   aucun voile sombre ne passent sous leur bord anticrénelé. */
+.card.illustrated[data-el]{
+  --strip-width:24px;
+  background:
+    linear-gradient(90deg,transparent var(--strip-width),var(--card-edge) var(--strip-width)),
+    linear-gradient(180deg,var(--el-strip),var(--el-strip2));
+}
+.card.illustrated[data-el] .card-surface{
+  background:linear-gradient(180deg,var(--el-strip),var(--el-strip2));
+}
+.card.illustrated[data-el] .strip{width:var(--strip-width);background:transparent}
+.card.illustrated[data-el] .card-art{left:var(--strip-width);width:calc(100% - var(--strip-width))}
+.card.illustrated[data-el] .card-surface::after{left:var(--strip-width)}
+@media(min-width:960px){.card.illustrated[data-el]{--strip-width:22px}}
