@@ -10,7 +10,7 @@
 :root,:root[data-theme="dark"]{
   color-scheme:dark;
   /* surfaces : fond, en-tête, cartes, tuiles, boutons de filtre, champ de recherche, survol */
-  --bg:#141a27;--hd:#1a2234;--sf:#1d273a;--tile:#253149;--btn:#1d273a;--field:#1a2539;--sf2:#253149;--side:#0f141e;
+  --bg:#0d1119;--hd:#1a2234;--sf:#1d273a;--tile:#253149;--btn:#1d273a;--field:#1a2539;--sf2:#253149;--side:#0f141e;
   /* traits */
   --ln:#303c55;--ln2:#465674;
   /* texte : principal, secondaire, discret, indication du champ, texte sur bouton actif */
