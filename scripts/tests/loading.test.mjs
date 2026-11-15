@@ -27,7 +27,7 @@ function browser(fetch) {
     globalThis.renders = [];
     renderList = () => renders.push(state.collection);
     renderFiche = route => renders.push(route.id);
-    globalThis.api = { loadCollection, onRoute, records: () => DATA, imageAttrs, cardHTML };
+    globalThis.api = { loadCollection, onRoute, records: () => DATA, imageAttrs, cardHTML, transitionContent };
   })();`), context);
   return context;
 }
@@ -153,4 +153,28 @@ test('les nouveaux formats animés sont également exclus de la conversion autom
     const source = 'https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/ab/' + filename;
     assert.equal(b.api.imageAttrs(source, 640, '400px'), `src="${source}"`);
   }
+});
+
+
+test('une transition remplacée ne peut pas afficher un ancien état', async () => {
+  const b = browser(response), callbacks = [], renders = [];
+  let skipped = 0;
+  b.document.startViewTransition = callback => {
+    callbacks.push(callback);
+    return { ready: Promise.reject(new Error('transition remplacée')), finished: Promise.resolve(), skipTransition() { skipped++; } };
+  };
+  const first = b.api.transitionContent(() => renders.push('ancienne'));
+  const second = b.api.transitionContent(() => renders.push('récente'));
+  callbacks[0](); callbacks[1]();
+  await Promise.all([first, second]);
+  assert.deepEqual(renders, ['récente']);
+  assert.equal(skipped, 1);
+});
+
+test('la réduction des animations applique le contenu immédiatement', () => {
+  const b = browser(response), renders = [];
+  b.window.matchMedia = () => ({ matches: true });
+  b.document.startViewTransition = () => { throw new Error('aucune transition attendue'); };
+  b.api.transitionContent(() => renders.push('contenu'));
+  assert.deepEqual(renders, ['contenu']);
 });

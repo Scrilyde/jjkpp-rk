@@ -157,9 +157,43 @@
     const l = /^#\/?(?:\?(.*))?$/.exec(h);
     return { name: 'list', qs: l ? l[1] || '' : '' };
   }
-  function commitList() {
+  // Fondu entre les états, avec annulation lors de clics rapprochés.
+  let contentTransition, contentAnimations = [], transitionVersion = 0;
+  function transitionContent(update, valid = () => true) {
+    const version = ++transitionVersion;
+    if (contentTransition) contentTransition.skipTransition();
+    contentAnimations.forEach(a => a.cancel());
+    contentAnimations = [];
+    const apply = () => { if (version === transitionVersion && valid()) update(); };
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { apply(); return; }
+    if (document.startViewTransition) {
+      const transition = document.startViewTransition(apply);
+      contentTransition = transition;
+      // Une transition remplacée rejette ready, même si son rendu aboutit.
+      transition.ready.catch(() => {});
+      return transition.finished.catch(() => {}).finally(() => {
+        if (contentTransition === transition) contentTransition = null;
+      });
+    }
+    // Repli pour les navigateurs sans View Transitions.
+    if (!view.animate) { apply(); return; }
+    const leave = view.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 110, fill: 'forwards' });
+    contentAnimations = [leave];
+    return leave.finished.catch(() => {}).then(() => {
+      if (version !== transitionVersion) return;
+      leave.cancel();
+      if (!valid()) return;
+      update();
+      const enter = view.animate([{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 180, easing: 'ease-out' });
+      contentAnimations = [enter];
+      return enter.finished.catch(() => {});
+    });
+  }
+
+  function commitList(animate = false) {
     lastListHash = listHash();
     history.replaceState(null, '', lastListHash);
+    if (animate) return transitionContent(updateList, () => current === 'list');
     updateList();
   }
 
@@ -575,18 +609,20 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
     }
     if (version !== routeVersion) return;
     view.removeAttribute('aria-busy');
-    if (r.name === 'fiche') {
-      if (current === 'list') { listScroll = window.scrollY; cameFromList = true; }
-      current = 'fiche';
-      renderFiche(r);
-    } else {
-      const back = current === 'fiche';
-      current = 'list';
-      cameFromList = false;
-      readListParams(r.qs);
-      renderList();
-      if (back) requestAnimationFrame(() => window.scrollTo(0, listScroll));
-    }
+    return transitionContent(() => {
+      if (r.name === 'fiche') {
+        if (current === 'list') { listScroll = window.scrollY; cameFromList = true; }
+        current = 'fiche';
+        renderFiche(r);
+      } else {
+        const back = current === 'fiche';
+        current = 'list';
+        cameFromList = false;
+        readListParams(r.qs);
+        renderList();
+        if (back) requestAnimationFrame(() => window.scrollTo(0, listScroll));
+      }
+    }, () => version === routeVersion);
   }
 
   /* ---------------- Événements ---------------- */
@@ -627,7 +663,7 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
     if (t.hasAttribute('data-reset')) { state.q = ''; state.tri = ''; state.ordre = 'desc'; GROUPS.forEach(g => { state[g] = []; }); return commitList(); }
     if (t.hasAttribute('data-open-filters')) return openSheet();
     if (t.hasAttribute('data-close-filters')) return closeSheet();
-    if (t.dataset.view) { state.vue = t.dataset.view; return commitList(); }
+    if (t.dataset.view) { if (state.vue === t.dataset.view) return; state.vue = t.dataset.view; return commitList(true); }
     if (t.dataset.sort) {
       const k = t.dataset.sort;
       if (state.tri === k) state.ordre = state.ordre === 'desc' ? 'asc' : 'desc';
