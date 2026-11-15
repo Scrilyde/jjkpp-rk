@@ -28,6 +28,34 @@
   const marks = (r, cls = '') => `<span class="marks r${RANK[r] || 1}${cls ? ' ' + cls : ''}" aria-hidden="true"><i></i><i></i><i></i></span>`;
   const ficheHref = r => '#/fiche/' + encodeURIComponent(r.id);
 
+  // Animation réencodée à partir de trames complètes pour éviter les artefacts.
+  // La correction reste indépendante des synchronisations du wiki.
+  const ART_OVERRIDES = { DazzledByDistantDay: 'assets/images/dazzled-by-the-distant-day.webp' };
+
+  const rawCollections = { personnages: [], souvenirs: [] };
+  const collectionRequests = new Map();
+  let categoriesRequest, routeVersion = 0, searchTimer;
+
+  const CARD_SIZES = '(max-width: 679px) calc(100vw - 32px), (max-width: 959px) calc(50vw - 24px), (max-width: 1069px) calc(100vw - 352px), (max-width: 1437px) calc(50vw - 185px), (max-width: 1805px) calc(33.333vw - 129.334px), calc(25vw - 101.5px)';
+
+  // Le navigateur choisit une seule variante selon la place et la densité de l’écran.
+  function imageAttrs(source, width, sizes = '') {
+    if (!source) return 'src=""';
+    if (source === ART_OVERRIDES.DazzledByDistantDay && sizes) {
+      return `src="assets/images/dazzled-by-the-distant-day-480.webp" srcset="assets/images/dazzled-by-the-distant-day-480.webp 480w, ${esc(source)} 847w" sizes="${esc(sizes)}" data-original-src="${esc(source)}"`;
+    }
+    // Les conversions d’animations à trames partielles peuvent produire des bandes
+    // sans déclencher d’erreur réseau. Servir ces formats intacts, dès le départ.
+    if (/\.(?:gif|webp|avif|apng)(?:[/?#]|$)/i.test(source)) return `src="${esc(source)}"`;
+    if (!/^https:\/\/static\.wikia\.nocookie\.net\/jjk-phantom-parade\//.test(source)) return `src="${esc(source)}"`;
+    const url = w => '/.netlify/images?url=' + encodeURIComponent(source) + '&w=' + w + '&q=' + (width > 192 ? 65 : 75);
+    const widths = sizes ? [320, 480, 640, 960] : [width / 2, width];
+    const srcset = widths.map(w => esc(url(w)) + ' ' + w + 'w').join(', ');
+    return `src="${esc(url(sizes ? 480 : width))}" srcset="${srcset}" sizes="${esc(sizes || (width / 2 + 'px'))}" data-original-src="${esc(source)}"`;
+  }
+
+  const cardLoading = index => index === 0 ? 'loading="eager" fetchpriority="high"' : index < 3 ? 'loading="eager"' : 'loading="lazy"';
+
   let DATA = [], BY_ID = new Map(), CATEGORIES = [], maxPV = 1, maxST = 1;
   const state = { collection: 'personnages', q: '', 'élément': [], 'rareté': [], 'catégorie': [], 'spécialité': [], vue: 'cartes', tri: '', ordre: 'desc' };
   let current = null, listScroll = 0, cameFromList = false, lastListHash = '#/', sheetOpen = false, lastFocus = null;
@@ -50,7 +78,7 @@
       const name = d['nom'] || d['titre'] || '';
       const cats = Array.isArray(d['catégories']) && d['catégories'].length ? d['catégories'] : (roleCats[d['rôle']] || []);
       return {
-        d, id, i, memory, art: d.url_image || d.url_icône, el: d['élément'] || '', k: KANJI[d['élément']] || '', epi, name, rar: d['rareté'] || '', role: d['rôle'] || '', spe: d['spécialité'] || '', cats,
+        d, id, i, memory, art: ART_OVERRIDES[d['clé_image']] || d.url_image || d.url_icône, el: d['élément'] || '', k: KANJI[d['élément']] || '', epi, name, rar: d['rareté'] || '', role: d['rôle'] || '', spe: d['spécialité'] || '', cats,
         pv: memory ? bonusNumber(d.bonus.pv) : s['pv'], tai: memory ? bonusNumber(d.bonus.tai) : s['atq'], juj: memory ? bonusNumber(d.bonus.juj) : s['jujutsu'], eoi: s['énergie_occulte_initiale'], eom: s['énergie_occulte_max'], js: s['jauge_spéciale'],
         rn: s['rayon_noir'] === 'Oui', icon: d['url_icône'] || '', search: norm(epi + ' ' + name + ' ' + (d['titre'] || '')),
       };
@@ -160,28 +188,28 @@
       ? `<div class="stat" data-s="${k}"><div class="stat-top"><span class="lab"><span class="lab-short">${{pv: 'PV', tai: 'TAI', juj: 'JUJ'}[k]}</span><span class="lab-long">${v.toUpperCase()}</span></span>${bonusHTML(r.d.bonus[k]).replace('class="bonus-value"', 'class="bonus-value v"')}</div></div>`
       : `<div class="memory-stat" data-s="${k}"><span class="lab">${v}</span>${bonusHTML(r.d.bonus[k])}</div>`).join('');
   }
-  function memoryCardHTML(r) {
-    return `<a class="card memory-card illustrated" href="${ficheHref(r)}"><img class="card-art" referrerpolicy="no-referrer" src="${esc(r.art)}" alt="" loading="lazy" decoding="async"><div class="card-body"><div class="card-head"><div class="card-id"><div class="meta">${marks(r.rar)}<span class="rar">${esc(r.rar)}</span><span>Souvenir</span></div><div class="name" title="${esc(r.name)}">${esc(r.name)}</div></div></div><div class="stats memory-stats">${memoryStats(r, true)}</div></div></a>`;
+  function memoryCardHTML(r, index = 0) {
+    return `<a class="card memory-card illustrated" href="${ficheHref(r)}"><img class="card-art" referrerpolicy="no-referrer" ${imageAttrs(r.art, 640, CARD_SIZES)} alt="" ${cardLoading(index)} decoding="async"><div class="card-body"><div class="card-head"><div class="card-id"><div class="meta">${marks(r.rar)}<span class="rar">${esc(r.rar)}</span><span>Souvenir</span></div><div class="name" title="${esc(r.name)}">${esc(r.name)}</div></div></div><div class="stats memory-stats">${memoryStats(r, true)}</div></div></a>`;
   }
   function memoryTableHTML(list) {
     const th = (k,v) => `<th scope="col"${state.tri === k ? ` aria-sort="${state.ordre === 'asc' ? 'ascending':'descending'}"` : ''}><button type="button" data-sort="${k}">${v}${state.tri === k ? (state.ordre === 'asc' ? ' ↑':' ↓') : ' ↕'}</button></th>`;
-    return `<div class="table-wrap"><div class="tpanel"><table class="ftable memory-table"><caption class="visually-hidden">Souvenirs, cliquez un en-tête pour trier</caption><thead><tr>${th('personnage','Souvenir')}${th('rarete','Rareté')}${th('pv','PV')}${th('tai','Taijutsu')}${th('juj','Jujutsu')}</tr></thead><tbody>${list.map(r => `<tr data-href="${ficheHref(r)}"><td><div class="tname"><img class="icon" referrerpolicy="no-referrer" src="${esc(r.icon || r.art)}" alt="" loading="lazy" width="40" height="40"><a href="${ficheHref(r)}">${esc(r.name)}</a></div></td><td>${esc(r.rar)}</td>${['pv','tai','juj'].map(k => `<td class="tnum">${bonusHTML(r.d.bonus[k])}</td>`).join('')}</tr>`).join('')}</tbody></table></div></div>`;
+    return `<div class="table-wrap"><div class="tpanel"><table class="ftable memory-table"><caption class="visually-hidden">Souvenirs, cliquez un en-tête pour trier</caption><thead><tr>${th('personnage','Souvenir')}${th('rarete','Rareté')}${th('pv','PV')}${th('tai','Taijutsu')}${th('juj','Jujutsu')}</tr></thead><tbody>${list.map(r => `<tr data-href="${ficheHref(r)}"><td><div class="tname"><img class="icon" referrerpolicy="no-referrer" ${imageAttrs(r.icon || r.art, 80)} alt="" loading="lazy" width="40" height="40"><a href="${ficheHref(r)}">${esc(r.name)}</a></div></td><td>${esc(r.rar)}</td>${['pv','tai','juj'].map(k => `<td class="tnum">${bonusHTML(r.d.bonus[k])}</td>`).join('')}</tr>`).join('')}</tbody></table></div></div>`;
   }
   function renderMemory(r) {
     const {prev,next} = neighbours(r);
     const nav = (x,label) => x ? `<a href="${ficheHref(x)}" data-nav>${label}</a>` : '';
     document.title = r.name + ' · Souvenir · JJKPP [RK]';
-    view.innerHTML = `<nav class="memory-nav"><a class="btn-back" href="${esc(lastListHash)}" data-back>← Souvenirs</a><div class="pn">${nav(prev,'‹ Précédent')}${nav(next,'Suivant ›')}</div></nav><div class="fiche memory-fiche"><div class="fiche-side"><section class="idcard"><div class="idcard-body"><img class="memory-art" referrerpolicy="no-referrer" src="${esc(r.art)}" alt="${esc(r.name)}"><div class="meta">${marks(r.rar)}<span>${esc(r.rar)} · Souvenir</span></div><h1 tabindex="-1">${esc(r.name)}</h1><dl class="info"><dt>Sortie</dt><dd>${esc(dateFr(r.d.date_de_sortie))}</dd></dl><div class="memory-stats">${memoryStats(r)}</div></div></section></div><section class="kit" aria-label="Effets du souvenir"><div class="kit-head"><h2>Effets du souvenir</h2></div>${r.d.effets.map(e => `<section class="skill"><div class="skill-meta"><div class="skill-type">${esc(e.nom)}</div></div><div class="skill-main"><div class="skill-top"><h3>${esc(e.nom)}</h3></div>${e.déblocage ? `<p class="sort-hint">${esc(e.déblocage)}</p>`:''}${e.recharge ? `<p class="sort-hint">Recharge : ${esc(e.recharge)} tours</p>`:''}<div class="lines">${parseLines(e.effet).map(lineHTML).join('')}</div></div></section>`).join('')}</section></div>`;
+    view.innerHTML = `<nav class="memory-nav"><a class="btn-back" href="${esc(lastListHash)}" data-back>← Souvenirs</a><div class="pn">${nav(prev,'‹ Précédent')}${nav(next,'Suivant ›')}</div></nav><div class="fiche memory-fiche"><div class="fiche-side"><section class="idcard"><div class="idcard-body"><img class="memory-art" referrerpolicy="no-referrer" ${imageAttrs(r.art, 640, '(min-width: 960px) 340px, calc(100vw - 64px)')} alt="${esc(r.name)}" fetchpriority="high" decoding="async"><div class="meta">${marks(r.rar)}<span>${esc(r.rar)} · Souvenir</span></div><h1 tabindex="-1">${esc(r.name)}</h1><dl class="info"><dt>Sortie</dt><dd>${esc(dateFr(r.d.date_de_sortie))}</dd></dl><div class="memory-stats">${memoryStats(r)}</div></div></section></div><section class="kit" aria-label="Effets du souvenir"><div class="kit-head"><h2>Effets du souvenir</h2></div>${r.d.effets.map(e => `<section class="skill"><div class="skill-meta"><div class="skill-type">${esc(e.nom)}</div></div><div class="skill-main"><div class="skill-top"><h3>${esc(e.nom)}</h3></div>${e.déblocage ? `<p class="sort-hint">${esc(e.déblocage)}</p>`:''}${e.recharge ? `<p class="sort-hint">Recharge : ${esc(e.recharge)} tours</p>`:''}<div class="lines">${parseLines(e.effet).map(lineHTML).join('')}</div></div></section>`).join('')}</section></div>`;
     view.dataset.fiche = r.id;
     window.scrollTo(0,0); view.querySelector('h1').focus({preventScroll:true});
   }
 
-  function cardHTML(r) {
-    if (r.memory) return memoryCardHTML(r);
+  function cardHTML(r, index = 0) {
+    if (r.memory) return memoryCardHTML(r, index);
     const td = (r.tai || 0) >= (r.juj || 0);
     const stat = (short, long, v, max, strong, k) => `<div class="stat" data-s="${k}"><div class="stat-top"><span class="lab"><span class="lab-short">${short}</span><span class="lab-long">${long}</span></span><span class="v${strong ? '' : ' weak'}">${nf(v)}</span></div><div class="bar"><i${strong ? '' : ' class="weak"'} style="width:${pct(v, max)}"></i></div></div>`;
     return `<a class="card illustrated" data-el="${esc(r.el)}" href="${ficheHref(r)}" aria-label="${esc(r.d['titre'] || r.name)} — ${esc(r.rar)}, ${esc(r.el)}">
-<img class="card-art" referrerpolicy="no-referrer" src="${esc(r.art)}" alt="" loading="lazy" decoding="async"><div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
+<img class="card-art" referrerpolicy="no-referrer" ${imageAttrs(r.art, 640, CARD_SIZES)} alt="" ${cardLoading(index)} decoding="async"><div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
 <div class="card-body">
 <div class="card-head">
 <div class="card-id"><div class="meta">${marks(r.rar)}<span class="rar">${esc(r.rar)}</span><span class="role">${esc(r.role || '—')}<span class="m-only"> · ${esc(r.spe || '—')}</span></span></div>
@@ -207,7 +235,7 @@ ${r.rn ? '<span class="stamp-rn" title="Rayon Noir"><span>黒</span><span>閃</s
     const num = (v, max, strong, k) => `<td class="tnum" data-s="${k}"><div class="v${strong ? '' : ' weak'}">${nf(v)}</div><div class="bar"><i${strong ? '' : ' class="weak"'} style="width:${pct(v, max)}"></i></div></td>`;
     const rows = list.map(r => {
       const td = (r.tai || 0) >= (r.juj || 0);
-      return `<tr data-href="${ficheHref(r)}" data-el="${esc(r.el)}"><td><div class="tname"><img class="icon" src="${esc(r.icon)}" alt="" loading="lazy" decoding="async" width="40" height="40"><div class="tname-id"><div class="tname-row"><a href="${ficheHref(r)}" title="(${esc(r.epi)})">${esc(r.name)}</a>${r.rn ? '<span class="stamp-rn row" role="img" aria-label="Rayon Noir" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div><div class="epi">(${esc(r.epi)})</div></div></div></td>
+      return `<tr data-href="${ficheHref(r)}" data-el="${esc(r.el)}"><td><div class="tname"><img class="icon" ${imageAttrs(r.icon, 80)} alt="" loading="lazy" decoding="async" width="40" height="40"><div class="tname-id"><div class="tname-row"><a href="${ficheHref(r)}" title="(${esc(r.epi)})">${esc(r.name)}</a>${r.rn ? '<span class="stamp-rn row" role="img" aria-label="Rayon Noir" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div><div class="epi">(${esc(r.epi)})</div></div></div></td>
 <td class="sec"><div class="fade"><span class="c-el"><span class="tdot" aria-hidden="true"></span>${esc(r.el)}</span><span class="c-rar">${esc(r.rar)}</span><span class="c-role">${esc(r.role || '—')}</span><span class="c-spe">${esc(r.spe || '—')}</span></div></td>
 ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST, !td, 'juj')}</tr>`;
     }).join('');
@@ -490,7 +518,7 @@ ${notes.length ? `<div class="kit-notes">${notes.join('')}</div>` : ''}</div>${n
 <section class="idcard" aria-label="Identité">
 <div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
 <div class="idcard-body">
-<div class="idcard-title"><div class="idcard-head"><img class="icon" src="${esc(r.icon)}" alt="" decoding="async" width="96" height="96">
+<div class="idcard-title"><div class="idcard-head"><img class="icon" ${imageAttrs(r.icon, 192)} alt="" decoding="async" width="96" height="96">
 <div class="idcard-id"><div class="meta">${marks(r.rar, 'big')}<span class="rar">${esc(r.rar)}</span><span>${esc(r.cats.join(' · '))}</span></div>
 <div class="epi">(${esc(r.epi)})</div></div>
 ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div>
@@ -534,8 +562,25 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
 
   /* ---------------- Routage ---------------- */
 
-  function onRoute() {
+  async function onRoute() {
+    clearTimeout(searchTimer);
+    const version = ++routeVersion;
     const r = parseRoute();
+    const target = r.name === 'fiche'
+      ? (r.id.startsWith('souvenir-') ? 'souvenirs' : 'personnages')
+      : (new URLSearchParams(r.qs).get('collection') === 'souvenirs' ? 'souvenirs' : 'personnages');
+    view.setAttribute('aria-busy', 'true');
+    if (!collectionRequests.has(target)) view.innerHTML = '<p class="noscript" role="status">Chargement des fiches…</p>';
+    try {
+      await loadCollection(target);
+    } catch (error) {
+      if (version !== routeVersion) return;
+      view.removeAttribute('aria-busy');
+      view.innerHTML = '<p class="noscript" role="alert">Impossible de charger les fiches. <button type="button" data-retry>Réessayer</button></p>';
+      return;
+    }
+    if (version !== routeVersion) return;
+    view.removeAttribute('aria-busy');
     if (r.name === 'fiche') {
       if (current === 'list') { listScroll = window.scrollY; cameFromList = true; }
       current = 'fiche';
@@ -552,12 +597,26 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
 
   /* ---------------- Événements ---------------- */
 
+  document.addEventListener('error', e => {
+    const img = e.target;
+    if (img instanceof HTMLImageElement && img.dataset.originalSrc) {
+      const source = img.dataset.originalSrc;
+      delete img.dataset.originalSrc;
+      img.removeAttribute('srcset');
+      img.removeAttribute('sizes');
+      if (img.getAttribute('src') !== source) img.src = source;
+    }
+  }, true);
+
   document.addEventListener('click', e => {
+    if (e.target.closest('[data-retry]')) return onRoute();
     const t = e.target.closest('button[data-collection],[data-memory-sort],[data-theme-set],[data-g],[data-remove],[data-reset],[data-open-filters],[data-close-filters],[data-view],[data-sort],[data-back],[data-nav],[data-lvl],[data-ver],[data-goto],tr[data-href]');
     if (!t) return;
     if (t.dataset.collection) {
       state.collection = t.dataset.collection; state.q = ''; state.tri = ''; state.ordre = 'desc'; GROUPS.forEach(g => { state[g] = []; });
-      renderListSkeleton(); return commitList();
+      lastListHash = listHash();
+      history.replaceState(null, '', lastListHash);
+      return onRoute();
     }
     if (t.dataset.memorySort) { state.tri = t.dataset.memorySort; state.ordre = 'desc'; return commitList(); }
     if (t.dataset.themeSet) return setTheme(t.dataset.themeSet);
@@ -592,7 +651,8 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
   document.addEventListener('input', e => {
     if (!e.target.matches('[data-search]')) return;
     state.q = e.target.value;
-    commitList();
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(commitList, 120);
   });
 
   document.addEventListener('keydown', e => {
@@ -648,10 +708,17 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
   placeAllSegs();
 
   const getJSON = url => fetch(url).then(res => { if (!res.ok) throw new Error(url + ' : HTTP ' + res.status); return res.json(); });
-  Promise.all([getJSON('data/characters.json'), getJSON('data/categories.json'), getJSON('data/souvenirs.json')])
-    .then(([list, categories, memories]) => { prepare(list, categories['catégories'] || {}, memories); onRoute(); })
-    .catch(error => {
-      console.error(error);
-      view.innerHTML = '<p class="noscript">Impossible de charger les fiches (data/characters.json). Réessayez plus tard.</p>';
-    });
+  function loadCollection(name) {
+    if (collectionRequests.has(name)) return collectionRequests.get(name);
+    if (!categoriesRequest) categoriesRequest = getJSON('data/categories.json').catch(error => { categoriesRequest = null; throw error; });
+    const request = Promise.all([
+      getJSON(name === 'souvenirs' ? 'data/souvenirs.json' : 'data/characters.json'), categoriesRequest,
+    ]).then(([list, categories]) => {
+      rawCollections[name] = list;
+      prepare(rawCollections.personnages, categories['catégories'] || {}, rawCollections.souvenirs);
+    }).catch(error => { collectionRequests.delete(name); throw error; });
+    collectionRequests.set(name, request);
+    return request;
+  }
+  onRoute();
 })();
