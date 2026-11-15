@@ -163,20 +163,6 @@
     updateList();
   }
 
-  /* ---------------- Thème ---------------- */
-
-  function paintTheme() {
-    const t = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-    document.querySelectorAll('[data-theme-set]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.themeSet === t)));
-    const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.content = t === 'light' ? '#fdf7f2' : '#0e121a';
-  }
-  function setTheme(t) {
-    document.documentElement.setAttribute('data-theme', t);
-    try { localStorage.setItem('jjkpp-theme', t); } catch (e) { /* stockage indisponible : thème non mémorisé */ }
-    paintTheme();
-  }
-
   /* ---------------- Liste ---------------- */
 
 
@@ -610,7 +596,7 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
 
   document.addEventListener('click', e => {
     if (e.target.closest('[data-retry]')) return onRoute();
-    const t = e.target.closest('button[data-collection],[data-memory-sort],[data-theme-set],[data-g],[data-remove],[data-reset],[data-open-filters],[data-close-filters],[data-view],[data-sort],[data-back],[data-nav],[data-lvl],[data-ver],[data-goto],tr[data-href]');
+    const t = e.target.closest('button[data-collection],[data-memory-sort],[data-g],[data-remove],[data-reset],[data-open-filters],[data-close-filters],[data-view],[data-sort],[data-back],[data-nav],[data-lvl],[data-ver],[data-goto],tr[data-href]');
     if (!t) return;
     if (t.dataset.collection) {
       state.collection = t.dataset.collection; state.q = ''; state.tri = ''; state.ordre = 'desc'; GROUPS.forEach(g => { state[g] = []; });
@@ -619,7 +605,6 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
       return onRoute();
     }
     if (t.dataset.memorySort) { state.tri = t.dataset.memorySort; state.ordre = 'desc'; return commitList(); }
-    if (t.dataset.themeSet) return setTheme(t.dataset.themeSet);
     if (t.dataset.g) {
       const list = state[t.dataset.g], v = t.dataset.v;
       state[t.dataset.g] = list.includes(v) ? list.filter(x => x !== v) : list.concat(v);
@@ -704,7 +689,6 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
   });
   window.addEventListener('hashchange', onRoute);
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-  paintTheme();
   placeAllSegs();
 
   const getJSON = url => fetch(url).then(res => { if (!res.ok) throw new Error(url + ' : HTTP ' + res.status); return res.json(); });
