@@ -705,3 +705,17 @@ body[data-route="fiche"] .topbar{position:static}
 /* Le fondu reste dans les résultats ; les sélecteurs ne sont jamais capturés. */
 .results-body{position:relative;isolation:isolate;overflow:clip}
 .results-leaving{position:absolute;inset:0 0 auto;z-index:1;pointer-events:none}
+
+/* Sélecteurs à deux choix : pas de mesure JS, seulement une translation. */
+.seg.seg-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:hidden}
+.seg.seg-pair::before{
+  left:3px;top:3px;bottom:3px;width:calc((100% - 8px)/2);height:auto;
+  opacity:1;transform:translateX(0);box-shadow:none;
+  transition:transform .22s cubic-bezier(.22,1,.36,1);
+}
+.seg.seg-pair:has(>button:nth-child(2)[aria-pressed="true"])::before{transform:translateX(calc(100% + 2px))}
+.seg.seg-pair>button[aria-pressed="true"]{background:transparent}
+.seg.seg-pair>button{min-width:0}
+.card.illustrated{content-visibility:auto;contain-intrinsic-block-size:auto 240px}
+@media(min-width:960px){.card.illustrated{contain-intrinsic-block-size:auto 260px}}
+@media(prefers-reduced-motion:reduce){.seg.seg-pair::before{transition:none}}

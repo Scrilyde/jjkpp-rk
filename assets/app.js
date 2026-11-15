@@ -175,6 +175,7 @@
     if (!motion) return;
     const after = view.querySelector('.results-body');
     const incoming = after ? after.firstElementChild : view;
+    if (before === after && previous.length === 1 && previous[0] === incoming) return;
     if (before && before === after && previous.length) {
       const outgoing = document.createElement('div');
       outgoing.className = 'results-leaving';
@@ -324,7 +325,7 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
   <button type="button" class="btn-filters" data-open-filters aria-haspopup="dialog" aria-controls="filters">Filtres<span class="badge-n" hidden></span></button></div>
   <div class="el-quick" role="group" aria-label="Élément">${(isMemory() ? [] : ELEMENTS).map(e => `<button type="button" data-el="${e}" data-g="élément" data-v="${e}" aria-pressed="false"><span class="k">${KANJI[e]}</span><span class="lab">${e}</span></button>`).join('')}</div>
   <div class="count-row"><div class="count"><span class="n"></span><span class="of"></span></div><button type="button" class="link-reset" data-reset hidden>Tout réinitialiser</button></div>
-  <div class="m-view-tools"><div class="collection-switch seg" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}"><span class="lab" data-t="Personnages">Personnages</span></button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}"><span class="lab" data-t="Souvenirs">Souvenirs</span></button></div><div class="m-view seg" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true"><span class="lab" data-t="Cartes">Cartes</span></button><button type="button" data-view="tableau" aria-pressed="false"><span class="lab" data-t="Tableau">Tableau</span></button></div></div>
+  <div class="m-view-tools"><div class="collection-switch seg seg-pair" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}"><span class="lab" data-t="Personnages">Personnages</span></button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}"><span class="lab" data-t="Souvenirs">Souvenirs</span></button></div><div class="m-view seg seg-pair" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true"><span class="lab" data-t="Cartes">Cartes</span></button><button type="button" data-view="tableau" aria-pressed="false"><span class="lab" data-t="Tableau">Tableau</span></button></div></div>
   <div class="chips"></div>
 </div>
 <div class="filters-wrap" id="filters-wrap">
@@ -342,7 +343,7 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
 </div>
 <div class="results">
   <div class="d-results-head"><div class="left"><div class="count"><span class="n"></span><span class="of"></span></div><div class="chips"></div></div>
-  <div class="view"><div class="collection-switch seg" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}"><span class="lab" data-t="Personnages">Personnages</span></button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}"><span class="lab" data-t="Souvenirs">Souvenirs</span></button></div><span class="vl">Vue</span><div class="seg" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true"><span class="lab" data-t="Cartes">Cartes</span></button><button type="button" data-view="tableau" aria-pressed="false"><span class="lab" data-t="Tableau">Tableau</span></button></div></div></div>
+  <div class="view"><div class="collection-switch seg seg-pair" role="group" aria-label="Collection"><button type="button" data-collection="personnages" aria-pressed="${!isMemory()}"><span class="lab" data-t="Personnages">Personnages</span></button><button type="button" data-collection="souvenirs" aria-pressed="${isMemory()}"><span class="lab" data-t="Souvenirs">Souvenirs</span></button></div><span class="vl">Vue</span><div class="seg seg-pair" role="group" aria-label="Vue"><button type="button" data-view="cartes" aria-pressed="true"><span class="lab" data-t="Cartes">Cartes</span></button><button type="button" data-view="tableau" aria-pressed="false"><span class="lab" data-t="Tableau">Tableau</span></button></div></div></div>
   <div class="results-body"></div>
 </div></div>`;
     const foot = document.querySelector('body > .site-footer').cloneNode(true);
@@ -350,6 +351,7 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
     view.querySelector('.results').appendChild(foot);
   }
 
+  const resultPanels = new Map(); // Au plus quatre vues sans filtre, réutilisées avec leurs images.
   function updateList() {
     if (view.dataset.collection !== state.collection) {
       view.dataset.collection = state.collection;
@@ -372,7 +374,13 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
     syncListControls();
     view.querySelectorAll('[data-memory-sort]').forEach(b => b.setAttribute('aria-pressed', String(state.tri === b.dataset.memorySort)));
     const body = view.querySelector('.results-body');
-    body.innerHTML = !n ? emptyHTML() : tableMode() ? tableHTML(res) : `<div class="cards">${res.map(cardHTML).join('')}</div>`;
+    const panelKey = !state.q.trim() && !act.length && !state.tri ? state.collection + '/' + state.vue : null;
+    const cached = panelKey && resultPanels.get(panelKey);
+    if (cached) body.replaceChildren(cached);
+    else {
+      body.innerHTML = !n ? emptyHTML() : tableMode() ? tableHTML(res) : `<div class="cards">${res.map(cardHTML).join('')}</div>`;
+      if (panelKey && n) resultPanels.set(panelKey, body.firstElementChild);
+    }
     live.textContent = fiches(n) + ' sur ' + collection().length;
   }
 
@@ -717,6 +725,7 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
   // La pastille (::before du .seg) est placée sous le bouton pressé via des variables CSS ; un changement de bouton la fait glisser.
   function setBox(g, box) { ['--seg-x', '--seg-y', '--seg-w', '--seg-h'].forEach((v, i) => g.style.setProperty(v, box[i])); }
   function placeSeg(g) {
+    if (g.classList.contains('seg-pair')) return;
     const on = g.querySelector(':scope>button[aria-pressed="true"]');
     if (!on || !on.offsetWidth) { g.classList.remove('seg-on'); return; }
     const initial = !g.classList.contains('seg-on');
@@ -727,12 +736,12 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
     g.classList.add('seg-on');
     if (initial) { void g.offsetWidth; g.classList.remove('seg-still'); }
   }
-  const placeAllSegs = () => document.querySelectorAll('.seg').forEach(g => { g.classList.remove('seg-on'); placeSeg(g); });
+  const placeAllSegs = () => document.querySelectorAll('.seg:not(.seg-pair)').forEach(g => { g.classList.remove('seg-on'); placeSeg(g); });
   new MutationObserver(muts => {
     const seen = new Set();
     muts.forEach(m => {
-      if (m.type === 'attributes') { const g = m.target.parentElement; if (g && g.classList.contains('seg')) seen.add(g); return; }
-      m.addedNodes.forEach(n => { if (n.nodeType === 1) (n.matches('.seg') ? [n] : n.querySelectorAll('.seg')).forEach(g => { if (!g.classList.contains('seg-on')) seen.add(g); }); });
+      if (m.type === 'attributes') { const g = m.target.parentElement; if (g && g.classList.contains('seg') && !g.classList.contains('seg-pair')) seen.add(g); return; }
+      m.addedNodes.forEach(n => { if (n.nodeType === 1 && !n.matches('.cards,.table-wrap,.results-leaving')) (n.matches('.seg:not(.seg-pair)') ? [n] : n.querySelectorAll('.seg:not(.seg-pair)')).forEach(g => { if (!g.classList.contains('seg-on')) seen.add(g); }); });
     });
     seen.forEach(g => placeSeg(g));
   }).observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['aria-pressed'] });
