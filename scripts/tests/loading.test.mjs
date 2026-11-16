@@ -29,7 +29,7 @@ function browser(fetch) {
     renderList = () => renders.push(state.collection);
     updateList = () => renders.push(state.collection);
     renderFiche = route => renders.push(route.id);
-    globalThis.api = { loadCollection, onRoute, records: () => DATA, imageAttrs, cardHTML, transitionContent, state, commitList };
+    globalThis.api = { loadCollection, onRoute, records: () => DATA, imageAttrs, cardHTML, transitionContent, state, commitList, bonusHTML };
   })();`), context);
   return context;
 }
@@ -208,4 +208,19 @@ test('revenir à la collection chargée annule le changement encore en attente',
   assert.equal(b.api.state.collection, 'personnages');
   assert.equal(b.renders.length, count);
   assert.ok(!b.location.hash.includes('souvenirs'));
+});
+
+
+test('les niveaux des bonus de souvenirs restent séparés des pourcentages', () => {
+  const b = browser(response);
+  for (const level of ['Level 55', 'Lv 55', 'Lv. 55', 'Lvl 55', 'Lvl. 55', 'Niv 55', 'Niv. 55']) {
+    for (const separator of [' ', '\n']) {
+      assert.equal(b.api.bonusHTML(`21.97%${separator}(${level})`),
+        '<span class="bonus-value">21,97%<small class="bonus-level">(Niv. 55)</small></span>');
+    }
+  }
+  const sky = memories.find(r => r.titre === 'The Sky Is Connected');
+  for (const value of Object.values(sky.bonus)) {
+    assert.match(b.api.bonusHTML(value), /%<small class="bonus-level">\(Niv\. 55\)<\/small>/);
+  }
 });

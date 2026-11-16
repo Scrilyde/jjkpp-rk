@@ -95,7 +95,7 @@
   const groups = () => isMemory() ? ['rareté'] : GROUPS;
   const bonusNumber = v => { const m = /([\d]+(?:[.,]\d+)?)\s*%/.exec(String(v || '')); return m ? Number(m[1].replace(',', '.')) : -1; };
   function bonusHTML(v) {
-    const text = String(v || '—').replace(/^(?:HP|PV|Taijutsu|Jujutsu)\s*:\s*/i, '').replace(/\s*\((?:Level|Lv\.?|Niv\.?)\s*(\d+)\)/gi, ' (Niv. $1)');
+    const text = String(v || '—').replace(/^(?:HP|PV|Taijutsu|Jujutsu)\s*:\s*/i, '').replace(/\s*\((?:Level|Lvl?\.?|Niv\.?)\s*(\d+)\)/gi, ' (Niv. $1)');
     const m = /\s*(\(Niv\. \d+\))/.exec(text);
     return `<span class="bonus-value">${esc(text.replace(/\s*\(Niv\. \d+\)/, '').replaceAll('.', ','))}<small class="bonus-level">${m ? esc(m[1]) : '&nbsp;'}</small></span>`;
   }
