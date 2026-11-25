@@ -141,6 +141,15 @@ test('la première carte anime le fond du duo sans lecteur et conserve une image
   assert.equal(webp.readUInt16LE(animationChunk + 12), 0);
 });
 
+test('les statistiques du duo reprennent les valeurs JJKPPDB', async () => {
+  const b = browser(response);
+  await b.api.loadCollection('personnages');
+  const [duo] = b.api.visibleOrder();
+  assert.equal(duo.id, 'YellowSSRYujiMegumiArt1');
+  assert.equal(duo.d.source_statistiques, 'JJKPPDB');
+  assert.deepEqual([duo.pv, duo.tai, duo.juj, duo.eoi, duo.eom, duo.js, duo.duoGauge], [40469, 13548, 12993, 50, 100, 1558, 6]);
+});
+
 test('les deux compétences tandem ont leur section, leurs niveaux et leur entrée au sommaire', async () => {
   const browserContext = browser(response);
   await browserContext.api.loadCollection('personnages');
@@ -157,9 +166,8 @@ test('les deux compétences tandem ont leur section, leurs niveaux et leur entr�
   for (const value of ['22,09 %', '12,17 %', '88,62 %']) assert.ok(kit.includes(value));
   for (const value of ['40 %', '20 %', '150 %', '420 %']) assert.ok(maxKit.includes(value));
   assert.doesNotMatch(maxKit, /22,09 %|88,62 %/);
-  for (const skill of duo.d['compétences_tandem']) {
-    assert.ok(kit.includes(`src="${skill.url_icône}"`));
-    assert.ok(fs.existsSync(new URL('../../' + skill.url_icône, import.meta.url)));
+  for (const number of [1, 2]) {
+    assert.ok(kit.includes(`src="https://cdn.jjkppdb.com/skill_icons/YellowSSRYujiMegumiTandem${number}.png"`));
   }
   assert.doesNotMatch(browserContext.api.ficheKit(other, '').kit, /tandem-title/);
 });
@@ -172,12 +180,15 @@ test('seules les compétences principales et tandem affichent une icône', async
     const skills = record.d;
     const expected = 2 + skills.compétences.length + (skills['compétences_tandem']?.length || 0);
     assert.equal((kit.match(/<img data-skill-icon /g) || []).length, expected, record.name);
+    assert.equal((kit.match(/<img data-skill-icon src="https:\/\/cdn\.jjkppdb\.com\/skill_icons\//g) || []).length, expected, record.name);
     for (const [section] of kit.matchAll(/<section class="skill"[^>]*data-kind="(?:auto|coop)"[^>]*>[\s\S]*?<\/section>/g)) {
       assert.doesNotMatch(section, /class="skill-icon"/, record.name);
     }
   }
   const naoya = b.api.records().find(record => record.id === 'BlueSSRNaoyaArt1');
-  assert.match(b.api.ficheKit(naoya, '').kit, /src="https:\/\/static\.wikia\.nocookie\.net\/[^"<>]+\/BlueSSRNaoyaS11\.png\/revision\/latest"/);
+  for (const number of [1, 2]) {
+    assert.ok(b.api.ficheKit(naoya, '').kit.includes(`src="https://cdn.jjkppdb.com/skill_icons/BlueSSRNaoyaS${number}.png"`));
+  }
 });
 
 test('les variantes modifiées affichent leur propre icône', async () => {

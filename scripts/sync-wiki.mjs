@@ -172,7 +172,7 @@ async function main() {
     if (r.title && r.exists) {
       const w = wiki.wikiParams[r.title];
       for (const [k, wk] of STATS) {
-        if (isBlank(w[wk])) continue;
+        if (f['source_statistiques'] === 'JJKPPDB' || isBlank(w[wk])) continue;
         const v = parseStat(w[wk]);
         if (v == null) { report.unreadable.push(`${titre} : ${wk} = « ${w[wk]} » (valeur non appliquée)`); continue; }
         const old = f['statistiques']?.[k];
