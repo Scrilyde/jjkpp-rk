@@ -531,12 +531,13 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
       const heading = tandem ? 'h4' : 'h3';
       const icon = sk.kind === 'auto' || sk.kind === 'coop' ? '' : skillIconHTML(sk.icons[useVer ? ver : 'base'] || sk.icons.base);
       const details = tandem ? `<div class="tandem-details">${sk.cooldown != null ? `<span>Recharge : ${nf(sk.cooldown)} tours</span>` : ''}${sk.tandemGain != null ? `<span>Jauge du duo : +${nf(sk.tandemGain)}</span>` : ''}</div>` : '';
-      const title = `<div><div class="skill-type">${esc(sk.type)}</div>${name ? `<${heading}>${esc(name)}</${heading}>` : ''}${details}</div>`;
+      const typeLabel = name ? `<div class="skill-type">${esc(sk.type)}</div>` : '';
+      const title = `<div>${typeLabel}<${heading}>${esc(name || sk.type)}</${heading}>${details}</div>`;
       sk.tocCost = cost != null ? nf(cost) + ' ' + sk.unit : '';
       sk.tocName = name || sk.type;
       return `<section class="skill" id="sk-${i}" data-kind="${sk.kind}" aria-label="${esc(sk.type)}${name ? ' : ' + esc(name) : ''}">
-<div class="skill-meta"><div class="skill-type">${esc(sk.type)}</div>${costBox}${mod}</div>
-<div class="skill-main"><div class="skill-top">${icon ? `<div class="skill-heading">${icon}${title}</div>` : title}${costBox}</div>${mod}
+<div class="skill-meta">${typeLabel}${costBox}${mod}</div>
+<div class="skill-main"><div class="skill-top"><div class="skill-heading">${icon}${title}</div>${costBox}</div>${mod}
 <div class="lines">${missing ? '<p class="missing">Donnée niv. 1 absente de la source ; aucune valeur inventée.</p>' : lines.length ? lines.map(lineHTML).join('') : '<p class="missing">Aucune description disponible.</p>'}</div></div></section>`;
     });
     const firstTandem = skills.findIndex(sk => sk.kind === 'tandem');

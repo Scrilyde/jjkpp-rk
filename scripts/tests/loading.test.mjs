@@ -172,7 +172,7 @@ test('les deux compétences tandem ont leur section, leurs niveaux et leur entr�
   assert.doesNotMatch(browserContext.api.ficheKit(other, '').kit, /tandem-title/);
 });
 
-test('seules les compétences principales et tandem affichent une icône', async () => {
+test('les compétences auto et coopératives partagent le même en-tête sans icône', async () => {
   const b = browser(response);
   await b.api.loadCollection('personnages');
   for (const record of b.api.records()) {
@@ -183,6 +183,7 @@ test('seules les compétences principales et tandem affichent une icône', async
     assert.equal((kit.match(/<img data-skill-icon src="https:\/\/cdn\.jjkppdb\.com\/skill_icons\//g) || []).length, expected, record.name);
     for (const [section] of kit.matchAll(/<section class="skill"[^>]*data-kind="(?:auto|coop)"[^>]*>[\s\S]*?<\/section>/g)) {
       assert.doesNotMatch(section, /class="skill-icon"/, record.name);
+      assert.match(section, /class="skill-top"><div class="skill-heading"><div>(?:<div class="skill-type">[^<]+<\/div>)?<h3>[^<]+<\/h3>/, record.name);
     }
   }
   const naoya = b.api.records().find(record => record.id === 'BlueSSRNaoyaArt1');
