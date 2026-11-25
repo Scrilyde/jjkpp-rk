@@ -12,3 +12,13 @@ en conservant les dimensions, les délais et la boucle de l’animation.
 (qualité 65), destinée aux cartes et aux petits écrans. Les trames ont été
 recomposées avant redimensionnement ; la durée et la boucle sont conservées.
 La variante de 847 pixels reste disponible pour les écrans plus denses.
+
+L’illustration `YellowSSRYujiMegumiArt1.webp` provient de la fiche
+[Yuji Itadori & Megumi Fushiguro](https://phantom-parade-database.vercel.app/characters/yuji-itadori-megumi-fushiguro-1-1?lang=en&region=jp)
+de Phantom Parade Database. La vidéo de cette même fiche a été convertie en WebP animé
+(`YellowSSRYujiMegumiArt1-animated.webp`) pour le fond de la carte ; l’illustration fixe
+est utilisée si les animations sont réduites. L’icône `YellowSSRYujiMegumiIcon1.png` a été fournie avec la demande.
+
+Les icônes de compétences sont servies par le CDN de JJKPPDB d’après les clés du catalogue.
+Les exceptions sont renseignées directement dans les fiches à partir du wiki communautaire
+ou de Phantom Parade Database. Les icônes tandem du duo sont conservées localement.
