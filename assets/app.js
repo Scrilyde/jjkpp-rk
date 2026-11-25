@@ -56,6 +56,13 @@
 
   const cardLoading = index => index === 0 ? 'loading="eager" fetchpriority="high"' : index < 3 ? 'loading="eager"' : 'loading="lazy"';
 
+  function ficheIconAttrs(record) {
+    const file = record.d['icône_jjkppdb'];
+    if (!file) return imageAttrs(record.icon, 192);
+    const fallback = record.icon ? ` data-original-src="${esc(record.icon)}"` : '';
+    return `src="https://cdn.jjkppdb.com/character_icons/${encodeURIComponent(file)}"${fallback}`;
+  }
+
   function characterArtHTML(r, index) {
     const image = `<img class="card-art" referrerpolicy="no-referrer" ${imageAttrs(r.art, 640, CARD_SIZES)} alt="" ${cardLoading(index)} decoding="async">`;
     const animation = r.d['url_image_animée'];
@@ -603,7 +610,7 @@ ${notes.length ? `<div class="kit-notes">${notes.join('')}</div>` : ''}</div>${n
 <section class="idcard" aria-label="Identité">
 <div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
 <div class="idcard-body">
-<div class="idcard-title"><div class="idcard-head"><img class="icon" ${imageAttrs(r.icon, 192)} alt="" decoding="async" width="96" height="96">
+<div class="idcard-title"><div class="idcard-head"><img class="icon" referrerpolicy="no-referrer" ${ficheIconAttrs(r)} alt="" decoding="async" width="96" height="96">
 <div class="idcard-id"><div class="meta">${marks(r.rar, 'big')}<span class="rar">${esc(r.rar)}</span><span>${esc(r.cats.join(' · '))}</span></div>
 <div class="epi">(${esc(r.epi)})</div></div>
 ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div>
