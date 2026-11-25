@@ -94,7 +94,7 @@
       return {
         d, id, i, memory, art: ART_OVERRIDES[d['clé_image']] || d.url_image || d.url_icône, el: d['élément'] || '', k: KANJI[d['élément']] || '', epi, name, rar: d['rareté'] || '', role: d['rôle'] || '', spe: d['spécialité'] || '', cats,
         pv: memory ? bonusNumber(d.bonus.pv) : s['pv'], tai: memory ? bonusNumber(d.bonus.tai) : s['atq'], juj: memory ? bonusNumber(d.bonus.juj) : s['jujutsu'], eoi: s['énergie_occulte_initiale'], eom: s['énergie_occulte_max'], js: s['jauge_spéciale'],
-        rn: s['rayon_noir'] === 'Oui', icon: d['url_icône'] || '', search: norm(epi + ' ' + name + ' ' + (d['titre'] || '')),
+        duoGauge: s['jauge_duo'], rn: s['rayon_noir'] === 'Oui', icon: d['url_icône'] || '', search: norm(epi + ' ' + name + ' ' + (d['titre'] || '')),
       };
     });
     maxPV = Math.max(1, ...DATA.filter(r => !r.memory).map(r => r.pv || 0));
@@ -434,8 +434,8 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
   /* ---------------- Fiche ---------------- */
 
   const costIn = t => { const m = String(t || '').match(/coût en énergie occulte\s*:\s*(\d+)/); return m ? +m[1] : null; };
-  const skillIconUrl = (skill, prefix = '') => skill[prefix + 'url_icône'] || (skill[prefix + 'clé_image']
-    ? 'https://cdn.jjkppdb.com/skill_icons/' + encodeURIComponent(skill[prefix + 'clé_image']) + '.png' : '');
+  const skillIconUrl = (skill, prefix = '') => skill[prefix + 'clé_image']
+    ? 'https://cdn.jjkppdb.com/skill_icons/' + encodeURIComponent(skill[prefix + 'clé_image']) + '.png' : '';
 
   function skillIconHTML(src) {
     const image = src ? `<img data-skill-icon src="${esc(src)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="48" height="48">` : '';
@@ -616,7 +616,7 @@ ${notes.length ? `<div class="kit-notes">${notes.join('')}</div>` : ''}</div>${n
 ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon Noir"><span>黒</span><span>閃</span></span>' : ''}</div>
 <h1 tabindex="-1">${esc(r.name)}</h1></div>
 <dl class="info"><dt>Rôle</dt><dd>${esc(r.role || '—')}</dd><dt>Spécialité</dt><dd>${esc(r.spe || '—')}</dd><dt>Affiliation</dt><dd>${esc(r.d['affiliation'] || '—')}</dd><dt>Sortie</dt><dd>${esc(dateFr(r.d['date_de_sortie']))}</dd></dl>
-<div class="sgrid">${sstat('PV', r.pv, maxPV, true, 'pv')}${sstat('Taijutsu', r.tai, maxST, td, 'tai')}${sstat('Jujutsu', r.juj, maxST, !td, 'juj')}${sstat('EO init.', r.eoi, 0, undefined, 'eoi')}${sstat('EO max.', r.eom, 0, undefined, 'eom')}${sstat('Jauge sp.', r.js, 0, undefined, 'js')}</div>
+<div class="sgrid">${sstat('PV', r.pv, maxPV, true, 'pv')}${sstat('Taijutsu', r.tai, maxST, td, 'tai')}${sstat('Jujutsu', r.juj, maxST, !td, 'juj')}${sstat('EO init.', r.eoi, 0, undefined, 'eoi')}${sstat('EO max.', r.eom, 0, undefined, 'eom')}${sstat('Jauge sp.', r.js, 0, undefined, 'js')}${r.duoGauge != null ? sstat('Jauge du duo', r.duoGauge, 0, undefined, 'duo') : ''}</div>
 </div></section>
 <nav class="toc" aria-label="Sommaire du kit">${toc}</nav>
 </div>

@@ -16,13 +16,15 @@
     "url_image_animée": "assets/images/YellowSSRYujiMegumiArt1-animated.webp",
     "url_icône": "assets/images/YellowSSRYujiMegumiIcon1.png",
     "icône_jjkppdb": "YellowSSRYujiMegumiIcon1.png",
+    "source_statistiques": "JJKPPDB",
     "statistiques": {
-      "pv": 20826,
-      "atq": 7267,
-      "jujutsu": 6871,
-      "énergie_occulte_initiale": 30,
-      "énergie_occulte_max": 80,
+      "pv": 40469,
+      "atq": 13548,
+      "jujutsu": 12993,
+      "énergie_occulte_initiale": 50,
+      "énergie_occulte_max": 100,
       "jauge_spéciale": 1558,
+      "jauge_duo": 6,
       "rayon_noir": "Oui"
     },
     "attaque_normale": {
@@ -58,7 +60,7 @@
     "compétences_tandem": [
       {
         "nom": "Fuite des lapins",
-        "url_icône": "assets/images/skills/YellowSSRYujiMegumiTandem1.png",
+        "clé_image": "YellowSSRYujiMegumiTandem1",
         "coût_énergie": 0,
         "recharge": 4,
         "gain_jauge_duo": 2,
@@ -67,7 +69,7 @@
       },
       {
         "nom": "Éléphant maximal",
-        "url_icône": "assets/images/skills/YellowSSRYujiMegumiTandem2.png",
+        "clé_image": "YellowSSRYujiMegumiTandem2",
         "coût_énergie": 0,
         "recharge": 3,
         "gain_jauge_duo": 2,
@@ -142,8 +144,7 @@
       {
         "indice": 1,
         "nom": "Sorcellerie de projection",
-        "clé_image": "BlueSSRNaoyaS11",
-        "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/8/8c/BlueSSRNaoyaS11.png/revision/latest",
+        "clé_image": "BlueSSRNaoyaS1",
         "coût_énergie": 15,
         "effet": "Applique une augmentation de 50 % des dégâts de BREAK à soi-même (retiré après l'activation de la compétence)\n(Augmente encore selon le nombre d'états « Sorcellerie de projection », jusqu'à 200 % avec 24 états)\nÉtat « Sorcellerie de projection » +2 (jusqu'à 24)\n\nInflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 173,5 % du taijutsu et 173,5 % du jujutsu\nApplique une augmentation de 14,3 % de l'efficacité de l'attribut de faiblesse « 影 » (Bleu) (3 tours / non cumulable)\nApplique une augmentation de 14,3 % des dégâts de jujutsu subis de type « 影 » (Bleu) (3 tours)\nApplique Perturbation (spéciale) (2 tours / 2 fois / chance : 50 %)",
         "effet_niv10": "Applique une augmentation de 50 % des dégâts de BREAK à soi-même (retiré après l'activation de la compétence)\n(Augmente encore selon le nombre d'états « Sorcellerie de projection », jusqu'à 200 % avec 24 états)\nÉtat « Sorcellerie de projection » +2 (jusqu'à 24)\n\nInflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 275 % du taijutsu et 275 % du jujutsu\nApplique une augmentation de 30 % de l'efficacité de l'attribut de faiblesse « 影 » (Bleu) (3 tours / non cumulable)\nApplique une augmentation de 30 % des dégâts de jujutsu subis de type « 影 » (Bleu) (3 tours)\nApplique Perturbation (spéciale) (2 tours / 2 fois / chance : 50 %)"
@@ -151,8 +152,7 @@
       {
         "indice": 2,
         "nom": "Vitesse écrasante",
-        "clé_image": "BlueSSRNaoyaS21",
-        "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b1/BlueSSRNaoyaS21.png/revision/latest",
+        "clé_image": "BlueSSRNaoyaS2",
         "coût_énergie": 25,
         "effet": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 34 % du taijutsu et 34 % du jujutsu (5 coups au total)\n\nApplique une augmentation de 50 % des dégâts de BREAK à soi-même (retiré après l'activation de la compétence)\n(Augmente encore selon le nombre d'états « Sorcellerie de projection », jusqu'à 200 % avec 24 états)\n\nInflige en plus des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 151,7 % du taijutsu et 151,7 % du jujutsu\nApplique une augmentation de 14,3 % des dégâts subis de type « 影 » (Bleu) (3 tours / non cumulable)\nApplique une augmentation de 14,3 % des dégâts de jujutsu subis de type « 影 » (Bleu) (3 tours)\nApplique une baisse de 6,1 % de la résistance aux CRIT (2 tours)",
         "effet_niv10": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 75 % du taijutsu et 75 % du jujutsu (5 coups au total)\n\nApplique une augmentation de 50 % des dégâts de BREAK à soi-même (retiré après l'activation de la compétence)\n(Augmente encore selon le nombre d'états « Sorcellerie de projection », jusqu'à 200 % avec 24 états)\n\nInflige en plus des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 250 % du taijutsu et 250 % du jujutsu\nApplique une augmentation de 30 % des dégâts subis de type « 影 » (Bleu) (3 tours / non cumulable)\nApplique une augmentation de 30 % des dégâts de jujutsu subis de type « 影 » (Bleu) (3 tours)\nApplique une baisse de 10 % de la résistance aux CRIT (2 tours)"

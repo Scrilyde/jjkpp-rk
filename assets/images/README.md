@@ -19,9 +19,8 @@ de Phantom Parade Database. La vidéo de cette même fiche a été convertie en 
 (`YellowSSRYujiMegumiArt1-animated.webp`) pour le fond de la carte ; l’illustration fixe
 est utilisée si les animations sont réduites. L’icône `YellowSSRYujiMegumiIcon1.png` a été fournie avec la demande.
 
-Les icônes de compétences sont servies par le CDN de JJKPPDB d’après les clés du catalogue.
-Les exceptions sont renseignées directement dans les fiches à partir du wiki communautaire
-ou de Phantom Parade Database. Les icônes tandem du duo sont conservées localement.
+Les icônes affichées pour les compétences et leurs variantes, y compris les compétences
+tandem du duo, sont servies par le CDN de JJKPPDB d’après leur clé d’image.
 
 Les portraits des fiches de personnages proviennent du [catalogue de JJKPPDB](https://www.jjkppdb.com/characters).
 Le champ `icône_jjkppdb` indique leur nom de fichier sur le CDN ; `url_icône`
