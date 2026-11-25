@@ -29,7 +29,7 @@ function browser(fetch) {
     renderList = () => renders.push(state.collection);
     updateList = () => renders.push(state.collection);
     renderFiche = route => renders.push(route.id);
-    globalThis.api = { loadCollection, onRoute, records: () => DATA, imageAttrs, cardHTML, transitionContent, state, commitList, bonusHTML };
+    globalThis.api = { loadCollection, onRoute, records: () => DATA, visibleOrder, imageAttrs, cardHTML, ficheKit, transitionContent, state, commitList, bonusHTML };
   })();`), context);
   return context;
 }
@@ -98,10 +98,90 @@ test('les illustrations offrent des variantes adaptées et les icônes restent p
   assert.ok(attrs.includes('q=65'));
   assert.ok(attrs.includes('sizes="400px"'));
   assert.ok(attrs.includes(encodeURIComponent(source)));
-  const icon = b.api.imageAttrs(characters[0].url_icône, 80);
+  const icon = b.api.imageAttrs(characters.find(record => record.clé_image === 'BlueSSRNaoyaArt1').url_icône, 80);
   assert.ok(icon.includes('w=40'));
   assert.ok(icon.includes('w=80'));
   assert.ok(!icon.includes('w=640'));
+});
+
+test('la première carte anime le fond du duo sans lecteur et conserve une image fixe en secours', async () => {
+  const b = browser(response);
+  await b.api.loadCollection('personnages');
+  const [duo, next] = b.api.visibleOrder();
+  assert.equal(duo.id, 'YellowSSRYujiMegumiArt1');
+  const animation = duo.d['url_image_animée'];
+  for (const asset of [duo.art, duo.icon, animation]) {
+    assert.match(asset, /^assets\/images\//);
+    assert.ok(fs.existsSync(new URL('../../' + asset, import.meta.url)));
+  }
+  const card = b.api.cardHTML(duo, 0);
+  assert.ok(card.includes(`<picture><source media="(prefers-reduced-motion: no-preference)" type="image/webp" srcset="${animation}">`));
+  assert.ok(card.includes(`src="${duo.art}" alt="" loading="eager" fetchpriority="high"`));
+  assert.doesNotMatch(card, /<video/);
+  assert.doesNotMatch(b.api.cardHTML(next, 1), /<picture>/);
+  const webp = fs.readFileSync(new URL('../../' + animation, import.meta.url));
+  const animationChunk = webp.indexOf('ANIM');
+  assert.ok(animationChunk >= 0);
+  assert.equal(webp.readUInt16LE(animationChunk + 12), 0);
+});
+
+test('les deux compétences tandem ont leur section, leurs niveaux et leur entrée au sommaire', async () => {
+  const browserContext = browser(response);
+  await browserContext.api.loadCollection('personnages');
+  const [duo, other] = browserContext.api.visibleOrder();
+  const { kit, toc } = browserContext.api.ficheKit(duo, '');
+  const { kit: maxKit } = browserContext.api.ficheKit(duo, 'niv=10');
+  assert.match(kit, /id="tandem-title"[^>]*>Compétences tandem/);
+  assert.deepEqual(Array.from(kit.matchAll(/id="(sk-\d+)" data-kind="tandem"[^>]*aria-label="([^"]+)"/g), match => match.slice(1)), [
+    ['sk-4', 'Tandem 1 : Fuite des lapins'], ['sk-5', 'Tandem 2 : Éléphant maximal'],
+  ]);
+  assert.match(toc, /data-goto="sk-4" data-kind="tandem".*data-goto="sk-5" data-kind="tandem"/);
+  for (const recharge of [4, 3]) assert.ok(kit.includes(`Recharge : ${recharge} tours`));
+  assert.equal((kit.match(/Jauge du duo : \+2/g) || []).length, 2);
+  for (const value of ['22,09 %', '12,17 %', '88,62 %']) assert.ok(kit.includes(value));
+  for (const value of ['40 %', '20 %', '150 %', '420 %']) assert.ok(maxKit.includes(value));
+  assert.doesNotMatch(maxKit, /22,09 %|88,62 %/);
+  for (const skill of duo.d['compétences_tandem']) {
+    assert.ok(kit.includes(`src="${skill.url_icône}"`));
+    assert.ok(fs.existsSync(new URL('../../' + skill.url_icône, import.meta.url)));
+  }
+  assert.doesNotMatch(browserContext.api.ficheKit(other, '').kit, /tandem-title/);
+});
+
+test('seules les compétences principales et tandem affichent une icône', async () => {
+  const b = browser(response);
+  await b.api.loadCollection('personnages');
+  for (const record of b.api.records()) {
+    const { kit } = b.api.ficheKit(record, '');
+    const skills = record.d;
+    const expected = 2 + skills.compétences.length + (skills['compétences_tandem']?.length || 0);
+    assert.equal((kit.match(/<img data-skill-icon /g) || []).length, expected, record.name);
+    for (const [section] of kit.matchAll(/<section class="skill"[^>]*data-kind="(?:auto|coop)"[^>]*>[\s\S]*?<\/section>/g)) {
+      assert.doesNotMatch(section, /class="skill-icon"/, record.name);
+    }
+  }
+  const naoya = b.api.records().find(record => record.id === 'BlueSSRNaoyaArt1');
+  assert.match(b.api.ficheKit(naoya, '').kit, /src="https:\/\/static\.wikia\.nocookie\.net\/[^"<>]+\/BlueSSRNaoyaS11\.png\/revision\/latest"/);
+});
+
+test('les variantes modifiées affichent leur propre icône', async () => {
+  const b = browser(response);
+  await b.api.loadCollection('personnages');
+  const mahito = b.api.records().find(record => record.id === 'RedSSRMahitoArt1');
+  for (const [version, icon] of [['', 'RedSSRMahitoS21'], ['version=modifiee', 'CRedSSRMahitoS21'], ['version=modifiee2', 'CRedSSRMahitoS21C']]) {
+    const { kit } = b.api.ficheKit(mahito, version);
+    assert.ok(kit.includes(`src="https://cdn.jjkppdb.com/skill_icons/${icon}.png"`), version);
+  }
+});
+
+test('une icône de compétence qui échoue est retirée pour laisser le symbole de secours', () => {
+  const b = browser(response);
+  const image = new b.HTMLImageElement();
+  image.dataset = { skillIcon: '' };
+  let removed = false;
+  image.remove = () => { removed = true; };
+  b.listeners.error({ target: image });
+  assert.ok(removed);
 });
 
 test('la première illustration est prioritaire et les cartes éloignées restent différées', async () => {

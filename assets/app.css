@@ -324,7 +324,15 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
 .skill{padding:20px 16px 22px;border-bottom:1px solid var(--ln);scroll-margin-top:150px}
 .skill-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .skill-type{font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--k,var(--mu));line-height:1.4}
-.skill h3{margin:5px 0 0;font-weight:700;font-size:18px;line-height:1.25;letter-spacing:-.01em;text-wrap:pretty}
+.skill :is(h3,h4){margin:5px 0 0;font-weight:700;font-size:18px;line-height:1.25;letter-spacing:-.01em;text-wrap:pretty}
+.tandem-title{margin:0;padding:14px 16px;border-bottom:1px solid var(--ln);color:var(--el-tx,var(--mu));font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.skill-heading{display:flex;align-items:center;min-width:0;gap:12px}
+.skill-icon{display:grid;place-items:center;flex:none;width:48px;height:48px;border:1px solid var(--ln);border-radius:9px;overflow:hidden;color:var(--k,var(--mu));background:color-mix(in srgb,currentColor 8%,transparent)}
+.skill-icon img{display:block;width:100%;height:100%;object-fit:contain}
+.skill-icon svg{width:24px;height:24px}
+.skill-icon img+svg{display:none}
+.tandem-details{display:flex;flex-wrap:wrap;gap:4px 8px;margin-top:6px;font:500 11px var(--mono);color:var(--mu)}
+.tandem-details span{padding:3px 7px;border:1px solid var(--ln);border-radius:6px}
 .cost{flex:none;border:1.5px solid var(--k,var(--ink));background:color-mix(in srgb,var(--k,transparent) 10%,transparent);border-radius:var(--r-s);padding:5px 8px;display:flex;align-items:baseline;gap:5px}
 .cost .num{font-size:17px;font-weight:500;line-height:1}
 .cost .num{color:var(--k,var(--ink))}
@@ -470,7 +478,10 @@ main{flex:1;display:flex;flex-direction:column;min-width:0}
   .skill-meta .modrow{margin:0;flex-direction:column;align-items:flex-start;gap:12px}
   .skill-main{min-width:0;max-width:664px}
   .skill-main>.modrow{display:none}
-  .skill h3{margin:0 0 14px;font-size:22px;line-height:1.2;letter-spacing:-.015em}
+  .skill :is(h3,h4){margin:0 0 14px;font-size:22px;line-height:1.2;letter-spacing:-.015em}
+  .tandem-title{padding-inline:0}
+  .skill .skill-heading :is(h3,h4){margin-bottom:0}
+  .skill-heading{margin-bottom:14px}
   .skill .lines{margin-top:0}
   .ln .mk{width:18px}
 }
@@ -529,7 +540,7 @@ body[data-route="fiche"] .topbar{position:static}
 .idcard h1{font-weight:800}
 .sgrid{border-radius:12px}
 .kit-head h2{font-weight:800}
-.skill h3{font-weight:800}
+.skill :is(h3,h4){font-weight:800}
 .skill-type{font-weight:700}
 .cost{border-radius:10px}
 .modbadge{border-radius:var(--pill)}

@@ -56,6 +56,13 @@
 
   const cardLoading = index => index === 0 ? 'loading="eager" fetchpriority="high"' : index < 3 ? 'loading="eager"' : 'loading="lazy"';
 
+  function characterArtHTML(r, index) {
+    const image = `<img class="card-art" referrerpolicy="no-referrer" ${imageAttrs(r.art, 640, CARD_SIZES)} alt="" ${cardLoading(index)} decoding="async">`;
+    const animation = r.d['url_image_animée'];
+    if (!animation) return image;
+    return `<picture><source media="(prefers-reduced-motion: no-preference)" type="image/webp" srcset="${esc(animation)}">${image}</picture>`;
+  }
+
   let DATA = [], BY_ID = new Map(), CATEGORIES = [], maxPV = 1, maxST = 1;
   const state = { collection: 'personnages', q: '', 'élément': [], 'rareté': [], 'catégorie': [], 'spécialité': [], vue: 'cartes', tri: '', ordre: 'desc' };
   let current = null, listScroll = 0, cameFromList = false, lastListHash = '#/', sheetOpen = false, lastFocus = null;
@@ -251,7 +258,7 @@
     const td = (r.tai || 0) >= (r.juj || 0);
     const stat = (short, long, v, max, strong, k) => `<div class="stat" data-s="${k}"><div class="stat-top"><span class="lab"><span class="lab-short">${short}</span><span class="lab-long">${long}</span></span><span class="v${strong ? '' : ' weak'}">${nf(v)}</span></div><div class="bar"><i${strong ? '' : ' class="weak"'} style="width:${pct(v, max)}"></i></div></div>`;
     return `<a class="card illustrated" data-el="${esc(r.el)}" href="${ficheHref(r)}" aria-label="${esc(r.d['titre'] || r.name)} — ${esc(r.rar)}, ${esc(r.el)}">
-<div class="card-surface"><img class="card-art" referrerpolicy="no-referrer" ${imageAttrs(r.art, 640, CARD_SIZES)} alt="" ${cardLoading(index)} decoding="async"><div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
+<div class="card-surface">${characterArtHTML(r, index)}<div class="strip" aria-hidden="true"><span class="k">${r.k}</span><span class="el">${esc(r.el)}</span></div>
 <div class="card-body">
 <div class="card-head">
 <div class="card-id"><div class="meta">${marks(r.rar)}<span class="rar">${esc(r.rar)}</span><span class="role">${esc(r.role || '—')}<span class="m-only"> · ${esc(r.spe || '—')}</span></span></div>
@@ -420,6 +427,13 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
   /* ---------------- Fiche ---------------- */
 
   const costIn = t => { const m = String(t || '').match(/coût en énergie occulte\s*:\s*(\d+)/); return m ? +m[1] : null; };
+  const skillIconUrl = (skill, prefix = '') => skill[prefix + 'url_icône'] || (skill[prefix + 'clé_image']
+    ? 'https://cdn.jjkppdb.com/skill_icons/' + encodeURIComponent(skill[prefix + 'clé_image']) + '.png' : '');
+
+  function skillIconHTML(src) {
+    const image = src ? `<img data-skill-icon src="${esc(src)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="48" height="48">` : '';
+    return `<span class="skill-icon" aria-hidden="true">${image}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></svg></span>`;
+  }
   // Nom court de l'état qui modifie le kit : premier « … » du texte modifié, ou « Dans l'état X, » ; sinon null.
   function stateName(text) {
     const first = String(text || '').split('\n').find(l => l.trim()) || '';
@@ -436,6 +450,8 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
       const modCost = p => b[p + 'coût_énergie'] ?? costIn(b[p + 'effet'] || b[p + 'effet_niv10']);
       return {
         type, short, unit, kind: opts.kind || '', noLevels: !!opts.noLevels, name: b['nom'] || '', cost: cost ?? null,
+        icons: { base: skillIconUrl(b), v1: skillIconUrl(b, 'modifié_'), v2: skillIconUrl(b, 'modifié2_') },
+        cooldown: b.recharge, tandemGain: b.gain_jauge_duo,
         names: { v1: b['modifié_nom'], v2: b['modifié2_nom'] },
         text: { base: t(''), v1: t('modifié_'), v2: t('modifié2_') },
         costs: { v1: opts.fixedCost ? cost : modCost('modifié_') ?? cost ?? null, v2: opts.fixedCost ? cost : modCost('modifié2_') ?? cost ?? null },
@@ -446,6 +462,10 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
     const out = [mk('Compétence 1', 'C1', an, null, 'EO', { kind: 'c1' })];
     (d['compétences'] || []).forEach((c, i) => { const n = (c['indice'] ?? i + 1) + 1; out.push(mk('Compétence ' + n, 'C' + n, c, c['coût_énergie'], 'EO', { kind: 'c' + Math.min(n, 3) })); });
     out.push(mk('Ultime', 'Ult.', ul, s['jauge_spéciale'], 'Jauge', { fixedCost: true, kind: 'ult' }));
+    (d['compétences_tandem'] || []).forEach((skill, index) => {
+      const number = index + 1;
+      out.push(mk('Tandem ' + number, 'T' + number, skill, skill['coût_énergie'], 'EO', { kind: 'tandem' }));
+    });
     (d['compétences_auto'] || []).forEach((c, i) => { const n = c['indice'] ?? i + 1; out.push(mk('Compétence auto ' + n, 'Auto ' + n, c, null, '', { noLevels: true, kind: 'auto' })); });
     if (co['effet']) out.push(mk('Ultime coopérative', 'Coop.', { effet: co['effet'] }, null, '', { noLevels: true, kind: 'coop' }));
     if (co['effet_renforcé']) out.push(mk('Ultime coopérative renforcée', 'Coop.+', { effet: co['effet_renforcé'] }, null, '', { noLevels: true, kind: 'coop' }));
@@ -500,13 +520,24 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
         mod = `<div class="modrow">${badge}${was}</div>`;
       }
       const costBox = cost != null ? `<div class="cost"><span class="num">${nf(cost)}</span><span class="u">${esc(sk.unit)}</span></div>` : '';
+      const tandem = sk.kind === 'tandem';
+      const heading = tandem ? 'h4' : 'h3';
+      const icon = sk.kind === 'auto' || sk.kind === 'coop' ? '' : skillIconHTML(sk.icons[useVer ? ver : 'base'] || sk.icons.base);
+      const details = tandem ? `<div class="tandem-details">${sk.cooldown != null ? `<span>Recharge : ${nf(sk.cooldown)} tours</span>` : ''}${sk.tandemGain != null ? `<span>Jauge du duo : +${nf(sk.tandemGain)}</span>` : ''}</div>` : '';
+      const title = `<div><div class="skill-type">${esc(sk.type)}</div>${name ? `<${heading}>${esc(name)}</${heading}>` : ''}${details}</div>`;
       sk.tocCost = cost != null ? nf(cost) + ' ' + sk.unit : '';
       sk.tocName = name || sk.type;
       return `<section class="skill" id="sk-${i}" data-kind="${sk.kind}" aria-label="${esc(sk.type)}${name ? ' : ' + esc(name) : ''}">
 <div class="skill-meta"><div class="skill-type">${esc(sk.type)}</div>${costBox}${mod}</div>
-<div class="skill-main"><div class="skill-top"><div><div class="skill-type">${esc(sk.type)}</div>${name ? `<h3>${esc(name)}</h3>` : ''}</div>${costBox}</div>${mod}
+<div class="skill-main"><div class="skill-top">${icon ? `<div class="skill-heading">${icon}${title}</div>` : title}${costBox}</div>${mod}
 <div class="lines">${missing ? '<p class="missing">Donnée niv. 1 absente de la source ; aucune valeur inventée.</p>' : lines.length ? lines.map(lineHTML).join('') : '<p class="missing">Aucune description disponible.</p>'}</div></div></section>`;
-    }).join('');
+    });
+    const firstTandem = skills.findIndex(sk => sk.kind === 'tandem');
+    if (firstTandem !== -1) {
+      const count = skills.filter(sk => sk.kind === 'tandem').length;
+      const tandemSections = sections.slice(firstTandem, firstTandem + count).join('');
+      sections.splice(firstTandem, count, `<section aria-labelledby="tandem-title"><h3 id="tandem-title" class="tandem-title">Compétences tandem</h3>${tandemSections}</section>`);
+    }
     const target = ver !== 'base' ? ver : versions[0];
     const nMod = target ? skills.filter(sk => hasVer(sk, target)).length : 0;
     const notes = [];
@@ -516,7 +547,7 @@ ${num(r.pv, maxPV, true, 'pv')}${num(r.tai, maxST, td, 'tai')}${num(r.juj, maxST
 <button type="button" data-ver="base" aria-pressed="${ver === 'base'}"><span class="lab" data-t="Base">Base</span></button>${versions.map(v => `<button type="button" class="fill" data-ver="${v}" aria-pressed="${ver === v}"><span class="lab" data-t="${esc(labels[v].text)}">${esc(labels[v].text)}</span></button>`).join('')}</div></div>` : '';
     return `<div class="kit-head"><h2 id="kit-title">Kit de compétences</h2>
 <div class="kit-toggles${versions.length ? '' : ' one'}"><div class="grp"><span class="tlab">Niveau</span><div class="seg lvl" role="group" aria-label="Niveau du kit"><button type="button" data-lvl="1" aria-pressed="${lvl === 1}"><span class="lab" data-t="Niv. 1">Niv. 1</span></button><button type="button" data-lvl="10" aria-pressed="${lvl === 10}"><span class="lab" data-t="Niv. 10">Niv. 10</span></button></div></div>${verSeg}</div>
-${notes.length ? `<div class="kit-notes">${notes.join('')}</div>` : ''}</div>${notes.length ? `<div class="kit-notes after">${notes.join('')}</div>` : ''}${sections}`;
+${notes.length ? `<div class="kit-notes">${notes.join('')}</div>` : ''}</div>${notes.length ? `<div class="kit-notes after">${notes.join('')}</div>` : ''}${sections.join('')}`;
   }
 
   function neighbours(r) {
@@ -655,7 +686,10 @@ ${r.rn ? '<span class="stamp-rn" role="img" aria-label="Rayon Noir" title="Rayon
 
   document.addEventListener('error', e => {
     const img = e.target;
-    if (img instanceof HTMLImageElement && img.dataset.originalSrc) {
+    if (!(img instanceof HTMLImageElement)) return;
+    if (img.dataset.skillIcon !== undefined) {
+      img.remove();
+    } else if (img.dataset.originalSrc) {
       const source = img.dataset.originalSrc;
       delete img.dataset.originalSrc;
       img.removeAttribute('srcset');

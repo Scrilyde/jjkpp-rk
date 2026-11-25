@@ -1,5 +1,117 @@
 [
   {
+    "titre": "(A Perfectly Matched Onslaught) Yuji Itadori & Megumi Fushiguro",
+    "nom": "Yuji Itadori & Megumi Fushiguro",
+    "épithète": "Assaut parfaitement synchronisé",
+    "rareté": "SSR",
+    "élément": "Jaune",
+    "rôle": "Attaquant",
+    "spécialité": "Taijutsu",
+    "affiliation": "Lycée de jujutsu de Tokyo, 1ʳᵉ année",
+    "date_de_sortie": "21-11-2026",
+    "limité": false,
+    "dans_le_pool": false,
+    "clé_image": "YellowSSRYujiMegumiArt1",
+    "url_image": "assets/images/YellowSSRYujiMegumiArt1.webp",
+    "url_image_animée": "assets/images/YellowSSRYujiMegumiArt1-animated.webp",
+    "url_icône": "assets/images/YellowSSRYujiMegumiIcon1.png",
+    "statistiques": {
+      "pv": 20826,
+      "atq": 7267,
+      "jujutsu": 6871,
+      "énergie_occulte_initiale": 30,
+      "énergie_occulte_max": 80,
+      "jauge_spéciale": 1558,
+      "rayon_noir": "Oui"
+    },
+    "attaque_normale": {
+      "nom": "Double frappe",
+      "clé_image": "YellowSSRYujiMegumiNormalAttack1",
+      "effet": "Inflige deux coups au corps à corps de 88,6 % du taijutsu chacun. Le premier peut déclencher un Rayon Noir.\nRéduit la résistance aux CRIT de la cible de 12,2 % (3 tours).\nRécupère 10 d'énergie occulte (sans limite).",
+      "effet_niv10": "Inflige deux coups au corps à corps de 150 % du taijutsu chacun. Le premier peut déclencher un Rayon Noir.\nRéduit la résistance aux CRIT de la cible de 20 % (3 tours).\nRécupère 10 d'énergie occulte (sans limite)."
+    },
+    "compétences": [
+      {
+        "indice": 1,
+        "nom": "Attaque combinée : Chien de jade, Totalité",
+        "clé_image": "YellowSSRYujiMegumiS11",
+        "coût_énergie": 20,
+        "effet": "Inflige deux coups au corps à corps de 88,6 % du taijutsu chacun (Rayon Noir possible).\nAugmente de 50 % les dégâts de BREAK du duo pour la suite de cette compétence.\nSur la même cible, inflige un coup au corps à corps de 88,6 % du taijutsu (Rayon Noir possible) et un coup à distance de 88,6 % du jujutsu (ignore les Ténèbres).\nAugmente de 12,2 % les dégâts de BREAK subis (2 tours) et ajoute 10 points à la vulnérabilité Jaune déjà appliquée par la Technique des dix ombres.",
+        "effet_niv10": "Inflige deux coups au corps à corps de 150 % du taijutsu chacun (Rayon Noir possible).\nAugmente de 50 % les dégâts de BREAK du duo pour la suite de cette compétence.\nSur la même cible, inflige un coup au corps à corps de 150 % du taijutsu (Rayon Noir possible) et un coup à distance de 150 % du jujutsu (ignore les Ténèbres).\nAugmente de 20 % les dégâts de BREAK subis (2 tours) et ajoute 10 points à la vulnérabilité Jaune déjà appliquée par la Technique des dix ombres."
+      },
+      {
+        "indice": 2,
+        "nom": "Attaque combinée : Nue",
+        "clé_image": "YellowSSRYujiMegumiS21",
+        "coût_énergie": 25,
+        "effet": "Inflige 151,7 % du taijutsu au corps à corps (Rayon Noir possible) et 122,7 % du jujutsu à distance (ignore les Ténèbres).\nAugmente de 21 % les dégâts de taijutsu Jaune et de 21 % les dégâts de jujutsu Jaune subis (effets spéciaux, 3 tours, remplacent les effets précédents).\n25 % de chances d'appliquer Arrêt (1 tour).\nAjoute 10 points à la vulnérabilité Jaune déjà appliquée par la Technique des dix ombres.",
+        "effet_niv10": "Inflige 250 % du taijutsu au corps à corps (Rayon Noir possible) et 200 % du jujutsu à distance (ignore les Ténèbres).\nAugmente de 45 % les dégâts de taijutsu Jaune et de 45 % les dégâts de jujutsu Jaune subis (effets spéciaux, 3 tours, remplacent les effets précédents).\n25 % de chances d'appliquer Arrêt (1 tour).\nAjoute 10 points à la vulnérabilité Jaune déjà appliquée par la Technique des dix ombres."
+      }
+    ],
+    "ultime": {
+      "nom": "Assaut parfaitement synchronisé",
+      "clé_image": "YellowSSRYujiMegumiUlt1",
+      "effet": "Inflige 886 % du taijutsu en quatre coups au corps à corps et 177,2 % du jujutsu en deux coups à distance (ignore les Ténèbres).\nLes deux premiers coups de Yuji peuvent déclencher un Rayon Noir ; le troisième en déclenche un à coup sûr.\nLes dégâts augmentent avec la jauge du duo, jusqu'à 30 % de bonus à 6 charges.\nAugmente de 14,3 % les dégâts Jaune subis par la cible et de 14,3 % le taux de CRIT du duo (4 tours).",
+      "effet_niv10": "Inflige 1 500 % du taijutsu en quatre coups au corps à corps et 300 % du jujutsu en deux coups à distance (ignore les Ténèbres).\nLes deux premiers coups de Yuji peuvent déclencher un Rayon Noir ; le troisième en déclenche un à coup sûr.\nÀ 6 charges de jauge du duo, les dégâts atteignent 1 950 % du taijutsu et 390 % du jujutsu.\nAugmente de 30 % les dégâts Jaune subis par la cible et de 30 % le taux de CRIT du duo (4 tours)."
+    },
+    "compétences_tandem": [
+      {
+        "nom": "Fuite des lapins",
+        "url_icône": "assets/images/skills/YellowSSRYujiMegumiTandem1.png",
+        "coût_énergie": 0,
+        "recharge": 4,
+        "gain_jauge_duo": 2,
+        "effet": "Augmente de 22,09 % les dégâts d’attribut « 行 » (Jaune) subis par tous les ennemis (Technique des dix ombres, 4 tours).\nAugmente de 12,17 % le taux de CRIT du duo (2 tours).",
+        "effet_niv10": "Augmente de 40 % les dégâts d’attribut « 行 » (Jaune) subis par tous les ennemis (Technique des dix ombres, 4 tours).\nAugmente de 20 % le taux de CRIT du duo (2 tours)."
+      },
+      {
+        "nom": "Éléphant maximal",
+        "url_icône": "assets/images/skills/YellowSSRYujiMegumiTandem2.png",
+        "coût_énergie": 0,
+        "recharge": 3,
+        "gain_jauge_duo": 2,
+        "effet": "Inflige à tous les ennemis des dégâts de jujutsu à distance équivalant à 88,62 % du jujutsu.\n※ Plus le duo a d’énergie occulte, plus le bonus de dégâts augmente : jusqu’à 180 % de la valeur de base à 40 d’énergie occulte.\n※ Au niveau 10, avec 40 d’énergie occulte, les dégâts atteignent 420 % du jujutsu.\nAugmente de 12,17 % les dégâts d’attribut « 行 » (Jaune) subis par tous les ennemis (6 tours, non cumulable, ne peut être ni renforcée ni affaiblie).",
+        "effet_niv10": "Inflige à tous les ennemis des dégâts de jujutsu à distance équivalant à 150 % du jujutsu.\n※ Plus le duo a d’énergie occulte, plus le bonus de dégâts augmente : jusqu’à 180 % de la valeur de base à 40 d’énergie occulte, pour un total de 420 % du jujutsu.\nAugmente de 20 % les dégâts d’attribut « 行 » (Jaune) subis par tous les ennemis (6 tours, non cumulable, ne peut être ni renforcée ni affaiblie)."
+      }
+    ],
+    "compétences_auto": [
+      {
+        "indice": 1,
+        "nom": "Résistance à la faiblesse Jaune",
+        "url_icône": "https://phantom-parade-database.vercel.app/assets/jp/skills/a-b28b82d80d6ccfb5ff62.webp",
+        "effet": "Au début du combat, confère au duo une résistance à la faiblesse d'attribut Jaune."
+      },
+      {
+        "indice": 2,
+        "nom": "Résistance de Yuji",
+        "url_icône": "https://phantom-parade-database.vercel.app/assets/jp/skills/a-55000edee1ca91f4d43d.webp",
+        "effet": "Au début du combat, confère au duo une résistance au Poison et aux effets d'Âme, ainsi qu'une résistance aux Engelures (30 % de chances). Annule la mort instantanée liée aux effets d'Âme. Les attaques de Yuji peuvent toucher l'Âme."
+      },
+      {
+        "indice": 3,
+        "nom": "En parfaite coordination",
+        "url_icône": "https://phantom-parade-database.vercel.app/assets/jp/skills/a-0332a83690f0969743ee.webp",
+        "effet": "En début de tour, augmente le taijutsu et le jujutsu du duo pendant 6 tours. Le bonus augmente avec les tours passés en combat, atteint son maximum au bout de 6 tours et se réactive ensuite tous les 6 tours."
+      },
+      {
+        "indice": 4,
+        "nom": "Renforcement critique",
+        "url_icône": "https://phantom-parade-database.vercel.app/assets/jp/skills/a-decdec5da1a551c24159.webp",
+        "effet": "Lorsque le duo réussit un CRIT ou un Rayon Noir, augmente son taijutsu de 20 % (4 tours, une fois par tour)."
+      },
+      {
+        "indice": 5,
+        "nom": "Entrée dans la zone",
+        "url_icône": "https://phantom-parade-database.vercel.app/assets/jp/skills/a-884fc05e2d3f0cab1781.webp",
+        "effet": "Lorsque le duo déclenche un Rayon Noir, augmente de 30 % ses chances d'en déclencher un et de 50 % les dégâts qu'il inflige avec un Rayon Noir (4 tours, une fois par tour). Le bonus de dégâts remplace le précédent. Récupère aussi 10 d'énergie occulte (sans limite)."
+      }
+    ],
+    "ultime_coopérative": {
+      "effet": "Inflige des dégâts de taijutsu au corps à corps. Augmente le taux de CRIT du duo et de son partenaire (3 tours). Les autres alliés récupèrent 110 points de jauge d'ultime.",
+      "effet_renforcé": "Inflige des dégâts de taijutsu au corps à corps. Augmente le taux de CRIT et le taijutsu du duo et de son partenaire (3 tours). Les autres alliés récupèrent 110 points de jauge d'ultime."
+    }
+  },
+  {
     "titre": "(Mastery of 24 Frames Per Second) Naoya Zen'in",
     "nom": "Naoya Zen'in",
     "épithète": "Maîtrise des 24 images par seconde",
@@ -30,6 +142,7 @@
         "indice": 1,
         "nom": "Sorcellerie de projection",
         "clé_image": "BlueSSRNaoyaS11",
+        "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/8/8c/BlueSSRNaoyaS11.png/revision/latest",
         "coût_énergie": 15,
         "effet": "Applique une augmentation de 50 % des dégâts de BREAK à soi-même (retiré après l'activation de la compétence)\n(Augmente encore selon le nombre d'états « Sorcellerie de projection », jusqu'à 200 % avec 24 états)\nÉtat « Sorcellerie de projection » +2 (jusqu'à 24)\n\nInflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 173,5 % du taijutsu et 173,5 % du jujutsu\nApplique une augmentation de 14,3 % de l'efficacité de l'attribut de faiblesse « 影 » (Bleu) (3 tours / non cumulable)\nApplique une augmentation de 14,3 % des dégâts de jujutsu subis de type « 影 » (Bleu) (3 tours)\nApplique Perturbation (spéciale) (2 tours / 2 fois / chance : 50 %)",
         "effet_niv10": "Applique une augmentation de 50 % des dégâts de BREAK à soi-même (retiré après l'activation de la compétence)\n(Augmente encore selon le nombre d'états « Sorcellerie de projection », jusqu'à 200 % avec 24 états)\nÉtat « Sorcellerie de projection » +2 (jusqu'à 24)\n\nInflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 275 % du taijutsu et 275 % du jujutsu\nApplique une augmentation de 30 % de l'efficacité de l'attribut de faiblesse « 影 » (Bleu) (3 tours / non cumulable)\nApplique une augmentation de 30 % des dégâts de jujutsu subis de type « 影 » (Bleu) (3 tours)\nApplique Perturbation (spéciale) (2 tours / 2 fois / chance : 50 %)"
@@ -38,6 +151,7 @@
         "indice": 2,
         "nom": "Vitesse écrasante",
         "clé_image": "BlueSSRNaoyaS21",
+        "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b1/BlueSSRNaoyaS21.png/revision/latest",
         "coût_énergie": 25,
         "effet": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 34 % du taijutsu et 34 % du jujutsu (5 coups au total)\n\nApplique une augmentation de 50 % des dégâts de BREAK à soi-même (retiré après l'activation de la compétence)\n(Augmente encore selon le nombre d'états « Sorcellerie de projection », jusqu'à 200 % avec 24 états)\n\nInflige en plus des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 151,7 % du taijutsu et 151,7 % du jujutsu\nApplique une augmentation de 14,3 % des dégâts subis de type « 影 » (Bleu) (3 tours / non cumulable)\nApplique une augmentation de 14,3 % des dégâts de jujutsu subis de type « 影 » (Bleu) (3 tours)\nApplique une baisse de 6,1 % de la résistance aux CRIT (2 tours)",
         "effet_niv10": "Inflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 75 % du taijutsu et 75 % du jujutsu (5 coups au total)\n\nApplique une augmentation de 50 % des dégâts de BREAK à soi-même (retiré après l'activation de la compétence)\n(Augmente encore selon le nombre d'états « Sorcellerie de projection », jusqu'à 200 % avec 24 états)\n\nInflige en plus des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 250 % du taijutsu et 250 % du jujutsu\nApplique une augmentation de 30 % des dégâts subis de type « 影 » (Bleu) (3 tours / non cumulable)\nApplique une augmentation de 30 % des dégâts de jujutsu subis de type « 影 » (Bleu) (3 tours)\nApplique une baisse de 10 % de la résistance aux CRIT (2 tours)"
@@ -54,6 +168,7 @@
         "indice": 1,
         "nom": "Combo instantané (suivi)",
         "clé_image": "InstantComboFollowUp",
+        "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/2/29/InstantComboFollowUp.png/revision/latest",
         "effet": "Si « Sorcellerie de projection » ou « Combo instantané » inflige des dégâts : (chance : 40 % / évolue avec le niveau de la compétence 1)\nInflige des dégâts d'attaque hybrides au corps à corps à l'ennemi ciblé (ou aux ennemis ciblés) équivalant à 150 % du taijutsu et 150 % du jujutsu (2 coups au total)\nApplique une augmentation de 15 % des dégâts de jujutsu subis de type « 影 » (Bleu) (2 tours / ne peut pas être renforcée)\nApplique une augmentation de 10 % des dégâts subis de type « 影 » (Bleu) (2 tours / ne peut pas être renforcée)\nÉtat « Sorcellerie de projection » +2 (jusqu'à 24)"
       },
       {
