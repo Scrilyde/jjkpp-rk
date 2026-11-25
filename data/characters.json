@@ -15,6 +15,7 @@
     "url_image": "assets/images/YellowSSRYujiMegumiArt1.webp",
     "url_image_animée": "assets/images/YellowSSRYujiMegumiArt1-animated.webp",
     "url_icône": "assets/images/YellowSSRYujiMegumiIcon1.png",
+    "icône_jjkppdb": "YellowSSRYujiMegumiIcon1.png",
     "statistiques": {
       "pv": 20826,
       "atq": 7267,
@@ -192,6 +193,7 @@
     "clé_image": "BlueSSRNaoyaArt1",
     "clé_icône": "BlueSSRNaoyaIcon1",
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/f6/BlueSSRNaoyaIcon1.jpeg/revision/latest?cb=20261030071753",
+    "icône_jjkppdb": "BlueSSRNaoyaIcon1.png",
     "traduction_automatique": {
       "deepl": [
         {
@@ -409,6 +411,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/94/RedSSRKusakabeIcon1.jpeg/revision/latest?cb=20261019105213",
+    "icône_jjkppdb": "RedSSRKusakabeIcon1.png",
     "page_wiki": "(Cold Light of Dusk) Atsuya Kusakabe"
   },
   {
@@ -497,6 +500,7 @@
     "clé_icône": "GreenSSRMeiMeiIcon1",
     "priorité_compétences": [],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/c2/GreenSSRMeimeiIcon1.jpeg/revision/latest?cb=20260930092339",
+    "icône_jjkppdb": "GreenSSRMeiMeiIcon1.png",
     "page_wiki": "(Dance of the Beautiful Blades) Mei Mei"
   },
   {
@@ -589,6 +593,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/32/YellowSSRGetoIcon1.jpeg/revision/latest?cb=20260911102440",
+    "icône_jjkppdb": "YellowSSRGetoIcon1.png",
     "page_wiki": "(What Lies at the End) Suguru Geto (Teen)",
     "url_image": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/2/2b/YellowSSRGetoArt1.gif/revision/latest?cb=20260911125158"
   },
@@ -685,6 +690,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/e5/RedSSRHaibaraIcon1.jpeg/revision/latest?cb=20260831094239",
+    "icône_jjkppdb": "RedSSRHaibaraIcon1.png",
     "page_wiki": "(Burning Passion) Yu Haibara"
   },
   {
@@ -790,6 +796,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/af/GreenSSRInoIcon1.jpeg/revision/latest?cb=20260819095013",
+    "icône_jjkppdb": "GreenSSRInoIcon1.png",
     "page_wiki": "(Indomitable Auspicious Beasts) Takuma Ino"
   },
   {
@@ -895,6 +902,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/e9/BlueSSRMaiIcon1.jpeg/revision/latest?cb=20260731135956",
+    "icône_jjkppdb": "BlueSSRMaiIcon1.png",
     "page_wiki": "(Effective Range) Mai Zen'in"
   },
   {
@@ -994,6 +1002,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/90/RedSSRGakuganjiIcon1.jpeg/revision/latest?cb=20260721100231",
+    "icône_jjkppdb": "RedSSRGakuganjiIcon1.png",
     "page_wiki": "(Crafty Rock) Yoshinobu Gakuganji"
   },
   {
@@ -1088,6 +1097,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/4/44/GreenSSRIjichiIcon1.jpeg/revision/latest?cb=20260630084138",
+    "icône_jjkppdb": "GreenIchijiSSRIcon1.png",
     "page_wiki": "(Pick Up After Hard Work) Kiyotaka Ijichi"
   },
   {
@@ -1191,6 +1201,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/aa/BlueSSRNobaraIcon1.jpeg/revision/latest?cb=20260601105819",
+    "icône_jjkppdb": "BlueSSRNobaraIcon1.png",
     "page_wiki": "(Striking Eternal Summer) Nobara Kugisaki"
   },
   {
@@ -1288,6 +1299,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/4/4a/GreenSSRMegumiIcon2.jpeg/revision/latest?cb=20260601105833",
+    "icône_jjkppdb": "GreenMegumiSSRIcon2.png",
     "page_wiki": "(Enjoying The Cool Summer Breeze) Megumi Fushiguro"
   },
   {
@@ -1402,6 +1414,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/af/YellowSSRGojoIcon2.jpeg/revision/latest?cb=20260525080805",
+    "icône_jjkppdb": "YellowSSRGojoIcon2.png",
     "page_wiki": null
   },
   {
@@ -1518,6 +1531,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/5/5b/BlueSSRYujiIcon2.jpeg/revision/latest?cb=20260521091206",
+    "icône_jjkppdb": "BlueSSRYujiIcon2.jpeg",
     "page_wiki": null
   },
   {
@@ -1659,6 +1673,7 @@
     "dans_le_pool": false,
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/2/26/RedSSRKenjakuIcon1.jpeg/revision/latest?cb=20260424082950",
+    "icône_jjkppdb": "RedSSRKenjakuIcon1.jpeg",
     "page_wiki": "(The Golden Age of Jujutsu) Noritoshi Kamo"
   },
   {
@@ -1798,6 +1813,7 @@
     "sp": false,
     "dans_le_pool": false,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/6/67/YellowSSREijiIcon1.jpeg/revision/latest?cb=20260414131228",
+    "icône_jjkppdb": "YellowSSREijiIcon1.jpeg",
     "page_wiki": "(Chain Mark: Full Throttle) Eiji Urushi"
   },
   {
@@ -1911,6 +1927,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/5/52/YellowSSRYutaIcon1.jpeg/revision/latest?cb=20260327095217",
+    "icône_jjkppdb": "YellowSSRYutaIcon1.jpeg",
     "page_wiki": "(Executioner) Yuta Okkotsu"
   },
   {
@@ -2012,6 +2029,7 @@
     "dans_le_pool": false,
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/4/47/BlueSSRYagaIcon1.jpeg/revision/latest?cb=20260319090316",
+    "icône_jjkppdb": "BlueSSRYagaIcon1.jpeg",
     "page_wiki": "(Pivotal Guardian) Masamichi Yaga"
   },
   {
@@ -2156,6 +2174,7 @@
     "dans_le_pool": false,
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/d/d5/GreenSSRNanamiIcon2.jpeg/revision/latest?cb=20260227105827",
+    "icône_jjkppdb": "GreenSSRNanamiIcon2.jpeg",
     "page_wiki": "(Silent Suppression) Kento Nanami"
   },
   {
@@ -2273,6 +2292,7 @@
     "dans_le_pool": false,
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/fd/RedSSRMomoIcon1.jpeg/revision/latest?cb=20260224145849",
+    "icône_jjkppdb": "RedSSRMomoIcon1.jpeg",
     "page_wiki": "(Tool Manipulation) Momo Nishimiya"
   },
   {
@@ -2398,6 +2418,7 @@
     ],
     "dans_le_pool": false,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/4/43/YellowSSRUraumeIcon1.jpeg/revision/latest?cb=20260130164006",
+    "icône_jjkppdb": "YellowSSRUraumeIcon1.jpeg",
     "page_wiki": "(Step back, third-rate) Uraume"
   },
   {
@@ -2536,6 +2557,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/c9/GreenSSRYujiIcon2.jpeg/revision/latest?cb=20260109025624",
+    "icône_jjkppdb": "GreenSSRYujiIcon2.jpeg",
     "page_wiki": "(A Life Entrusted to Me) Yuji Itadori"
   },
   {
@@ -2663,6 +2685,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/8/85/BlueSSRGojoIcon2.jpeg/revision/latest?cb=20251226080028",
+    "icône_jjkppdb": "BlueSSRGojoIcon2.jpeg",
     "page_wiki": "(0.2-Second Domain Expansion) Satoru Gojo"
   },
   {
@@ -2814,6 +2837,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/7/79/RedSSRMahitoIcon1.jpeg/revision/latest?cb=20251204095827",
+    "icône_jjkppdb": "RedSSRMahitoIcon1.jpeg",
     "page_wiki": "(Unbridled Soul) Mahito"
   },
   {
@@ -2933,6 +2957,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/5/55/YellowSSRSukunaIcon1.jpeg/revision/latest?cb=20251128093235",
+    "icône_jjkppdb": "YellowSSRSukunaIcon1.png",
     "page_wiki": "(Battle of firepower) Ryomen Sukuna"
   },
   {
@@ -3077,6 +3102,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/cf/GreenSSRTodoIcon1.jpeg/revision/latest?cb=20251121090302",
+    "icône_jjkppdb": "GreenSSRTodoIcon1.jpeg",
     "page_wiki": "(Are you satisfied with that?) Aoi Todo"
   },
   {
@@ -3227,6 +3253,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/5/56/RedSSRYujiIcon2.jpeg/revision/latest?cb=20251121090245",
+    "icône_jjkppdb": "RedSSRYujiIcon2.jpeg",
     "page_wiki": "(Maximum Cursed Energy Output) Yuji Itadori"
   },
   {
@@ -3352,6 +3379,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/c3/BlueSSRYutaIcon1.jpeg/revision/latest?cb=20251018135915",
+    "icône_jjkppdb": "BlueSSRYutaIcon1.jpeg",
     "page_wiki": "(Queen of Curses) Yuta Okkotsu"
   },
   {
@@ -3477,6 +3505,7 @@
     "dans_le_pool": false,
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/eb/YellowSSRKusakabeIcon1.jpeg/revision/latest?cb=20250930141226",
+    "icône_jjkppdb": "YellowSSRKusakabeIcon1.jpeg",
     "page_wiki": "(Ward off with Sharp Blade) Atsuya Kusakabe"
   },
   {
@@ -3599,6 +3628,7 @@
     "dans_le_pool": false,
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/bf/RedSSRJogoIcon1.jpeg/revision/latest?cb=20250919081841",
+    "icône_jjkppdb": "RedSSRJogoIcon1.jpeg",
     "page_wiki": "(Meteor of Fierceness) Jogo"
   },
   {
@@ -3717,6 +3747,7 @@
     "dans_le_pool": false,
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/1/1e/RedSSRMegumiIcon1.jpeg/revision/latest?cb=20250912100303",
+    "icône_jjkppdb": "RedSSRMegumiIcon1.jpeg",
     "page_wiki": "(Rabbit's Disruption) Megumi Fushiguro"
   },
   {
@@ -3838,6 +3869,7 @@
     ],
     "dans_le_pool": false,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/d/da/BlueSSRNaobitoIcon1.jpeg/revision/latest?cb=20250903103632",
+    "icône_jjkppdb": "BlueSSRNaobitoIcon1.jpeg",
     "page_wiki": "(Crushed With Speed) Naobito Zen'in"
   },
   {
@@ -3946,6 +3978,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/c4/YellowSSRTojiIcon1.jpeg/revision/latest?cb=20250820125126",
+    "icône_jjkppdb": "YellowSSRTojiIcon1.jpeg",
     "page_wiki": "(Seance) Toji Fushiguro"
   },
   {
@@ -4072,6 +4105,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/2/21/GreenSSRChosoIcon1.jpeg/revision/latest?cb=20250806124443",
+    "icône_jjkppdb": "GreenSSRChosoIcon1.jpeg",
     "page_wiki": "(Fulfilling His Duty as the Older Brother) Choso"
   },
   {
@@ -4203,6 +4237,7 @@
     ],
     "médaille": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/f2/YellowSSRDagonIcon1.jpeg/revision/latest?cb=20250805192557",
+    "icône_jjkppdb": "YellowSSRDagonIcon1.jpeg",
     "page_wiki": "(Unlimited Shikigami) Dagon"
   },
   {
@@ -4317,6 +4352,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/c3/RedSSRNanamiIcon1.png/revision/latest?cb=20250710181649",
+    "icône_jjkppdb": "RedSSRNanamiIcon1.png",
     "page_wiki": "(Promising New Student) Kento Nanami (Teen)"
   },
   {
@@ -4411,6 +4447,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/95/GreenSSRShokoIcon1.png/revision/latest?cb=20250530125611",
+    "icône_jjkppdb": "GreenSSRShokoIcon1.png",
     "page_wiki": "(\"Fwoo Hyoi\") Shoko Ieiri (Teen)"
   },
   {
@@ -4544,6 +4581,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b8/GreenSSRGojoIcon2.png/revision/latest?cb=20250603065304",
+    "icône_jjkppdb": "GreenSSRGojoIcon2.png",
     "page_wiki": "(Awakening) Satoru Gojo (Teen)"
   },
   {
@@ -4651,6 +4689,7 @@
       2
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/4/47/BlueSSRInoIcon1.png/revision/latest?cb=20250603071637",
+    "icône_jjkppdb": "BlueSSRInoIcon1.png",
     "page_wiki": "(No Conceit) Takuma Ino"
   },
   {
@@ -4752,6 +4791,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/ef/RedSSRMeiMeiIcon1.png/revision/latest?cb=20250603073245",
+    "icône_jjkppdb": "RedSSRMeiMeiIcon1.png",
     "page_wiki": "(Night Of Dancing Crows) Mei Mei"
   },
   {
@@ -4862,6 +4902,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/ef/BlueSSRMakiIcon1.png/revision/latest?cb=20250321071837",
+    "icône_jjkppdb": "BlueSSRMakiIcon1.png",
     "page_wiki": "(Early Morning Departure) Maki Zen'in"
   },
   {
@@ -4963,6 +5004,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/e9/YellowSSRShokoIcon1.png/revision/latest?cb=20250228124535",
+    "icône_jjkppdb": "YellowSSRShokoIcon1.png",
     "page_wiki": "(Life Saver) Shoko Ieiri"
   },
   {
@@ -5066,6 +5108,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/d/d8/RedSSRInumakiIcon1.png/revision/latest?cb=20250219192139",
+    "icône_jjkppdb": "RedSSRInumakiIcon1.png",
     "page_wiki": "(Night-Lurking Sorcerer) Toge Inumaki"
   },
   {
@@ -5177,6 +5220,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/3a/GreenSSRKokichiIcon1.png/revision/latest?cb=20250131181839",
+    "icône_jjkppdb": "GreenSSRKokichiIcon1.png",
     "page_wiki": "(I've Seen It All) Kokichi Muta"
   },
   {
@@ -5322,6 +5366,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/7/7c/GreenSSRMiwaIcon1.jpg/revision/latest?cb=20250123160013",
+    "icône_jjkppdb": "GreenSSRMiwaIcon1.jpg",
     "page_wiki": null
   },
   {
@@ -5447,6 +5492,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/a6/BlueSSRSukunaIcon1.png/revision/latest?cb=20241231084927",
+    "icône_jjkppdb": "BlueSSRSukunaIcon1.png",
     "page_wiki": "(Genuine Jujutsu) Ryomen Sukuna"
   },
   {
@@ -5565,6 +5611,7 @@
       2
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/8/8e/BlueSSRMiguelIcon1.png/revision/latest?cb=20241213153553",
+    "icône_jjkppdb": "BlueSSRMiguelIcon1.png",
     "page_wiki": "(Delayed Quota) Miguel"
   },
   {
@@ -5684,6 +5731,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/7/7c/RedSSRGojoIcon1.png/revision/latest?cb=20241129170613",
+    "icône_jjkppdb": "RedSSRGojoIcon1.png",
     "page_wiki": "(Within Infinity) Satoru Gojo"
   },
   {
@@ -5812,6 +5860,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/95/YellowSSRYujiIcon1.png/revision/latest?cb=20250603072700",
+    "icône_jjkppdb": "YellowSSRYujiIcon1.png",
     "page_wiki": "(Zone) Yuji Itadori"
   },
   {
@@ -5923,6 +5972,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/d/d1/YellowSSRKaitoIcon1.png/revision/latest?cb=20241117140535",
+    "icône_jjkppdb": "YellowSSRKaitoIcon1.png",
     "page_wiki": "(With That Will In Mind) Kaito Yuki"
   },
   {
@@ -6043,6 +6093,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/7/76/GreenSSRMegumiIcon1.png/revision/latest?cb=20250603072959",
+    "icône_jjkppdb": "GreenSSRMegumiIcon1.png",
     "page_wiki": "(Bond of Friendship) Megumi Fushiguro"
   },
   {
@@ -6155,6 +6206,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/5/52/GreenSSRNobaraIcon1.png/revision/latest?cb=20241022130912",
+    "icône_jjkppdb": "GreenSSRNobaraIcon1.png",
     "page_wiki": "(Keep Hammering At Them) Nobara Kugisaki"
   },
   {
@@ -6257,6 +6309,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/8/8b/BlueSSRInumakiIcon1.png/revision/latest?cb=20240930121907",
+    "icône_jjkppdb": "BlueSSRInumakiIcon1.png",
     "page_wiki": "(Shatter To Pieces) Toge Inumaki"
   },
   {
@@ -6368,6 +6421,7 @@
       1
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/1/1b/RedSSRMaiIcon1.png/revision/latest?cb=20240922161122",
+    "icône_jjkppdb": "RedSSRMaiIcon1.png",
     "page_wiki": "(The Final Bullet) Mai Zen'in"
   },
   {
@@ -6480,6 +6534,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/8/8b/GreenSSRMakiIcon1.png/revision/latest?cb=20240830101651",
+    "icône_jjkppdb": "GreenSSRMakiIcon1.png",
     "page_wiki": "(Longsword Battle) Maki Zen'in"
   },
   {
@@ -6610,6 +6665,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/97/BlueSSRNanamiIcon1.png/revision/latest?cb=20240820071913",
+    "icône_jjkppdb": "BlueSSRNanamiIcon1.png",
     "page_wiki": null
   },
   {
@@ -6704,6 +6760,7 @@
       1
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/2/28/GreenSRGakuganjiIcon1.png/revision/latest?cb=20240730151104",
+    "icône_jjkppdb": "GreenSRGakuganjiIcon1.png",
     "page_wiki": "(Cursed Energy Melody) Yoshinobu Gakuganji"
   },
   {
@@ -6814,6 +6871,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/a5/YellowSSRYagaIcon1.png/revision/latest?cb=20240730150340",
+    "icône_jjkppdb": "YellowSSRYagaIcon1.png",
     "page_wiki": "(Cursed Corpse Battle) Masamichi Yaga"
   },
   {
@@ -6929,6 +6987,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/7/75/GreenSSRSakiIcon1.png/revision/latest?cb=20240716133721",
+    "icône_jjkppdb": "GreenSSRSakiIcon1.png",
     "page_wiki": "(Heart's Resolve) Saki Rindo"
   },
   {
@@ -7052,6 +7111,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b7/BlueSSRMiwaIcon1.png/revision/latest?cb=20240628093414",
+    "icône_jjkppdb": "BlueSSRMiwaIcon1.png",
     "page_wiki": null
   },
   {
@@ -7163,6 +7223,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/ce/RedSSRTojiIcon1.png/revision/latest?cb=20240603074716",
+    "icône_jjkppdb": "RedSSRTojiIcon1.png",
     "page_wiki": "(The Sorcerer Killer) Toji Fushiguro"
   },
   {
@@ -7274,6 +7335,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/c0/GreenSSRGetoIcon1.png/revision/latest?cb=20240531071010",
+    "icône_jjkppdb": "GreenSSRGetoIcon1.png",
     "page_wiki": "(To Protect Non-Sorcerers) Suguru Geto (Teen)"
   },
   {
@@ -7386,6 +7448,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/b9/YellowGojoSSRIcon1.png/revision/latest?cb=20250603072047",
+    "icône_jjkppdb": "YellowGojoSSRIcon1.png",
     "page_wiki": "(The Strongest Blue) Satoru Gojo (Teen)"
   },
   {
@@ -7499,6 +7562,7 @@
       1
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/c0/YellowSSRNanamiIcon1.png/revision/latest?cb=20240430105904",
+    "icône_jjkppdb": "YellowSSRNanamiIcon1.png",
     "page_wiki": "(Working Overtime) Kento Nanami"
   },
   {
@@ -7620,6 +7684,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/fd/RedSSRPandaIcon1.png/revision/latest?cb=20240419070137",
+    "icône_jjkppdb": "RedSSRPandaIcon1.png",
     "page_wiki": "(Need Some Help?) Panda"
   },
   {
@@ -7756,6 +7821,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/1/1c/BlueSSRItadoriIcon1.png/revision/latest?cb=20250603072432",
+    "icône_jjkppdb": "BlueSSRItadoriIcon1.png",
     "page_wiki": "(Infuse Your Cursed Energy) Yuji Itadori"
   },
   {
@@ -7882,6 +7948,7 @@
     "médaille": true,
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/ac/GreenSSRMahitoIcon1.png/revision/latest?cb=20240412113455",
+    "icône_jjkppdb": "GreenSSRMahitoIcon1.png",
     "page_wiki": "(Inspiration From “Death”) Mahito"
   },
   {
@@ -7999,6 +8066,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/8/80/BlueTodoSSRIcon1.png/revision/latest?cb=20240401081414",
+    "icône_jjkppdb": "BlueTodoSSRIcon1.png",
     "page_wiki": "(With Takada-Chan) Aoi Todo"
   },
   {
@@ -8123,6 +8191,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/4/40/YellowMechamaruSSRIcon1.png/revision/latest?cb=20240322134706",
+    "icône_jjkppdb": "YellowMechamaruSSRIcon1.png",
     "page_wiki": "(Sword Option) Ultimate Mechamaru"
   },
   {
@@ -8240,6 +8309,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/4/40/RedNobaraSSRIcon1.png/revision/latest?cb=20240229065948",
+    "icône_jjkppdb": "RedNobaraSSRIcon1.png",
     "page_wiki": "(A Bad Match) Nobara Kugisaki"
   },
   {
@@ -8351,6 +8421,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/d/d9/BlueSSRKamoIcon1.png/revision/latest?cb=20240222161351",
+    "icône_jjkppdb": "BlueSSRKamoIcon1.png",
     "page_wiki": "(Blood Borne Resolve) Noritoshi Kamo"
   },
   {
@@ -8454,6 +8525,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/d/de/BlueSSRMomoIcon1.png/revision/latest?cb=20240222161412",
+    "icône_jjkppdb": "BlueSSRMomoIcon1.png",
     "page_wiki": "(Don't Look Down On Me) Momo Nishimiya"
   },
   {
@@ -8572,6 +8644,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/e9/GreenGojoSSRIcon1.png/revision/latest?cb=20250603071925",
+    "icône_jjkppdb": "GreenGojoSSRIcon1.png",
     "page_wiki": "(Hollow Purple) Satoru Gojo"
   },
   {
@@ -8687,6 +8760,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/1/12/RedYujiSSRIcon1.png/revision/latest?cb=20240111073018",
+    "icône_jjkppdb": "RedYujiSSRIcon1.png",
     "page_wiki": "(Nimble Body) Yuji Itadori"
   },
   {
@@ -8803,6 +8877,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/fd/YellowMegumiSSRIcon1.png/revision/latest?cb=20231229060407",
+    "icône_jjkppdb": "YellowMegumiSSRIcon1.png",
     "page_wiki": "(Incomplete Domain) Megumi Fushiguro"
   },
   {
@@ -8919,6 +8994,7 @@
       2
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/a0/BlueGetoSSRIcon1.png/revision/latest?cb=20231229073510",
+    "icône_jjkppdb": "BlueGetoSSRIcon1.png",
     "page_wiki": "(This Is Justice) Suguru Geto"
   },
   {
@@ -9066,6 +9142,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/8/8d/RedYutaSSRIcon1.png/revision/latest?cb=20231215230649",
+    "icône_jjkppdb": "RedYutaSSRIcon1.png",
     "page_wiki": "(Lend Me Your Power) Yuta Okkotsu"
   },
   {
@@ -9165,6 +9242,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/5/5b/BlueToge0SRIcon1.png/revision/latest?cb=20231207094317",
+    "icône_jjkppdb": "BlueToge0SRIcon1.png",
     "page_wiki": "(The Baton Of Counterattack) Toge Inumaki"
   },
   {
@@ -9253,6 +9331,7 @@
       2
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/e4/BlueMaki0SRIcon1.png/revision/latest?cb=20231207094222",
+    "icône_jjkppdb": "BlueMaki0SRIcon1.png",
     "page_wiki": "(Team Up If They Are Weak) Maki Zen'in"
   },
   {
@@ -9356,6 +9435,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/2/22/BluePanda0SRIcon1.png/revision/latest?cb=20231215231806",
+    "icône_jjkppdb": "BluePanda0SRIcon1.png",
     "page_wiki": "(Take The Shortest Way) Panda"
   },
   {
@@ -9473,6 +9553,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/c3/YellowJunpeiSSRIcon1.png/revision/latest?cb=20231130130734",
+    "icône_jjkppdb": "YellowJunpeiSSRIcon1.png",
     "page_wiki": "(Young Fish And Reverse Punishment) Junpei Yoshino"
   },
   {
@@ -9565,6 +9646,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/f6/BlueKamoSRIcon1.png/revision/latest?cb=20231129030526",
+    "icône_jjkppdb": "BlueKamoSRIcon1.png",
     "page_wiki": "(Blood of the Big Three Families) Noritoshi Kamo"
   },
   {
@@ -9686,6 +9768,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/0/0c/BlueMegumiSSRIcon1.png/revision/latest?cb=20250603072900",
+    "icône_jjkppdb": "BlueMegumiSSRIcon1.png",
     "page_wiki": null
   },
   {
@@ -9806,6 +9889,7 @@
     ],
     "médaille": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/2/2e/BlueJogoSSRIcon1.png/revision/latest?cb=20231123124613",
+    "icône_jjkppdb": "BlueJogoSSRIcon1.png",
     "page_wiki": null
   },
   {
@@ -9896,6 +9980,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/c/c5/BlueShokoSRIcon1.png/revision/latest?cb=20231129030525",
+    "icône_jjkppdb": "BlueShokoSRIcon1.png",
     "page_wiki": "(Reverse Cursed Technique) Shoko Ieiri"
   },
   {
@@ -9988,6 +10073,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/6/68/BlueItadoriRIcon1.png/revision/latest?cb=20250603070201",
+    "icône_jjkppdb": "BlueItadoriRIcon1.png",
     "page_wiki": "(Sukuna’s Vessel) Yuji Itadori"
   },
   {
@@ -10101,6 +10187,7 @@
       1
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/34/BlueGojoSSRIcon1.png/revision/latest?cb=20250603071813",
+    "icône_jjkppdb": "BlueGojoSSRIcon1.png",
     "page_wiki": "(The Strongest) Satoru Gojo"
   },
   {
@@ -10188,6 +10275,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/a1/BlueNobaraRIcon1.png/revision/latest?cb=20250603070644",
+    "icône_jjkppdb": "BlueNobaraRIcon1.png",
     "page_wiki": "(To Stay True To Myself) Nobara Kugisaki"
   },
   {
@@ -10276,6 +10364,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/af/BlueJunpeiSRIcon1.png/revision/latest?cb=20231129030526",
+    "icône_jjkppdb": "BlueJunpeiSRIcon1.png",
     "page_wiki": "(Value Of Life) Junpei Yoshino"
   },
   {
@@ -10365,6 +10454,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/d/da/GreenMomoSRIcon1.png/revision/latest?cb=20231129030526",
+    "icône_jjkppdb": "GreenMomoSRIcon1.png",
     "page_wiki": "(Aerial Reconnaissance) Momo Nishimiya"
   },
   {
@@ -10444,6 +10534,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/a/a2/GreenIchijiRIcon1.png/revision/latest?cb=20250603071504",
+    "icône_jjkppdb": "GreenIchijiRIcon1.png",
     "page_wiki": "(Background Support) Kiyotaka Ijichi"
   },
   {
@@ -10525,6 +10616,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/4/4a/GreenSakiRIcon1.png/revision/latest?cb=20250603071205",
+    "icône_jjkppdb": "GreenSakiRIcon1.png",
     "page_wiki": "(Cursed Energy Catastrophe) Saki Rindo"
   },
   {
@@ -10645,6 +10737,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/2/27/GreenItadoriSSRIcon1.png/revision/latest?cb=20250603072550",
+    "icône_jjkppdb": "GreenItadoriSSRIcon1.png",
     "page_wiki": "(Cursed Energy Flashes Black) Yuji Itadori"
   },
   {
@@ -10774,6 +10867,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/1/11/GreenPandaSSRIcon1.png/revision/latest?cb=20231123124613",
+    "icône_jjkppdb": "GreenPandaSSRIcon1.png",
     "page_wiki": null
   },
   {
@@ -10868,6 +10962,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/5/5d/GreenMechamaruSRIcon1.png/revision/latest?cb=20240503035058",
+    "icône_jjkppdb": "GreenMechamaruSRIcon1.png",
     "page_wiki": "(Mode: Albatross) Ultimate Mechamaru"
   },
   {
@@ -10993,6 +11088,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/e9/GreenNanamiSSRIcon1.png/revision/latest?cb=20240502035304",
+    "icône_jjkppdb": "GreenNanamiSSRIcon1.png",
     "page_wiki": null
   },
   {
@@ -11074,6 +11170,7 @@
       2
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/4/4b/GreenYuukiSRIcon1.png/revision/latest?cb=20231129030526",
+    "icône_jjkppdb": "GreenYuukiSRIcon1.png",
     "page_wiki": "(The Resolve Of Being A Sorcerer) Kaito Yuki"
   },
   {
@@ -11163,6 +11260,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/fc/GreenMegumiRIcon1.png/revision/latest?cb=20250603070434",
+    "icône_jjkppdb": "GreenMegumiRIcon1.png",
     "page_wiki": "(Unfair Salvation) Megumi Fushiguro"
   },
   {
@@ -11257,6 +11355,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/d/d3/RedYagaSRIcon1.png/revision/latest?cb=20240503034919",
+    "icône_jjkppdb": "RedYagaSRIcon1.png",
     "page_wiki": "(Ariadne's Thread Educator) Masamichi Yaga"
   },
   {
@@ -11370,6 +11469,7 @@
     ],
     "traduction_officielle": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/9f/RedTodoSSRIcon1.png/revision/latest?cb=20240502035051",
+    "icône_jjkppdb": "RedTodoSSRIcon1.png",
     "page_wiki": "(Blast From The Past) Aoi Todo"
   },
   {
@@ -11461,6 +11561,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/3b/RedTogeRIcon.png/revision/latest?cb=20250603070906",
+    "icône_jjkppdb": "RedTogeRIcon1.png",
     "page_wiki": "(Cursed Power of Words) Toge Inumaki"
   },
   {
@@ -11556,6 +11657,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/9/9f/RedMiwaSRIcon1.png/revision/latest?cb=20231129030526",
+    "icône_jjkppdb": "RedMiwaSRIcon1.png",
     "page_wiki": "(Determined Counter) Kasumi Miwa"
   },
   {
@@ -11657,6 +11759,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/e4/RedNanamiSRIcon1.png/revision/latest?cb=20240503034832",
+    "icône_jjkppdb": "RedNanamiSRIcon1.png",
     "page_wiki": "(Ex-Office Worker Turned Jujutsu Sorcerer) Kento Nanami"
   },
   {
@@ -11746,6 +11849,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/36/RedMakiRIcon1.png/revision/latest?cb=20250603070748",
+    "icône_jjkppdb": "RedMakiRIcon1.png",
     "page_wiki": "(Innate Talent) Maki Ze’nin"
   },
   {
@@ -11868,6 +11972,7 @@
       1
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/b/ba/RedMakiSSRIcon1.png/revision/latest?cb=20231123124613",
+    "icône_jjkppdb": "RedMakiSSRIcon1.png",
     "page_wiki": null
   },
   {
@@ -11977,6 +12082,7 @@
     ],
     "médaille": true,
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/6/6f/RedHanamiSSRIcon1.png/revision/latest?cb=20231123124613",
+    "icône_jjkppdb": "RedHanamiSSRIcon1.png",
     "page_wiki": "(The Thrill Of The Fight) Hanami"
   },
   {
@@ -12069,6 +12175,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/8/80/YellowMeiSRIcon1.png/revision/latest?cb=20240503035141",
+    "icône_jjkppdb": "YellowMeiSRIcon1.png",
     "page_wiki": "(A Clever Bullet) Mai Zen'in"
   },
   {
@@ -12155,6 +12262,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/3e/YellowKaitoRIcon1.png/revision/latest?cb=20250603071324",
+    "icône_jjkppdb": "YellowKaitoRIcon1.png",
     "page_wiki": "(Cursed Technique Boost) Kaito Yuki"
   },
   {
@@ -12274,6 +12382,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/e/e2/YellowNobaraSSRIcon1.png/revision/latest?cb=20240502035356",
+    "icône_jjkppdb": "YellowNobaraSSRIcon1.png",
     "page_wiki": "(Girl Of Steel) Nobara Kugisaki"
   },
   {
@@ -12366,6 +12475,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/3/3c/YellowSakiSRIcon1.png/revision/latest?cb=20240503035001",
+    "icône_jjkppdb": "YellowSakiSRIcon1.png",
     "page_wiki": "(Just Bring It) Saki Rindo"
   },
   {
@@ -12447,6 +12557,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/f/f1/YellowPandaRIcon1.png/revision/latest?cb=20250603071042",
+    "icône_jjkppdb": "YellowPandaRIcon1.png",
     "page_wiki": "(Panda Is Not A Panda) Panda"
   },
   {
@@ -12543,6 +12654,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/2/27/YellowTodoSRIcon1.png/revision/latest?cb=20231129030526",
+    "icône_jjkppdb": "YellowTodoSRIcon1.png",
     "page_wiki": "(Reckless Grade 1) Aoi Todo"
   },
   {
@@ -12650,6 +12762,7 @@
       0
     ],
     "url_icône": "https://static.wikia.nocookie.net/jjk-phantom-parade/images/2/29/YellowTogeSSRIcon1.png/revision/latest?cb=20231123124613",
+    "icône_jjkppdb": "YellowTogeSSRIcon1.png",
     "page_wiki": "(Resolved Cursed Speech) Toge Inumaki"
   }
 ]

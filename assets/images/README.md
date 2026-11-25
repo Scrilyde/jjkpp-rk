@@ -22,3 +22,7 @@ est utilisée si les animations sont réduites. L’icône `YellowSSRYujiMegumiI
 Les icônes de compétences sont servies par le CDN de JJKPPDB d’après les clés du catalogue.
 Les exceptions sont renseignées directement dans les fiches à partir du wiki communautaire
 ou de Phantom Parade Database. Les icônes tandem du duo sont conservées localement.
+
+Les portraits des fiches de personnages proviennent du [catalogue de JJKPPDB](https://www.jjkppdb.com/characters).
+Le champ `icône_jjkppdb` indique leur nom de fichier sur le CDN ; `url_icône`
+reste utilisé dans le tableau du catalogue et en cas d’échec du portrait sur une fiche.

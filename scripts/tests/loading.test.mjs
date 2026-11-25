@@ -29,11 +29,27 @@ function browser(fetch) {
     renderList = () => renders.push(state.collection);
     updateList = () => renders.push(state.collection);
     renderFiche = route => renders.push(route.id);
-    globalThis.api = { loadCollection, onRoute, records: () => DATA, visibleOrder, imageAttrs, cardHTML, ficheKit, transitionContent, state, commitList, bonusHTML };
+    globalThis.api = { loadCollection, onRoute, records: () => DATA, visibleOrder, imageAttrs, cardHTML, ficheKit, ficheIconAttrs, transitionContent, state, commitList, bonusHTML };
   })();`), context);
   return context;
 }
 const response = url => Promise.resolve({ ok: true, json: async () => url.includes('categories') ? { catégories: {} } : url.includes('souvenirs') ? memories : characters });
+
+test('les portraits des fiches utilisent JJKPPDB sans remplacer les icônes d’origine', async () => {
+  const b = browser(response);
+  await b.api.loadCollection('personnages');
+  const files = new Set();
+  for (const record of b.api.records()) {
+    const file = record.d['icône_jjkppdb'];
+    assert.match(file, /^[\w-]+\.(?:png|jpe?g)$/i, record.id);
+    assert.ok(!files.has(file), record.id);
+    files.add(file);
+    assert.equal(b.api.ficheIconAttrs(record),
+      `src="https://cdn.jjkppdb.com/character_icons/${file}" data-original-src="${record.icon.replaceAll('&', '&amp;')}"`);
+  }
+  const icon = 'assets/images/YellowSSRYujiMegumiIcon1.png';
+  assert.equal(b.api.ficheIconAttrs({ d: {}, icon }), `src="${icon}"`);
+});
 
 test('la première liste charge uniquement les personnages et partage les requêtes suivantes', async () => {
   const calls = [];
