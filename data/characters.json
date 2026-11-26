@@ -112,7 +112,8 @@
     "ultime_coopérative": {
       "effet": "Inflige des dégâts de taijutsu au corps à corps. Augmente le taux de CRIT du duo et de son partenaire (3 tours). Les autres alliés récupèrent 110 points de jauge d'ultime.",
       "effet_renforcé": "Inflige des dégâts de taijutsu au corps à corps. Augmente le taux de CRIT et le taijutsu du duo et de son partenaire (3 tours). Les autres alliés récupèrent 110 points de jauge d'ultime."
-    }
+    },
+    "page_wiki": null
   },
   {
     "titre": "(Mastery of 24 Frames Per Second) Naoya Zen'in",
